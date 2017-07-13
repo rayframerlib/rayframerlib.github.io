@@ -60,9 +60,10 @@ feedback = new Animation skt.feed,
 
 skt.feed.on "change:y", ->
 	if @.y < -1000 && i == false
+		skt.notice.opacity = 0
 		bodymovinIconP1.anim.play()
 		i = true
-		Utils.delay 5/6, ->
+		Utils.delay 1, ->
 			skt.notice.opacity = 1
 
 skt.jsonArea.on Events.Click, ->
