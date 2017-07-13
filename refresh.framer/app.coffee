@@ -62,7 +62,7 @@ skt.feed.on "change:y", ->
 	if @.y < -1000 && i == false
 		bodymovinIconP1.anim.play()
 		i = true
-		Utils.delay 1, ->
+		Utils.delay 5/6, ->
 			skt.notice.opacity = 1
 
 skt.jsonArea.on Events.Click, ->
@@ -76,8 +76,8 @@ skt.jsonArea.on Events.Click, ->
 
 feedback.on Events.AnimationEnd, ->
 	i = false
-	skt.feed.draggable.enabled = true
 	bodymovinIconP2.opacity = 0
 	bodymovinIconP1.opacity = 1
 	bodymovinIconP1.anim.goToAndStop(0)
 	bodymovinIconP2.anim.goToAndStop(0)
+	skt.feed.draggable.enabled = true
