@@ -1,6 +1,4 @@
-class bodymovinLayer extends Layer
-	animationObj = null
-	# timer = null
+class lottieLayer extends Layer
 	# 构造器
 	constructor: (@options={}) ->
 		# 基本配置项
@@ -13,6 +11,8 @@ class bodymovinLayer extends Layer
 		@options.autoplay ?= true
 
 		super @options
+
+		@anim = null
 
 		anmiLayer = new Layer
 			parent: @
@@ -31,9 +31,11 @@ class bodymovinLayer extends Layer
 
 		elId = "lottie-animation-"+anmiLayer.id
 
+		_this = @
+
 		if(document.bodymovinScript)
 			bodymovinTimer = Utils.interval 0.1,->
-				if(bodymovin)
+				if(window.bodymovin)
 					_loadJSON(jsonPath,elId,renderer,isLoop,isAutoplay,bodymovin)
 					window.clearInterval(bodymovinTimer)
 		else
@@ -46,41 +48,8 @@ class bodymovinLayer extends Layer
 					container: document.getElementById(elId)
 					renderer: renderer
 					loop: isLoop
-					autoplay: isAutoplay
+					autoplay:isAutoplay
 					animationData: data
-				animationObj = bodymovin.loadAnimation(aniObj)
+				_this.anim = bodymovin.loadAnimation(aniObj)
 
-	_loop = (callback)->
-		# timer = Utils.interval 0.02,->
-		if(animationObj)
-			# window.clearInterval(timer)
-			callback()
-	play:()->
-		_loop ()->
-			animationObj.play()
-	stop:()->
-		_loop ()->
-			animationObj.stop()
-	pause:()->
-		_loop ()->
-			animationObj.pause()
-	setSpeed:(speed)->
-		_loop ()->
-			animationObj.setSpeed(speed)
-	goToAndStop:(value, isFrame)->
-		_loop ()->
-			animationObj.goToAndStop(value, isFrame)
-	goToAndPlay:(value, isFrame)->
-		_loop ()->
-			animationObj.goToAndPlay(value, isFrame)
-	setDirection:(direction)->
-		_loop ()->
-			animationObj.setDirection(direction)
-	playSegments:(segments, forceFlag)->
-		_loop ()->
-			animationObj.playSegments(segments, forceFlag)
-	destroy:()->
-		_loop ()->
-			animationObj.destroy()
-
-module.exports = bodymovinLayer
+module.exports = lottieLayer

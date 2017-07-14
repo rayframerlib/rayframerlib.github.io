@@ -19,9 +19,9 @@ if Utils.isPhone()
 story2states = 0
 story3states = 0
 
-BodymovinLayer1 = require 'Bodymovin1'
-BodymovinLayer2 = require 'Bodymovin2'
-BodymovinLayer3 = require 'Bodymovin3'
+BodymovinLayer = require 'Bodymovin'
+
+skt.flow.y = 148
 
 story2 = new Layer
 	superLayer: skt.mainScreen
@@ -43,13 +43,19 @@ story3 = new Layer
 	x: -310
 	y: skt.flow.y + 505
 
-circle1 = new BodymovinLayer1
+circle1 = new BodymovinLayer
+	jsonPath: "circle.json"
 	superLayer: skt.circleArea3
+	looping: false
+	autoplay: false
 	width: 100
 	height: 100
 	
-circle3 = new BodymovinLayer2
+circle3 = new BodymovinLayer
+	jsonPath: "circle.json"
 	superLayer: skt.circleArea2
+	looping: false
+	autoplay: true
 	width: 100
 	height: 100
 	
@@ -90,6 +96,8 @@ skt.flow.on "change:y", ->
 	if story3states == 0
 		story3.y = skt.flow.y + 505
 		story3.states.default.y = skt.flow.y + 505
+	if @.y < -100
+		circle1.anim.play()
 
 story2.on Events.Click, ->
 	if story2states == 0
@@ -106,3 +114,4 @@ story3.on Events.Click, ->
 	else if story3states == 1
 		story3.animate("default", time: 0.1, curve: "ease-in-out")
 		story3states = 0
+	
