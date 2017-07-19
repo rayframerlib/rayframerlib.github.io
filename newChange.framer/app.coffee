@@ -1,5 +1,7 @@
 skt = Framer.Importer.load("imported/forFramer@1x")
 
+Framer.Extras.Hints.disable()
+
 skt.sc.clip = true
 skt.sc.height = 1334
 skt.sc.width = 750
