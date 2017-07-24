@@ -211,7 +211,7 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 							"opacity": 1
 						},
 						"image": {
-							"path": "images/Layer-tabBg-nkuwrke4.jpg",
+							"path": "images/Layer-tabBg-nkuwrke4.png",
 							"frame": {
 								"x": 0,
 								"y": 1245,

@@ -215,7 +215,7 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 							"opacity": 1
 						},
 						"image": {
-							"path": "images/Layer-tabBg-nkuwrke4.jpg",
+							"path": "images/Layer-tabBg-nkuwrke4.png",
 							"frame": {
 								"x": 0,
 								"y": 1245,
@@ -289,7 +289,7 @@ if (window.Framer) {window.Framer.Defaults.DeviceView = {"deviceScale":"fit","se
 }
 if (window.Framer) {window.Framer.Defaults.DeviceComponent = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-7-black","contentScale":1,"hideBezel":true,"orientation":0};
 }
-window.FramerStudioInfo = {"deviceImagesUrl":"\/_server\/resources\/DeviceImages","documentTitle":"refresh.framer"};
+window.FramerStudioInfo = {"deviceImagesUrl":"\/_server\/resources\/DeviceImages","documentTitle":"refreshThin.framer"};
 
 Framer.Device = new Framer.DeviceView();
 Framer.Device.setupContext();
