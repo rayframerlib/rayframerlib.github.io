@@ -228,31 +228,179 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 				]
 			},
 			{
-				"objectId": "11FEAD42-0A51-409F-87FF-8C355BC4AA0A",
+				"objectId": "85A5D4FE-7867-4A9E-819C-53DD4407CF46",
 				"kind": "group",
-				"name": "feed",
-				"originalName": "feed",
+				"name": "dragArea",
+				"originalName": "dragArea",
 				"maskFrame": null,
 				"layerFrame": {
 					"x": 0,
-					"y": 151,
+					"y": 56,
 					"width": 750,
-					"height": 3000
+					"height": 2572
 				},
 				"visible": true,
 				"metadata": {
 					"opacity": 1
 				},
-				"image": {
-					"path": "images/Layer-feed-mtfgrufe.png",
-					"frame": {
-						"x": 0,
-						"y": 151,
-						"width": 750,
-						"height": 3000
+				"children": [
+					{
+						"objectId": "11FEAD42-0A51-409F-87FF-8C355BC4AA0A",
+						"kind": "group",
+						"name": "feed",
+						"originalName": "feed",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 0,
+							"y": 56,
+							"width": 750,
+							"height": 2572
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"children": [
+							{
+								"objectId": "726C03D9-4BD2-4AFE-BDFB-194FA14BC670",
+								"kind": "group",
+								"name": "tipVisualArea",
+								"originalName": "tipVisualArea",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 0,
+									"y": 56,
+									"width": 750,
+									"height": 72
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"children": [
+									{
+										"objectId": "74279CE2-95F0-4A80-B54B-839CD422BF21",
+										"kind": "group",
+										"name": "tip",
+										"originalName": "tip",
+										"maskFrame": null,
+										"layerFrame": {
+											"x": 0,
+											"y": 56,
+											"width": 750,
+											"height": 72
+										},
+										"visible": true,
+										"metadata": {
+											"opacity": 1
+										},
+										"image": {
+											"path": "images/Layer-tip-nzqynzld.png",
+											"frame": {
+												"x": 0,
+												"y": 56,
+												"width": 750,
+												"height": 72
+											}
+										},
+										"children": []
+									}
+								]
+							},
+							{
+								"objectId": "026C9E2B-B515-47B9-83D5-D33B79745BFA",
+								"kind": "group",
+								"name": "loading",
+								"originalName": "loading",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 285,
+									"y": 64,
+									"width": 180,
+									"height": 60
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-loading-mdi2qzlf.jpg",
+									"frame": {
+										"x": 285,
+										"y": 64,
+										"width": 180,
+										"height": 60
+									}
+								},
+								"children": []
+							},
+							{
+								"objectId": "8ECA19AF-BA33-441B-BCF0-F242EFAE6702",
+								"kind": "group",
+								"name": "f2",
+								"originalName": "f2",
+								"maskFrame": {
+									"x": 0,
+									"y": 0,
+									"width": 750,
+									"height": 2500
+								},
+								"layerFrame": {
+									"x": 0,
+									"y": 128,
+									"width": 750,
+									"height": 2258
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-f2-oevdqte5.png",
+									"frame": {
+										"x": 0,
+										"y": 128,
+										"width": 750,
+										"height": 2258
+									}
+								},
+								"children": []
+							},
+							{
+								"objectId": "3401351D-7563-4830-BEDE-13A179F46A72",
+								"kind": "group",
+								"name": "f1",
+								"originalName": "f1",
+								"maskFrame": {
+									"x": 0,
+									"y": 0,
+									"width": 750,
+									"height": 2500
+								},
+								"layerFrame": {
+									"x": 0,
+									"y": 128,
+									"width": 750,
+									"height": 2500
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-f1-mzqwmtm1.png",
+									"frame": {
+										"x": 0,
+										"y": 128,
+										"width": 750,
+										"height": 2500
+									}
+								},
+								"children": []
+							}
+						]
 					}
-				},
-				"children": []
+				]
 			},
 			{
 				"objectId": "D9142E71-D696-4B04-AB95-0DAED5EE59CE",
