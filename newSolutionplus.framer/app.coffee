@@ -16,7 +16,7 @@ if Utils.isPhone()
 		skt.MainScreen.y = (screenHeight - skt.MainScreen.height)/2
 	skt.MainScreen.x = (screenWidth - skt.MainScreen.width)/2
 
-skt.lineContainer.height = 144
+skt.lineContainer.height = 180
 skt.lineContainer.clip = true
 
 maskOY = skt.lines.y
@@ -26,18 +26,18 @@ skt.feed.draggable = true
 skt.feed.draggable.speedX = 0
 skt.feed.draggable.constraints =
 	x: 0
-	y: 148
+	y: 108
 	width: 0
-	height: 1000
+	height: 1200
 	
 
 animShort = 
 	curve: "liner"
-	time: 2.5
+	time: 4
 
 animLong = 
 	curve: "liner"
-	time: 5
+	time: 8
 
 skt.lines.states.one = 
 	y: maskOY - 48
