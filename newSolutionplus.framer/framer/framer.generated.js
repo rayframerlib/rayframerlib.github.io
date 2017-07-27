@@ -118,7 +118,7 @@ window.__imported__["newsolution@2x/layers.json.js"] = [
 									"x": 0,
 									"y": 182,
 									"width": 375,
-									"height": 393
+									"height": 417
 								},
 								"visible": true,
 								"metadata": {
@@ -130,7 +130,7 @@ window.__imported__["newsolution@2x/layers.json.js"] = [
 										"x": 0,
 										"y": 182,
 										"width": 375,
-										"height": 393
+										"height": 417
 									}
 								},
 								"children": []
@@ -316,7 +316,7 @@ window.__imported__["newsolution@2x/layers.json.js"] = [
 											"x": 0,
 											"y": 468,
 											"width": 375,
-											"height": 72
+											"height": 96
 										},
 										"visible": true,
 										"metadata": {
@@ -328,7 +328,7 @@ window.__imported__["newsolution@2x/layers.json.js"] = [
 												"x": 0,
 												"y": 468,
 												"width": 375,
-												"height": 72
+												"height": 96
 											}
 										},
 										"children": []

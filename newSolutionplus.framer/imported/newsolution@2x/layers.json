@@ -113,7 +113,7 @@
 									"x": 0,
 									"y": 182,
 									"width": 375,
-									"height": 393
+									"height": 417
 								},
 								"visible": true,
 								"metadata": {
@@ -125,7 +125,7 @@
 										"x": 0,
 										"y": 182,
 										"width": 375,
-										"height": 393
+										"height": 417
 									}
 								},
 								"children": []
@@ -311,7 +311,7 @@
 											"x": 0,
 											"y": 468,
 											"width": 375,
-											"height": 72
+											"height": 96
 										},
 										"visible": true,
 										"metadata": {
@@ -323,7 +323,7 @@
 												"x": 0,
 												"y": 468,
 												"width": 375,
-												"height": 72
+												"height": 96
 											}
 										},
 										"children": []
