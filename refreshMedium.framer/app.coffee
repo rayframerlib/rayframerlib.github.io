@@ -46,15 +46,16 @@ skt.dragArea.draggable.enabled = true
 skt.dragArea.draggable.speedX = 0
 skt.dragArea.draggable.constraints = 
 	x: 0
-	y: -1172
+	y: -1198
 	width: 1000
-	height: 3800
+	height: 4000
+	
 
 skt.icon.opacity = 0
 skt.notice.opacity = 0
 
 feedback = new Animation skt.dragArea,
-	y: 56
+	y: 2
 	options:
 		time: 0.5
 		curve: Spring(damping: 1)
@@ -62,25 +63,28 @@ feedback = new Animation skt.dragArea,
 skt.tipVisualArea.states.vanish =
 	width: 0
 	x: 375
+	y: 130
 
 skt.tipVisualArea.states.show =
 	width: 750
 	x: 0
-	animationOptions:
+	options:
 		time: 0.3
 		curve: "ease-in-out"
 
 opDown = new Animation skt.tipVisualArea,
 	opacity: 0
-	animationOptions:
-		time: 0.4
+	y: 56
+	options:
+		time: 0.5
+		curve: "ease-in-out"
 
 skt.tip.states.vanish =
 	x: -375
 
 skt.tip.states.show =
 	x: 0
-	animationOptions:
+	options:
 		time: 0.3
 		curve: "ease-in-out"
 
@@ -88,14 +92,20 @@ skt.tipVisualArea.clip = true
 skt.tipVisualArea.opacity = 0
 
 skt.feed.states.down = 
-	y: feedOriginY + 72
-	animationOptions:
+	y: 116
+	options:
+		time: 0.5
+		curve: "ease-in-out"
+		
+skt.feed.states.mid = 
+	y: 72
+	options:
 		time: 0.5
 		curve: "ease-in-out"
 
 skt.feed.states.normal = 
-	y: feedOriginY
-	animationOptions:
+	y: 3
+	options:
 		time: 0.5
 		curve: "ease-in-out"
 
@@ -127,9 +137,11 @@ skt.jsonArea.on Events.Click, ->
 			skt.tipVisualArea.opacity = 1
 			skt.tipVisualArea.animate("show")
 			skt.tip.animate("show")
+			skt.feed.animate("mid")
 		Utils.delay 3, ->
 			opDown.start()
 			skt.feed.animate("normal")
+
 feedback.on Events.AnimationEnd, ->
 	i = false
 	bodymovinIconP2.opacity = 0

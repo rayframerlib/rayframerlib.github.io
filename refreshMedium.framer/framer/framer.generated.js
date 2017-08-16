@@ -228,6 +228,52 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 				]
 			},
 			{
+				"objectId": "726C03D9-4BD2-4AFE-BDFB-194FA14BC670",
+				"kind": "group",
+				"name": "tipVisualArea",
+				"originalName": "tipVisualArea",
+				"maskFrame": null,
+				"layerFrame": {
+					"x": 0,
+					"y": 130,
+					"width": 750,
+					"height": 72
+				},
+				"visible": true,
+				"metadata": {
+					"opacity": 1
+				},
+				"children": [
+					{
+						"objectId": "74279CE2-95F0-4A80-B54B-839CD422BF21",
+						"kind": "group",
+						"name": "tip",
+						"originalName": "tip",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 0,
+							"y": 130,
+							"width": 750,
+							"height": 72
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-tip-nzqynzld.png",
+							"frame": {
+								"x": 0,
+								"y": 130,
+								"width": 750,
+								"height": 72
+							}
+						},
+						"children": []
+					}
+				]
+			},
+			{
 				"objectId": "85A5D4FE-7867-4A9E-819C-53DD4407CF46",
 				"kind": "group",
 				"name": "dragArea",
@@ -235,13 +281,22 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 				"maskFrame": null,
 				"layerFrame": {
 					"x": 0,
-					"y": 56,
+					"y": 0,
 					"width": 750,
-					"height": 2572
+					"height": 2800
 				},
 				"visible": true,
 				"metadata": {
 					"opacity": 1
+				},
+				"image": {
+					"path": "images/Layer-dragArea-odvbnuq0.png",
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"width": 750,
+						"height": 2800
+					}
 				},
 				"children": [
 					{
@@ -252,61 +307,24 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 						"maskFrame": null,
 						"layerFrame": {
 							"x": 0,
-							"y": 56,
+							"y": 3,
 							"width": 750,
-							"height": 2572
+							"height": 2626
 						},
 						"visible": true,
 						"metadata": {
 							"opacity": 1
 						},
+						"image": {
+							"path": "images/Layer-feed-mtfgrufe.png",
+							"frame": {
+								"x": 0,
+								"y": 3,
+								"width": 750,
+								"height": 2626
+							}
+						},
 						"children": [
-							{
-								"objectId": "726C03D9-4BD2-4AFE-BDFB-194FA14BC670",
-								"kind": "group",
-								"name": "tipVisualArea",
-								"originalName": "tipVisualArea",
-								"maskFrame": null,
-								"layerFrame": {
-									"x": 0,
-									"y": 56,
-									"width": 750,
-									"height": 72
-								},
-								"visible": true,
-								"metadata": {
-									"opacity": 1
-								},
-								"children": [
-									{
-										"objectId": "74279CE2-95F0-4A80-B54B-839CD422BF21",
-										"kind": "group",
-										"name": "tip",
-										"originalName": "tip",
-										"maskFrame": null,
-										"layerFrame": {
-											"x": 0,
-											"y": 56,
-											"width": 750,
-											"height": 72
-										},
-										"visible": true,
-										"metadata": {
-											"opacity": 1
-										},
-										"image": {
-											"path": "images/Layer-tip-nzqynzld.png",
-											"frame": {
-												"x": 0,
-												"y": 56,
-												"width": 750,
-												"height": 72
-											}
-										},
-										"children": []
-									}
-								]
-							},
 							{
 								"objectId": "026C9E2B-B515-47B9-83D5-D33B79745BFA",
 								"kind": "group",
@@ -315,9 +333,9 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 								"maskFrame": null,
 								"layerFrame": {
 									"x": 285,
-									"y": 64,
+									"y": 39,
 									"width": 180,
-									"height": 60
+									"height": 62
 								},
 								"visible": true,
 								"metadata": {
@@ -327,9 +345,9 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 									"path": "images/Layer-loading-mdi2qzlf.jpg",
 									"frame": {
 										"x": 285,
-										"y": 64,
+										"y": 39,
 										"width": 180,
-										"height": 60
+										"height": 62
 									}
 								},
 								"children": []
@@ -343,13 +361,13 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 									"x": 0,
 									"y": 0,
 									"width": 750,
-									"height": 2500
+									"height": 2500.952380952381
 								},
 								"layerFrame": {
 									"x": 0,
-									"y": 128,
+									"y": 127.99999999999999,
 									"width": 750,
-									"height": 2258
+									"height": 2260
 								},
 								"visible": true,
 								"metadata": {
@@ -359,9 +377,9 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 									"path": "images/Layer-f2-oevdqte5.png",
 									"frame": {
 										"x": 0,
-										"y": 128,
+										"y": 127.99999999999999,
 										"width": 750,
-										"height": 2258
+										"height": 2260
 									}
 								},
 								"children": []
@@ -375,13 +393,13 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 									"x": 0,
 									"y": 0,
 									"width": 750,
-									"height": 2500
+									"height": 2500.952380952381
 								},
 								"layerFrame": {
 									"x": 0,
-									"y": 128,
+									"y": 127.99999999999999,
 									"width": 750,
-									"height": 2500
+									"height": 2501
 								},
 								"visible": true,
 								"metadata": {
@@ -391,9 +409,9 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 									"path": "images/Layer-f1-mzqwmtm1.png",
 									"frame": {
 										"x": 0,
-										"y": 128,
+										"y": 127.99999999999999,
 										"width": 750,
-										"height": 2500
+										"height": 2501
 									}
 								},
 								"children": []
