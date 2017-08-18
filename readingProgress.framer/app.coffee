@@ -33,7 +33,7 @@ progressBg = new Layer
 	width: 76
 	height: 76
 	opacity: 0
-	borderRadius: 36
+	borderRadius: 38
 	backgroundColor: "rgba(255, 255, 255, 0.9)"
 	borderWidth: 1
 	borderColor: "rgba(99, 99, 99, 0.5)"
