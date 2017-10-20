@@ -16,6 +16,9 @@ if Utils.isPhone()
 		skt.mainScreen.y = (screenHeight - skt.mainScreen.height)/2
 	skt.mainScreen.x = (screenWidth - skt.mainScreen.width)/2
 
+skt.phone.backgroundColor = "transparent"
+skt.mainScreen.backgroundColor = "f2f2f2"
+
 skt.gm1.image = "images/1.gif"
 skt.gm2.image = "images/2.gif"
 skt.gm3.image = "images/3.gif"
