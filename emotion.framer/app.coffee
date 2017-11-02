@@ -8,6 +8,10 @@ emotionSizeNormal = (unitWidth - emotionPadding * 6) / 5
 unitHeightNormal = emotionSizeNormal + emotionPadding * 2
 emotionSizeSmall = (unitWidth - emotionSizeBig - emotionPadding * 6) / 4
 unitHeightSmall = emotionSizeSmall + emotionVerticalPadding * 2
+activeAreaTop = 100 * ratio
+activeAreaBottom = 50 * ratio
+unitStat = 0
+touchStat = 0
 
 mainScreen = new Layer
 	width: 375 * ratio
@@ -303,49 +307,72 @@ x3 = mainScreen.x + emotionUnit.x + emotionPadding * 3.5 + emotionArea1.width + 
 x4 = mainScreen.x + emotionUnit.x + emotionPadding * 4.5 + emotionArea1.width + emotionArea2.width + emotionArea3.width + emotionArea4.width
 x5 = mainScreen.x + emotionUnit.x + emotionPadding * 6 + emotionArea1.width + emotionArea2.width + emotionArea3.width + emotionArea4.width + emotionArea5.width
 
+y0 = mainScreen.y + emotionUnit.y - activeAreaTop
+y1 = mainScreen.y + emotionUnit.y + unitHeightNormal + activeAreaBottom
+
 emotionBg.on Events.Pan, (event)->
-	if x0 <= event.point.x < x1
-		holder.x = 1
-	else if x1 <= event.point.x < x2
-		holder.x = 2
-	else if x2 <= event.point.x < x3
-		holder.x = 3
-	else if x3 <= event.point.x < x4
-		holder.x = 4
-	else if x4 <= event.point.x < x5
-		holder.x = 5
-	else
-		holder.x = 0
+	if unitStat == 1
+		if y0 <= event.point.y <= y1
+			if x0 <= event.point.x < x1
+				holder.x = 1
+			else if x1 <= event.point.x < x2
+				holder.x = 2
+			else if x2 <= event.point.x < x3
+				holder.x = 3
+			else if x3 <= event.point.x < x4
+				holder.x = 4
+			else if x4 <= event.point.x < x5
+				holder.x = 5
+			else
+				holder.x = 0
+			
+			if x0 <= event.point.x <= x5
+				holder.y = 1
+			else 
+				holder.y = 0
+		else
+			holder.x = 0
+			holder.y = 0
 
-	if x0 <= event.point.x <= x5
-		holder.y = 1
-	else 
-		holder.y = 0
+emotionBg.on Events.PanEnd, ->
+	if unitStat == 1
+		switch holder.x
+			when 1
+				print "good"
+			when 2
+				print "haha"
+			when 3
+				print "wow"
+			when 4
+				print "cry"
+			when 5
+				print "angry"
+		
 
-emotionArea1.on Events.LongPressStart, (event)->
-	if holder.y == 0 
-		emotionStateSwitch(1)
-	emotionBg.animate("small")
-
-emotionArea2.on Events.LongPressStart, ->
-	if holder.y == 0 
-		emotionStateSwitch(2)
-	emotionBg.animate("small")
-
-emotionArea3.on Events.LongPressStart, ->
-	if holder.y == 0 
-		emotionStateSwitch(3)
-	emotionBg.animate("small")
-
-emotionArea4.on Events.LongPressStart, ->
-	if holder.y == 0 
-		emotionStateSwitch(4)
-	emotionBg.animate("small")
-
-emotionArea5.on Events.LongPressStart, ->
-	if holder.y == 0 
-		emotionStateSwitch(5)
-	emotionBg.animate("small")
+# emotionArea1.on Events.LongPressStart, (event)->
+# 	if holder.y == 0 
+# 		emotionStateSwitch(1)
+# 	emotionBg.animate("small")
+# 
+# emotionArea2.on Events.LongPressStart, ->
+# 	if holder.y == 0 
+# 		emotionStateSwitch(2)
+# 	emotionBg.animate("small")
+# 
+# emotionArea3.on Events.LongPressStart, ->
+# 	if holder.y == 0 
+# 		emotionStateSwitch(3)
+# 	emotionBg.animate("small")
+# 
+# emotionArea4.on Events.LongPressStart, ->
+# 	if holder.y == 0 
+# 		emotionStateSwitch(4)
+# 	emotionBg.animate("small")
+# 
+# emotionArea5.on Events.LongPressStart, ->
+# 	if holder.y == 0 
+# 		emotionStateSwitch(5)
+# 	emotionBg.animate("small")
 
 holder.on "change:x", ->
 	emotionStateSwitch(holder.x)
@@ -358,27 +385,59 @@ holder.on "change:y", ->
 			emotionBg.animate("normal")
 
 hitArea.on Events.LongPress, ->
+	unitStat = 1
 	if emotionBg.states.current.name == "vanish"
 		emotionBg.animate ("normal")
 	hitArea.on Events.Pan, (event)->
-		if x0 <= event.point.x < x1
-			holder.x = 1
-		else if x1 <= event.point.x < x2
-			holder.x = 2
-		else if x2 <= event.point.x < x3
-			holder.x = 3
-		else if x3 <= event.point.x < x4
-			holder.x = 4
-		else if x4 <= event.point.x < x5
-			holder.x = 5
+		if y0 <= event.point.y <= y1
+			if x0 <= event.point.x < x1
+				holder.x = 1
+			else if x1 <= event.point.x < x2
+				holder.x = 2
+			else if x2 <= event.point.x < x3
+				holder.x = 3
+			else if x3 <= event.point.x < x4
+				holder.x = 4
+			else if x4 <= event.point.x < x5
+				holder.x = 5
+			else
+				holder.x = 0
+			
+			if x0 <= event.point.x <= x5
+				holder.y = 1
+			else 
+				holder.y = 0
 		else
 			holder.x = 0
-	
-		if x0 <= event.point.x <= x5
-			holder.y = 1
-		else 
 			holder.y = 0
+	hitArea.on Events.PanEnd, ->
+		switch holder.x
+			when 1
+				print "good"
+			when 2
+				print "haha"
+			when 3
+				print "wow"
+			when 4
+				print "cry"
+			when 5
+				print "angry"
 
+hitArea.on Events.LongPressEnd, ->
+	Utils.delay 0.1, ->
+		hitArea.off Events.PanEnd
+		hitArea.off Events.Pan
+
+hitArea.on Events.TouchStart, ->
+	if unitStat == 1
+		touchStat = 1
+
+hitArea.on Events.TouchEnd, ->
+	if touchStat == 1
+		emotionBg.animate ("vanish")
+		unitStat = 0
+		touchStat = 0
+		
 # emotionBg.on Events.PanEnd, (event)->
 # 	print event.point
 	
