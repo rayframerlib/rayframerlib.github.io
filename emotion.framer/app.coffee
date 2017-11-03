@@ -31,8 +31,17 @@ mainScreen = new Layer
 	clip: true
 	backgroundColor: "white"
 
+bg = new Layer
+	superLayer: mainScreen
+	width: 375 * ratio
+	height: 667 * ratio
+	image: "images/IMG_1653.PNG"
+
 hitArea = new Layer
 	superLayer: mainScreen
+	height: 33 * ratio
+	width: 120 * ratio
+	backgroundColor: "transparent"
 
 emotionUnit = new Layer
 	superLayer: mainScreen
@@ -312,7 +321,7 @@ emotionBg.states.vanish =
 	animationOptions: emotionSwitchAnimation
 
 emotionBg.states.activeVanish = 
-	x: (unitWidth - (emotionSizeNormal + emotionPadding * 2))/2
+	x: 170 * ratio
 	y: halfDistance
 	width: emotionSizeNormal + emotionPadding * 2
 	height: unitHeightNormal
@@ -327,9 +336,10 @@ emotionBg.states.activeVanishSecond =
 
 #Init
 mainScreen.center()
-emotionUnit.center()
-hitArea.centerX()
-hitArea.y = 400 * ratio
+emotionUnit.x = 108 * ratio
+emotionUnit.y = 480 * ratio
+hitArea.x = 250 * ratio
+hitArea.y = 574 * ratio
 emotionBg.stateSwitch("vanish")
 
 # Emotion position control
@@ -543,6 +553,11 @@ emotionBg.on Events.AnimationEnd, ->
 			holder.y = 0
 			emotionBg.stateSwitch("vanish")
 			emotionXpositon()
+			emotion1.subLayers[0].size = emotionArea1.size
+			emotion2.subLayers[0].size = emotionArea2.size
+			emotion3.subLayers[0].size = emotionArea3.size
+			emotion4.subLayers[0].size = emotionArea4.size
+			emotion5.subLayers[0].size = emotionArea5.size
 
 
 emotionArea1.on Events.TouchEnd, ->
@@ -568,3 +583,4 @@ emotionArea5.on Events.TouchEnd, ->
 # 	print event.point
 
 	
+
