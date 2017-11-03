@@ -10,21 +10,30 @@ emotionSizeSmall = (unitWidth - emotionSizeBig - emotionPadding * 6) / 4
 unitHeightSmall = emotionSizeSmall + emotionVerticalPadding * 2
 activeAreaTop = 100 * ratio
 activeAreaBottom = 50 * ratio
+downDistance = 50 * ratio
+halfDistance = 35 * ratio
 unitStat = 0
 touchStat = 0
+panstat = 0
 
+emotionSwitchAnimation = 
+	time: 0.2
+	curve: Spring(damping: 1)
+
+activeAnimation = 
+	time: 0.15
+	curve: "ease-in"
+
+#Set up layers
 mainScreen = new Layer
 	width: 375 * ratio
 	height: 667 * ratio
 	clip: true
 	backgroundColor: "white"
 
-mainScreen.center()
-
 hitArea = new Layer
 	superLayer: mainScreen
 
-#Set up layers
 emotionUnit = new Layer
 	superLayer: mainScreen
 	width: unitWidth
@@ -123,39 +132,41 @@ emotion5 = new BodymovinLayer
 	width: emotionArea1.width
 	height: emotionArea2.height
 
+holder = new Layer
+	visible: false
+	x: 0
+	y: 0
 
-emotionUnit.center()
-hitArea.centerX()
-hitArea.y = 400 * ratio
-
-emotionSwitchAnimation = 
-	time: 0.2
-	curve: Spring(damping: 1)
 
 #Normal states
 emotionArea1.states.normal = 
 	size: emotionSizeNormal
 	y: emotionPadding
+	opacity: 1
 	animationOptions: emotionSwitchAnimation
 
 emotionArea2.states.normal = 
 	size: emotionSizeNormal
 	y: emotionPadding
+	opacity: 1
 	animationOptions: emotionSwitchAnimation
 
 emotionArea3.states.normal = 
 	size: emotionSizeNormal
 	y: emotionPadding
+	opacity: 1
 	animationOptions: emotionSwitchAnimation
 
 emotionArea4.states.normal = 
 	size: emotionSizeNormal
 	y: emotionPadding
+	opacity: 1
 	animationOptions: emotionSwitchAnimation
 
 emotionArea5.states.normal = 
 	size: emotionSizeNormal
 	y: emotionPadding
+	opacity: 1
 	animationOptions: emotionSwitchAnimation
 
 #Big states
@@ -210,6 +221,78 @@ emotionArea5.states.small =
 	size: emotionSizeSmall
 	animationOptions: emotionSwitchAnimation
 
+#Active states
+emotionArea1.states.activeZero = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 0
+	animationOptions: activeAnimation
+
+emotionArea2.states.activeZero = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 0
+	animationOptions: activeAnimation
+
+emotionArea3.states.activeZero = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 0
+	animationOptions: activeAnimation
+
+emotionArea4.states.activeZero = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 0
+	animationOptions: activeAnimation
+
+emotionArea5.states.activeZero = 
+	x: emotionPadding
+	size: emotionSizeNormal
+	y: emotionPadding
+	opacity: 0
+	animationOptions: activeAnimation
+
+emotionArea1.states.active = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 1
+	animationOptions: activeAnimation
+
+emotionArea2.states.active = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 1
+	animationOptions: activeAnimation
+
+emotionArea3.states.active = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 1
+	animationOptions: activeAnimation
+
+emotionArea4.states.active = 
+	x: emotionPadding
+	y: emotionPadding
+	size: emotionSizeNormal
+	opacity: 1
+	animationOptions: activeAnimation
+
+emotionArea5.states.active = 
+	x: emotionPadding
+	size: emotionSizeNormal
+	y: emotionPadding
+	opacity: 1
+	animationOptions: activeAnimation
+
+# emotionBg states
 emotionBg.states.normal = 
 	height: unitHeightNormal
 	y: 0
@@ -222,18 +305,42 @@ emotionBg.states.small =
 	animationOptions: emotionSwitchAnimation
 
 emotionBg.states.vanish = 
-	y: 50 * ratio
+	x: 0
+	width: unitWidth
+	y: downDistance
 	opacity: 0
 	animationOptions: emotionSwitchAnimation
 
+emotionBg.states.activeVanish = 
+	x: (unitWidth - (emotionSizeNormal + emotionPadding * 2))/2
+	y: halfDistance
+	width: emotionSizeNormal + emotionPadding * 2
+	height: unitHeightNormal
+	animationOptions: activeAnimation
+
+emotionBg.states.activeVanishSecond =
+		y: downDistance
+		opacity: 0
+		animationOptions: 
+			time: 0.15
+			curve: "ease-out"
+
+#Init
+mainScreen.center()
+emotionUnit.center()
+hitArea.centerX()
+hitArea.y = 400 * ratio
 emotionBg.stateSwitch("vanish")
 
+# Emotion position control
 emotionXpositon = () ->
-	emotionArea2.x = emotionPadding * 2 + emotionArea1.width
-	emotionArea3.x = emotionPadding * 3 + emotionArea1.width + emotionArea2.width
-	emotionArea4.x = emotionPadding * 4 + emotionArea1.width + emotionArea2.width + emotionArea3.width
-	emotionArea5.x = emotionPadding * 5 + emotionArea1.width + emotionArea2.width + emotionArea3.width + emotionArea4.width
+	if emotionBg.states.current.name != "activeVanish" 
+		emotionArea2.x = emotionPadding * 2 + emotionArea1.width
+		emotionArea3.x = emotionPadding * 3 + emotionArea1.width + emotionArea2.width
+		emotionArea4.x = emotionPadding * 4 + emotionArea1.width + emotionArea2.width + emotionArea3.width
+		emotionArea5.x = emotionPadding * 5 + emotionArea1.width + emotionArea2.width + emotionArea3.width + emotionArea4.width
 
+#Emotion Width Control
 emotionArea1.on "change:width", ->
 	emotionXpositon()
 	emotion1.subLayers[0].size = emotionArea1.size
@@ -249,11 +356,6 @@ emotionArea4.on "change:width", ->
 emotionArea5.on "change:width", ->
 	emotionXpositon()
 	emotion5.subLayers[0].size = emotionArea5.size
-
-holder = new Layer
-	visible: false
-	x: 0
-	y: 0
 
 #Switch function
 emotionStateSwitch = (chose) ->
@@ -300,6 +402,81 @@ emotionStateSwitch = (chose) ->
 			emotionArea4.animate("normal")
 			emotionArea5.animate("normal")
 
+# Active function
+active = (holder)->
+	if unitStat == 1
+		switch holder
+			when 1
+				emotionArea1.placeBefore(emotionArea5)
+				emotionBg.animate("activeVanish")
+				emotionArea1.animate("active")
+				emotionArea2.animate("activeZero")
+				emotionArea3.animate("activeZero")
+				emotionArea4.animate("activeZero")
+				emotionArea5.animate("activeZero")
+				unitStat = 0
+			when 2
+				emotionArea2.placeBefore(emotionArea5)
+				emotionBg.animate("activeVanish")
+				emotionArea1.animate("activeZero")
+				emotionArea2.animate("active")
+				emotionArea3.animate("activeZero")
+				emotionArea4.animate("activeZero")
+				emotionArea5.animate("activeZero")
+				unitStat = 0
+			when 3
+				emotionArea3.placeBefore(emotionArea5)
+				emotionBg.animate("activeVanish")
+				emotionArea1.animate("activeZero")
+				emotionArea2.animate("activeZero")
+				emotionArea3.animate("active")
+				emotionArea4.animate("activeZero")
+				emotionArea5.animate("activeZero")
+				unitStat = 0
+			when 4
+				emotionArea4.placeBefore(emotionArea5)
+				emotionBg.animate("activeVanish")
+				emotionArea1.animate("activeZero")
+				emotionArea2.animate("activeZero")
+				emotionArea3.animate("activeZero")
+				emotionArea4.animate("active")
+				emotionArea5.animate("activeZero")
+				unitStat = 0
+			when 5
+				emotionArea5.placeBefore(emotionArea5)
+				emotionBg.animate("activeVanish")
+				emotionArea1.animate("activeZero")
+				emotionArea2.animate("activeZero")
+				emotionArea3.animate("activeZero")
+				emotionArea4.animate("activeZero")
+				emotionArea5.animate("active")	
+				unitStat = 0
+
+#Holder control function
+holderControl = ->
+	if y0 <= event.point.y <= y1
+		if x0 <= event.point.x < x1
+			holder.x = 1
+		else if x1 <= event.point.x < x2
+			holder.x = 2
+		else if x2 <= event.point.x < x3
+			holder.x = 3
+		else if x3 <= event.point.x < x4
+			holder.x = 4
+		else if x4 <= event.point.x < x5
+			holder.x = 5
+		else
+			holder.x = 0
+		
+		if x0 <= event.point.x <= x5
+			holder.y = 1
+		else 
+			holder.y = 0
+	else
+		holder.x = 0
+		holder.y = 0
+
+#Position Define
 x0 = mainScreen.x + emotionUnit.x
 x1 = mainScreen.x + emotionUnit.x + emotionPadding * 1.5 + emotionArea1.width
 x2 = mainScreen.x + emotionUnit.x + emotionPadding * 2.5 + emotionArea1.width + emotionArea2.width
@@ -310,118 +487,33 @@ x5 = mainScreen.x + emotionUnit.x + emotionPadding * 6 + emotionArea1.width + em
 y0 = mainScreen.y + emotionUnit.y - activeAreaTop
 y1 = mainScreen.y + emotionUnit.y + unitHeightNormal + activeAreaBottom
 
-emotionBg.on Events.Pan, (event)->
-	if unitStat == 1
-		if y0 <= event.point.y <= y1
-			if x0 <= event.point.x < x1
-				holder.x = 1
-			else if x1 <= event.point.x < x2
-				holder.x = 2
-			else if x2 <= event.point.x < x3
-				holder.x = 3
-			else if x3 <= event.point.x < x4
-				holder.x = 4
-			else if x4 <= event.point.x < x5
-				holder.x = 5
-			else
-				holder.x = 0
-			
-			if x0 <= event.point.x <= x5
-				holder.y = 1
-			else 
-				holder.y = 0
-		else
-			holder.x = 0
-			holder.y = 0
-
-emotionBg.on Events.PanEnd, ->
-	if unitStat == 1
-		switch holder.x
-			when 1
-				print "good"
-			when 2
-				print "haha"
-			when 3
-				print "wow"
-			when 4
-				print "cry"
-			when 5
-				print "angry"
-		
-
-# emotionArea1.on Events.LongPressStart, (event)->
-# 	if holder.y == 0 
-# 		emotionStateSwitch(1)
-# 	emotionBg.animate("small")
-# 
-# emotionArea2.on Events.LongPressStart, ->
-# 	if holder.y == 0 
-# 		emotionStateSwitch(2)
-# 	emotionBg.animate("small")
-# 
-# emotionArea3.on Events.LongPressStart, ->
-# 	if holder.y == 0 
-# 		emotionStateSwitch(3)
-# 	emotionBg.animate("small")
-# 
-# emotionArea4.on Events.LongPressStart, ->
-# 	if holder.y == 0 
-# 		emotionStateSwitch(4)
-# 	emotionBg.animate("small")
-# 
-# emotionArea5.on Events.LongPressStart, ->
-# 	if holder.y == 0 
-# 		emotionStateSwitch(5)
-# 	emotionBg.animate("small")
-
 holder.on "change:x", ->
 	emotionStateSwitch(holder.x)
 
 holder.on "change:y", ->
-	switch holder.y
-		when 1
-			emotionBg.animate("small")
-		else
-			emotionBg.animate("normal")
+	if emotionBg.states.current.name != "activeVanishSecond"
+		switch holder.y
+			when 1
+				emotionBg.animate("small")
+			else
+				emotionBg.animate("normal")
+
+emotionBg.on Events.Pan, (event)->
+	if unitStat == 1 && emotionBg.states.current.name != "activeVanish" 
+		holderControl()
+
+emotionBg.on Events.PanEnd, ->
+	active(holder.x)
 
 hitArea.on Events.LongPress, ->
 	unitStat = 1
+	emotionStateSwitch(0)
 	if emotionBg.states.current.name == "vanish"
 		emotionBg.animate ("normal")
 	hitArea.on Events.Pan, (event)->
-		if y0 <= event.point.y <= y1
-			if x0 <= event.point.x < x1
-				holder.x = 1
-			else if x1 <= event.point.x < x2
-				holder.x = 2
-			else if x2 <= event.point.x < x3
-				holder.x = 3
-			else if x3 <= event.point.x < x4
-				holder.x = 4
-			else if x4 <= event.point.x < x5
-				holder.x = 5
-			else
-				holder.x = 0
-			
-			if x0 <= event.point.x <= x5
-				holder.y = 1
-			else 
-				holder.y = 0
-		else
-			holder.x = 0
-			holder.y = 0
+		holderControl()
 	hitArea.on Events.PanEnd, ->
-		switch holder.x
-			when 1
-				print "good"
-			when 2
-				print "haha"
-			when 3
-				print "wow"
-			when 4
-				print "cry"
-			when 5
-				print "angry"
+		active(holder.x)
 
 hitArea.on Events.LongPressEnd, ->
 	Utils.delay 0.1, ->
@@ -437,7 +529,42 @@ hitArea.on Events.TouchEnd, ->
 		emotionBg.animate ("vanish")
 		unitStat = 0
 		touchStat = 0
+
+emotionBg.on Events.AnimationEnd, ->
+	if emotionBg.states.current.name == "activeVanish"
+		emotionBg.animate("activeVanishSecond")
+		emotionArea4.placeBehind(emotionArea5)
+		emotionArea3.placeBehind(emotionArea4)
+		emotionArea2.placeBehind(emotionArea3)
+		emotionArea1.placeBehind(emotionArea2)
 		
+		Utils.delay 0.15, ->
+			holder.x = 0
+			holder.y = 0
+			emotionBg.stateSwitch("vanish")
+			emotionXpositon()
+
+
+emotionArea1.on Events.TouchEnd, ->
+	if unitStat == 1
+		active(1)
+
+emotionArea2.on Events.TouchEnd, ->
+	if unitStat == 1
+		active(2)
+	
+emotionArea3.on Events.TouchEnd, ->
+	if unitStat == 1
+		active(3)
+
+emotionArea4.on Events.TouchEnd, ->
+	if unitStat == 1
+		active(4)
+
+emotionArea5.on Events.TouchEnd, ->
+	if unitStat == 1
+		active(5)
 # emotionBg.on Events.PanEnd, (event)->
 # 	print event.point
+
 	
