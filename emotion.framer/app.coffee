@@ -1,10 +1,14 @@
 BodymovinLayer = require 'lottieLayer'
-ratio = 3
+ratio = window.devicePixelRatio
+fontSize = 10 * ratio
+textPadding = 3 * ratio
+textHeight = 24 * ratio 
 unitWidth = 256 * ratio
-emotionPadding = 6 * ratio
+emotionPadding = 8 * ratio
 emotionVerticalPadding = 5 * ratio
 emotionSizeBig = 72 * ratio
 emotionSizeNormal = (unitWidth - emotionPadding * 6) / 5
+textStart = emotionSizeNormal + 16 * ratio
 unitHeightNormal = emotionSizeNormal + emotionPadding * 2
 emotionSizeSmall = (unitWidth - emotionSizeBig - emotionPadding * 6) / 4
 unitHeightSmall = emotionSizeSmall + emotionVerticalPadding * 2
@@ -17,7 +21,7 @@ touchStat = 0
 panstat = 0
 
 emotionSwitchAnimation = 
-	time: 0.2
+	time: 0.3
 	curve: Spring(damping: 1)
 
 activeAnimation = 
@@ -36,12 +40,6 @@ bg = new Layer
 	width: 375 * ratio
 	height: 667 * ratio
 	image: "images/IMG_1653.PNG"
-
-hitArea = new Layer
-	superLayer: mainScreen
-	height: 33 * ratio
-	width: 120 * ratio
-	backgroundColor: "transparent"
 
 emotionUnit = new Layer
 	superLayer: mainScreen
@@ -67,7 +65,7 @@ emotionArea1 = new Layer
 	borderRadius: emotionSizeBig / 2
 	x: emotionPadding
 	y: emotionPadding
-	backgroundColor: "rgba(250,198,64,1)"
+	backgroundColor: "transparent"
 	
 emotionArea2 = new Layer
 	superLayer: emotionBg
@@ -141,10 +139,66 @@ emotion5 = new BodymovinLayer
 	width: emotionArea1.width
 	height: emotionArea2.height
 
+textLayer1 = new TextLayer
+	superLayer: emotionArea1
+	text: "赞"
+	color: "white"
+	backgroundColor: "rgba(0,0,0,0.5)"
+	fontSize: fontSize
+	padding: textPadding
+	borderRadius: 100
+	opacity: 0
+
+textLayer2 = new TextLayer
+	superLayer: emotionArea2
+	text: "哈哈"
+	color: "white"
+	backgroundColor: "rgba(0,0,0,0.5)"
+	fontSize: fontSize
+	padding: textPadding
+	borderRadius: 100
+	opacity: 0
+
+textLayer3 = new TextLayer
+	superLayer: emotionArea3
+	text: "吃惊"
+	color: "white"
+	backgroundColor: "rgba(0,0,0,0.5)"
+	fontSize: fontSize
+	padding: textPadding
+	borderRadius: 100
+	opacity: 0
+
+textLayer4 = new TextLayer
+	superLayer: emotionArea4
+	text: "心碎"
+	color: "white"
+	backgroundColor: "rgba(0,0,0,0.5)"
+	fontSize: fontSize
+	padding: textPadding
+	borderRadius: 100
+	opacity: 0
+
+textLayer5 = new TextLayer
+	superLayer: emotionArea5
+	text: "愤怒"
+	color: "white"
+	backgroundColor: "rgba(0,0,0,0.5)"
+	fontSize: fontSize
+	padding: textPadding
+	borderRadius: 100
+	opacity: 0
+
 holder = new Layer
 	visible: false
 	x: 0
 	y: 0
+
+hitArea = new Layer
+	superLayer: mainScreen
+	height: 33 * ratio
+	width: 120 * ratio
+	backgroundColor: "transparent"
 
 
 #Normal states
@@ -337,7 +391,7 @@ emotionBg.states.activeVanishSecond =
 #Init
 mainScreen.center()
 emotionUnit.x = 108 * ratio
-emotionUnit.y = 480 * ratio
+emotionUnit.y = 500 * ratio
 hitArea.x = 250 * ratio
 hitArea.y = 574 * ratio
 emotionBg.stateSwitch("vanish")
@@ -354,18 +408,37 @@ emotionXpositon = () ->
 emotionArea1.on "change:width", ->
 	emotionXpositon()
 	emotion1.subLayers[0].size = emotionArea1.size
+	textLayer1.opacity = Utils.modulate(emotionArea1.width, [textStart, emotionSizeBig], [0, 1])
+	textLayer1.y = Utils.modulate(emotionArea1.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer1.centerX()
+
 emotionArea2.on "change:width", ->
 	emotionXpositon()
 	emotion2.subLayers[0].size = emotionArea2.size
+	textLayer2.opacity = Utils.modulate(emotionArea2.width, [textStart, emotionSizeBig], [0, 1])
+	textLayer2.y = Utils.modulate(emotionArea2.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer2.centerX()
+
 emotionArea3.on "change:width", ->
 	emotionXpositon()
 	emotion3.subLayers[0].size = emotionArea3.size
+	textLayer3.opacity = Utils.modulate(emotionArea3.width, [textStart, emotionSizeBig], [0, 1])
+	textLayer3.y = Utils.modulate(emotionArea3.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer3.centerX()
+	
 emotionArea4.on "change:width", ->
 	emotionXpositon()
 	emotion4.subLayers[0].size = emotionArea4.size
+	textLayer4.opacity = Utils.modulate(emotionArea4.width, [textStart, emotionSizeBig], [0, 1])
+	textLayer4.y = Utils.modulate(emotionArea4.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer4.centerX()
+
 emotionArea5.on "change:width", ->
 	emotionXpositon()
 	emotion5.subLayers[0].size = emotionArea5.size
+	textLayer5.opacity = Utils.modulate(emotionArea5.width, [textStart, emotionSizeBig], [0, 1])
+	textLayer5.y = Utils.modulate(emotionArea5.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer5.centerX()
 
 #Switch function
 emotionStateSwitch = (chose) ->
@@ -579,8 +652,7 @@ emotionArea4.on Events.TouchEnd, ->
 emotionArea5.on Events.TouchEnd, ->
 	if unitStat == 1
 		active(5)
-# emotionBg.on Events.PanEnd, (event)->
-# 	print event.point
+
 
 	
 
