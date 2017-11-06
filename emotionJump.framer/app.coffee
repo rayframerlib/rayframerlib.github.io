@@ -403,7 +403,7 @@ emotionBg.stateSwitch("vanish")
 
 # Emotion position control
 emotionXpositon = () ->
-	if emotionBg.states.current.name != "activeVanish" 
+	if emotionBg.states.current.name != "vanish" 
 		emotionArea2.x = emotionPadding * 2 + emotionArea1.width
 		emotionArea3.x = emotionPadding * 3 + emotionArea1.width + emotionArea2.width
 		emotionArea4.x = emotionPadding * 4 + emotionArea1.width + emotionArea2.width + emotionArea3.width
@@ -508,7 +508,7 @@ active = (hold)->
 				emotionJumper.image = "images/like.png"
 				initJumper(emotionArea1)
 				emotionBg.animate("vanish")
-				print holder.y
+				holder.y = 0
 				unitStat = 0
 			when 2
 				emotionJumper.image = "images/haha.png"
@@ -598,7 +598,6 @@ holder.on "change:x", ->
 	emotionStateSwitch(holder.x)
 
 holder.on "change:y", ->
-	print holder.y
 	if emotionBg.states.current.name != "vanish"
 		switch holder.y
 			when 1
