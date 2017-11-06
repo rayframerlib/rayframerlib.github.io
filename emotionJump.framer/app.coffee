@@ -501,33 +501,38 @@ initJumper = (layer)->
 	startY = emotionUnit.y + layer.y
 	ejVanish.start()
 
-active = (holder)->
+active = (hold)->
 	if unitStat == 1
-		switch holder
+		switch hold
 			when 1
 				emotionJumper.image = "images/like.png"
 				initJumper(emotionArea1)
 				emotionBg.animate("vanish")
+				print holder.y
 				unitStat = 0
 			when 2
 				emotionJumper.image = "images/haha.png"
 				initJumper(emotionArea2)
 				emotionBg.animate("vanish")
+				holder.y = 0
 				unitStat = 0
 			when 3
 				emotionJumper.image = "images/wow.png"
 				initJumper(emotionArea3)
 				emotionBg.animate("vanish")
+				holder.y = 0
 				unitStat = 0
 			when 4
 				emotionJumper.image = "images/ku.png"
 				initJumper(emotionArea4)
 				emotionBg.animate("vanish")
+				holder.y = 0
 				unitStat = 0
 			when 5
 				emotionJumper.image = "images/angry.png"
 				initJumper(emotionArea5)
 				emotionBg.animate("vanish")
+				holder.y = 0
 				unitStat = 0
 
 #Holder control function
@@ -593,15 +598,17 @@ holder.on "change:x", ->
 	emotionStateSwitch(holder.x)
 
 holder.on "change:y", ->
-	if emotionBg.states.current.name != "activeVanishSecond"
+	print holder.y
+	if emotionBg.states.current.name != "vanish"
 		switch holder.y
 			when 1
 				emotionBg.animate("small")
 			else
 				emotionBg.animate("normal")
 
+i = 0
 emotionBg.on Events.Pan, (event)->
-	if unitStat == 1 && emotionBg.states.current.name != "activeVanish" 
+	if unitStat == 1 && emotionBg.states.current.name != "vanish" 
 		holderControl()
 
 emotionBg.on Events.PanEnd, ->
