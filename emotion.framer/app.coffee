@@ -570,6 +570,10 @@ x5 = mainScreen.x + emotionUnit.x + emotionPadding * 6 + emotionArea1.width + em
 y0 = mainScreen.y + emotionUnit.y - activeAreaTop
 y1 = mainScreen.y + emotionUnit.y + unitHeightNormal + activeAreaBottom
 
+emotionBg.on "change:width", ->
+	bgOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.98, 0], true)
+	emotionBg.backgroundColor = "rgba(255, 255, 255, #{bgOpacity})"
+
 holder.on "change:x", ->
 	emotionStateSwitch(holder.x)
 
