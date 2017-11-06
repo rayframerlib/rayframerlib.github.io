@@ -391,7 +391,7 @@ emotionBg.states.activeVanishSecond =
 #Init
 mainScreen.center()
 emotionUnit.x = 108 * ratio
-emotionUnit.y = 500 * ratio
+emotionUnit.y = 490 * ratio
 hitArea.x = 250 * ratio
 hitArea.y = 574 * ratio
 emotionBg.stateSwitch("vanish")
