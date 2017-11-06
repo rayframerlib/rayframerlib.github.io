@@ -1,7 +1,11 @@
 BodymovinLayer = require 'lottieLayer'
 ratio = window.devicePixelRatio
 fontSize = 10 * ratio
-textPadding = 3 * ratio
+textPadding = 
+	top: 3 * ratio
+	bottom: 3 * ratio
+	left: 5 * ratio
+	right: 5 * ratio
 textHeight = 24 * ratio 
 unitWidth = 256 * ratio
 emotionPadding = 8 * ratio
@@ -13,7 +17,7 @@ unitHeightNormal = emotionSizeNormal + emotionPadding * 2
 emotionSizeSmall = (unitWidth - emotionSizeBig - emotionPadding * 6) / 4
 unitHeightSmall = emotionSizeSmall + emotionVerticalPadding * 2
 activeAreaTop = 100 * ratio
-activeAreaBottom = 20 * ratio
+activeAreaBottom = 100 * ratio
 downDistance = 50 * ratio
 targetX = 280 * ratio
 startX = 0
@@ -24,7 +28,7 @@ touchStat = 0
 panstat = 0
 
 emotionSwitchAnimation = 
-	time: 0.3
+	time: 0.2
 	curve: Spring(damping: 1)
 
 activeAnimation = 
@@ -386,7 +390,7 @@ ejVanish = new Animation emotionJumper,
 	x: targetX
 	scale: 0
 	options:
-		time: 0.4
+		time: 0.25
 		curve: "linear"
 
 #Init
