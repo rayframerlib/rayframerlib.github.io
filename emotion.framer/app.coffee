@@ -56,8 +56,8 @@ emotionBg = new Layer
 	borderColor: "rgba(0, 0, 0, 0.1)"
 	borderWidth: 0.5 * ratio
 	shadowY: 1 * ratio
-	shadowBlur: 3 * ratio
-	shadowColor: "rgba(0, 0, 0, 0.08)"
+	shadowBlur: 4 * ratio
+	shadowColor: "rgba(0, 0, 0, 0.3)"
 
 emotionArea1 = new Layer
 	superLayer: emotionBg
@@ -572,7 +572,11 @@ y1 = mainScreen.y + emotionUnit.y + unitHeightNormal + activeAreaBottom
 
 emotionBg.on "change:width", ->
 	bgOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.98, 0], true)
+	borderOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.1, 0], true)
+	shadowOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.3, 0], true)
 	emotionBg.backgroundColor = "rgba(255, 255, 255, #{bgOpacity})"
+	emotionBg.borderColor = "rgba(0, 0, 0, #{borderOpacity})"
+	emotionBg.shadowColor = "rgba(0, 0, 0, #{shadowOpacity})"
 
 holder.on "change:x", ->
 	emotionStateSwitch(holder.x)
