@@ -42,7 +42,7 @@ bg = new Layer
 	superLayer: mainScreen
 	width: 375 * ratio
 	height: 667 * ratio
-	image: "images/IMG_1653.PNG"
+	image: "images/IMG_0553.PNG"
 
 emotionUnit = new Layer
 	superLayer: mainScreen
@@ -58,9 +58,9 @@ emotionBg = new Layer
 	backgroundColor: "rgba(255, 255, 255, 0.98)"
 	borderColor: "rgba(0, 0, 0, 0.1)"
 	borderWidth: 0.5 * ratio
-	shadowY: 1 * ratio
-	shadowBlur: 4 * ratio
-	shadowColor: "rgba(0, 0, 0, 0.3)"
+	shadowY: 3 * ratio
+	shadowBlur: 6 * ratio
+	shadowColor: "rgba(0, 0, 0, 0.15)"
 
 emotionArea1 = new Layer
 	superLayer: emotionBg
@@ -386,15 +386,15 @@ ejVanish = new Animation emotionJumper,
 	x: targetX
 	scale: 0
 	options:
-		time: 0.3
+		time: 0.4
 		curve: "linear"
 
 #Init
 mainScreen.center()
 emotionUnit.x = 108 * ratio
-emotionUnit.y = 490 * ratio
+emotionUnit.y = 368 * ratio
 hitArea.x = 250 * ratio
-hitArea.y = 574 * ratio
+hitArea.y = 452 * ratio
 emotionBg.stateSwitch("vanish")
 
 # Emotion position control
@@ -492,6 +492,7 @@ initJumper = (layer)->
 	emotionJumper.size = layer.size
 	emotionJumper.x = emotionUnit.x + layer.x
 	emotionJumper.y = emotionUnit.y + layer.y
+	layer.opacity = 0
 	startX = emotionUnit.x + layer.x
 	startY = emotionUnit.y + layer.y
 	ejVanish.start()
@@ -570,6 +571,11 @@ ejVanish.on Events.AnimationEnd, ->
 	emotionJumper.x = 0
 	emotionJumper.y = 0
 	emotionJumper.scale = 1
+	emotionArea1.opacity = 1
+	emotionArea2.opacity = 1
+	emotionArea3.opacity = 1
+	emotionArea4.opacity = 1
+	emotionArea5.opacity = 1
 
 emotionBg.on "change:width", ->
 	bgOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.98, 0], true)
