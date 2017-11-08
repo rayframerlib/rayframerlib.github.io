@@ -549,8 +549,9 @@ active = (hold)->
 				emotionJumper.image = "images/angry.png"
 				initJumper(emotionArea5)
 				emotionBg.animate("vanish")
-				holder.y = 0
 				unitStat = 0
+		holder.x = 0
+		holder.y = 0
 
 #Holder control function
 holderControl = ->
@@ -603,16 +604,9 @@ ejVanish.on Events.AnimationEnd, ->
 	emotionArea4.opacity = 1
 	emotionArea5.opacity = 1
 
-emotionBg.on "change:width", ->
-	bgOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.98, 0], true)
-	borderOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.1, 0], true)
-	shadowOpacity = Utils.modulate(emotionBg.width, [unitWidth, unitWidth/2], [0.3, 0], true)
-	emotionBg.backgroundColor = "rgba(255, 255, 255, #{bgOpacity})"
-	emotionBg.borderColor = "rgba(0, 0, 0, #{borderOpacity})"
-	emotionBg.shadowColor = "rgba(0, 0, 0, #{shadowOpacity})"
-
 holder.on "change:x", ->
-	emotionStateSwitch(holder.x)
+	if emotionBg.states.current.name != "vanish"
+		emotionStateSwitch(holder.x)
 
 holder.on "change:y", ->
 	if emotionBg.states.current.name != "vanish"
@@ -624,7 +618,6 @@ holder.on "change:y", ->
 				emotionBg.animate("normal")
 				corner.animate("normal")
 
-i = 0
 emotionBg.on Events.Pan, (event)->
 	if unitStat == 1 && emotionBg.states.current.name != "vanish" 
 		holderControl()
