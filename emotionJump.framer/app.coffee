@@ -66,6 +66,14 @@ emotionBg = new Layer
 	shadowBlur: 6 * ratio
 	shadowColor: "rgba(0, 0, 0, 0.15)"
 
+corner = new Layer
+	superLayer: emotionBg
+	size: 12 * ratio
+	backgroundColor: "white"
+	rotation: 45
+	x: 194 * ratio
+	y: 50 * ratio
+
 emotionArea1 = new Layer
 	superLayer: emotionBg
 	size: emotionSizeNormal
@@ -212,13 +220,6 @@ emotionJumper = new Layer
 	image: "images/like.png"
 	visible: false
 
-corner = new Layer
-	superLayer: emotionBg
-	size: 12 * ratio
-	backgroundColor: "white"
-	rotation: 45
-	x: 194 * ratio
-	y: 50 * ratio
 
 
 #Normal states
