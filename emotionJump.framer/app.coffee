@@ -212,6 +212,14 @@ emotionJumper = new Layer
 	image: "images/like.png"
 	visible: false
 
+corner = new Layer
+	superLayer: emotionBg
+	size: 12 * ratio
+	backgroundColor: "white"
+	rotation: 45
+	x: 194 * ratio
+	y: 50 * ratio
+
 
 #Normal states
 emotionArea1.states.normal = 
@@ -385,6 +393,14 @@ emotionBg.states.vanish =
 	y: downDistance
 	opacity: 0
 	animationOptions: emotionSwitchAnimation
+
+corner.states.normal = 
+	y: 50 * ratio
+	options: emotionSwitchAnimation
+
+corner.states.up = 
+	y: 50 * ratio - unitHeightNormal + unitHeightSmall
+	options: emotionSwitchAnimation
 
 ejVanish = new Animation emotionJumper,
 	x: targetX
@@ -602,8 +618,10 @@ holder.on "change:y", ->
 		switch holder.y
 			when 1
 				emotionBg.animate("small")
+				corner.animate("up")
 			else
 				emotionBg.animate("normal")
+				corner.animate("normal")
 
 i = 0
 emotionBg.on Events.Pan, (event)->
@@ -618,6 +636,7 @@ hitArea.on Events.LongPress, ->
 	emotionStateSwitch(0)
 	if emotionBg.states.current.name == "vanish"
 		emotionBg.animate ("normal")
+		corner.animate("normal")
 	hitArea.on Events.Pan, (event)->
 		holderControl()
 	hitArea.on Events.PanEnd, ->
