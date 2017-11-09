@@ -26,6 +26,7 @@ startY = 0
 unitStat = 0
 touchStat = 0
 panstat = 0
+btstat = 0
 
 emotionSwitchAnimation = 
 	time: 0.2
@@ -176,7 +177,7 @@ textLayer2 = new TextLayer
 
 textLayer3 = new TextLayer
 	superLayer: emotionArea3
-	text: "吃惊"
+	text: "哇"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -186,7 +187,7 @@ textLayer3 = new TextLayer
 
 textLayer4 = new TextLayer
 	superLayer: emotionArea4
-	text: "心碎"
+	text: "伤心"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -196,7 +197,7 @@ textLayer4 = new TextLayer
 
 textLayer5 = new TextLayer
 	superLayer: emotionArea5
-	text: "愤怒"
+	text: "生气"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -208,6 +209,31 @@ holder = new Layer
 	visible: false
 	x: 0
 	y: 0
+
+infoBg = new Layer
+	superLayer: mainScreen
+	height: 32 * ratio
+	width: 120 * ratio
+	backgroundColor: "white"
+
+infoArea = new Layer
+	superLayer: infoBg
+	height: 32 * ratio
+	backgroundColor: "transparent"
+
+selectedEmotion = new Layer
+	superLayer: infoArea
+	size: 16 * ratio
+	image:"images/haha.png"
+	backgroundColor: "transparent"
+
+selectedText = new TextLayer
+	text: "哈哈 4"
+	truncate: false
+	superLayer: infoArea
+	x: selectedEmotion.width + 6 * ratio
+	fontSize: 14 * ratio
+	color: "#636363"
 
 hitArea = new Layer
 	superLayer: mainScreen
@@ -417,6 +443,13 @@ emotionUnit.y = 368 * ratio
 hitArea.x = 250 * ratio
 hitArea.y = 452 * ratio
 emotionBg.stateSwitch("vanish")
+selectedText.centerY()
+selectedEmotion.centerY()
+infoArea.width = selectedText.width + selectedEmotion.width + 6 * ratio
+infoArea.centerX()
+infoBg.x = 250 * ratio
+infoBg.y = 452 * ratio
+infoBg.opacity = 0
 
 # Emotion position control
 emotionXpositon = () ->
@@ -588,6 +621,50 @@ x5 = mainScreen.x + emotionUnit.x + emotionPadding * 6 + emotionArea1.width + em
 y0 = mainScreen.y + emotionUnit.y - activeAreaTop
 y1 = mainScreen.y + emotionUnit.y + unitHeightNormal + activeAreaBottom
 
+infoPositionControl = ()->
+	infoArea.width = selectedText.width + selectedEmotion.width + 6 * ratio
+	infoArea.centerX()
+
+infoChange = (hold)->
+	if unitStat == 1
+		switch hold
+			when 1
+				infoBg.opacity = 1
+				selectedText.text = "4­­­­­"
+				selectedText.width = 15 * ratio
+				selectedEmotion.image = "images/likenormal.png"
+				selectedText.color = "#e04023"
+				infoPositionControl()
+			when 2
+				infoBg.opacity = 1
+				selectedText.text = "哈哈  4"
+				selectedText.width = 41 * ratio
+				selectedEmotion.image = "images/haha.png"
+				selectedText.color = "rgba(255,194,25,1)"
+				infoPositionControl()
+			when 3
+				infoBg.opacity = 1
+				selectedText.text = "哇­­  4"
+				selectedText.width = 26 * ratio
+				selectedEmotion.image = "images/wow.png"
+				selectedText.color = "rgba(255,194,25,1)"
+				infoPositionControl()
+			when 4
+				infoBg.opacity = 1
+				selectedText.text = "伤心  4"
+				selectedText.width = 41 * ratio
+				selectedEmotion.image = "images/ku.png"
+				selectedText.color = "rgba(255,194,25,1)"
+				infoPositionControl()
+			when 5
+				infoBg.opacity = 1
+				selectedText.text = "生气  4"
+				selectedText.width = 41 * ratio
+				selectedEmotion.image = "images/angry.png"
+				selectedText.color = "rgba(252,103,52,1)"
+				infoPositionControl()
+		btstat = 1
+
 emotionJumper.on "change:x", ->
 	xProgress = Utils.modulate(emotionJumper.x, [startX, targetX], [0, 1.2], true)
 	jumperY = startY - 200 * (xProgress - xProgress * xProgress) * ratio
@@ -623,6 +700,7 @@ emotionBg.on Events.Pan, (event)->
 		holderControl()
 
 emotionBg.on Events.PanEnd, ->
+	infoChange(holder.x)
 	active(holder.x)
 
 hitArea.on Events.LongPress, ->
@@ -634,7 +712,9 @@ hitArea.on Events.LongPress, ->
 	hitArea.on Events.Pan, (event)->
 		holderControl()
 	hitArea.on Events.PanEnd, ->
+		infoChange(holder.x)
 		active(holder.x)
+		
 
 hitArea.on Events.LongPressEnd, ->
 	Utils.delay 0.1, ->
@@ -650,25 +730,43 @@ hitArea.on Events.TouchEnd, ->
 		emotionBg.animate ("vanish")
 		unitStat = 0
 		touchStat = 0
+	else 
+		if unitStat == 0 && btstat == 0
+			infoBg.opacity = 1
+			selectedText.text = "4­­­­­"
+			selectedText.width = 15 * ratio
+			selectedEmotion.image = "images/likenormal.png"
+			selectedText.color = "#e04023"
+			infoPositionControl()
+			btstat = 1
+		else
+			if btstat == 1 && unitStat == 0
+				infoBg.opacity = 0
+				btstat = 0
 
 emotionArea1.on Events.TouchEnd, ->
 	if unitStat == 1
+		infoChange(1)
 		active(1)
 
 emotionArea2.on Events.TouchEnd, ->
 	if unitStat == 1
+		infoChange(2)
 		active(2)
 	
 emotionArea3.on Events.TouchEnd, ->
 	if unitStat == 1
+		infoChange(3)
 		active(3)
 
 emotionArea4.on Events.TouchEnd, ->
 	if unitStat == 1
+		infoChange(4)
 		active(4)
 
 emotionArea5.on Events.TouchEnd, ->
 	if unitStat == 1
+		infoChange(5)
 		active(5)
 
 
