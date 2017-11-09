@@ -439,16 +439,16 @@ ejVanish = new Animation emotionJumper,
 #Init
 mainScreen.center()
 emotionUnit.x = 108 * ratio
-emotionUnit.y = 368 * ratio
+emotionUnit.y = 264 * ratio
 hitArea.x = 250 * ratio
-hitArea.y = 452 * ratio
+hitArea.y = 348 * ratio
 emotionBg.stateSwitch("vanish")
 selectedText.centerY()
 selectedEmotion.centerY()
 infoArea.width = selectedText.width + selectedEmotion.width + 6 * ratio
 infoArea.centerX()
 infoBg.x = 250 * ratio
-infoBg.y = 452 * ratio
+infoBg.y = 348 * ratio
 infoBg.opacity = 0
 
 # Emotion position control
