@@ -410,6 +410,7 @@ emotionBg.states.normal =
 	animationOptions: emotionSwitchAnimation
 	
 emotionBg.states.small = 
+	opacity: 1
 	height: unitHeightSmall
 	y: unitHeightNormal - unitHeightSmall
 	animationOptions: emotionSwitchAnimation
