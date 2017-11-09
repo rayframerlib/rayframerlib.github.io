@@ -632,35 +632,30 @@ infoChange = (hold)->
 			when 1
 				infoBg.opacity = 1
 				selectedText.text = "4­­­­­"
-				selectedText.width = 15 * ratio
 				selectedEmotion.image = "images/likenormal.png"
 				selectedText.color = "#e04023"
 				infoPositionControl()
 			when 2
 				infoBg.opacity = 1
-				selectedText.text = "哈哈  4"
-				selectedText.width = 41 * ratio
+				selectedText.text = "4"
 				selectedEmotion.image = "images/haha.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 3
 				infoBg.opacity = 1
-				selectedText.text = "哇­­  4"
-				selectedText.width = 26 * ratio
+				selectedText.text = "4"
 				selectedEmotion.image = "images/wow.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 4
 				infoBg.opacity = 1
-				selectedText.text = "伤心  4"
-				selectedText.width = 41 * ratio
+				selectedText.text = "4"
 				selectedEmotion.image = "images/ku.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 5
 				infoBg.opacity = 1
-				selectedText.text = "生气  4"
-				selectedText.width = 41 * ratio
+				selectedText.text = "4"
 				selectedEmotion.image = "images/angry.png"
 				selectedText.color = "rgba(252,103,52,1)"
 				infoPositionControl()
