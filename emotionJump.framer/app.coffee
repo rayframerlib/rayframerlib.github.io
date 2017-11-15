@@ -167,7 +167,7 @@ textLayer1 = new TextLayer
 
 textLayer2 = new TextLayer
 	superLayer: emotionArea2
-	text: "哈哈"
+	text: "高兴"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -177,7 +177,7 @@ textLayer2 = new TextLayer
 
 textLayer3 = new TextLayer
 	superLayer: emotionArea3
-	text: "哇"
+	text: "惊讶"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -197,7 +197,7 @@ textLayer4 = new TextLayer
 
 textLayer5 = new TextLayer
 	superLayer: emotionArea5
-	text: "生气"
+	text: "愤怒"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
