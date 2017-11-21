@@ -70,7 +70,7 @@ corner = new Layer
 	backgroundColor: "white"
 	rotation: 45
 	x: 194 * ratio
-	y: 50 * ratio
+	y: -6 * ratio
 
 emotionArea1 = new Layer
 	superLayer: emotionBg
@@ -279,27 +279,27 @@ emotionArea5.states.normal =
 #Big states
 emotionArea1.states.big = 
 	size: emotionSizeBig
-	y: - (emotionSizeBig - unitHeightSmall + emotionPadding)
+	y: emotionPadding
 	animationOptions: emotionSwitchAnimation
 		
 emotionArea2.states.big = 
 	size: emotionSizeBig
-	y: - (emotionSizeBig - unitHeightSmall + emotionPadding)
+	y: emotionPadding
 	animationOptions: emotionSwitchAnimation
 
 emotionArea3.states.big = 
 	size: emotionSizeBig
-	y: - (emotionSizeBig - unitHeightSmall + emotionPadding)
+	y: emotionPadding
 	animationOptions: emotionSwitchAnimation
 
 emotionArea4.states.big = 
 	size: emotionSizeBig
-	y: - (emotionSizeBig - unitHeightSmall + emotionPadding)
+	y: emotionPadding
 	animationOptions: emotionSwitchAnimation
 	
 emotionArea5.states.big = 
 	size: emotionSizeBig
-	y: - (emotionSizeBig - unitHeightSmall + emotionPadding)
+	y: emotionPadding
 	animationOptions: emotionSwitchAnimation
 
 #Small states
@@ -338,7 +338,7 @@ emotionBg.states.normal =
 emotionBg.states.small = 
 	opacity: 1
 	height: unitHeightSmall
-	y: unitHeightNormal - unitHeightSmall
+	y: 0
 	animationOptions: emotionSwitchAnimation
 
 emotionBg.states.vanish = 
@@ -349,11 +349,11 @@ emotionBg.states.vanish =
 	animationOptions: emotionSwitchAnimation
 
 corner.states.normal = 
-	y: 50 * ratio
+	y: -6 * ratio
 	options: emotionSwitchAnimation
 
 corner.states.up = 
-	y: 50 * ratio - unitHeightNormal + unitHeightSmall
+	y: -6 * ratio
 	options: emotionSwitchAnimation
 
 ejVanish = new Animation emotionJumper,
@@ -391,35 +391,35 @@ emotionArea1.on "change:width", ->
 	emotionXpositon()
 	emotion1.subLayers[0].size = emotionArea1.size
 	textLayer1.opacity = Utils.modulate(emotionArea1.width, [textStart, emotionSizeBig], [0, 1])
-	textLayer1.y = Utils.modulate(emotionArea1.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer1.y = Utils.modulate(emotionArea1.width, [emotionSizeNormal, emotionSizeBig], [emotionSizeNormal - 20 * ratio, emotionSizeBig + textHeight - 20 * ratio])
 	textLayer1.centerX()
 
 emotionArea2.on "change:width", ->
 	emotionXpositon()
 	emotion2.subLayers[0].size = emotionArea2.size
 	textLayer2.opacity = Utils.modulate(emotionArea2.width, [textStart, emotionSizeBig], [0, 1])
-	textLayer2.y = Utils.modulate(emotionArea2.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer2.y = Utils.modulate(emotionArea2.width, [emotionSizeNormal, emotionSizeBig], [emotionSizeNormal - 20 * ratio, emotionSizeBig + textHeight - 20 * ratio])
 	textLayer2.centerX()
 
 emotionArea3.on "change:width", ->
 	emotionXpositon()
 	emotion3.subLayers[0].size = emotionArea3.size
 	textLayer3.opacity = Utils.modulate(emotionArea3.width, [textStart, emotionSizeBig], [0, 1])
-	textLayer3.y = Utils.modulate(emotionArea3.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer3.y = Utils.modulate(emotionArea3.width, [emotionSizeNormal, emotionSizeBig], [emotionSizeNormal - 20 * ratio, emotionSizeBig + textHeight - 20 * ratio])
 	textLayer3.centerX()
 	
 emotionArea4.on "change:width", ->
 	emotionXpositon()
 	emotion4.subLayers[0].size = emotionArea4.size
 	textLayer4.opacity = Utils.modulate(emotionArea4.width, [textStart, emotionSizeBig], [0, 1])
-	textLayer4.y = Utils.modulate(emotionArea4.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer4.y = Utils.modulate(emotionArea4.width, [emotionSizeNormal, emotionSizeBig], [emotionSizeNormal - 20 * ratio, emotionSizeBig + textHeight - 20 * ratio])
 	textLayer4.centerX()
 
 emotionArea5.on "change:width", ->
 	emotionXpositon()
 	emotion5.subLayers[0].size = emotionArea5.size
 	textLayer5.opacity = Utils.modulate(emotionArea5.width, [textStart, emotionSizeBig], [0, 1])
-	textLayer5.y = Utils.modulate(emotionArea5.width, [emotionSizeNormal, emotionSizeBig], [0, -textHeight])
+	textLayer5.y = Utils.modulate(emotionArea5.width, [emotionSizeNormal, emotionSizeBig], [emotionSizeNormal - 20 * ratio, emotionSizeBig + textHeight - 20 * ratio])
 	textLayer5.centerX()
 
 #Switch function
