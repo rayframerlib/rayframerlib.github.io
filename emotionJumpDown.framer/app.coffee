@@ -344,7 +344,7 @@ emotionBg.states.small =
 emotionBg.states.vanish = 
 	x: 0
 	width: unitWidth
-	y: downDistance
+	y: -downDistance
 	opacity: 0
 	animationOptions: emotionSwitchAnimation
 
@@ -366,7 +366,7 @@ ejVanish = new Animation emotionJumper,
 #Init
 mainScreen.center()
 emotionUnit.x = 108 * ratio
-emotionUnit.y = 264 * ratio
+emotionUnit.y = 390 * ratio
 hitArea.x = 250 * ratio
 hitArea.y = 348 * ratio
 emotionBg.stateSwitch("vanish")
@@ -589,7 +589,7 @@ infoChange = (hold)->
 
 emotionJumper.on "change:x", ->
 	xProgress = Utils.modulate(emotionJumper.x, [startX, targetX], [0, 1.2], true)
-	jumperY = startY - 200 * (xProgress - xProgress * xProgress) * ratio
+	jumperY = startY + 200 * (xProgress - xProgress * xProgress) * ratio
 	emotionJumper.y = jumperY
 
 ejVanish.on Events.AnimationEnd, ->
