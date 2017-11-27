@@ -12,7 +12,7 @@ bg = new Layer
 	superLayer: mainScreen
 	width: 375 * ratio
 	height: 667 * ratio
-	image: "images/bg.PNG"
+	image: "images/bg.png"
 
 emotion1 = new BodymovinLayer
 	superLayer: bg
