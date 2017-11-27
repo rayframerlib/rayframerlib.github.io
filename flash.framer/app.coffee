@@ -24,3 +24,4 @@ emotion1 = new BodymovinLayer
 	width: 24 * ratio
 	height: 24 * ratio
 
+mainScreen.center()
