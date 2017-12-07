@@ -10,7 +10,7 @@ BodymovinLayer = require 'lottieLayer'
 # ScreenScale
 skt.Screen.center()
 ratio = window.devicePixelRatio
-Screen.scale = ratio/2
+skt.Screen.scale = ratio/2
 skt.Screen.clip = true
 
 #Init
