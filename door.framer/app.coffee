@@ -2,10 +2,11 @@
 skt = Framer.Importer.load("imported/forframer@1x")
 #整体布局初始化
 
-skt.mainScreen.frame = {x: 0, y: 0, width: 750, height: 1334}
+skt.mainScreen.frame = {width: 750, height: 1334}
 skt.mainScreen.clip = true
 skt.mainScreen.scale = window.devicePixelRatio / 2
 skt.mainScreen.center()
+
 animationOp = 
 	time: 0.6
 	curve: "ease"
