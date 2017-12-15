@@ -182,8 +182,8 @@ trailGo2.on Events.AnimationEnd, ->
 
 
 skt.trail1.on "change:y", ->
-	skt.trail1.opacity = Utils.modulate(skt.trail1.y, [100, 164], [0.6, 0], true)
+	skt.trail1.opacity = Utils.modulate(skt.trail1.y, [80, 164], [0.6, 0], true)
 
 skt.trail2.on "change:y", ->
-	skt.trail2.opacity = Utils.modulate(skt.trail2.y, [100, 164], [1, 0], true)
+	skt.trail2.opacity = Utils.modulate(skt.trail2.y, [80, 164], [0.9, 0], true)
 
