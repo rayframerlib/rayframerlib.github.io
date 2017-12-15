@@ -413,8 +413,8 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 							{
 								"objectId": "0AAE28F7-EE45-4297-9B50-C2C1A500693F",
 								"kind": "group",
-								"name": "trail",
-								"originalName": "trail",
+								"name": "trail2",
+								"originalName": "trail2",
 								"maskFrame": null,
 								"layerFrame": {
 									"x": 17,
@@ -427,7 +427,34 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 									"opacity": 1
 								},
 								"image": {
-									"path": "images/Layer-trail-mefbrti4.png",
+									"path": "images/Layer-trail2-mefbrti4.png",
+									"frame": {
+										"x": 17,
+										"y": 164,
+										"width": 714,
+										"height": 1200
+									}
+								},
+								"children": []
+							},
+							{
+								"objectId": "A6266414-988C-4DEB-82F0-0071D2D81A54",
+								"kind": "group",
+								"name": "trail1",
+								"originalName": "trail1",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 17,
+									"y": 164,
+									"width": 714,
+									"height": 1200
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-trail1-qtyynjy0.png",
 									"frame": {
 										"x": 17,
 										"y": 164,
@@ -553,9 +580,9 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 	}
 ]
 if (DeviceComponent) {DeviceComponent.Devices["iphone-6-silver"].deviceImageJP2 = false};
-if (window.Framer) {window.Framer.Defaults.DeviceView = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-7-plus-black","contentScale":1,"hideBezel":true,"orientation":0};
+if (window.Framer) {window.Framer.Defaults.DeviceView = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-7-black","contentScale":1,"hideBezel":true,"orientation":0};
 }
-if (window.Framer) {window.Framer.Defaults.DeviceComponent = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-7-plus-black","contentScale":1,"hideBezel":true,"orientation":0};
+if (window.Framer) {window.Framer.Defaults.DeviceComponent = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-7-black","contentScale":1,"hideBezel":true,"orientation":0};
 }
 window.FramerStudioInfo = {"deviceImagesUrl":"\/_server\/resources\/DeviceImages","documentTitle":"door.framer"};
 

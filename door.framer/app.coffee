@@ -16,7 +16,7 @@ init = () ->
 	skt.bgColor.frame = {x: 0, y: 0}
 	skt.planet.frame = {x: 0, y: 280}
 	skt.stars.centerX()
-	skt.trail.centerX()
+	skt.trail1.centerX()
 	skt.packs.centerX()
 	skt.main.centerX()
 	skt.main.y = 250
@@ -39,8 +39,10 @@ init = () ->
 	skt.stars.y = 800
 	skt.packs.scale = 0
 	skt.packs.y = -300
-	skt.trail.scale = 0
-	skt.trail.y = -400
+	skt.trail1.scale = 0
+	skt.trail1.y = -400
+	skt.trail2.scale = 0
+	skt.trail2.y = -400
 	
 	skt.h5Page.ignoreEvents = true
 	
@@ -51,10 +53,19 @@ packGo = new Animation skt.packs,
 	y: 227
 	options:animationOp
 
-trailGo = new Animation skt.trail,
+trailGo1 = new Animation skt.trail1,
 	scale: 1
 	y: 164
-	options:animationOp
+	options:
+		time: 0.9
+		curve: "ease-out"
+
+trailGo2 = new Animation skt.trail2,
+	scale: 1
+	y: 164
+	options:
+		time: 0.9
+		curve: "ease-out"
 
 mainUp = new Animation skt.main,
 	scale: 1
@@ -66,7 +77,7 @@ starsUp = new Animation skt.stars,
 	options:animationOp
 
 planetUP = new Animation skt.planet,
-	y: 200
+	y: 150
 	options:animationOp
 
 	
@@ -126,7 +137,10 @@ skt.dragArea.on Events.DragEnd, ->
 		skt.dragArea.draggable.enabled = false
 		feedDown.start()
 
+h = 0
+
 feedDown.on Events.AnimationEnd, ->
+	h = 0
 	skt.blackStat.opacity = 0
 	skt.whiteStat.opacity = 1
 	naviOut.start()
@@ -134,7 +148,9 @@ feedDown.on Events.AnimationEnd, ->
 	mainUp.start()
 	packGo.start()
 	starsUp.start()
-	trailGo.start()
+	trailGo1.start()
+	Utils.delay 0.5, ->
+		trailGo2.start()
 	planetUP.start()
 
 skt.h5Page.on Events.Click, ->
@@ -144,9 +160,30 @@ skt.h5Page.on Events.Click, ->
 # 			skt.h5Page.off Events.Click
 
 mainUp.on Events.AnimationEnd, ->
-	Utils.delay 0.8, ->
+	Utils.delay 1.5, ->
 		skt.h5Page.ignoreEvents = false
 		skt.h5Page.opacity = 1
+		trailGo1.stop()
+		trailGo2.stop()
+		h = 1
 		
-	
+
+trailGo1.on Events.AnimationEnd, ->
+	skt.trail1.scale = 0
+	skt.trail1.y = -400
+	if h == 0
+		trailGo1.start()
+
+trailGo2.on Events.AnimationEnd, ->
+	skt.trail2.scale = 0
+	skt.trail2.y = -400
+	if h == 0
+		trailGo2.start()
+
+
+skt.trail1.on "change:y", ->
+	skt.trail1.opacity = Utils.modulate(skt.trail1.y, [100, 164], [0.6, 0], true)
+
+skt.trail2.on "change:y", ->
+	skt.trail2.opacity = Utils.modulate(skt.trail2.y, [100, 164], [1, 0], true)
 

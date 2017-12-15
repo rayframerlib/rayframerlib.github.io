@@ -408,8 +408,8 @@
 							{
 								"objectId": "0AAE28F7-EE45-4297-9B50-C2C1A500693F",
 								"kind": "group",
-								"name": "trail",
-								"originalName": "trail",
+								"name": "trail2",
+								"originalName": "trail2",
 								"maskFrame": null,
 								"layerFrame": {
 									"x": 17,
@@ -422,7 +422,34 @@
 									"opacity": 1
 								},
 								"image": {
-									"path": "images/Layer-trail-mefbrti4.png",
+									"path": "images/Layer-trail2-mefbrti4.png",
+									"frame": {
+										"x": 17,
+										"y": 164,
+										"width": 714,
+										"height": 1200
+									}
+								},
+								"children": []
+							},
+							{
+								"objectId": "A6266414-988C-4DEB-82F0-0071D2D81A54",
+								"kind": "group",
+								"name": "trail1",
+								"originalName": "trail1",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 17,
+									"y": 164,
+									"width": 714,
+									"height": 1200
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-trail1-qtyynjy0.png",
 									"frame": {
 										"x": 17,
 										"y": 164,
