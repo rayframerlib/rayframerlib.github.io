@@ -359,10 +359,10 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 								"originalName": "main",
 								"maskFrame": null,
 								"layerFrame": {
-									"x": 59,
-									"y": 306,
+									"x": 58,
+									"y": 312,
 									"width": 632,
-									"height": 722
+									"height": 717
 								},
 								"visible": true,
 								"metadata": {
@@ -371,10 +371,10 @@ window.__imported__["forframer@1x/layers.json.js"] = [
 								"image": {
 									"path": "images/Layer-main-rdfbodlb.png",
 									"frame": {
-										"x": 59,
-										"y": 306,
+										"x": 58,
+										"y": 312,
 										"width": 632,
-										"height": 722
+										"height": 717
 									}
 								},
 								"children": []
