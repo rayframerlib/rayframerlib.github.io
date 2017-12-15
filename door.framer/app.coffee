@@ -9,7 +9,7 @@ skt.mainScreen.center()
 
 animationOp = 
 	time: 0.6
-	curve: "ease"
+	curve: "ease-in-out"
 
 init = () ->
 	skt.secondFloor.frame = {x: 0, y: 0, width: 750, height: 1334}
@@ -53,6 +53,10 @@ packGo = new Animation skt.packs,
 	y: 227
 	options:animationOp
 
+packBack = new Animation skt.packs,
+	y: 220
+	options:animationOp
+
 trailGo1 = new Animation skt.trail1,
 	scale: 1
 	y: 164
@@ -78,6 +82,10 @@ starsUp = new Animation skt.stars,
 
 planetUP = new Animation skt.planet,
 	y: 150
+	options:animationOp
+
+mainDown = new Animation skt.main,
+	y: 260
 	options:animationOp
 
 	
@@ -159,7 +167,7 @@ skt.h5Page.on Events.Click, ->
 	skt.dragArea.draggable.enabled = true
 # 			skt.h5Page.off Events.Click
 
-mainUp.on Events.AnimationEnd, ->
+starsUp.on Events.AnimationEnd, ->
 	Utils.delay 1.5, ->
 		skt.h5Page.ignoreEvents = false
 		skt.h5Page.opacity = 1
@@ -180,10 +188,27 @@ trailGo2.on Events.AnimationEnd, ->
 	if h == 0
 		trailGo2.start()
 
+mainUp.on Events.AnimationEnd, ->
+	if h == 0
+		mainDown.start()
+
+mainDown.on Events.AnimationEnd, ->
+	if h == 0
+		mainUp.start()
+
+packGo.on Events.AnimationEnd, ->
+	if h == 0
+		packBack.start()
+
+packBack.on Events.AnimationEnd, ->
+	if h == 0
+		packGo.start()
+
+
 
 skt.trail1.on "change:y", ->
-	skt.trail1.opacity = Utils.modulate(skt.trail1.y, [80, 164], [0.6, 0], true)
+	skt.trail1.opacity = Utils.modulate(skt.trail1.y, [80, 164], [0.4, 0], true)
 
 skt.trail2.on "change:y", ->
-	skt.trail2.opacity = Utils.modulate(skt.trail2.y, [80, 164], [0.9, 0], true)
+	skt.trail2.opacity = Utils.modulate(skt.trail2.y, [80, 164], [0.6, 0], true)
 
