@@ -138,7 +138,7 @@ emotion2 = new BodymovinLayer
 
 emotion3= new BodymovinLayer
 	superLayer: emotionArea3
-	jsonPath:'haha.json'
+	jsonPath:'wow.json'
 	autoplay: true
 	looping: true
 	width: emotionArea1.width
@@ -146,7 +146,7 @@ emotion3= new BodymovinLayer
 
 emotion4 = new BodymovinLayer
 	superLayer: emotionArea4
-	jsonPath:'wow.json'
+	jsonPath:'haha.json'
 	autoplay: true
 	looping: true
 	width: emotionArea1.width
@@ -190,7 +190,7 @@ textLayer2 = new TextLayer
 
 textLayer3 = new TextLayer
 	superLayer: emotionArea3
-	text: "高兴"
+	text: "惊讶"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -200,7 +200,7 @@ textLayer3 = new TextLayer
 
 textLayer4 = new TextLayer
 	superLayer: emotionArea4
-	text: "惊讶"
+	text: "高兴"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -558,13 +558,13 @@ active = (hold)->
 				holder.y = 0
 				unitStat = 0
 			when 3
-				emotionJumper.image = "images/haha.png"
+				emotionJumper.image = "images/wow.png"
 				initJumper(emotionArea3)
 				emotionBg.animate("vanish")
 				holder.y = 0
 				unitStat = 0
 			when 4
-				emotionJumper.image = "images/wow.png"
+				emotionJumper.image = "images/haha.png"
 				initJumper(emotionArea4)
 				emotionBg.animate("vanish")
 				holder.y = 0
@@ -650,13 +650,13 @@ infoChange = (hold)->
 			when 3
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/haha.png"
+				selectedEmotion.image = "images/wow.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 4
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/wow.png"
+				selectedEmotion.image = "images/haha.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 5
