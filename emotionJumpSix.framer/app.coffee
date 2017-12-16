@@ -638,38 +638,38 @@ infoChange = (hold)->
 			when 1
 				infoBg.opacity = 1
 				selectedText.text = "4­­­­­"
-				selectedEmotion.image = "images/likenormal.png"
-				selectedText.color = "#e04023"
+				selectedEmotion.image = "images/angry.png"
+				selectedText.color = "rgba(252,103,52,1)"
 				infoPositionControl()
 			when 2
-				infoBg.opacity = 1
-				selectedText.text = "4"
-				selectedEmotion.image = "images/haha.png"
-				selectedText.color = "rgba(255,194,25,1)"
-				infoPositionControl()
-			when 3
-				infoBg.opacity = 1
-				selectedText.text = "4"
-				selectedEmotion.image = "images/wow.png"
-				selectedText.color = "rgba(255,194,25,1)"
-				infoPositionControl()
-			when 4
 				infoBg.opacity = 1
 				selectedText.text = "4"
 				selectedEmotion.image = "images/ku.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
+			when 3
+				infoBg.opacity = 1
+				selectedText.text = "4"
+				selectedEmotion.image = "images/haha.png"
+				selectedText.color = "rgba(255,194,25,1)"
+				infoPositionControl()
+			when 4
+				infoBg.opacity = 1
+				selectedText.text = "4"
+				selectedEmotion.image = "images/wow.png"
+				selectedText.color = "rgba(255,194,25,1)"
+				infoPositionControl()
 			when 5
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/angry.png"
+				selectedEmotion.image = "images/love.png"
 				selectedText.color = "rgba(252,103,52,1)"
 				infoPositionControl()
 			when 6
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/angry.png"
-				selectedText.color = "rgba(252,103,52,1)"
+				selectedEmotion.image = "images/likenormal.png"
+				selectedText.color = "#e04023"
 				infoPositionControl()
 		btstat = 1
 
