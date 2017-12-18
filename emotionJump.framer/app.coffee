@@ -114,7 +114,7 @@ emotionArea5 = new Layer
 
 emotion1 = new BodymovinLayer
 	superLayer: emotionArea1
-	jsonPath:'like1.json'
+	jsonPath:'angry.json'
 	autoplay: true
 	looping: true
 	width: emotionArea1.width
@@ -122,7 +122,7 @@ emotion1 = new BodymovinLayer
 
 emotion2 = new BodymovinLayer
 	superLayer: emotionArea2
-	jsonPath:'haha.json'
+	jsonPath:'cry.json'
 	autoplay: true
 	looping: true
 	width: emotionArea1.width
@@ -138,7 +138,7 @@ emotion3= new BodymovinLayer
 
 emotion4 = new BodymovinLayer
 	superLayer: emotionArea4
-	jsonPath:'cry.json'
+	jsonPath:'haha.json'
 	autoplay: true
 	looping: true
 	width: emotionArea1.width
@@ -146,7 +146,7 @@ emotion4 = new BodymovinLayer
 
 emotion5 = new BodymovinLayer
 	superLayer: emotionArea5
-	jsonPath:'angry.json'
+	jsonPath:'like1.json'
 	autoplay: true
 	looping: true
 	width: emotionArea1.width
@@ -154,7 +154,7 @@ emotion5 = new BodymovinLayer
 
 textLayer1 = new TextLayer
 	superLayer: emotionArea1
-	text: "赞"
+	text: "愤怒"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -164,7 +164,7 @@ textLayer1 = new TextLayer
 
 textLayer2 = new TextLayer
 	superLayer: emotionArea2
-	text: "高兴"
+	text: "伤心"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -184,7 +184,7 @@ textLayer3 = new TextLayer
 
 textLayer4 = new TextLayer
 	superLayer: emotionArea4
-	text: "伤心"
+	text: "高兴"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -194,7 +194,7 @@ textLayer4 = new TextLayer
 
 textLayer5 = new TextLayer
 	superLayer: emotionArea5
-	text: "愤怒"
+	text: "赞"
 	color: "white"
 	backgroundColor: "rgba(0,0,0,0.5)"
 	fontSize: fontSize
@@ -482,13 +482,13 @@ active = (hold)->
 	if unitStat == 1
 		switch hold
 			when 1
-				emotionJumper.image = "images/like.png"
+				emotionJumper.image = "images/angry.png"
 				initJumper(emotionArea1)
 				emotionBg.animate("vanish")
 				holder.y = 0
 				unitStat = 0
 			when 2
-				emotionJumper.image = "images/haha.png"
+				emotionJumper.image = "images/ku.png"
 				initJumper(emotionArea2)
 				emotionBg.animate("vanish")
 				holder.y = 0
@@ -500,13 +500,13 @@ active = (hold)->
 				holder.y = 0
 				unitStat = 0
 			when 4
-				emotionJumper.image = "images/ku.png"
+				emotionJumper.image = "images/haha.png"
 				initJumper(emotionArea4)
 				emotionBg.animate("vanish")
 				holder.y = 0
 				unitStat = 0
 			when 5
-				emotionJumper.image = "images/angry.png"
+				emotionJumper.image = "images/like.png"
 				initJumper(emotionArea5)
 				emotionBg.animate("vanish")
 				unitStat = 0
@@ -558,13 +558,13 @@ infoChange = (hold)->
 			when 1
 				infoBg.opacity = 1
 				selectedText.text = "4­­­­­"
-				selectedEmotion.image = "images/likenormal.png"
+				selectedEmotion.image = "images/angry.png"
 				selectedText.color = "#e04023"
 				infoPositionControl()
 			when 2
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/haha.png"
+				selectedEmotion.image = "images/ku.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 3
@@ -576,13 +576,13 @@ infoChange = (hold)->
 			when 4
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/ku.png"
+				selectedEmotion.image = "images/haha.png"
 				selectedText.color = "rgba(255,194,25,1)"
 				infoPositionControl()
 			when 5
 				infoBg.opacity = 1
 				selectedText.text = "4"
-				selectedEmotion.image = "images/angry.png"
+				selectedEmotion.image = "images/likenormal.png"
 				selectedText.color = "rgba(252,103,52,1)"
 				infoPositionControl()
 		btstat = 1

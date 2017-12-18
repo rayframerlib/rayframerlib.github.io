@@ -64,6 +64,7 @@ emotionBg = new Layer
 	shadowBlur: 6 * ratio
 	shadowColor: "rgba(0, 0, 0, 0.15)"
 
+
 corner = new Layer
 	superLayer: emotionBg
 	size: 12 * ratio
