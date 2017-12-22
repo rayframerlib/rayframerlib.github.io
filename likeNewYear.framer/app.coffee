@@ -1,5 +1,5 @@
 vanishiTime = 0.5
-delayTime = 0.9
+delayTime = 1.5
 finalOpacity = 1
 showTime = 0.2
 
