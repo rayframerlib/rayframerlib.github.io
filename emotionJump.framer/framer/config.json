@@ -1,31 +1,33 @@
 {
   "orientation" : 0,
   "updateDelay" : 0.29999999999999999,
+  "designModeSelected" : 0,
   "cachedDeviceHeight" : 1334,
   "contentScale" : 1,
   "fullScreen" : false,
   "cachedDeviceWidth" : 750,
+  "deviceType" : "iphone-6-silver",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
     "Filters" : false
   },
-  "deviceType" : "apple-iphone-7-black",
   "projectId" : "83667C7A-B18F-49DC-8930-97CE42535FA9",
   "deviceOrientation" : 0,
   "selectedHand" : "",
+  "showBezel" : 0,
   "foldedCodeRanges" : [
-    "{859, 4334}",
-    "{5194, 659}",
-    "{5854, 764}",
-    "{6619, 628}",
-    "{7248, 401}",
-    "{8301, 460}",
-    "{8762, 1648}",
-    "{10411, 1120}",
-    "{11532, 1102}",
-    "{12635, 457}",
-    "{13093, 773}",
-    "{13867, 1081}"
+    "{904, 4334}",
+    "{5239, 659}",
+    "{5899, 764}",
+    "{6664, 628}",
+    "{7293, 401}",
+    "{8346, 460}",
+    "{8807, 1648}",
+    "{10456, 1120}",
+    "{11577, 1102}",
+    "{12680, 457}",
+    "{13138, 773}",
+    "{13912, 1081}"
   ],
   "deviceScale" : "fit"
 }

@@ -1,3 +1,4 @@
+Framer.Device.deviceType = "iphone-6-silver"
 BodymovinLayer = require 'lottieLayer'
 ratio = window.devicePixelRatio
 fontSize = 10 * ratio
