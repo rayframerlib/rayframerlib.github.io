@@ -842,9 +842,9 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 										"maskFrame": null,
 										"layerFrame": {
 											"x": 13,
-											"y": 376,
-											"width": 344,
-											"height": 226
+											"y": 377,
+											"width": 345,
+											"height": 225
 										},
 										"visible": true,
 										"metadata": {
@@ -854,9 +854,9 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 											"path": "images/Layer-content5-nzhcrtzb.png",
 											"frame": {
 												"x": 13,
-												"y": 376,
-												"width": 344,
-												"height": 226
+												"y": 377,
+												"width": 345,
+												"height": 225
 											}
 										},
 										"children": []
@@ -1003,14 +1003,14 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 										"maskFrame": null,
 										"layerFrame": {
 											"x": 13,
-											"y": 356,
-											"width": 344,
-											"height": 40
+											"y": 357,
+											"width": 345,
+											"height": 39
 										},
 										"visible": true,
 										"metadata": {
 											"opacity": 1,
-											"string": "【央视评鸿茅药酒事件：防止荒唐执法 为权力套紧箍咒】因一篇名为中国神酒“鸿毛药酒…",
+											"string": "央视评鸿茅药酒事件：防止荒唐执法 为权力套紧箍咒因一篇名为中国神酒“鸿毛药酒微信",
 											"css": [
 												"/* Timeline / Weibo / Text: */",
 												"font-family: PingFangSC-Regular;",
@@ -1023,9 +1023,9 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 											"path": "images/Layer-content2-mdrdrerd.png",
 											"frame": {
 												"x": 13,
-												"y": 356,
-												"width": 344,
-												"height": 40
+												"y": 357,
+												"width": 345,
+												"height": 39
 											}
 										},
 										"children": []
@@ -1264,12 +1264,12 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 											"x": 13,
 											"y": 270,
 											"width": 337,
-											"height": 156
+											"height": 155
 										},
 										"visible": true,
 										"metadata": {
 											"opacity": 1,
-											"string": "【广州医生发帖称\"鸿毛药酒是毒药\"，涉损害商誉被跨省抓捕】因在网上发帖称“鸿毛药酒是毒药”，广州医生谭秦东遭内蒙古自治区凉城县警方抓捕。谭秦东所涉嫌罪名为“损害商品声誉罪”，内蒙古鸿茅国药股份有限公司称，谭秦东的文章造成了140余万的退货损失，严重损害了公司声誉。但谭秦东… 全文",
+											"string": "广州医生发帖称\"鸿毛药酒是毒药\"，涉损害商誉被跨省抓捕因在网上发帖称“鸿毛药酒是毒药”，广州医生谭秦东遭内蒙古自治区凉城县警方抓捕。谭秦东所涉嫌罪名为“损害商品声誉罪”，内蒙古鸿茅国药股份有限公司称，谭秦东的文章造成了140余万的退货损失，严重损害了公司声誉。但谭秦东仍然… 全文",
 											"css": [
 												"/* Timeline / WeiboCard / Text: */",
 												"font-family: PingFangSC-Regular;",
@@ -1284,7 +1284,7 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 												"x": 13,
 												"y": 270,
 												"width": 337,
-												"height": 156
+												"height": 155
 											}
 										},
 										"children": []
@@ -1465,7 +1465,7 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 										"visible": true,
 										"metadata": {
 											"opacity": 1,
-											"string": "【广州医生发帖称\"鸿毛药酒是毒药\"，涉损害商誉被跨省抓捕】因在网上发帖称“鸿毛药…",
+											"string": "广州医生发帖称\"鸿毛药酒是毒药\"，涉损害商誉被跨省抓捕因在网上发帖称“鸿毛药酒…",
 											"css": [
 												"/* Timeline / Weibo / Text: */",
 												"font-family: PingFangSC-Regular;",
