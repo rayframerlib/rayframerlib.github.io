@@ -76,14 +76,8 @@ redPage = new Layer
 	superLayer: skt.Screen
 	size: skt.Screen.size
 	x: 750
-	backgroundColor: "ff4444"
+	image: "images/IMG_5887.PNG"
 
-redText = new TextLayer
-	superLayer: redPage
-	text: 'back to feed'
-	color: "white"
-
-redText.center()
 touchArea.center()
 
 AnimateAreaGroup = [skt.AnimateArea1, skt.AnimateArea2, skt.AnimateArea3]
