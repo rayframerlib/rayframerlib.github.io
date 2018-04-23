@@ -185,10 +185,11 @@ bigAnimate = (i) ->
 			LikeRed.centerY()
 			LikeRedAfter.y = LikeRed.y
 		card2Show.start()
-		Utils.delay 1.25, ->
+		Utils.delay 1.1, ->
 			LikeRed.opacity = 0
 			LikeRed.anim.goToAndStop(0, true)
-			LikeRedAfter.anim.play()
+			LikeRedAfter.anim.goToAndPlay(90, true)
+# 			LikeRedAfter.anim.play()
 			LikeRedAfter.opacity = 1
 
 	if i == 2
