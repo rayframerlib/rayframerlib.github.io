@@ -66,14 +66,14 @@ skt.extendArrow.states.extend =
 	animationOptions: animationOptionsExtend
 
 extend = ()->
-	skt.cg2.animate("extend")
-	skt.cg3.animate("extend")
-	skt.extendButton.animate("extend")
-	skt.cg4.animate("extend")
-	skt.card4.animate("extend")
-	skt.card5.animate("extend")
-	skt.card6.animate("extend")
-	skt.extendArrow.animate("extend")
+	skt.cg2.stateSwitch("extend")
+	skt.cg3.stateSwitch("extend")
+	skt.extendButton.stateSwitch("extend")
+	skt.cg4.stateSwitch("extend")
+	skt.card4.stateSwitch("extend")
+	skt.card5.stateSwitch("extend")
+	skt.card6.stateSwitch("extend")
+	skt.extendArrow.stateSwitch("extend")
 	skt.extendText.opacity = 1
 	skt.defaultText.opacity = 0
 	skt.card.height = skt.story.height + skt.cardHeader.height + skt.card4.height + skt.card5.height + skt.card6.height + skt.extendButton.height + 10 + skt.cg4.height
