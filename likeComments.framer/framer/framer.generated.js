@@ -363,7 +363,7 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 									"x": 0,
 									"y": 452,
 									"width": 375,
-									"height": 40
+									"height": 35
 								},
 								"visible": true,
 								"metadata": {
@@ -375,7 +375,7 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 										"x": 0,
 										"y": 452,
 										"width": 375,
-										"height": 40
+										"height": 35
 									}
 								},
 								"children": [
@@ -386,10 +386,10 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 										"originalName": "commentFunction",
 										"maskFrame": null,
 										"layerFrame": {
-											"x": 13,
+											"x": 14,
 											"y": 452,
-											"width": 336,
-											"height": 30
+											"width": 310,
+											"height": 23
 										},
 										"visible": true,
 										"metadata": {
@@ -403,10 +403,10 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 												"originalName": "head",
 												"maskFrame": null,
 												"layerFrame": {
-													"x": 13,
+													"x": 14,
 													"y": 452,
-													"width": 30,
-													"height": 30
+													"width": 23,
+													"height": 23
 												},
 												"visible": true,
 												"metadata": {
@@ -414,43 +414,16 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 												},
 												"children": [
 													{
-														"objectId": "E5E41FF6-2B4C-4F85-81CC-FFFF0B3D9A7A",
-														"kind": "group",
-														"name": "vIcon1",
-														"originalName": "vIcon1",
-														"maskFrame": null,
-														"layerFrame": {
-															"x": 33,
-															"y": 472,
-															"width": 10,
-															"height": 10
-														},
-														"visible": true,
-														"metadata": {
-															"opacity": 1
-														},
-														"image": {
-															"path": "images/Layer-vIcon1-rtvfndfg.png",
-															"frame": {
-																"x": 33,
-																"y": 472,
-																"width": 10,
-																"height": 10
-															}
-														},
-														"children": []
-													},
-													{
 														"objectId": "862E4DEE-00F8-46B9-8708-4A74FD46BB45",
 														"kind": "group",
 														"name": "head1",
 														"originalName": "head1",
 														"maskFrame": null,
 														"layerFrame": {
-															"x": 13,
+															"x": 14,
 															"y": 452,
-															"width": 30,
-															"height": 30
+															"width": 23,
+															"height": 23
 														},
 														"visible": true,
 														"metadata": {
@@ -459,10 +432,10 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 														"image": {
 															"path": "images/Layer-head1-odyyrtre.png",
 															"frame": {
-																"x": 13,
+																"x": 14,
 																"y": 452,
-																"width": 30,
-																"height": 30
+																"width": 23,
+																"height": 23
 															}
 														},
 														"children": []
@@ -476,10 +449,10 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 												"originalName": "commented",
 												"maskFrame": null,
 												"layerFrame": {
-													"x": 50,
-													"y": 459,
-													"width": 299,
-													"height": 16
+													"x": 45,
+													"y": 457,
+													"width": 279,
+													"height": 15
 												},
 												"visible": true,
 												"metadata": {
@@ -488,18 +461,18 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 													"css": [
 														"/* 这是一条十分精彩的评论，恩，非常精彩了…: */",
 														"font-family: PingFangSC-Regular;",
-														"font-size: 15px;",
-														"color: #333333;",
+														"font-size: 14px;",
+														"color: #636363;",
 														"line-height: 16px;"
 													]
 												},
 												"image": {
 													"path": "images/Layer-commented-nki3rdi0.png",
 													"frame": {
-														"x": 50,
-														"y": 459,
-														"width": 299,
-														"height": 16
+														"x": 45,
+														"y": 457,
+														"width": 279,
+														"height": 15
 													}
 												},
 												"children": []
@@ -511,10 +484,10 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 												"originalName": "unComment",
 												"maskFrame": null,
 												"layerFrame": {
-													"x": 51,
-													"y": 459,
-													"width": 58,
-													"height": 15
+													"x": 46,
+													"y": 457,
+													"width": 54,
+													"height": 14
 												},
 												"visible": true,
 												"metadata": {
@@ -522,8 +495,8 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 													"string": "写评论…",
 													"css": [
 														"/* 写评论…: */",
-														"font-family: PingFangSC-Regular;",
-														"font-size: 15px;",
+														"font-family: PingFangSC-Light;",
+														"font-size: 14px;",
 														"color: #939393;",
 														"line-height: 16px;"
 													]
@@ -531,10 +504,10 @@ window.__imported__["forframer@2x/layers.json.js"] = [
 												"image": {
 													"path": "images/Layer-unComment-revgnurg.png",
 													"frame": {
-														"x": 51,
-														"y": 459,
-														"width": 58,
-														"height": 15
+														"x": 46,
+														"y": 457,
+														"width": 54,
+														"height": 14
 													}
 												},
 												"children": []
