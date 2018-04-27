@@ -81,7 +81,7 @@ skt.HitArea.on Events.Click, ->
 			likeAnim.anim.play()
 			skt.LikeNumber.opacity = 1
 			likeEnabled = true
-			Utils.delay 1, ->
+			Utils.delay 0.5, ->
 				commentAreaShow = true
 				skt.commentArea.animate("extend")
 				skt.cardButton5.animate("extend")
@@ -96,12 +96,14 @@ skt.HitArea.on Events.Click, ->
 skt.commentArea.on Events.Click, ->
 	if commentAreaShow && skt.unComment.opacity
 		composerShow = true
+		skt.card.draggable.enabled = false
 		skt.mask.animate("show")
 		skt.composer.animate("show")
 
 skt.sendButton.on Events.Click, ->
 	if composerShow
 		composerShow = false
+		skt.card.draggable.enabled = true
 		skt.mask.animate "default", animationOptionsShow
 		skt.composer.animate "default", animationOptionsShow
 		skt.commented.opacity = 1
