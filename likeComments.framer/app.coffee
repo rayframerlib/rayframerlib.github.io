@@ -56,7 +56,7 @@ skt.commentArea.states.extend =
 	animationOptions: animationOptionsExtend
 	
 skt.cardButton5.states.extend = 
-	y: skt.cardButton5.y + 40
+	y: skt.cardButton5.y + 35
 	animationOptions: animationOptionsExtend
 	
 skt.commentFunction.states.extend = 
@@ -64,7 +64,7 @@ skt.commentFunction.states.extend =
 	animationOptions: animationOptionsExtend
 
 skt.card2.states.extend = 
-	y: skt.card2.y + 40
+	y: skt.card2.y + 35
 	animationOptions: animationOptionsExtend
 
 skt.composer.states.show = 
