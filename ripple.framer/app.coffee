@@ -13,15 +13,16 @@ for i in[0...3]
 	card.y += i * 16
 	card.scale += i*0.05
 
-for i in [0...3]
-	mainScreen.subLayers[i].animate
-		scale: mainScreen.subLayers[i].scale + 0.2
-		options:
-			time: 0.4
-			curve: "ease-in-out"
-			delay: (2 - i) * 0.05
+Utils.delay 1.4, ->
+	for i in [0...3]
+		mainScreen.subLayers[i].animate
+			scale: mainScreen.subLayers[i].scale + 0.2
+			options:
+				time: 0.4
+				curve: "ease-in-out"
+				delay: (2 - i) * 0.05
 	
-Utils.delay 0.4, ->
+Utils.delay 1.8, ->
 	for i in [0...3]
 		mainScreen.subLayers[i].animate
 			scale: mainScreen.subLayers[i].scale - 0.2
