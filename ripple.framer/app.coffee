@@ -28,7 +28,35 @@ Utils.delay 1.4, ->
 Utils.delay 1.8, ->
 	for i in [0...3]
 		mainScreen.subLayers[i].animate
-			scale: mainScreen.subLayers[i].scale - 0.2
+			scale: mainScreen.subLayers[i].scale - 0.3
 			options:
-				curve: "Spring(tension: 100, friction: 6, velocity: 0)"
+				curve: "ease-in-out"
+				time: 0.3
+				delay: (2 - i) * 0.05
+
+Utils.delay 2.1, ->
+	for i in [0...3]
+		mainScreen.subLayers[i].animate
+			scale: mainScreen.subLayers[i].scale + 0.17
+			options:
+				curve: "ease-in-out"
+				time: 0.3
+				delay: (2 - i) * 0.05
+
+Utils.delay 2.4, ->
+	for i in [0...3]
+		mainScreen.subLayers[i].animate
+			scale: mainScreen.subLayers[i].scale - 0.12
+			options:
+				curve: "ease-in-out"
+				time: 0.3
+				delay: (2 - i) * 0.05
+
+Utils.delay 2.7, ->
+	for i in [0...3]
+		mainScreen.subLayers[i].animate
+			scale: mainScreen.subLayers[i].scale + 0.05
+			options:
+				curve: "ease-in-out"
+				time: 0.3
 				delay: (2 - i) * 0.05
