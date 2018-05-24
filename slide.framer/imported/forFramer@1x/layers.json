@@ -16,6 +16,144 @@
 		"backgroundColor": "rgba(242, 242, 242, 1)",
 		"children": [
 			{
+				"objectId": "347D4B5C-1554-43B0-A41B-BFDB764CD308",
+				"kind": "group",
+				"name": "stat",
+				"originalName": "stat",
+				"maskFrame": null,
+				"layerFrame": {
+					"x": 14,
+					"y": 10,
+					"width": 725,
+					"height": 20
+				},
+				"visible": true,
+				"metadata": {
+					"opacity": 1
+				},
+				"image": {
+					"path": "images/Layer-stat-mzq3rdrc.png",
+					"frame": {
+						"x": 14,
+						"y": 10,
+						"width": 725,
+						"height": 20
+					}
+				},
+				"children": [
+					{
+						"objectId": "462214AD-0DBD-4286-BD14-994712FCA956",
+						"kind": "group",
+						"name": "PhoneSignal",
+						"originalName": "PhoneSignal",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 14,
+							"y": 10,
+							"width": 194,
+							"height": 20
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-PhoneSignal-ndyymje0.png",
+							"frame": {
+								"x": 14,
+								"y": 10,
+								"width": 194,
+								"height": 20
+							}
+						},
+						"children": [
+							{
+								"objectId": "87B20183-3265-40DB-99E7-CFB9050778EF",
+								"kind": "group",
+								"name": "Signal",
+								"originalName": "Signal",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 14,
+									"y": 14,
+									"width": 67,
+									"height": 11
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-Signal-oddcmjax.png",
+									"frame": {
+										"x": 14,
+										"y": 14,
+										"width": 67,
+										"height": 11
+									}
+								},
+								"children": []
+							}
+						]
+					},
+					{
+						"objectId": "83ADC3D2-7996-43E4-841F-0271305E9BC6",
+						"kind": "group",
+						"name": "Charge",
+						"originalName": "Charge",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 633,
+							"y": 10,
+							"width": 106,
+							"height": 20
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-Charge-odnbremz.png",
+							"frame": {
+								"x": 633,
+								"y": 10,
+								"width": 106,
+								"height": 20
+							}
+						},
+						"children": [
+							{
+								"objectId": "69E1151C-EEC3-4509-BE00-093DA91E2FA1",
+								"kind": "group",
+								"name": "Battery_Icon",
+								"originalName": "Battery Icon",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 690,
+									"y": 10,
+									"width": 49,
+									"height": 19
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-Battery_Icon-njlfmte1.png",
+									"frame": {
+										"x": 690,
+										"y": 10,
+										"width": 49,
+										"height": 19
+									}
+								},
+								"children": []
+							}
+						]
+					}
+				]
+			},
+			{
 				"objectId": "956E0E9D-737C-4F4B-9783-BA0F30407CC4",
 				"kind": "group",
 				"name": "slideController",
