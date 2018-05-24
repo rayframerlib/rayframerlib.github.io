@@ -3,7 +3,10 @@ skt = Framer.Importer.load("imported/forFramer@1x", scale: 0.5)
 
 
 ratio = window.devicePixelRatio
-skt.mainScreen.scale = ratio/2
+if ratio == 2
+	skt.mainScreen.scale = ratio/2
+else
+	skt.mainScreen.scale = ratio/3
 skt.mainScreen.clip = true
 skt.mainScreen.center()
 
