@@ -16,7 +16,8 @@ pageIndexEnd = 2 + (tabContentTexts.length - 1) - 1
 
 previousHot = null
 
-skt.slideController.opacity = 0.1
+skt.findButton.opacity = 0
+skt.storyButton.opacity = 0
 
 #顶导配置
 skt.hot.opacity = 0
@@ -283,7 +284,7 @@ scrollControllerPage.content.on "change:x", ->
 		skt.follow.x = -375
 		skt.hotFeed.x = controllerX + 750
 	
-	if -3375 < controllerX <= -3000
+	if -3375 <= controllerX <= -3000
 		skt.feedScheme.x = controllerX + 3000
 		skt.findScheme.x = controllerX + 3375
 
@@ -313,7 +314,12 @@ skt.hot.on Events.Click, ->
 	skt.hotGroup.animate("bigger")
 	skt.fav.animate("vanish")
 	skt.favGroup.animate("normal")
-		
+	
+skt.storyButton.on Events.Click, ->
+	scrollControllerPage.snapToPage(skt.slidePage0, false)
+
+skt.findButton.on Events.Click, ->
+	scrollControllerPage.snapToPage(skt.slidePage9, false)
 		
 		
 		

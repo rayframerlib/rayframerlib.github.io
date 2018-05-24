@@ -729,6 +729,60 @@ window.__imported__["forFramer@1x/layers.json.js"] = [
 								]
 							},
 							{
+								"objectId": "7D7B0F08-834D-47FD-8D2C-5153E9785F77",
+								"kind": "group",
+								"name": "storyButton",
+								"originalName": "storyButton",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 22,
+									"y": 56,
+									"width": 56,
+									"height": 56
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-storyButton-n0q3qjbg.png",
+									"frame": {
+										"x": 22,
+										"y": 56,
+										"width": 56,
+										"height": 56
+									}
+								},
+								"children": []
+							},
+							{
+								"objectId": "0C2B1B93-87C9-457C-B13B-88625C93D762",
+								"kind": "group",
+								"name": "findButton",
+								"originalName": "findButton",
+								"maskFrame": null,
+								"layerFrame": {
+									"x": 673,
+									"y": 55,
+									"width": 56,
+									"height": 56
+								},
+								"visible": true,
+								"metadata": {
+									"opacity": 1
+								},
+								"image": {
+									"path": "images/Layer-findButton-memyqjfc.png",
+									"frame": {
+										"x": 673,
+										"y": 55,
+										"width": 56,
+										"height": 56
+									}
+								},
+								"children": []
+							},
+							{
 								"objectId": "7A440601-FA16-4F9C-9728-BBA2D764366F",
 								"kind": "group",
 								"name": "naviBg",
