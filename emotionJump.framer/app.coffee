@@ -704,21 +704,21 @@ closeArea1 = new Layer
 	superLayer: mainScreen
 	width: 750
 	height: 450
-	opacity: 0
+	opacity: 0.5
 
 closeArea2 = new Layer
 	superLayer: mainScreen
 	y: 450
 	width: 100
 	height: 450
-	opacity: 0
+	opacity:  0.5
 
 closeArea3 = new Layer
 	superLayer: mainScreen
 	y: 900
 	width: 750
 	height: 434
-	opacity: 0
+	opacity:  0.5
 
 closeArea1.on Events.Click, ->
 	emotionBg.animate ("vanish")
