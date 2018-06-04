@@ -566,25 +566,25 @@ infoChange = (hold)->
 				infoBg.opacity = 1
 				selectedText.text = "4"
 				selectedEmotion.image = "images/ku.png"
-				selectedText.color = "rgba(255,194,25,1)"
+				selectedText.color = "#e04023"
 				infoPositionControl()
 			when 3
 				infoBg.opacity = 1
 				selectedText.text = "4"
 				selectedEmotion.image = "images/angry.png"
-				selectedText.color = "rgba(255,194,25,1)"
+				selectedText.color = "#e04023"
 				infoPositionControl()
 			when 4
 				infoBg.opacity = 1
 				selectedText.text = "4"
 				selectedEmotion.image = "images/wow.png"
-				selectedText.color = "rgba(255,194,25,1)"
+				selectedText.color = "#e04023"
 				infoPositionControl()
 			when 5
 				infoBg.opacity = 1
 				selectedText.text = "4"
 				selectedEmotion.image = "images/likenormal.png"
-				selectedText.color = "rgba(252,103,52,1)"
+				selectedText.color = "#e04023"
 				infoPositionControl()
 		btstat = 1
 
@@ -662,6 +662,12 @@ hitArea.on Events.TouchEnd, ->
 			selectedText.color = "#e04023"
 			infoPositionControl()
 			btstat = 1
+			unitStat = 1
+			emotionStateSwitch(0)
+			if emotionBg.states.current.name == "vanish"
+				emotionBg.animate ("normal")
+				corner.animate("normal")
+				
 		else
 			if btstat == 1 && unitStat == 0
 				infoBg.opacity = 0
