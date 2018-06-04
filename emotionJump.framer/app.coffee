@@ -653,6 +653,8 @@ hitArea.on Events.TouchEnd, ->
 		emotionBg.animate ("vanish")
 		unitStat = 0
 		touchStat = 0
+		infoBg.opacity = 0
+		btstat = 0
 	else 
 		if unitStat == 0 && btstat == 0
 			infoBg.opacity = 1
@@ -668,10 +670,9 @@ hitArea.on Events.TouchEnd, ->
 				emotionBg.animate ("normal")
 				corner.animate("normal")
 				
-		else
-			if btstat == 1 && unitStat == 0
-				infoBg.opacity = 0
-				btstat = 0
+		else if unitStat == 0 && btstat == 1
+			infoBg.opacity = 0
+			btstat = 0
 
 emotionArea1.on Events.TouchEnd, ->
 	if unitStat == 1
@@ -698,6 +699,40 @@ emotionArea5.on Events.TouchEnd, ->
 		infoChange(5)
 		active(5)
 
+#补丁
+closeArea1 = new Layer
+	superLayer: mainScreen
+	width: 750
+	height: 450
+	opacity: 0
 
+closeArea2 = new Layer
+	superLayer: mainScreen
+	y: 450
+	width: 100
+	height: 450
+	opacity: 0
+
+closeArea3 = new Layer
+	superLayer: mainScreen
+	y: 900
+	width: 750
+	height: 434
+	opacity: 0
+
+closeArea1.on Events.Click, ->
+	emotionBg.animate ("vanish")
+	unitStat = 0
+	touchStat = 0
+
+closeArea2.on Events.Click, ->
+	emotionBg.animate ("vanish")
+	unitStat = 0
+	touchStat = 0
+
+closeArea3.on Events.Click, ->
+	emotionBg.animate ("vanish")
+	unitStat = 0
+	touchStat = 0
 	
 
