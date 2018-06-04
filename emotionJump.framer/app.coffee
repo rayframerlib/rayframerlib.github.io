@@ -702,23 +702,23 @@ emotionArea5.on Events.TouchEnd, ->
 #补丁
 closeArea1 = new Layer
 	superLayer: mainScreen
-	width: 750
-	height: 450
-	opacity: 0.5
+	width: 375 * ratio
+	height: 225 * ratio
+	opacity: 0
 
 closeArea2 = new Layer
 	superLayer: mainScreen
-	y: 450
-	width: 100
-	height: 450
-	opacity:  0.5
+	y: 225 * ratio
+	width: 50 * ratio
+	height: 225 * ratio
+	opacity:  0
 
 closeArea3 = new Layer
 	superLayer: mainScreen
-	y: 900
-	width: 750
-	height: 434
-	opacity:  0.5
+	y: 450 * ratio
+	width: 375 * ratio
+	height: 217 * ratio
+	opacity:  0
 
 closeArea1.on Events.Click, ->
 	emotionBg.animate ("vanish")
