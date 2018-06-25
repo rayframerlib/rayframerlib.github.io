@@ -8,3 +8,5 @@ vr = new VRComponent
 	back:   "images/back.jpg"
 	top:    "images/top.jpg"
 	bottom: "images/bottom.jpg"
+	mobilePanning: false
+	panning: false
