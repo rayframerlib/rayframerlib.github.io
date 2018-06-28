@@ -2,6 +2,8 @@
 skt = Framer.Importer.load("imported/forframer@2x", scale: 1)
 # Import file "forframer"
 
+skt.mainScreen.clip = true
+skt.mainScreen.center()
 skt.naviMask.opacity = 0
 skt.mainMask.opacity = 0
 skt.pageContainerLow.image = null
