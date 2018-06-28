@@ -4,6 +4,7 @@ skt = Framer.Importer.load("imported/forframer@2x", scale: 1)
 
 skt.mainScreen.clip = true
 skt.mainScreen.center()
+Framer.Extras.Hints.disable()
 skt.naviMask.opacity = 0
 skt.mainMask.opacity = 0
 skt.pageContainerLow.image = null
