@@ -1,5 +1,10 @@
-BodymovinLayer = require 'lottieLayer'
 
+mainScreen.clip = true
+mainScreen.width = 375
+mainScreen.height = 667
+mainScreen.center()
+
+BodymovinLayer = require 'lottieLayer'
 animLayer = new BodymovinLayer
 	superLayer: feedContent
 	jsonPath:'loading_rota.json'
