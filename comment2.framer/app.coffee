@@ -1,5 +1,8 @@
 Framer.Extras.Hints.disable()
 mainScreen.clip = true
+mainScreen.center = true
+mainScreen.width = 375
+mainScreen.height = 667
 secondLevel.clip = true
 dragDelegate.draggable.enabled = true
 dragDelegate.draggable.speedX = 0
