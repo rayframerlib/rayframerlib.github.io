@@ -1,6 +1,6 @@
 Framer.Extras.Hints.disable()
 mainScreen.clip = true
-mainScreen.center = true
+mainScreen.center()
 mainScreen.width = 375
 mainScreen.height = 667
 secondLevel.clip = true
