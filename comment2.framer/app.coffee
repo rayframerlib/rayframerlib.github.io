@@ -4,6 +4,8 @@ mainScreen.center()
 mainScreen.width = 375
 mainScreen.height = 667
 secondLevel.clip = true
+keyboard.y = 667
+keyboardCancel.visible = false
 dragDelegate.draggable.enabled = true
 dragDelegate.draggable.speedX = 0
 dragDelegate.draggable.constraints = {
@@ -12,7 +14,6 @@ dragDelegate.draggable.constraints = {
 	width: 375
 	height: 1380
 }
-
 
 handlerDelegate.draggable.enabled = true
 handlerDelegate.draggable.speedX = 0
@@ -81,6 +82,24 @@ secondGroup.on "change:y", ->
 buttonArea.on Events.Click, ->
 	secondGroup.animate
 		y: 0
+		options:
+			time: 0.5
+			curve: Spring(damping: 1.00)
+			
+keyboard.on Events.Click, ->
+	
+commentButton.on Events.Click, ->
+	keyboardCancel.visible = true
+	keyboard.animate
+		y: 267
+		options:
+			time: 0.5
+			curve: Spring(damping: 1.00)
+
+keyboardCancel.on Events.Click, ->
+	keyboardCancel.visible = false
+	keyboard.animate
+		y: 667
 		options:
 			time: 0.5
 			curve: Spring(damping: 1.00)
