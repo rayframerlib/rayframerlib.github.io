@@ -8,10 +8,11 @@ dragDelegate.draggable.enabled = true
 dragDelegate.draggable.speedX = 0
 dragDelegate.draggable.constraints = {
 	x: 0
-	y: -385
+	y: -387
 	width: 375
 	height: 1380
 }
+
 
 handlerDelegate.draggable.enabled = true
 handlerDelegate.draggable.speedX = 0
@@ -21,6 +22,7 @@ handlerDelegate.draggable.constraints = {
 	width: 375
 	height: 20
 }
+handlerDelegate.draggable.overdragScale = 1
 
 content.draggable.enabled = true
 content.draggable.speedX = 0
@@ -44,9 +46,11 @@ dragDelegate.on "change:y",->
 	if this.y <= 0
 		sContent.y = dragDelegate.y + 20
 		secondLevel.y = 65
+		dragDelegate.draggable.overdragScale = 0.5
 	else
 		secondLevel.y = dragDelegate.y + 65
 		sContent.y = 20
+		dragDelegate.draggable.overdragScale = 1
 
 dragDelegate.on Events.DragEnd, ->
 	handlerDelegate.y = 0
