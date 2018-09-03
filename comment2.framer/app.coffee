@@ -5,6 +5,7 @@ mainScreen.width = 375
 mainScreen.height = 667
 secondLevel.clip = true
 keyboard.y = 667
+keyboardMask.opacity = 0
 keyboardCancel.visible = false
 dragDelegate.draggable.enabled = true
 dragDelegate.draggable.speedX = 0
@@ -91,7 +92,12 @@ keyboard.on Events.Click, ->
 commentButton.on Events.Click, ->
 	keyboardCancel.visible = true
 	keyboard.animate
-		y: 267
+		y: 284
+		options:
+			time: 0.5
+			curve: Spring(damping: 1.00)
+	keyboardMask.animate
+		opacity: 1
 		options:
 			time: 0.5
 			curve: Spring(damping: 1.00)
@@ -103,4 +109,8 @@ keyboardCancel.on Events.Click, ->
 		options:
 			time: 0.5
 			curve: Spring(damping: 1.00)
-	
+	keyboardMask.animate
+		opacity: 0
+		options:
+			time: 0.5
+			curve: Spring(damping: 1.00)
