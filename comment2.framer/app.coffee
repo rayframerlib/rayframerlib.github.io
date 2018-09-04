@@ -87,7 +87,7 @@ buttonArea.on Events.Click, ->
 			time: 0.5
 			curve: Spring(damping: 1.00)
 			
-keyboard.on Events.Click, ->
+keyboard.on Events.Click, -> 
 	
 commentButton.on Events.Click, ->
 	keyboardCancel.visible = true
