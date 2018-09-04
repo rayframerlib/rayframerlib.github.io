@@ -11,9 +11,9 @@ dragDelegate.draggable.enabled = true
 dragDelegate.draggable.speedX = 0
 dragDelegate.draggable.constraints = {
 	x: 0
-	y: -387
+	y: -307
 	width: 375
-	height: 1380
+	height: 1300
 }
 
 handlerDelegate.draggable.enabled = true
@@ -39,19 +39,19 @@ content.draggable.constraints = {
 handlerDelegate.on "change:y", ->
 	dragDelegate.animateStop()
 	if this.y > 0
-		secondLevel.y = this.y + 65
+		secondLevel.y = this.y + 20
 	else
-		secondLevel.y = 65
+		secondLevel.y = 20
 
 dragDelegate.on "change:y",->
 	handlerDelegate.animateStop()
 	if this.y <= 0
-		sContent.y = dragDelegate.y + 20
-		secondLevel.y = 65
+		sContent.y = dragDelegate.y + 45
+		secondLevel.y = 20
 		dragDelegate.draggable.overdragScale = 0.5
 	else
-		secondLevel.y = dragDelegate.y + 65
-		sContent.y = 20
+		secondLevel.y = dragDelegate.y + 20
+		sContent.y = 45
 		dragDelegate.draggable.overdragScale = 1
 
 dragDelegate.on Events.DragEnd, ->
@@ -83,6 +83,13 @@ secondGroup.on "change:y", ->
 buttonArea.on Events.Click, ->
 	secondGroup.animate
 		y: 0
+		options:
+			time: 0.5
+			curve: Spring(damping: 1.00)
+
+cancelButton.on Events.Click, ->
+	secondGroup.animate
+		y: 667
 		options:
 			time: 0.5
 			curve: Spring(damping: 1.00)
