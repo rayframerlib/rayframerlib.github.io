@@ -1584,7 +1584,7 @@
             "sepiaEnabled" : 0,
             "targetName" : "keyboardMask",
             "top" : 0,
-            "visible" : false,
+            "visible" : true,
             "width" : 375,
             "widthFactor" : null
           },
@@ -1850,7 +1850,7 @@
             "sepiaEnabled" : 0,
             "targetName" : "keyboard",
             "top" : null,
-            "visible" : false,
+            "visible" : true,
             "width" : 375,
             "widthFactor" : null
           },
@@ -1936,7 +1936,7 @@
             "sepiaEnabled" : 0,
             "targetName" : "keyboardCancel",
             "top" : 0,
-            "visible" : false,
+            "visible" : true,
             "width" : 375,
             "widthFactor" : null
           }
