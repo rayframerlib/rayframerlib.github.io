@@ -10,6 +10,8 @@ feed.draggable.constraints = {
 }
 feed.draggable.overdragScale = 0.4
 
+scale.text = feed.draggable.overdragScale
+
 feedDown = new Animation feed,
 	y: mainScreen.height
 	options:
@@ -55,17 +57,17 @@ $110Button.on Events.Click, ->
 	setPosition(110)
 	current.text = "110"
 
-$150Button.on Events.Click, ->
+$140Button.on Events.Click, ->
 	feed.off Events.DragEnd
 	feed.off "change:y"
-	setPosition(200)
-	current.text = "200"
+	setPosition(140)
+	current.text = "140"
 
-$200Button.on Events.Click, ->
+$180Button.on Events.Click, ->
 	feed.off Events.DragEnd
 	feed.off "change:y"
-	setPosition(250)
-	current.text = "250"
+	setPosition(180)
+	current.text = "180"
 
 $1_3Button.on Events.Click, ->
 	feed.off Events.DragEnd
