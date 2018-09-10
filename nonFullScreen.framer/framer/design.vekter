@@ -169,9 +169,7 @@
                 "top" : null,
                 "visible" : true,
                 "width" : 45,
-                "widthFactor" : null,
-                "x" : 79,
-                "y" : 43
+                "widthFactor" : null
               }
             ],
             "clip" : false,
@@ -796,9 +794,118 @@
                 "top" : null,
                 "visible" : true,
                 "width" : 22,
-                "widthFactor" : null,
-                "x" : 18,
-                "y" : 33
+                "widthFactor" : null
+              },
+              {
+                "__class" : "TextNode",
+                "autoSize" : true,
+                "blendingEnabled" : 0,
+                "blendingMode" : "normal",
+                "blur" : 12,
+                "blurEnabled" : 0,
+                "blurType" : "layer",
+                "bottom" : null,
+                "brightness" : 100,
+                "brightnessEnabled" : 0,
+                "centerAnchorX" : 0.92266666666666663,
+                "centerAnchorY" : 0.5,
+                "constraintsLocked" : false,
+                "contrast" : 100,
+                "contrastEnabled" : 0,
+                "editable" : false,
+                "exportOptions" : [
+
+                ],
+                "grayscale" : 0,
+                "grayScaleEnabled" : 0,
+                "height" : 15,
+                "heightFactor" : null,
+                "hueRotate" : 0,
+                "hueRotateEnabled" : 0,
+                "id" : "ol8Ckm6AP",
+                "invert" : 0,
+                "invertEnabled" : 0,
+                "left" : null,
+                "locked" : false,
+                "name" : "scale",
+                "opacity" : 1,
+                "parentid" : "IMPMaGQqw",
+                "right" : 18,
+                "rotation" : 0,
+                "saturate" : 100,
+                "saturateEnabled" : 0,
+                "sepia" : 0,
+                "sepiaEnabled" : 0,
+                "shadows" : [
+
+                ],
+                "styledText" : {
+                  "__class" : "StyledTextDraft",
+                  "blocks" : [
+                    {
+                      "data" : {
+                        "emptyStyle" : [
+                          "FONT:SFUIText-Medium",
+                          "COLOR:hsl(202, 100%, 38%)",
+                          "SIZE:13",
+                          "LETTERSPACING:0",
+                          "LINEHEIGHT:1.2"
+                        ]
+                      },
+                      "depth" : 0,
+                      "entityRanges" : [
+
+                      ],
+                      "inlineStyleRanges" : [
+                        {
+                          "length" : 3,
+                          "offset" : 0,
+                          "style" : "FONT:SFUIText-Medium"
+                        },
+                        {
+                          "length" : 3,
+                          "offset" : 0,
+                          "style" : "COLOR:hsl(202, 100%, 38%)"
+                        },
+                        {
+                          "length" : 3,
+                          "offset" : 0,
+                          "style" : "SIZE:13"
+                        },
+                        {
+                          "length" : 3,
+                          "offset" : 0,
+                          "style" : "LETTERSPACING:0"
+                        },
+                        {
+                          "length" : 3,
+                          "offset" : 0,
+                          "style" : "LINEHEIGHT:1.2"
+                        }
+                      ],
+                      "key" : "dgjge",
+                      "text" : "110",
+                      "type" : "unstyled"
+                    }
+                  ],
+                  "cached" : {
+                    "html" : "<span data-offset-key=\"dgjge-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">110<\/span><\/span>",
+                    "os" : "10_13",
+                    "size" : {
+                      "height" : 15,
+                      "width" : 22
+                    },
+                    "width" : 0
+                  },
+                  "entityMap" : {
+
+                  }
+                },
+                "targetName" : "scale",
+                "top" : null,
+                "visible" : true,
+                "width" : 22,
+                "widthFactor" : null
               }
             ],
             "clip" : false,
@@ -1068,9 +1175,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 40,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1126,10 +1231,10 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "$110Button",
-                "top" : 10,
+                "top" : null,
                 "visible" : true,
                 "width" : 44,
-                "widthFactor" : null
+                "widthFactor" : 0.11733333333333333
               },
               {
                 "__class" : "FrameNode",
@@ -1251,16 +1356,16 @@
                             }
                           ],
                           "key" : "7eurn",
-                          "text" : "200dp",
+                          "text" : "140dp",
                           "type" : "unstyled"
                         }
                       ],
                       "cached" : {
-                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">200dp<\/span><\/span>",
+                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">140dp<\/span><\/span>",
                         "os" : "10_13",
                         "size" : {
                           "height" : 15,
-                          "width" : 43
+                          "width" : 41
                         },
                         "width" : 0
                       },
@@ -1271,10 +1376,8 @@
                     "targetName" : null,
                     "top" : null,
                     "visible" : true,
-                    "width" : 43,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "width" : 41,
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1313,7 +1416,7 @@
                 "invertEnabled" : 0,
                 "left" : null,
                 "locked" : false,
-                "name" : "150Button",
+                "name" : "140Button",
                 "opacity" : 1,
                 "parentid" : "adHOXlHqe",
                 "radius" : 0,
@@ -1329,11 +1432,11 @@
                 "saturateEnabled" : 0,
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
-                "targetName" : "$150Button",
-                "top" : 10,
+                "targetName" : "$140Button",
+                "top" : null,
                 "visible" : true,
                 "width" : 44,
-                "widthFactor" : null
+                "widthFactor" : 0.11733333333333333
               },
               {
                 "__class" : "FrameNode",
@@ -1455,16 +1558,16 @@
                             }
                           ],
                           "key" : "7eurn",
-                          "text" : "250dp",
+                          "text" : "180dp",
                           "type" : "unstyled"
                         }
                       ],
                       "cached" : {
-                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">250dp<\/span><\/span>",
+                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">180dp<\/span><\/span>",
                         "os" : "10_13",
                         "size" : {
                           "height" : 15,
-                          "width" : 42
+                          "width" : 41
                         },
                         "width" : 0
                       },
@@ -1475,10 +1578,8 @@
                     "targetName" : null,
                     "top" : null,
                     "visible" : true,
-                    "width" : 42,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "width" : 41,
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1517,7 +1618,7 @@
                 "invertEnabled" : 0,
                 "left" : null,
                 "locked" : false,
-                "name" : "200Button",
+                "name" : "180Button",
                 "opacity" : 1,
                 "parentid" : "adHOXlHqe",
                 "radius" : 0,
@@ -1533,11 +1634,11 @@
                 "saturateEnabled" : 0,
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
-                "targetName" : "$200Button",
-                "top" : 10,
+                "targetName" : "$180Button",
+                "top" : null,
                 "visible" : true,
                 "width" : 44,
-                "widthFactor" : null
+                "widthFactor" : 0.11733333333333333
               },
               {
                 "__class" : "FrameNode",
@@ -1680,9 +1781,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 21,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1738,10 +1837,10 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "$1_3Button",
-                "top" : 10,
+                "top" : null,
                 "visible" : true,
                 "width" : 44,
-                "widthFactor" : null
+                "widthFactor" : 0.11733333333333333
               },
               {
                 "__class" : "FrameNode",
@@ -1884,9 +1983,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 21,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1942,10 +2039,10 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "$1_4Button",
-                "top" : 10,
+                "top" : null,
                 "visible" : true,
                 "width" : 44,
-                "widthFactor" : null
+                "widthFactor" : 0.11733333333333333
               },
               {
                 "__class" : "FrameNode",
@@ -2088,9 +2185,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 21,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -2146,10 +2241,10 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "$1_5Button",
-                "top" : 10,
+                "top" : null,
                 "visible" : true,
                 "width" : 44,
-                "widthFactor" : null
+                "widthFactor" : 0.11733333333333333
               }
             ],
             "clip" : false,
