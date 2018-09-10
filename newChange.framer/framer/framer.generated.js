@@ -628,7 +628,7 @@ if (window.Framer) {window.Framer.Defaults.DeviceView = {"deviceScale":"fit","se
 }
 if (window.Framer) {window.Framer.Defaults.DeviceComponent = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-7-black","contentScale":1,"hideBezel":true,"orientation":0};
 }
-window.FramerStudioInfo = {"deviceImagesUrl":"\/_server\/resources\/DeviceImages","documentTitle":"newChange.framer"};
+window.FramerStudioInfo = {"deviceImagesUrl":"\/\/resources.framerjs.com\/static\/DeviceResources","documentTitle":"newChange.framer"};
 
 Framer.Device = new Framer.DeviceView();
 Framer.Device.setupContext();

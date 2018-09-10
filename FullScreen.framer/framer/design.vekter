@@ -169,9 +169,7 @@
                 "top" : null,
                 "visible" : true,
                 "width" : 45,
-                "widthFactor" : null,
-                "x" : 79,
-                "y" : 43
+                "widthFactor" : null
               }
             ],
             "clip" : false,
@@ -796,9 +794,7 @@
                 "top" : null,
                 "visible" : true,
                 "width" : 22,
-                "widthFactor" : null,
-                "x" : 18,
-                "y" : 33
+                "widthFactor" : null
               }
             ],
             "clip" : false,
@@ -1068,9 +1064,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 40,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1272,9 +1266,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 43,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1476,9 +1468,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 42,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1680,9 +1670,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 21,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -1884,9 +1872,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 21,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -2088,9 +2074,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 21,
-                    "widthFactor" : null,
-                    "x" : 21,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,

@@ -8,6 +8,7 @@ feed.draggable.constraints = {
 	width: mainScreen.width
 	height: 2 * feed.height - (mainScreen.height - navigationBar.height - bottomBar.height - 20)
 }
+feed.draggable.overdragScale = 0.4
 
 feedDown = new Animation feed,
 	y: mainScreen.height
