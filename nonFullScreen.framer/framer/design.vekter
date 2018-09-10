@@ -1356,16 +1356,16 @@
                             }
                           ],
                           "key" : "7eurn",
-                          "text" : "135dp",
+                          "text" : "125dp",
                           "type" : "unstyled"
                         }
                       ],
                       "cached" : {
-                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">135dp<\/span><\/span>",
+                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">125dp<\/span><\/span>",
                         "os" : "10_13",
                         "size" : {
                           "height" : 15,
-                          "width" : 41
+                          "width" : 40
                         },
                         "width" : 0
                       },
@@ -1376,7 +1376,7 @@
                     "targetName" : null,
                     "top" : null,
                     "visible" : true,
-                    "width" : 41,
+                    "width" : 40,
                     "widthFactor" : null
                   }
                 ],
@@ -1558,12 +1558,12 @@
                             }
                           ],
                           "key" : "7eurn",
-                          "text" : "180dp",
+                          "text" : "130dp",
                           "type" : "unstyled"
                         }
                       ],
                       "cached" : {
-                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">180dp<\/span><\/span>",
+                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">130dp<\/span><\/span>",
                         "os" : "10_13",
                         "size" : {
                           "height" : 15,
@@ -1729,47 +1729,47 @@
                           ],
                           "inlineStyleRanges" : [
                             {
-                              "length" : 3,
+                              "length" : 5,
                               "offset" : 0,
                               "style" : "FONT:SFUIText-Medium"
                             },
                             {
-                              "length" : 3,
+                              "length" : 5,
                               "offset" : 0,
                               "style" : "COLOR:hsl(202, 100%, 38%)"
                             },
                             {
-                              "length" : 3,
+                              "length" : 5,
                               "offset" : 0,
                               "style" : "LETTERSPACING:0"
                             },
                             {
-                              "length" : 3,
+                              "length" : 5,
                               "offset" : 0,
                               "style" : "LINEHEIGHT:1.2"
                             },
                             {
-                              "length" : 3,
+                              "length" : 5,
                               "offset" : 0,
                               "style" : "ALIGN:center"
                             },
                             {
-                              "length" : 3,
+                              "length" : 5,
                               "offset" : 0,
                               "style" : "SIZE:13"
                             }
                           ],
                           "key" : "7eurn",
-                          "text" : "1\/3",
+                          "text" : "135dp",
                           "type" : "unstyled"
                         }
                       ],
                       "cached" : {
-                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">1\/3<\/span><\/span>",
+                        "html" : "<span data-offset-key=\"7eurn-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(202, 100%, 38%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">135dp<\/span><\/span>",
                         "os" : "10_13",
                         "size" : {
                           "height" : 15,
-                          "width" : 21
+                          "width" : 41
                         },
                         "width" : 0
                       },
@@ -1780,7 +1780,7 @@
                     "targetName" : null,
                     "top" : null,
                     "visible" : true,
-                    "width" : 21,
+                    "width" : 41,
                     "widthFactor" : null
                   }
                 ],
