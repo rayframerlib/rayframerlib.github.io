@@ -60,8 +60,8 @@ $110Button.on Events.Click, ->
 $140Button.on Events.Click, ->
 	feed.off Events.DragEnd
 	feed.off "change:y"
-	setPosition(140)
-	current.text = "140"
+	setPosition(135)
+	current.text = "135"
 
 $180Button.on Events.Click, ->
 	feed.off Events.DragEnd
