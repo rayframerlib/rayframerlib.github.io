@@ -15,7 +15,7 @@ feedContent.draggable.enabled = true
 feedContent.draggable.speedX = 0
 feedContent.draggable.constraints = {
 	x: 0
-	y: -1356
+	y: -1354
 	width: 375
 	height: 3500
 }
