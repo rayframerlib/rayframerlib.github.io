@@ -5,6 +5,13 @@ mainScreen = new Layer
 	height: 667
 	clip: true
 
+area = new Layer
+	width: 375
+	y: 64
+	height: 559
+	clip: true
+	backgroundColor: "transparent"
+
 bg = new Layer
 	superLayer: mainScreen
 	width: 375
@@ -41,7 +48,7 @@ down = () ->
 	Utils.delay 8, -> mainScreen.on Events.Click, -> down1()
 	for i in [0...20]
 		packet = new Layer
-			superLayer: mainScreen
+			superLayer: area
 			width: 38
 			height: 48
 			scale: Utils.randomNumber(0.7,0.9)
@@ -51,7 +58,7 @@ down = () ->
 		
 		packetDown = new Animation packet,
 			x: Utils.randomNumber(-32,375)
-			y: screen.height
+			y: area.height
 			options:
 				curve: Bezier.linear
 				time: 4
