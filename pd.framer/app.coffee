@@ -1,3 +1,5 @@
+
+
 mainScreen = new Layer
 	width: 375
 	height: 667
@@ -31,23 +33,35 @@ LayerRotate = (layer, i) ->
 	rotateLeft.on Events.AnimationEnd, ->
 		rotateRight.start()
 
-mainScreen.on Events.Click, ->
-	for i in [0...24]
+down1 = () ->
+	down()
+
+down = () ->
+	mainScreen.off Events.Click
+	Utils.delay 8, -> mainScreen.on Events.Click, -> down1()
+	for i in [0...20]
 		packet = new Layer
 			superLayer: mainScreen
 			width: 38
 			height: 48
-			scale: 0.8
+			scale: Utils.randomNumber(0.7,0.9)
 			image: "images/pk.png"
 			x: Utils.randomNumber(-32,375)
 			y: -48
+		
 		packetDown = new Animation packet,
-			x: Utils.randomNumber(-164,607)
+			x: Utils.randomNumber(-32,375)
 			y: screen.height
 			options:
 				curve: Bezier.linear
-				time: 3
+				time: 4
 				delay: i*0.2
 		packetDown.start()
 		LayerRotate(packet, i)
 		LayerDestroy(packet, packetDown)
+
+mainScreen.on Events.Click, ->
+	down()
+
+		
+		
