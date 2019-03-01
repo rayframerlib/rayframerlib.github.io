@@ -61,8 +61,8 @@ down = () ->
 			y: area.height
 			options:
 				curve: Bezier.linear
-				time: 4
-				delay: i*0.2
+				time: 1.8
+				delay: i*0.1
 		packetDown.start()
 		LayerRotate(packet, i)
 		LayerDestroy(packet, packetDown)
