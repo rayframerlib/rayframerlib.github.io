@@ -1,4 +1,5 @@
-mainScreen.center()
+mainScreen.y = 0
+mainScreen.centerX()
 mainScreen.clip = true
 mainScreen.width = 414
 mainScreen.height = 736
