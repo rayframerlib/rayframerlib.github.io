@@ -1,4 +1,5 @@
 mainScreen.center()
+mainScreen.clip = true
 
 Framer.Defaults.Animation = 
 	time: 0.5
