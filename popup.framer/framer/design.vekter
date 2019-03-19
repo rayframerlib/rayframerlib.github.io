@@ -139,7 +139,7 @@
             "brightness" : 100,
             "brightnessEnabled" : 0,
             "centerAnchorX" : 0.5,
-            "centerAnchorY" : 0.87907608695652173,
+            "centerAnchorY" : 0.87635869565217395,
             "children" : [
               {
                 "__class" : "FrameNode",
@@ -253,7 +253,7 @@
             "fillType" : "image",
             "grayscale" : 0,
             "grayScaleEnabled" : 0,
-            "height" : 80,
+            "height" : 84,
             "heightFactor" : null,
             "hueRotate" : 0,
             "hueRotateEnabled" : 0,
@@ -262,7 +262,7 @@
             "intrinsicWidth" : 609,
             "invert" : 0,
             "invertEnabled" : 0,
-            "left" : 14,
+            "left" : 4,
             "locked" : false,
             "name" : "pop",
             "opacity" : 1,
@@ -274,7 +274,7 @@
             "radiusPerCorner" : false,
             "radiusTopLeft" : 0,
             "radiusTopRight" : 0,
-            "right" : 14,
+            "right" : 4,
             "rotation" : 0,
             "saturate" : 100,
             "saturateEnabled" : 0,
@@ -283,7 +283,7 @@
             "targetName" : "pop",
             "top" : null,
             "visible" : true,
-            "width" : 386,
+            "width" : 406,
             "widthFactor" : null
           },
           {
