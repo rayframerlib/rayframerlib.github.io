@@ -21,7 +21,7 @@ marker = new Layer
 	x: 0
 
 content.on "change:y", ->
-	if this.y >= -400
+	if this.y >= -564
 		marker.x = 0
 	else
 		marker.x = 1
