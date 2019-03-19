@@ -1,5 +1,7 @@
 mainScreen.center()
 mainScreen.clip = true
+mainScreen.width = 414
+mainScreen.height = 736
 
 Framer.Defaults.Animation = 
 	time: 0.5
