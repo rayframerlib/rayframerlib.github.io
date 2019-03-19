@@ -1,7 +1,7 @@
 mainScreen.center()
 
 Framer.Defaults.Animation = 
-	time: 0.4
+	time: 0.5
 	curve: Spring(damping: 1)
 
 content.draggable.enabled = true
