@@ -20,6 +20,7 @@ marker = new Layer
 	visible: false
 	x: 0
 
+headerBg.opacity = 0s
 secondHeader.opacity = 0
 
 content.on "change:y", ->
