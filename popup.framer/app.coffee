@@ -20,7 +20,11 @@ marker = new Layer
 	visible: false
 	x: 0
 
+secondHeader.opacity = 0
+
 content.on "change:y", ->
+	secondHeader.opacity = Utils.modulate(this.y, [9, -16], [0, 1],false)
+	headerBg.opacity = Utils.modulate(this.y, [16, 9], [0, 1],false)
 	if this.y >= -564
 		marker.x = 0
 	else
