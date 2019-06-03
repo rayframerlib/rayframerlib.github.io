@@ -4,7 +4,10 @@ mainScreen.width = 414
 mainScreen.height = 736
 
 mainScreen.clip = true
-mainScreen.center()
+mainScreen.centerX()
+
+if Screen.width < 414
+	mainScreen.scale = Screen.width / 414
 
 content.draggable.enabled = true
 content.draggable.speedX = 0
