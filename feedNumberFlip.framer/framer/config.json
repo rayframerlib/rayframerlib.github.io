@@ -2,11 +2,11 @@
   "orientation" : 0,
   "updateDelay" : 0.29999999999999999,
   "designModeSelected" : 0,
-  "cachedDeviceHeight" : 736,
+  "cachedDeviceHeight" : 812,
   "contentScale" : 1,
   "fullScreen" : false,
-  "cachedDeviceWidth" : 414,
-  "deviceType" : "apple-iphone-8-plus-space-gray",
+  "cachedDeviceWidth" : 375,
+  "deviceType" : "apple-iphone-x-space-gray",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
 
@@ -16,7 +16,7 @@
   "selectedHand" : "",
   "showBezel" : 0,
   "foldedCodeRanges" : [
-    "{518, 2680}"
+    "{574, 2680}"
   ],
   "deviceScale" : "fit"
 }

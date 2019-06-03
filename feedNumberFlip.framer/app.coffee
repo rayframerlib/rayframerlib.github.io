@@ -1,14 +1,15 @@
 Framer.Extras.Hints.disable()
 
 mainScreen.width = 414
-mainScreen.height = 736
+mainScreen.height = 896
 
 mainScreen.clip = true
-mainScreen.centerX()
+mainScreen.center()
 mainScreen.y = 0
 
 if Screen.width < 414
 	mainScreen.scale = Screen.width / 414
+mainScreen.y = (Screen.height - mainScreen.height) / 2
 
 content.draggable.enabled = true
 content.draggable.speedX = 0
@@ -18,6 +19,8 @@ content.draggable.constraints = {
 	width: 414
 	height: 2 * content.height - (mainScreen.height - navigationBar.height - bottomBar.height)
 }
+
+
 
 #RandomFlipNumber 数字翻页模块
 class RandomFlipNumber extends Layer
