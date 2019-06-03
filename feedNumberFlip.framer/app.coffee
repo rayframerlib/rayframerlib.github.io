@@ -161,29 +161,31 @@ class Button extends Layer
 		numSize = @options.numSize
 		buttonImg = @options.buttonImg
 		
-		number = new RandomFlipNumber
+		@number = new RandomFlipNumber
 			superLayer: this
 			num: num
 			numSize: 14
 			numColor: "#636363"
 			backgroundColor: "transparent"
 
-		number.centerY()
+		@number.centerY()
 			
-		buttonImg = new Layer
+		@buttonImg = new Layer
 			superLayer: this
 			size: 18
 			backgroundColor: "transparent"
 			image: buttonImg
 		
-		buttonImg.centerY()
-		buttonImg.x = (138 - (buttonImg.width + number.width + 6)) / 2
-		number.x = (138 - (buttonImg.width + number.width + 6)) / 2 + buttonImg.width + 6
+		@buttonImg.centerY()
 
 		this.on Events.TouchStart, ->
 			this.backgroundColor = "#eeeeee"
 		this.on Events.TouchEnd, ->
 			this.backgroundColor = "#ffffff"
+			
+	centerNum: () ->
+		@buttonImg.x = (138 - (@buttonImg.width + @number.width + 6)) / 2
+		@number.x = (138 - (@buttonImg.width + @number.width + 6)) / 2 + @buttonImg.width + 6
 		
 
 for layer in likes.subLayers
@@ -193,19 +195,23 @@ for layer in likes.subLayers
 		buttonImg: "images/unlike.png"
 		x: 0
 		y: 0
+	
+	button.centerNum()
 
 for layer in comments.subLayers
 	button = new Button
 		superLayer: layer
-		num: Math.round(Utils.randomNumber(1000, 1800))
+		num: Math.round(Utils.randomNumber(200, 900))
 		buttonImg: "images/comment.png"
 		x: 0
 		y: 0
-
+	button.centerNum()
+	
 for layer in retweets.subLayers
 	button = new Button
 		superLayer: layer
-		num: Math.round(Utils.randomNumber(1000, 1800))
+		num: Math.round(Utils.randomNumber(200, 900))
 		buttonImg: "images/retweet.png"
 		x: 0
 		y: 0
+	button.centerNum()
