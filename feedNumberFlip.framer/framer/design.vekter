@@ -45,14 +45,14 @@
             "borderStyle" : "solid",
             "borderTop" : 1,
             "borderWidth" : 1,
-            "bottom" : -1322,
+            "bottom" : -1319,
             "boxShadows" : [
 
             ],
             "brightness" : 100,
             "brightnessEnabled" : 0,
             "centerAnchorX" : 0.5,
-            "centerAnchorY" : 1.4422554347826086,
+            "centerAnchorY" : 1.4364005412719891,
             "children" : [
               {
                 "__class" : "FrameNode",
