@@ -19,6 +19,7 @@ content.draggable.constraints = {
 }
 
 print mainScreen.y
+print Screen.frame
 
 #RandomFlipNumber 数字翻页模块
 class RandomFlipNumber extends Layer
