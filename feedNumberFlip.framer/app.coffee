@@ -3,6 +3,7 @@ Framer.Extras.Hints.disable()
 mainScreen.width = 414
 mainScreen.height = 736
 
+mainScreen.clip = true
 mainScreen.center()
 
 content.draggable.enabled = true
@@ -174,20 +175,19 @@ class Button extends Layer
 			image: buttonImg
 		
 		buttonImg.centerY()
-		
-		buttonImg.x = (138 - (buttonImg.width + 34 + 6)) / 2
-		number.x = (138 - (buttonImg.width + 34 + 6)) / 2 + buttonImg.width + 6
+		buttonImg.x = (138 - (buttonImg.width + number.width + 6)) / 2
+		number.x = (138 - (buttonImg.width + number.width + 6)) / 2 + buttonImg.width + 6
 
-		this.on Events.MouseDown, ->
+		this.on Events.TouchStart, ->
 			this.backgroundColor = "#eeeeee"
-		this.on Events.MouseUp, ->
+		this.on Events.TouchEnd, ->
 			this.backgroundColor = "#ffffff"
 		
 
 for layer in likes.subLayers
 	button = new Button
 		superLayer: layer
-		num: Math.round(Utils.randomNumber(5000, 9000))
+		num: Math.round(Utils.randomNumber(1000, 1800))
 		buttonImg: "images/unlike.png"
 		x: 0
 		y: 0
@@ -195,7 +195,7 @@ for layer in likes.subLayers
 for layer in comments.subLayers
 	button = new Button
 		superLayer: layer
-		num: Math.round(Utils.randomNumber(1000, 2000))
+		num: Math.round(Utils.randomNumber(1000, 1800))
 		buttonImg: "images/comment.png"
 		x: 0
 		y: 0
@@ -203,7 +203,7 @@ for layer in comments.subLayers
 for layer in retweets.subLayers
 	button = new Button
 		superLayer: layer
-		num: Math.round(Utils.randomNumber(1000, 2000))
+		num: Math.round(Utils.randomNumber(1000, 1800))
 		buttonImg: "images/retweet.png"
 		x: 0
 		y: 0
