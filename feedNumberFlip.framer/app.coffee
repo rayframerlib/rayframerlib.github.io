@@ -14,6 +14,8 @@ content.draggable.constraints = {
 	height: 2 * content.height - (mainScreen.height - navigationBar.height - bottomBar.height)
 }
 
+
+
 #RandomFlipNumber 数字翻页模块
 class RandomFlipNumber extends Layer
 	constructor: (@options = {}) ->
