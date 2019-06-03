@@ -3,7 +3,12 @@ Framer.Extras.Hints.disable()
 mainScreen.width = 414
 mainScreen.height = 736
 
+mainScreen.clip = true
 mainScreen.center()
+
+if Screen.width < 414
+	mainScreen.scale = Screen.width / 414
+mainScreen.y = (Screen.height - mainScreen.height) / 2
 
 content.draggable.enabled = true
 content.draggable.speedX = 0
@@ -31,7 +36,7 @@ class RandomFlipNumber extends Layer
 		@options.flat ?= true
 		@options.animOption ?= 
 			curve: Spring(damping: 1)
-			time: 0.5
+			time: 1
 		
 		super @options
 		

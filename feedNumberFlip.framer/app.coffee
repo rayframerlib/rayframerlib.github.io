@@ -5,7 +5,6 @@ mainScreen.height = 739
 
 mainScreen.clip = true
 mainScreen.center()
-mainScreen.y = 0
 
 if Screen.width < 414
 	mainScreen.scale = Screen.width / 414
