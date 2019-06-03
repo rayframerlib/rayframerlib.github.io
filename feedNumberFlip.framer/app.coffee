@@ -5,6 +5,7 @@ mainScreen.height = 736
 
 mainScreen.clip = true
 mainScreen.centerX()
+mainScreen.y = 0
 
 if Screen.width < 414
 	mainScreen.scale = Screen.width / 414
@@ -18,8 +19,9 @@ content.draggable.constraints = {
 	height: 2 * content.height - (mainScreen.height - navigationBar.height - bottomBar.height)
 }
 
-print mainScreen.y
+print mainScreen.frame
 print Screen.frame
+print document
 
 #RandomFlipNumber 数字翻页模块
 class RandomFlipNumber extends Layer
