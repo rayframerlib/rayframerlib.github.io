@@ -29,14 +29,15 @@ content.on "change:y", ->
 class RandomFlipNumber extends Layer
 	constructor: (@options = {}) ->
 		@options.width ?= 16
-		@options.height ?= 16
+		@options.height ?= 24
 		@options.num ?= 31
 		@options.numSize ?= 12
 		@options.backgroundColor ?= "rgba(255, 255, 255, 1)"
 		@options.flat ?= true
+		@options.clip ?= true
 		@options.animOption ?= 
-			curve: Spring(damping: 1)
-			time: 1
+			curve: "ease-in-out"
+			time: 0.3
 		
 		super @options
 		
@@ -61,46 +62,46 @@ class RandomFlipNumber extends Layer
 		@textFirst.centerY()
 		@textSecond.centerY()
 		
-		higherPositionY = @textFirst.y - @textFirst.height / 2
-		lowerPositionY = @textFirst.y + @textFirst.height / 2
+		higherPositionY = @textFirst.y - @textFirst.height
+		lowerPositionY = @textFirst.y + @textFirst.height
 		originY = @textFirst.y
 		
 		#元素状态设置
 		@textFirst.states =
 			upVanish:
 				y: higherPositionY
-				rotationX: -90
+# 				rotationX: -90
 				opacity: 0
 				animationOptions: animOption
 			
 			lowVanish:
 				y: lowerPositionY
-				rotationX: 90
+# 				rotationX: 90
 				opacity: 0
 				animationOptions: animOption
 				
 			show:
 				y: originY
-				rotationX: 0
+# 				rotationX: 0
 				opacity: 1
 				animationOptions: animOption
 		
 		@textSecond.states =
 			upVanish:
 				y: higherPositionY
-				rotationX: -90
+# 				rotationX: -90
 				opacity: 0
 				animationOptions: animOption
 			
 			lowVanish:
 				y: lowerPositionY
-				rotationX: 90
+# 				rotationX: 90
 				opacity: 0
 				animationOptions: animOption
 				
 			show:
 				y: originY
-				rotationX: 0
+# 				rotationX: 0
 				opacity: 1
 				animationOptions: animOption
 		
@@ -110,7 +111,7 @@ class RandomFlipNumber extends Layer
 		
 		#数字随机时间循环逻辑
 		numSwitchCycle = (layer1, layer2) ->
-			time = Utils.randomNumber(0, 4)
+			time = Utils.randomNumber(2, 8)
 			Utils.delay time, ->
 				layer1.animate("upVanish")
 				reporter = layer2.animate("show")
