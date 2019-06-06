@@ -100,7 +100,7 @@ class Jumper extends Layer
 		this.x = this.x + content.x + jumpers.x + this.superLayer.x
 		this.y = this.y + content.y + jumpers.y + this.superLayer.y
 		this.superLayer = mainScreen
-		jumpTime = (this.y - 36) / 600
+		jumpTime = Math.abs((this.y - 36) / 800)
 		animateX = this.animate
 			x: 148
 			options:
