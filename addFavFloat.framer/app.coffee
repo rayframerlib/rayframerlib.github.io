@@ -100,41 +100,66 @@ class Jumper extends Layer
 		this.x = this.x + content.x + jumpers.x + this.superLayer.x
 		this.y = this.y + content.y + jumpers.y + this.superLayer.y
 		this.superLayer = mainScreen
-		animateX = this.animate
-			x: 148
+		jumpTime = 0.45
+		vanishTime = 0.3
+# 		animateX = this.animate
+# 			x: 148
+# 			options:
+# 				time: jumpTime
+# 				curve: 'ease-out'
+
+		animateY = new Animation this,	
+			y: 32
 			options:
-				time: 0.5
-				curve: 'ease-out'
-				
-		animateY = this.animate		
-			y: 36
-			options:
-				time: 0.5
-				curve: 'ease-in'
+				time: jumpTime
+				curve: "ease-in-out"
+		
+		animateY.on Events.AnimationStart, (() ->
+			originX = this.x
+			originY = this.y
+			this.on "change:y", ->
+				yToFunction = Utils.modulate(this.y, [originY, 36],[-2, 0], true)
+				this.x = Utils.modulate(Math.sqrt(1 - Math.pow(yToFunction, 2) / 4), [0, 1], [originX, 148])
+			).bind(this)
+		
+		animateY.on Events.AnimationEnd, (() ->
+			this.off "change:y"
+			).bind(this)
+		animateY.start()
 		
 		animateScaleIn = this.animate
 			scale: 1.4
 			options:
-				time: 0.25
+				time: jumpTime / 2
 				curve: 'ease-out'
 		
 		animateScaleIn.on Events.AnimationEnd, (() ->
 			animateScaleOut = this.animate
-				scale: 0.2
-				opacity: 0
+				scale: 1
 				options:
-					time: 0.25
+					time: jumpTime / 2
 					curve: 'ease-in'
 			).bind(this)
 		
 		animateY.on Events.AnimationEnd, (()->
-			Utils.delay 0.02, (()->
+			animateVanish = this.animate
+				scale: 0
+				opacity: 0
+				options:
+					time: vanishTime
+					curve: 'ease-out'
+			Utils.delay vanishTime + 0.02, (()->
 				this.superLayer = @originalLayer
 				this.x = 0
 				this.y = 0
 				this.scale = 1
 				).bind(this)
 			).bind(this)
+			
+			
+# 		animateY.on Events.AnimationEnd, (()->
+# 			
+# 			).bind(this)
 
 for i in [0...jumpers.subLayers.length]
 	jumper = new Jumper
