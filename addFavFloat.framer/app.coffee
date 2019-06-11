@@ -111,7 +111,6 @@ class FocusButton extends Layer
 	
 	reset: () ->
 		if @focused == true
-			print this
 			this.x = this.x + this.width - 60
 			@ignoreEvents = false
 			@plusIcon.image = "images/plusicon.png"
