@@ -30,7 +30,7 @@
         "children" : [
           {
             "__class" : "FrameNode",
-            "aspectRatioLocked" : true,
+            "aspectRatioLocked" : false,
             "blendingEnabled" : 0,
             "blendingMode" : "normal",
             "blur" : 12,
@@ -45,14 +45,14 @@
             "borderStyle" : "solid",
             "borderTop" : 1,
             "borderWidth" : 1,
-            "bottom" : -928,
+            "bottom" : 47,
             "boxShadows" : [
 
             ],
             "brightness" : 100,
             "brightnessEnabled" : 0,
             "centerAnchorX" : 0.5,
-            "centerAnchorY" : 1.1995940460081191,
+            "centerAnchorY" : 0.53991880920162383,
             "children" : [
 
             ],
@@ -81,7 +81,7 @@
             "fillType" : "image",
             "grayscale" : 0,
             "grayScaleEnabled" : 0,
-            "height" : 1561,
+            "height" : 586,
             "heightFactor" : null,
             "hueRotate" : 0,
             "hueRotateEnabled" : 0,
@@ -109,7 +109,7 @@
             "sepia" : 0,
             "sepiaEnabled" : 0,
             "targetName" : "content",
-            "top" : null,
+            "top" : 106,
             "visible" : true,
             "width" : 414,
             "widthFactor" : null

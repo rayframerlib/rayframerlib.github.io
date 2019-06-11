@@ -11,31 +11,31 @@ mainScreen.y = (Screen.height - mainScreen.height) / 2
 
 content.draggable.enabled = true
 content.draggable.speedX = 0
-content.draggable.constraints = {
-	x: 0
-	y: navigationBar.height + (mainScreen.height - navigationBar.height - bottomBar.height) - content.height
-	width: 414
-	height: 2 * content.height - (mainScreen.height - navigationBar.height - bottomBar.height)
-}
 
 #Resources card 资源
 Resources = [
 	{
 		headerImg:"images/header0.png"
 		contentImg:"images/content0.png"
-		headImg:"images/0.JPG"
+		headImg:"images/head0.JPG"
+		cardContentHeight: 542
 	},
 	{
 		headerImg:"images/header1.png"
 		contentImg:"images/content1.png"
-		headImg:"images/1.JPG"
+		headImg:"images/head1.JPG"
+		cardContentHeight: 259
 	},
 	{
 		headerImg:"images/header2.png"
 		contentImg:"images/content2.png"
-		headImg:"images/2.JPG"
+		headImg:"images/head2.JPG"
+		cardContentHeight: 473
 	}
 ]
+
+Buttons = []
+Cards = []
 
 #getSuperPoint 获取一个图层在目标图层位置的方法
 getSuperPoint = (layer, targetLayer = null, lastPoint = [0, 0]) ->
@@ -44,6 +44,20 @@ getSuperPoint = (layer, targetLayer = null, lastPoint = [0, 0]) ->
 	else
 		lastPoint = [lastPoint[0] + layer.x, lastPoint[1] + layer.y]
 		getSuperPoint(layer.superLayer, targetLayer, lastPoint)
+
+#makeList 整理列表的方法
+makeList = (layer, gap) ->
+	totalHeight = 0 + gap
+	for i in [0...layer.subLayers.length]
+		layer.subLayers[i].y = totalHeight
+		totalHeight = totalHeight + layer.subLayers[i].height + gap
+	layer.height = totalHeight
+	layer.draggable.constraints = {
+		x: 0
+		y: navigationBar.height + (mainScreen.height - navigationBar.height - bottomBar.height) - layer.height
+		width: 414
+		height: 2 * layer.height - (mainScreen.height - navigationBar.height - bottomBar.height)
+	}
 
 #FocusButton 关注按钮
 class FocusButton extends Layer
@@ -96,14 +110,17 @@ class FocusButton extends Layer
 				@options.method()
 	
 	reset: () ->
-		@focused = false
-		@ignoreEvents = false
-		@plusIcon.image = "images/plusicon.png"
-		@borderColor = "#ff8200"
-		@textLayer.text = "关注"
-		@textLayer.color = "#ff8200"
-		this.width = 60
-		this.x = 0
+		if @focused == true
+			print this
+			this.x = this.x + this.width - 60
+			@ignoreEvents = false
+			@plusIcon.image = "images/plusicon.png"
+			@borderColor = "#ff8200"
+			@textLayer.text = "关注"
+			@textLayer.color = "#ff8200"
+			this.width = 60
+			@focused = false
+		
 
 #Jumper 跳动头像
 class Jumper extends Layer
@@ -201,6 +218,7 @@ class Card extends Layer
 		@options.headerImg ?= ""
 		@options.contentImg ?= ""
 		@options.headImg ?= ""
+		@options.recall ?= null
 		
 		super @options
 		
@@ -222,7 +240,7 @@ class Card extends Layer
 			y: @options.cardHeaderHeight
 			image: @options.contentImg
 			width: 414
-			height: @options.cardContentHeight	
+			height: @options.cardContentHeight
 			
 		header = new Layer
 			superLayer: this
@@ -248,11 +266,16 @@ class Card extends Layer
 		this.subLayers[0].opacity = 1
 		this.subLayers[1].y = this.subLayers[0].height + this.subLayers[2].height + 12
 		this.height = this.subLayers[0].height + this.subLayers[1].height + this.subLayers[2].height + 12
+		if @options.recall != null
+			@options.recall(content, 10)
 	
 	setToNormal: () ->
 		this.subLayers[0].opacity = 0
-		this.subLayers[1].y = this.subLayers[2].height + 12
-		this.height = this.subLayers[1].height + this.subLayers[2].height + 12
+		this.subLayers[1].y = this.subLayers[2].height
+		this.height = this.subLayers[1].height + this.subLayers[2].height
+		if @options.recall != null
+			@options.recall(content, 10)
+
 
 for i in [0...Resources.length]
 	card = new Card
@@ -260,7 +283,17 @@ for i in [0...Resources.length]
 		headerImg: Resources[i].headerImg
 		contentImg: Resources[i].contentImg
 		headImg: Resources[i].headImg
+		cardContentHeight: Resources[i].cardContentHeight
+		recall: makeList
+	
+	Cards.push(card)
+	Buttons.push(card.subLayers[2].subLayers[1])
+	
+	
+makeList(content, 10)
 
 navigationBar.on Events.Click, ->
-	for layers in buttons.subLayers
-		layers.subLayers[0].reset()
+	for i in [0...Buttons.length]
+		Buttons[i].reset()
+	for i in [0...Cards.length]
+		Cards[i].setToNormal()
