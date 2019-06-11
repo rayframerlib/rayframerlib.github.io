@@ -9,15 +9,18 @@
   "deviceType" : "apple-iphone-8-plus-space-gray",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
-
+    "Filters" : false
   },
   "projectId" : "0467D3FE-1541-4233-9682-263CA2968C00",
   "deviceOrientation" : 0,
   "selectedHand" : "",
   "showBezel" : 0,
   "foldedCodeRanges" : [
-    "{554, 1299}",
-    "{1866, 1852}"
+    "{554, 334}",
+    "{889, 326}",
+    "{1216, 1299}",
+    "{2516, 1956}",
+    "{4473, 1563}"
   ],
   "deviceScale" : "fit"
 }

@@ -18,6 +18,33 @@ content.draggable.constraints = {
 	height: 2 * content.height - (mainScreen.height - navigationBar.height - bottomBar.height)
 }
 
+#Resources card 资源
+Resources = [
+	{
+		headerImg:"images/header0.png"
+		contentImg:"images/content0.png"
+		headImg:"images/0.JPG"
+	},
+	{
+		headerImg:"images/header1.png"
+		contentImg:"images/content1.png"
+		headImg:"images/1.JPG"
+	},
+	{
+		headerImg:"images/header2.png"
+		contentImg:"images/content2.png"
+		headImg:"images/2.JPG"
+	}
+]
+
+#getSuperPoint 获取一个图层在目标图层位置的方法
+getSuperPoint = (layer, targetLayer = null, lastPoint = [0, 0]) ->
+	if layer.superLayer.id == targetLayer.id
+		return [lastPoint[0] + layer.x, lastPoint[1] + layer.y]
+	else
+		lastPoint = [lastPoint[0] + layer.x, lastPoint[1] + layer.y]
+		getSuperPoint(layer.superLayer, targetLayer, lastPoint)
+
 #FocusButton 关注按钮
 class FocusButton extends Layer
 	constructor: (@options = {}) ->
@@ -78,9 +105,11 @@ class FocusButton extends Layer
 		this.width = 60
 		this.x = 0
 
-#Juper 跳动头像
+#Jumper 跳动头像
 class Jumper extends Layer
 	constructor: (@options = {}) ->
+		@options.x ?= 0
+		@options.y ?= 0
 		@options.width ?= 43
 		@options.height ?= 43
 		@options.borderRadius ?= 50
@@ -88,17 +117,17 @@ class Jumper extends Layer
 		@options.shadowY ?= 3
 		@options.shadowBlur ?= 5
 		@options.shadowColor ?= "rgba(0, 0, 0, 0.2)"
+		@options.recall ?= null
 
 		super @options
-		
 		this.jump = this.jump.bind(this)
-		
 		@originalLayer = this.superLayer
 	
 	jump: () ->
+		superPoint = getSuperPoint(this, mainScreen)
 		this.opacity = 1
-		this.x = this.x + content.x + jumpers.x + this.superLayer.x
-		this.y = this.y + content.y + jumpers.y + this.superLayer.y
+		this.x = superPoint[0]
+		this.y = superPoint[1]
 		this.superLayer = mainScreen
 		jumpTime = 0.45
 		vanishTime = 0.3
@@ -153,6 +182,8 @@ class Jumper extends Layer
 				this.x = 0
 				this.y = 0
 				this.scale = 1
+				if this.options.recall != null
+					this.options.recall()
 				).bind(this)
 			).bind(this)
 			
@@ -161,17 +192,75 @@ class Jumper extends Layer
 # 			
 # 			).bind(this)
 
-for i in [0...jumpers.subLayers.length]
-	jumper = new Jumper
-		superLayer: jumpers.subLayers[i]
-		image: "images/#{i}.JPG"
-		opacity: 0
-
-for i in [0...buttons.subLayers.length]
-	focue = new FocusButton
-		superLayer: buttons.subLayers[i]
-		method: jumpers.subLayers[i].subLayers[0].jump
+#Card Feed 流内容
+class Card extends Layer
+	constructor: (@options = {}) ->
+		@options.width ?= 414
+		@options.cardHeaderHeight ?= 70
+		@options.cardContentHeight ?= 200
+		@options.headerImg ?= ""
+		@options.contentImg ?= ""
+		@options.headImg ?= ""
 		
+		super @options
+		
+		@backgroundColor = "white"
+		@height = @options.cardHeaderHeight + @options.cardContentHeight
+		this.extendRecommand = this.extendRecommand.bind(this)
+		this.setToNormal = this.setToNormal.bind(this)
+		
+		recommend = new Layer
+			superLayer: this
+			y: @options.cardHeaderHeight
+			width: 414
+			height: 258
+			opacity: 0
+			image: "images/recommand.png"
+		
+		content = new Layer
+			superLayer: this
+			y: @options.cardHeaderHeight
+			image: @options.contentImg
+			width: 414
+			height: @options.cardContentHeight	
+			
+		header = new Layer
+			superLayer: this
+			image: @options.headerImg
+			width: 414
+			height: @options.cardHeaderHeight
+		
+		jumper = new Jumper
+			superLayer: header
+			x: 14
+			y: 15
+			image: @options.headImg
+			opacity: 0
+			recall: this.extendRecommand
+		
+		focus = new FocusButton
+			superLayer: header
+			x: 317
+			y: 19
+			method: jumper.jump
+	
+	extendRecommand: () ->
+		this.subLayers[0].opacity = 1
+		this.subLayers[1].y = this.subLayers[0].height + this.subLayers[2].height + 12
+		this.height = this.subLayers[0].height + this.subLayers[1].height + this.subLayers[2].height + 12
+	
+	setToNormal: () ->
+		this.subLayers[0].opacity = 0
+		this.subLayers[1].y = this.subLayers[2].height + 12
+		this.height = this.subLayers[1].height + this.subLayers[2].height + 12
+
+for i in [0...Resources.length]
+	card = new Card
+		superLayer: content
+		headerImg: Resources[i].headerImg
+		contentImg: Resources[i].contentImg
+		headImg: Resources[i].headImg
+
 navigationBar.on Events.Click, ->
 	for layers in buttons.subLayers
 		layers.subLayers[0].reset()
