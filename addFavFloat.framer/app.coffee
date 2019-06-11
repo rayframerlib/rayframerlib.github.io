@@ -288,8 +288,7 @@ for i in [0...Resources.length]
 	
 	Cards.push(card)
 	Buttons.push(card.subLayers[2].subLayers[1])
-	
-	
+
 makeList(content, 10)
 
 navigationBar.on Events.Click, ->
