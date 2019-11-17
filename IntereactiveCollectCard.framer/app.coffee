@@ -249,7 +249,7 @@ class CardCarrier extends Layer
 			).bind(@)
 
 content.image = 'images/feed.PNG'
-subPage.image = 'images/sub.PNG'
+subPage.image = 'images/sub.png'
 
 mainPage.states.left = 
 	x: -414
