@@ -65,7 +65,7 @@ class CardCarrier extends Layer
 			y: -@options.y
 			width: @options.screenWidth
 			height: @options.screenHeight
-			backgroundColor: 'rgba(0, 0, 0, 0.45)'
+			backgroundColor: 'rgba(0, 0, 0, 0.65)'
 		
 		@cardHolder = new Layer
 			superLayer: @
