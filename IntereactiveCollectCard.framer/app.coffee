@@ -312,6 +312,7 @@ carrier = new CardCarrier
 carrier.init()
 
 navigationBar.on Events.Click, ->
+	carrier.init()
 	carrier.show()
 
 subPage.on Events.Click, ->
