@@ -165,6 +165,17 @@ class CardCarrier extends Layer
 				time: 0.2
 				curve: 'ease-out'
 		
+		@card.states.collect = 
+			x: @options.collectTargetX - @options.cardWidth / 2
+			y: @options.collectTargetY - @options.cardHeight / 2 - 36
+			opacity: 1
+			scale: 0.1
+			rotationY: 360
+			rotationZ: 30
+			options:
+				time: 0.6
+				curve: 'ease-in-out'
+		
 		@card.states.collectVanish = 
 			x: @options.collectTargetX - @options.cardWidth / 2
 			y: @options.collectTargetY - @options.cardHeight / 2
@@ -173,8 +184,8 @@ class CardCarrier extends Layer
 			rotationY: 360
 			rotationZ: 30
 			options:
-				time: 0.6
-				curve: 'ease-in-out'
+				time: 0.3
+				curve: 'ease-in'
 		
 		@cardMask.states.vanish = 
 			opacity: 0
@@ -240,8 +251,10 @@ class CardCarrier extends Layer
 		@cancelButton.animate('vanish')
 		@card.animate('collectMove').on Events.AnimationEnd, (->
 			@cardMask.animate('vanish')
-			@card.animate('collectVanish').on Events.AnimationEnd, (->
-				@card.stateSwitch('vanish')
+			@card.animate('collect').on Events.AnimationEnd, (->
+				@card.animate('collectVanish').on Events.AnimationEnd, (->
+						@card.stateSwitch('vanish')
+					).bind(@)
 				).bind(@)
 			).bind(@)
 		@cardHolder.animate('collect').on Events.AnimationEnd, (->
@@ -291,8 +304,8 @@ carrier = new CardCarrier
 	y: 90
 	width: 428
 	height: 450
-	collectTargetX: 396
-	collectTargetY: 560
+	collectTargetX: 380
+	collectTargetY: 610
 	coverX: 81
 	coverY: 261
 	coverWidth: 266
