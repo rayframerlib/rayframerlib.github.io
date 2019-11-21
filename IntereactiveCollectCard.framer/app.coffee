@@ -56,6 +56,7 @@ class CardCarrier extends Layer
 		@options.buttonY ?= 500
 		
 		@options.buttonFunction ?= () -> return
+		@options.collectCallBackFunction ?= () -> return
 		
 		super @options
 		
@@ -163,12 +164,12 @@ class CardCarrier extends Layer
 			rotationZ: 0
 			options:
 				time: 0.2
-				curve: 'ease-out'
+				curve: 'ease-in-out'
 		
 		@card.states.collect = 
 			x: @options.collectTargetX - @options.cardWidth / 2
-			y: @options.collectTargetY - @options.cardHeight / 2 - 36
-			opacity: 1
+			y: @options.collectTargetY - @options.cardHeight / 2
+			opacity: 0.3
 			scale: 0.1
 			rotationY: 360
 			rotationZ: 30
@@ -249,17 +250,22 @@ class CardCarrier extends Layer
 	
 	collect: ->
 		@cancelButton.animate('vanish')
-		@card.animate('collectMove').on Events.AnimationEnd, (->
-			@cardMask.animate('vanish')
-			@card.animate('collect').on Events.AnimationEnd, (->
-				@card.animate('collectVanish').on Events.AnimationEnd, (->
-						@card.stateSwitch('vanish')
-					).bind(@)
-				).bind(@)
-			).bind(@)
-		@cardHolder.animate('collect').on Events.AnimationEnd, (->
-				@cardHolder.stateSwitch('vanish')
-			).bind(@)
+		
+		_card = @card
+		_cardMask = @cardMask
+		_cardHolder = @cardHolder
+		_collectCallBackFunction = @options.collectCallBackFunction
+		
+		_card.animate('collectMove').on Events.AnimationEnd, ->
+			_cardMask.animate('vanish')
+			_card.animate('collect').on Events.AnimationEnd, -> 
+				_collectCallBackFunction()
+				_card.animate('collectVanish').on Events.AnimationEnd, -> 
+					_card.stateSwitch('vanish')
+					_collectCallBackFunction()
+				
+		_cardHolder.animate('collect').on Events.AnimationEnd, ->
+			_cardHolder.stateSwitch('vanish')
 
 content.image = 'images/feed.PNG'
 subPage.image = 'images/sub.png'
@@ -287,7 +293,7 @@ subPage.states.right =
 	options:
 		time: 0.6
 		curve: Spring(1)
-
+		
 toLandingPage = () ->
 	mainPage.animate('left')
 	subPage.animate('left')
@@ -321,12 +327,15 @@ carrier = new CardCarrier
 	cardBackgroundColor: 'transparent'
 	buttonY: 480
 	buttonFunction: toLandingPage
-# carrier.center()
+	collectCallBackFunction: () -> newIcon.opacity = 1
+
 carrier.init()
+newIcon.opacity = 0
 
 navigationBar.on Events.Click, ->
 	carrier.init()
 	carrier.show()
+	newIcon.opacity = 0
 
 subPage.on Events.Click, ->
 	toFeed()
