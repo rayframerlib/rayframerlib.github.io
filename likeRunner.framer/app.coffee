@@ -9,6 +9,9 @@ mainScreen.clip = true
 mainScreen.centerY()
 mainScreen.centerX()
 
+print mainScreen.height
+print mainScreen.width
+
 if Screen.width < 414
 	mainScreen.scale = Screen.width / 414
 mainScreen.y = (Screen.height - mainScreen.height) / 2
