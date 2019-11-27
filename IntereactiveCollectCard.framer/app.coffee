@@ -22,11 +22,6 @@ feed.draggable.constraints =
 	width: mainScreen.width 
 	height: 2 * feed.height - (mainScreen.height - navigationBar.height - bottomBar.height)
 
-
-feed.animate
-	options:
-		time: 1
-		curve: Bezier.ease
 class CardCarrier extends Layer
 	constructor: (@options={}) ->
 		@options.x ?= 0
