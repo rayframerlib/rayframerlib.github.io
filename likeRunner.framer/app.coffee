@@ -1,3 +1,5 @@
+BodymovinLayer = require 'lottieLayer'
+
 Framer.Extras.Hints.disable()
 
 mainScreen.width = 414
@@ -22,12 +24,83 @@ feed.draggable.constraints =
 	width: mainScreen.width 
 	height: 2 * feed.height - (mainScreen.height - navigationBar.height - bottomBar.height)
 
-content.image = 'images/feed.PNG'
-subPage.image = 'images/sub.png'
+# content.image = 'images/feed.PNG'
 
 
-# bottomBar.on Events.Click, ->
-# 	carrier.show()
+class LikeButton extends Layer
+	constructor: (@options={}) ->
+		@options.x ?= 0
+		@options.y ?= 0
+		@options.width ?= 135
+		@options.height ?= 35
+		@options.backgroundColor ?= 'white'
+		@options.startNumber ?= 100
+		@options.activeFunc ?= () -> return
+		
+		super @options
+		
+		@.isHighlighted = false
 
-# buttons.subLayers[0].on Events.Click, ->
-# 	carrier.show()
+		@icon = new Layer
+			superLayer: @
+			x: 42
+			y: 8
+			width: 18
+			height: 18
+			image: "images/IconArea_like@3x.png"
+			
+		@number = new TextLayer
+			x: 64
+			y: 8
+			superLayer: @
+			text: @options.startNumber
+			fontSize: 14
+			color: '#636363'
+		
+		_number = @number
+		_icon = @icon
+		_startNumber = @options.startNumber
+		_activeFunc = @options.activeFunc
+		
+		@.on Events.Click, ->
+			if @.isHighlighted
+				_number.text = _startNumber
+				_number.color = '#636363'
+				_icon.image = "images/IconArea_like@3x.png"
+				@.isHighlighted = false
+
+			else
+				_number.text = _startNumber + 1
+				_number.color = '#e14123'
+				_icon.image = "images/IconArea_like_highlighted@3x.png"
+				@.isHighlighted = true
+				_activeFunc()
+
+class LikeAnimationPlayer extends BodymovinLayer
+	constructor: (@options={}) ->
+		@options.x ?= 0
+		@options.y ?= 0
+		@options.width ?= 200
+		@options.height ?= 200
+		@options.autoplay ?= true
+		@options.looping ?= false
+		@options.jsonPath ?= 'lottieJson/data.json'
+		@options.destroyTimer ?= 1.6
+		
+		super @options
+		
+		@.center()
+		
+		Utils.delay @options.destroyTimer, (->
+			@.destroy()).bind(@)
+		
+
+for layer in buttons.subLayers
+	do (layer) ->
+		button = new LikeButton
+			superLayer: layer.subLayers[0]
+			startNumber: Math.floor(Utils.randomNumber(100, 999))
+			activeFunc: () ->
+				if layer.subLayers.length == 1
+					anim = new LikeAnimationPlayer
+						superLayer: layer
