@@ -85,7 +85,7 @@ class LikeAnimationPlayer extends BodymovinLayer
 		@options.height ?= 200
 		@options.autoplay ?= true
 		@options.looping ?= false
-		@options.jsonPath ?= 'lottieJson/data_short.json'
+		@options.jsonPath ?= 'data.json'
 		@options.destroyTimer ?= 1.6
 		
 		super @options
@@ -106,10 +106,10 @@ for layer in buttons.subLayers
 					if layer.index <= 1
 						anim = new LikeAnimationPlayer
 							superLayer: layer
-							jsonPath: 'lottieJson/data_long.json'
+							jsonPath: 'lottieJson/data_logo.json'
 							destroyTimer: 1.6
 					else
 						anim = new LikeAnimationPlayer
 							superLayer: layer
-							jsonPath: 'lottieJson/data_short.json'
-							destroyTimer: 1.1
+							jsonPath: 'lottieJson/like_ad.json'
+							destroyTimer: 1.6
