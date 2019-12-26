@@ -107,9 +107,9 @@ for layer in buttons.subLayers
 						anim = new LikeAnimationPlayer
 							superLayer: layer
 							jsonPath: 'lottieJson/data_logo.json'
-							destroyTimer: 1.02
+							destroyTimer: 1.1
 					else
 						anim = new LikeAnimationPlayer
 							superLayer: layer
 							jsonPath: 'lottieJson/like_ad.json'
-							destroyTimer: 1.26
+							destroyTimer: 1.35
