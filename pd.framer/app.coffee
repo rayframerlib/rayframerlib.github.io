@@ -5,18 +5,23 @@ mainScreen = new Layer
 	height: 667
 	clip: true
 
-area = new Layer
-	width: 375
-	y: 64
-	height: 559
-	clip: true
-	backgroundColor: "transparent"
+mainScreen.clip = true
 
 bg = new Layer
 	superLayer: mainScreen
 	width: 375
 	height: 667
 	image: "images/IMG_1220.PNG"
+
+area = new Layer
+	superLayer: mainScreen
+	width: 375
+	y: 64
+	height: 559
+	clip: true
+	backgroundColor: "transparent"
+
+
 
 mainScreen.center()
 
