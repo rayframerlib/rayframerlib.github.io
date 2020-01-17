@@ -27,7 +27,6 @@ feed.draggable.constraints =
 
 content.image = 'images/feed.PNG'
 
-
 class LikeButton extends Layer
 	constructor: (@options={}) ->
 		@options.x ?= 0
@@ -113,8 +112,18 @@ for layer in buttons.subLayers
 							superLayer: layer
 							jsonPath: 'lottieJson/dl.json'
 							destroyTimer: 1.8
-					else if layer.index >= 2
+					else if layer.index == 2
 						anim = new LikeAnimationPlayer
 							superLayer: layer
 							jsonPath: 'lottieJson/fw.json'
+							destroyTimer: 1.8
+					else if layer.index == 3
+						anim = new LikeAnimationPlayer
+							superLayer: layer
+							jsonPath: 'lottieJson/hb.json'
+							destroyTimer: 1.8
+					else if layer.index == 4
+						anim = new LikeAnimationPlayer
+							superLayer: layer
+							jsonPath: 'lottieJson/fd.json'
 							destroyTimer: 1.8
