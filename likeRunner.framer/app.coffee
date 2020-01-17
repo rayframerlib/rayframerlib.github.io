@@ -102,19 +102,19 @@ for layer in buttons.subLayers
 			superLayer: layer.subLayers[0]
 			startNumber: Math.floor(Utils.randomNumber(100, 999))
 			activeFunc: () ->
-# 				if layer.subLayers.length == 1
-# 					if layer.index == 0
-# 						anim = new LikeAnimationPlayer
-# 							superLayer: layer
-# 							jsonPath: 'lottieJson/data_logo.json'
-# 							destroyTimer: 1.1
-# 					else if layer.index == 1
-# 						anim = new LikeAnimationPlayer
-# 							superLayer: layer
-# 							jsonPath: 'lottieJson/like_ad.json'
-# 							destroyTimer: 1.35
-# 					else if layer.index == 2
-				anim = new LikeAnimationPlayer
-					superLayer: layer
-					jsonPath: 'lottieJson/data_octopus_text.json'
-					destroyTimer: 1.35
+				if layer.subLayers.length == 1
+					if layer.index == 0
+						anim = new LikeAnimationPlayer
+							superLayer: layer
+							jsonPath: 'lottieJson/mouse.json'
+							destroyTimer: 1.1
+					else if layer.index == 1
+						anim = new LikeAnimationPlayer
+							superLayer: layer
+							jsonPath: 'lottieJson/dl.json'
+							destroyTimer: 1.35
+					else if layer.index >= 2
+						anim = new LikeAnimationPlayer
+							superLayer: layer
+							jsonPath: 'lottieJson/fw.json'
+							destroyTimer: 1.35
