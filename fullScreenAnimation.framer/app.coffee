@@ -6,11 +6,11 @@ mainScreen.width = 414
 mainScreen.height = 736
 
 mainScreen.clip = true
-mainScreen.centerY()
-mainScreen.centerX()
 
 if Screen.width < 414
 	mainScreen.scale = Screen.width / 414
+
+mainScreen.center()
 
 feedHandler.draggable.enabled = true
 feedHandler.draggable.speedX = 0
@@ -42,8 +42,9 @@ class AnimationPlayer extends BodymovinLayer
 			@.destroy()).bind(@)
 
 hitArea.on Events.Click, ->
-	player = new AnimationPlayer
-		superLayer: animationPlayerContainer
-		width: 414
-		height: 736
-		destroyTimer: 3.2
+	if animationPlayerContainer.children[0] == undefined
+		player = new AnimationPlayer
+			superLayer: animationPlayerContainer
+			width: 414
+			height: 736
+			destroyTimer: 3.2
