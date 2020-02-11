@@ -935,7 +935,7 @@
                 "fillType" : "color",
                 "grayscale" : 0,
                 "grayScaleEnabled" : 0,
-                "height" : 18,
+                "height" : 24,
                 "heightFactor" : null,
                 "hueRotate" : 0,
                 "hueRotateEnabled" : 0,
