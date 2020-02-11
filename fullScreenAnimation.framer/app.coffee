@@ -6,11 +6,13 @@ mainScreen.width = 414
 mainScreen.height = 736
 
 mainScreen.clip = true
+mainScreen.center()
 
 if Screen.width < 414
 	mainScreen.scale = Screen.width / 414
+mainScreen.y = (Screen.height - mainScreen.height) / 2
 
-mainScreen.center()
+
 
 feedHandler.draggable.enabled = true
 feedHandler.draggable.speedX = 0
