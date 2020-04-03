@@ -110,20 +110,20 @@ for layer in buttons.subLayers
 					else if layer.index == 1
 						anim = new LikeAnimationPlayer
 							superLayer: layer
-							jsonPath: 'lottieJson/dl.json'
+							jsonPath: 'lottieJson/mouse.json'
 							destroyTimer: 1.8
 					else if layer.index == 2
 						anim = new LikeAnimationPlayer
 							superLayer: layer
-							jsonPath: 'lottieJson/fw.json'
+							jsonPath: 'lottieJson/mouse.json'
 							destroyTimer: 1.8
 					else if layer.index == 3
 						anim = new LikeAnimationPlayer
 							superLayer: layer
-							jsonPath: 'lottieJson/hb.json'
+							jsonPath: 'lottieJson/mouse.json'
 							destroyTimer: 1.8
 					else if layer.index == 4
 						anim = new LikeAnimationPlayer
 							superLayer: layer
-							jsonPath: 'lottieJson/fd.json'
+							jsonPath: 'lottieJson/mouse.json'
 							destroyTimer: 1.8
