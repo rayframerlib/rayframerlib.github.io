@@ -566,6 +566,7 @@
                 "locked" : false,
                 "name" : "darkBar",
                 "opacity" : 1,
+                "originalFilename" : "Group-85.png",
                 "parentid" : "JWdfNiLEd",
                 "radius" : 0,
                 "radiusBottomLeft" : 0,
@@ -652,6 +653,7 @@
                 "locked" : false,
                 "name" : "lightBar",
                 "opacity" : 0,
+                "originalFilename" : "Group-427.png",
                 "parentid" : "JWdfNiLEd",
                 "radius" : 0,
                 "radiusBottomLeft" : 0,
@@ -882,6 +884,7 @@
             "locked" : false,
             "name" : "keyboard",
             "opacity" : 1,
+            "originalFilename" : "keyboard.png",
             "parentid" : "Y2p1ke0z6",
             "radius" : 0,
             "radiusBottomLeft" : 0,
@@ -1069,7 +1072,9 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 27,
-                    "widthFactor" : null
+                    "widthFactor" : null,
+                    "x" : 16,
+                    "y" : 11
                   }
                 ],
                 "clip" : false,
@@ -1271,7 +1276,9 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 34,
-                    "widthFactor" : null
+                    "widthFactor" : null,
+                    "x" : 16,
+                    "y" : 11
                   }
                 ],
                 "clip" : false,

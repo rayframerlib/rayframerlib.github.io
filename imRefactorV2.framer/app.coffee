@@ -13,7 +13,7 @@ mainScreen.y = (Screen.height - mainScreen.height) / 2
 
 Framer.Defaults.Animation =
 	curve: Spring(damping: 1)
-	time: 0.55
+	time: 0.5
 
 receivedContents = [
 	{
@@ -136,17 +136,17 @@ class ReceivedMessage extends Layer
 			opacity: 1
 			
 		@content.states.initial = 
-			rotation: 5
-			x: @content.x - 50
-			y: @content.y + 8
+			rotation: 15
+			x: @content.x - 60
+			y: @content.y + 24
 			
 		@content.states.show =
 			rotation: 0
 			x: @content.x
 			y: @content.y
-# 			options:
-# 				curve: Spring(damping: 1)
-# 				time: 0.6
+			options:
+				curve: Spring(damping: 0.6)
+				time: 0.6
 		
 		@init()
 	
@@ -204,17 +204,17 @@ class SentMessage extends Layer
 			opacity: 1
 		
 		@content.states.initial = 
-			rotation: -5
-			x: @content.x + 50
-			y: @content.y + 8
+			rotation: -10
+			x: @content.x + 30
+			y: @content.y + 12
 			
 		@content.states.show =
 			rotation: 0
 			x: @content.x
 			y: @content.y
-# 			options:
-# 				curve: Spring(damping: 1)
-# 				time: 0.6
+			options:
+				curve: Spring(damping: 0.6)
+				time: 0.6
 		
 		@init()
 	
