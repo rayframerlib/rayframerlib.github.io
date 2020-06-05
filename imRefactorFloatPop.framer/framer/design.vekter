@@ -369,9 +369,7 @@
                     "top" : 13,
                     "visible" : true,
                     "width" : 60,
-                    "widthFactor" : null,
-                    "x" : 72,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
@@ -636,7 +634,6 @@
                         "locked" : false,
                         "name" : null,
                         "opacity" : 1,
-                        "originalFilename" : "image 2.png",
                         "parentid" : "T94gpE2pl",
                         "radius" : 0,
                         "radiusBottomLeft" : 0,
@@ -723,7 +720,6 @@
                         "locked" : false,
                         "name" : null,
                         "opacity" : 1,
-                        "originalFilename" : "image 2.png",
                         "parentid" : "T94gpE2pl",
                         "radius" : 0,
                         "radiusBottomLeft" : 0,
@@ -918,9 +914,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 213,
-                    "widthFactor" : null,
-                    "x" : 72,
-                    "y" : 33
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
