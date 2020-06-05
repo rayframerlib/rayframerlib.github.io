@@ -128,7 +128,7 @@ class ReceivedMessage extends Layer
 			image: @options.content
 		
 		@.states.initial = 
-			x: @options.x - 50
+# 			x: @options.x - 50
 			opacity: 0
 		
 		@.states.show = 
@@ -137,7 +137,7 @@ class ReceivedMessage extends Layer
 			
 		@content.states.initial = 
 			rotation: 5
-			x: @content.x - 50
+			x: @content.x - 10
 			y: @content.y + 8
 			
 		@content.states.show =
@@ -196,7 +196,7 @@ class SentMessage extends Layer
 		@content.x = 263 - @content.width
 		
 		@.states.initial = 
-			x: @options.x + 50
+# 			x: @options.x + 50
 			opacity: 0	
 		
 		@.states.show = 
@@ -205,7 +205,7 @@ class SentMessage extends Layer
 		
 		@content.states.initial = 
 			rotation: -5
-			x: @content.x + 50
+			x: @content.x + 10
 			y: @content.y + 8
 			
 		@content.states.show =
