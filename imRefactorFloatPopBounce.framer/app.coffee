@@ -339,7 +339,7 @@ jumpArea.states.float =
 		color: 'rgba(255, 255, 255, 0.1)'
 	options: 
 		time: 0.15
-		curve: 'Bezier(.3,0,1,.7)'
+		curve: 'Bezier(.3,0,1,.9)'
 
 jumpArea.states.drop = 
 	x: jumpArea.x + 4
@@ -359,7 +359,7 @@ jumpArea.states.drop =
 jumpArea.states.dropBounce = 
 	scale:1
 	options: 
-		time: 0.2
+		time: 0.08
 		curve: "ease-in-out"
 
 
