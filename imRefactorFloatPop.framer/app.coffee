@@ -136,19 +136,14 @@ class ReceivedMessage extends Layer
 			opacity: 1
 			
 		@content.states.initial = 
-# 			rotation: 15
-			scale: 0.2
-			x: @content.x - 100
-			y: @content.y - @content.height / 3
+			rotation: 5
+			x: @content.x - 10
+			y: @content.y + 8
 			
 		@content.states.show =
 			rotation: 0
-			scale: 1
 			x: @content.x
 			y: @content.y
-# 			options:
-# 				curve: Spring(damping: 0.6)
-# 				time: 0.6
 		
 		@init()
 	
