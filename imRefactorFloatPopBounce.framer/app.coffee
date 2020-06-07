@@ -13,7 +13,7 @@ mainScreen.y = (Screen.height - mainScreen.height) / 2
 
 Framer.Defaults.Animation =
 	curve: Spring(damping: 1)
-	time: 0.55
+	time: 0.4
 
 receivedContents = [
 	{
@@ -92,7 +92,7 @@ imFlow.draggable.speedX = 0
 setFlowConstrains = () ->
 	imFlow.draggable.constraints = 
 		x: 0
-		y: mainScreen.height - bottomBar.height - imFlow.height
+		y: bottomBar.y - imFlow.height
 		width: mainScreen.width
 		height: 2 * imFlow.height - (mainScreen.height -  bottomBar.height - navigationBar.height)
 
@@ -132,21 +132,18 @@ class ReceivedMessage extends Layer
 			opacity: 0
 		
 		@.states.show = 
-			x: @options.x
+# 			x: @options.x
 			opacity: 1
 			
 		@content.states.initial = 
-			rotation: 2
-			x: @content.x - 10
-			y: @content.y + 8
+			rotation: 0
+# 			x: @content.x - 10
+# 			y: @content.y + 8
 			
 		@content.states.show =
 			rotation: 0
-			x: @content.x
-			y: @content.y
-# 			options:
-# 				curve: Spring(damping: 1)
-# 				time: 0.6
+# 			x: @content.x
+# 			y: @content.y
 		
 		@init()
 	
@@ -159,9 +156,9 @@ class ReceivedMessage extends Layer
 		@.animate('show')
 		@content.animate('show')
 
-# a = new ReceivedMessage
-# 	x: 200
-# 	y: 200
+a = new ReceivedMessage
+	x: 200
+	y: 200
 
 
 class SentMessage extends Layer
@@ -200,20 +197,20 @@ class SentMessage extends Layer
 			opacity: 0	
 		
 		@.states.show = 
-			x: @options.x
+# 			x: @options.x
 			opacity: 1
 		
 		@content.states.initial = 
-			rotation: -5
-			x: @content.x + 10
-			y: @content.y + 8
+# 			rotation: -10
+# 			x: @content.x + 30
+# 			y: @content.y + 12
 			
 		@content.states.show =
 			rotation: 0
 			x: @content.x
 			y: @content.y
 # 			options:
-# 				curve: Spring(damping: 1)
+# 				curve: Spring(damping: 0.6)
 # 				time: 0.6
 		
 		@init()
@@ -283,29 +280,130 @@ newRandomSentMessage = () ->
 	
 	sent.show()
 
+newTargetMessage = () ->
+	messageAmount = imFlow.children.length
+	if messageAmount
+		messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+		
+	else
+		messagePositionY = 20
+		
+	sent = new SentMessage
+		superLayer: imFlow
+		x: 56
+		y: messagePositionY
+		avatar: './assets/sender_avatar_2.png'
+		contentWidth: sentContents[0].width
+		contentHeight: sentContents[0].height
+		content: sentContents[0].url
+	
+	if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >=  bottomBar.y - navigationBar.height
+		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
+		setFlowConstrains()
+		flowAnimateToBottom()
+	
+	sent.show()
+	sent.children[1].opacity = 0
+	return sent
+
 flowAnimateToBottom = () ->
 	imFlow.animate
-			y: (mainScreen.height - bottomBar.height) - imFlow.height
+			y: bottomBar.y - imFlow.height
 
 flowAnimateToTop = () ->
 	imFlow.animate
 		y: 302 + navigationBar.height
-		
-keyboard.states.initial = 
-	y: mainScreen.height
 
-keyboard.states.show = 
-	y: mainScreen.height - keyboard.height
+jumpArea.states.initial = 
+	x: jumpArea.x
+	y: jumpArea.y
+	width: jumpArea.width
+	borderRadius: jumpArea.borderRadius
+	backgroundColor: jumpArea.backgroundColor
+	shadow1: 
+		y: 0
+		blur: 0
+		color: 'transparent'
 
-keyboard.stateSwitch('initial')
+jumpArea.states.float = 
+	x: jumpArea.x + 2
+	y: jumpArea.y - 26
+	scale: 1.05
+	width: 263
+	height: 64
+	borderRadius: jumpArea.borderRadius
+	backgroundColor: '#e0e0e2'
+	shadow1: 
+		y: 4
+		blur: 6
+		color: 'rgba(255, 255, 255, 0.1)'
+	options: 
+		time: 0.15
+		curve: 'Bezier(.3,0,1,.7)'
 
-bottomBar.states.low = 
+jumpArea.states.drop = 
+	x: jumpArea.x + 4
+	y: jumpArea.y - 96
+	width: 263
+	borderRadius: 4
+	backgroundColor: '#242630'
+	scale:0.98
+	shadow1: 
+		y: 0
+		blur: 0
+		color: 'transparent'
+	options: 
+		time: 0.25
+		curve: 'Bezier(0,0.1,0.5,1)'
+
+jumpArea.states.dropBounce = 
+	scale:1
+	options: 
+		time: 0.2
+		curve: "ease-in-out"
+
+
+jumpText.states.initial = 
+	x: jumpText.x
+	y: jumpText.y
+	color: jumpText.color
+
+jumpText.states.drop =
+	x: 11
+	y: 10
+	color: 'rgba(255, 255, 255, 0.9)'
+
+bottomBar.states.input = 
 	y: bottomBar.y
-	backgroundColor: 'rgba(22, 24, 35, 0.9)'
+	height: bottomBar.height
+
+bottomBar.states.normal = 
+	y: bottomBar.y + 18
+	height: bottomBar.height - 18
 	
-bottomBar.states.high = 
-	y: mainScreen.height - keyboard.height - 64
-	backgroundColor: 'rgba(255, 255, 255, 0.9)'
+bottomBar.stateSwitch('input')
+
+area.opacity = 0
+
+areaJump = () ->
+	jumpArea.backgroundColor = '#e0e0e2'
+	bottomBar.animate('normal')
+	area.opacity = 1
+	jumpArea.animate('float').on Events.AnimationEnd, ->
+		jumpText.fontSize = 16
+		jumpText.width = 241
+		jumpText.lineHeight = 1.4
+		jumpEmoji.x= 44
+		jumpEmoji.y= 36
+		sent = newTargetMessage()
+		jumpArea.animate('drop').on Events.AnimationEnd, ->
+			
+			jumpArea.animate('dropBounce').on Events.AnimationEnd, ->
+				sent.children[1].opacity = 1
+				jumpArea.opacity = 0
+			
+		jumpText.animate('drop')
+
 
 flowWraper.states.initial = 
 	y: 0
@@ -313,78 +411,66 @@ flowWraper.states.initial =
 flowWraper.states.keyboard = 
 	y: -302
 
-lightBar.states.vanish = 
-	opacity: 0
+# keyboardUp = () ->
+# 	if keyboard.states.current.name == 'initial'
+# 		keyboard.animate('show')
+# 		bottomBar.animate('high')
+# 		lightBar.animate('show')
+# 		darkBar.animate('vanish')
+# 		flowWraper.animate('keyboard')
+# 		
+# 		if imFlow.children.length
+# 			visibleFlowHeight = imFlow.children[imFlow.children.length - 1].y + imFlow.children[imFlow.children.length - 1].height + 20
+# 		else
+# 			visibleFlowHeight = 0
+# 			
+# 		if visibleFlowHeight <= 413 - navigationBar.height
+# 			flowAnimateToTop()
+# 		else if visibleFlowHeight < 626
+# 			imFlow.height = imFlow.children[imFlow.children.length - 1].y + imFlow.children[imFlow.children.length - 1].height + 20
+# 			flowAnimateToBottom()
+# 		else
+# 			flowAnimateToBottom()
 
-lightBar.states.show = 
-	opacity: 1
-
-darkBar.states.vanish = 
-	opacity: 0
-
-darkBar.states.show = 
-	opacity: 1
-
-keyboardUp = () ->
-	if keyboard.states.current.name == 'initial'
-		keyboard.animate('show')
-		bottomBar.animate('high')
-		lightBar.animate('show')
-		darkBar.animate('vanish')
-		flowWraper.animate('keyboard')
-		
-		if imFlow.children.length
-			visibleFlowHeight = imFlow.children[imFlow.children.length - 1].y + imFlow.children[imFlow.children.length - 1].height + 20
-		else
-			visibleFlowHeight = 0
-			
-		if visibleFlowHeight <= 413 - navigationBar.height
-			flowAnimateToTop()
-		else if visibleFlowHeight < 626
-			imFlow.height = imFlow.children[imFlow.children.length - 1].y + imFlow.children[imFlow.children.length - 1].height + 20
-			flowAnimateToBottom()
-		else
-			flowAnimateToBottom()
-
-keyboardDown = () ->
-	keyboard.animate('initial')
-	bottomBar.animate('low')
-	lightBar.animate('vanish')
-	darkBar.animate('show')
-	flowWraper.animate('initial')
-	if imFlow.height < 626
-		imFlow.height = 626
-		imFlow.draggable.constraints.height = 626
-		imFlow.draggable.constraints.y = 88
-		flowAnimateToTop()
-
-reset = () ->
-	for i in [0...imFlow.children.length]
-		imFlow.children[0].destroy()
-	imFlow.height = mainScreen.height - navigationBar.height - bottomBar.height
-	imFlow.y = navigationBar.height
-	setFlowConstrains()
-	keyboard.stateSwitch('initial')
-	bottomBar.stateSwitch('low')
-	lightBar.stateSwitch('vanish')
-	darkBar.stateSwitch('show')
-	flowWraper.stateSwitch('initial')
+# keyboardDown = () ->
+# 	keyboard.animate('initial')
+# 	bottomBar.animate('low')
+# 	lightBar.animate('vanish')
+# 	darkBar.animate('show')
+# 	flowWraper.animate('initial')
+# 	if imFlow.height < 626
+# 		imFlow.height = 626
+# 		imFlow.draggable.constraints.height = 626
+# 		imFlow.draggable.constraints.y = 88
+# 		flowAnimateToTop()
 	
-	
+for i in [0...5]
+	newRandomReceivedMessage()
+	newRandomSentMessage()
 
-bottomBar.on Events.Click, ->
-	keyboardUp()
 
 imFlow.on Events.DragStart, ->
 	if keyboard.states.current.name == 'show'
 		keyboardDown()
 	
 keyboardHitArea.on Events.Click, ->
-	newRandomSentMessage()
+	if bottomBar.states.current.name == 'normal' && !bottomBar.isAnimating
+		bottomBar.animate('input').on Events.AnimationEnd, ->
+			area.opacity = 0
+			jumpText.fontSize = 15
+			jumpText.width = 213
+			jumpText.lineHeight = 1.2
+			jumpEmoji.x= 63
+			jumpEmoji.y= 32
+			jumpArea.opacity = 1
+			jumpArea.stateSwitch('initial')
+			jumpText.stateSwitch('initial')
+			
+			
+	else if bottomBar.states.current.name == 'input' && !bottomBar.isAnimating
+		areaJump()
+
 	
 newButton.on Events.Click, ->
 	newRandomReceivedMessage()
-
-resetButton.on Events.Click, ->
-	reset()
 

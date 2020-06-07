@@ -13,7 +13,7 @@ mainScreen.y = (Screen.height - mainScreen.height) / 2
 
 Framer.Defaults.Animation =
 	curve: Spring(damping: 1)
-	time: 0.55
+	time: 0.4
 
 receivedContents = [
 	{
@@ -334,12 +334,12 @@ jumpArea.states.float =
 		blur: 6
 		color: 'rgba(22, 24, 35, 0.1)'
 	options: 
-		time: 0.2
+		time: 0.15
 		curve: 'Bezier(.3,0,1,.7)'
 
 jumpArea.states.drop = 
-	x: jumpArea.x + 4
-	y: jumpArea.y - 92
+	x: jumpArea.x + 3
+	y: jumpArea.y - 94
 	width: 263
 	borderRadius: 4
 	backgroundColor: '#242630'
@@ -348,7 +348,7 @@ jumpArea.states.drop =
 		blur: 0
 		color: 'transparent'
 	options: 
-		time: 0.3
+		time: 0.25
 		curve: 'Bezier(0,0.1,0.5,1)'
 
 jumpText.states.initial = 
