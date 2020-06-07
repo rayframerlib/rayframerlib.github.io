@@ -359,8 +359,8 @@ jumpArea.states.drop =
 jumpArea.states.dropBounce = 
 	scale:1
 	options: 
-		time: 0.08
-		curve: "ease-in-out"
+		time: 0.4
+		curve: Spring(damping: 1)
 
 
 jumpText.states.initial = 
@@ -454,7 +454,7 @@ imFlow.on Events.DragStart, ->
 		keyboardDown()
 	
 keyboardHitArea.on Events.Click, ->
-	if bottomBar.states.current.name == 'normal' && !bottomBar.isAnimating
+	if bottomBar.states.current.name == 'normal' && !bottomBar.isAnimating 
 		bottomBar.animate('input').on Events.AnimationEnd, ->
 			area.opacity = 0
 			jumpText.fontSize = 15
