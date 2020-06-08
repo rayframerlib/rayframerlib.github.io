@@ -303,7 +303,7 @@ newTargetMessage = () ->
 		flowAnimateToBottom()
 	
 	sent.show()
-	sent.children[1].opacity = 0
+# 	sent.children[1].opacity = 0
 	return sent
 
 flowAnimateToBottom = () ->
@@ -326,9 +326,9 @@ jumpArea.states.initial =
 		color: 'transparent'
 
 jumpArea.states.float = 
-	x: jumpArea.x + 2
-	y: jumpArea.y - 26
-	scale: 1.05
+	x: jumpArea.x + 4
+	y: jumpArea.y - 40
+	scale: 0.95
 	width: 263
 	height: 64
 	borderRadius: jumpArea.borderRadius
@@ -343,11 +343,11 @@ jumpArea.states.float =
 
 jumpArea.states.drop = 
 	x: jumpArea.x + 4
-	y: jumpArea.y - 96
+	y: jumpArea.y - 94
 	width: 263
 	borderRadius: 4
 	backgroundColor: '#242630'
-	scale:0.98
+	scale:1
 	shadow1: 
 		y: 0
 		blur: 0
@@ -397,10 +397,10 @@ areaJump = () ->
 		jumpEmoji.y= 36
 		sent = newTargetMessage()
 		jumpArea.animate('drop').on Events.AnimationEnd, ->
+			jumpArea.opacity = 0
 			
 			jumpArea.animate('dropBounce').on Events.AnimationEnd, ->
-				sent.children[1].opacity = 1
-				jumpArea.opacity = 0
+# 				sent.children[1].opacity = 1
 			
 		jumpText.animate('drop')
 

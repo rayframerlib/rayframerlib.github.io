@@ -9,7 +9,7 @@
   "deviceType" : "apple-iphone-x-space-gray",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
-
+    "Filters" : false
   },
   "projectId" : "FB9C181C-562D-4039-A225-22DCE782E889",
   "deviceOrientation" : 0,
@@ -24,8 +24,8 @@
     "{3894, 68}",
     "{3963, 850}",
     "{4815, 816}",
-    "{6403, 78}",
-    "{6482, 73}",
+    "{6405, 78}",
+    "{6484, 73}",
     "{8319, 731}",
     "{9051, 331}"
   ],
