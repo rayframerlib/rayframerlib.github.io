@@ -332,7 +332,7 @@ jumpArea.states.float =
 	width: 263
 	height: 64
 	borderRadius: jumpArea.borderRadius
-	backgroundColor: '#e0e0e2'
+	backgroundColor: '#242630'
 	shadow1: 
 		y: 4
 		blur: 6
@@ -345,7 +345,7 @@ jumpArea.states.drop =
 	x: jumpArea.x + 4
 	y: jumpArea.y - 94
 	width: 263
-	borderRadius: 4
+	borderRadius: 8
 	backgroundColor: '#242630'
 	scale:1
 	shadow1: 
@@ -385,9 +385,16 @@ bottomBar.stateSwitch('input')
 
 area.opacity = 0
 
+area.states.initial = 
+	borderRadius: 22
+
+area.states.input = 
+	borderRadius: 16
+
 areaJump = () ->
 	jumpArea.backgroundColor = '#e0e0e2'
 	bottomBar.animate('normal')
+	area.animate('initial')
 	area.opacity = 1
 	jumpArea.animate('float').on Events.AnimationEnd, ->
 		jumpText.fontSize = 16
@@ -398,7 +405,6 @@ areaJump = () ->
 		sent = newTargetMessage()
 		jumpArea.animate('drop').on Events.AnimationEnd, ->
 			jumpArea.opacity = 0
-			
 			jumpArea.animate('dropBounce').on Events.AnimationEnd, ->
 # 				sent.children[1].opacity = 1
 			
@@ -455,6 +461,7 @@ imFlow.on Events.DragStart, ->
 	
 keyboardHitArea.on Events.Click, ->
 	if bottomBar.states.current.name == 'normal' && !bottomBar.isAnimating 
+		area.animate('input')
 		bottomBar.animate('input').on Events.AnimationEnd, ->
 			area.opacity = 0
 			jumpText.fontSize = 15
