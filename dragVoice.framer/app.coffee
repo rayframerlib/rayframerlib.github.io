@@ -30,9 +30,22 @@ curveEffect.html = """
 			<stop offset="0%" style="stop-color:rgb(64, 66, 82);stop-opacity:1" />
 			<stop offset="100%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
 		</linearGradient>
-		<path id ="curve" d ="M 0 0 q 187.5 0 375 0 l 375 88 l 0 88" fill="url(#grad1)"/>
+		<path id ="curve1" d ="M 0 0 q 187.5 0 375 0 l 375 88 l 0 88" fill="url(#grad1)"/>
 	</svg>
 """
+
+curveEffectCover.classList.add("svgBox")
+curveEffectCover.html = """
+	<svg viewBox='0 -72 375 375' version = "1.1">
+		<linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+			<stop offset="0%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
+			<stop offset="100%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
+		</linearGradient>
+		<path id ="curve2" d ="M 0 0 q 187.5 0 375 0 l 0 88 l -375 88" fill="url(#grad2)"/>
+	</svg>
+"""
+
+
 curveEffect.backgroundColor = "transparent"
 
 dragEffect.states.vanish = 
@@ -57,10 +70,19 @@ light.states.show =
 light.states.vanish = 
 	opacity: 0
 
+curveEffectCover.states.show = 
+	opacity: 1
+
+curveEffectCover.states.vanish = 
+	opacity: 0
+
+curveEffectCover.stateSwitch('vanish')
+
 effectHandler = () ->
 	xVal = dragHandler.x - handlerOriginX + 187.5
 	yVal = Math.min(Math.max(dragHandler.y - handlerOriginY, -118), 0)
-	document.querySelector('.svgBox #curve').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 88 l -375 88')
+	document.querySelector('.svgBox #curve1').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 88 l -375 88')
+	document.querySelector('.svgBox #curve2').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 88 l -375 88')
 # 	print dragHandler.x - handlerOriginX
 	light.x = dragHandler.x + 7
 	light.y = yVal + Utils.modulate(yVal,[0, -118],[130, 200],false)
@@ -94,11 +116,13 @@ dragArea.on "change:x", ->
 eventDelegate.on "change:x", ->
 	if @x == 1
 		light.animate('vanish')
+		curveEffectCover.animate('show')
 		dragHandler.animate
 			x: 52
 			y: 724
 	else if @x == 0
 		light.animate('show')
+		curveEffectCover.animate('vanish')
 
 dragHandler.on "change:y", ->
 	effectHandler()
@@ -157,11 +181,6 @@ blueLight.on Events.AnimationEnd, ->
 
 pinkLight.animate('vanish')
 blueLight.animate('show')
-
-
-
-	
-
 
 
 mask.opacity = 0
