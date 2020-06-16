@@ -134,9 +134,6 @@ class ReceivedMessage extends Layer
 		@.states.show = 
 # 			x: @options.x
 			opacity: 1
-			options:
-				time: 0.5
-				curve: Spring(damping: 1)
 			
 		@content.states.initial = 
 			rotation: 0
@@ -145,9 +142,6 @@ class ReceivedMessage extends Layer
 			
 		@content.states.show =
 			rotation: 0
-			options:
-				time: 0.5
-				curve: Spring(damping: 1)
 # 			x: @content.x
 # 			y: @content.y
 		
@@ -173,6 +167,69 @@ class SentMessage extends Layer
 		@options.y ?= 0
 		@options.width ?= 307
 		@options.height ?= 40
+		@options.backgroundColor ?= 'transparent'
+		@options.avatar ?= '' 
+		@options.content ?= ''
+		@options.contentWidth ?= 200
+		@options.contentHeight ?= 200
+		
+		super @options
+
+		@senderAvatar = new Layer
+			superLayer: @ 
+			y: 2
+			x: 271
+			width: 36
+			height: 36
+			image: @options.avatar
+			
+		@content = new Layer
+			superLayer: @
+			y: 0
+			width: @options.contentWidth
+			height: @options.contentHeight
+			image: @options.content
+		
+		@content.x = 263 - @content.width
+		
+		@.states.initial = 
+# 			x: @options.x + 50
+			opacity: 0	
+		
+		@.states.show = 
+# 			x: @options.x
+			opacity: 1
+		
+		@content.states.initial = 
+# 			rotation: -10
+# 			x: @content.x + 30
+# 			y: @content.y + 12
+			
+		@content.states.show =
+			rotation: 0
+			x: @content.x
+			y: @content.y
+# 			options:
+# 				curve: Spring(damping: 0.6)
+# 				time: 0.6
+		
+		@init()
+	
+	init: () ->
+		@.height = @content.height
+		@.stateSwitch('initial')
+		@content.stateSwitch('initial')
+	
+	show: () ->
+		@.animate('show')
+		@content.animate('show')
+
+class SentLabel extends Layer
+	constructor: (@options={}) ->
+		@options.x ?= 0
+		@options.y ?= 0
+		@options.width ?= 375
+		@options.height ?= 
 		@options.backgroundColor ?= 'transparent'
 		@options.avatar ?= '' 
 		@options.content ?= ''
@@ -307,11 +364,6 @@ newTargetMessage = () ->
 		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
 		setFlowConstrains()
 		flowAnimateToBottom()
-		imFlow.animate
-			y: bottomBar.y - imFlow.height
-			options: 
-				time: 0.35
-				curve: Spring(damping: 1)
 	
 	sent.show()
 # 	sent.children[1].opacity = 0
@@ -319,10 +371,7 @@ newTargetMessage = () ->
 
 flowAnimateToBottom = () ->
 	imFlow.animate
-		y: bottomBar.y - imFlow.height
-		options: 
-			time: 0.5
-			curve: Spring(damping: 1)
+			y: bottomBar.y - imFlow.height
 
 flowAnimateToTop = () ->
 	imFlow.animate
@@ -465,7 +514,14 @@ flowWraper.states.keyboard =
 # 		flowAnimateToTop()
 	
 
+class Loader extends Layer
+	
 
+loaderfFirst = new Layer
+	x: 100
+	y: 100
+	height: 32
+	width: 32
 
 imFlow.on Events.DragStart, ->
 	if keyboard.states.current.name == 'show'

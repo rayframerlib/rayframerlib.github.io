@@ -204,7 +204,7 @@ class SentMessage extends Layer
 			opacity: 1
 		
 		@content.states.initial = 
-			rotation: -5
+			rotation: -2
 			x: @content.x + 10
 			y: @content.y + 8
 			
