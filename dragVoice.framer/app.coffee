@@ -23,8 +23,8 @@ minX = 25
 handlerOriginX = dragHandler.x
 handlerOriginY = dragHandler.y
 
-dragEffect.classList.add("svgBox")
-dragEffect.html = """
+curveEffect.classList.add("svgBox")
+curveEffect.html = """
 	<svg viewBox='0 -72 375 375' version = "1.1">
 		<linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
 			<stop offset="0%" style="stop-color:rgb(39, 41, 51);stop-opacity:1" />
@@ -33,7 +33,7 @@ dragEffect.html = """
 		<path id ="curve" d ="M 0 0 q 187.5 0 375 0" fill="url(#grad1)"/>
 	</svg>
 """
-dragEffect.backgroundColor = "transparent"
+curveEffect.backgroundColor = "transparent"
 
 dragEffect.states.vanish = 
 	y: 740
@@ -51,34 +51,85 @@ dragEffect.states.show =
 
 dragEffect.stateSwitch("vanish")
 
-curveHandler = () ->
-# 	print event
-	xVal = 187.5 + (dragHandler.x - handlerOriginX)
+effectHandler = () ->
+	xVal = dragHandler.x - handlerOriginX + 187.5
 	yVal = Math.min(Math.max(dragHandler.y - handlerOriginY, -118), 0)
 	document.querySelector('.svgBox #curve').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0')
+# 	print dragHandler.x - handlerOriginX
+	light.x = dragHandler.x + 7
+	light.y = yVal + Utils.modulate(yVal,[0, -118],[130, 190],false)
 	
-dragHandler.draggable.enabled = true
-dragHandler.draggable.constraints = dragHandler.frame
-dragHandler.draggable.overdragScale	= 1
+dragArea.draggable.enabled = true
+dragArea.draggable.constraints = dragHandler.frame
+dragArea.draggable.overdragScale = 1
+
+dragArea.on "change:y", ->
+	dragHandler.y = dragArea.y
+
+dragArea.on "change:x", ->
+	dragHandler.x = dragArea.x
 
 dragHandler.on "change:y", ->
-	curveHandler()
+	effectHandler()
 
 dragHandler.on "change:x", ->
-	curveHandler()
+	effectHandler()
 
-dragHandler.on Events.MouseDown, (event)->
+dragArea.on Events.MouseDown, (event)->
 	mask.animate('show')
 	dragEffect.animate('show')
-	dragHandler.on Events.Pan, (event)->
+	dragArea.on Events.Pan, (event)->
 # 		curveHandler(event)
 
-dragHandler.on Events.LongPressEnd, ->
+dragArea.on Events.LongPressEnd, ->
 	Utils.delay 0.1, ->
 		mask.animate('vanish')
 		dragEffect.animate('vanish')
-		dragHandler.off Events.PanEnd
-		dragHandler.off Events.Pan
+		dragArea.off Events.PanEnd
+		dragArea.off Events.Pan
+
+blueLight.states.vanish = 
+	opacity: 0
+	options: 
+		time: 1
+		curve: 'linear'
+blueLight.states.show = 
+	opacity: 1
+	options: 
+		time: 1
+		curve: 'linear'
+
+pinkLight.states.vanish = 
+	opacity: 0
+	options: 
+		time: 1
+		curve: 'linear'
+pinkLight.states.show = 
+	opacity: 1
+	options: 
+		time: 1
+		curve: 'linear'
+
+blueLight.stateSwitch('vanish')
+
+pinkLight.on Events.AnimationEnd, ->
+	if pinkLight.states.current.name == 'vanish'
+		pinkLight.animate('show')
+	else if pinkLight.states.current.name == 'show'
+		pinkLight.animate('vanish')
+
+blueLight.on Events.AnimationEnd, ->
+	if blueLight.states.current.name == 'vanish'
+		blueLight.animate('show')
+	else if blueLight.states.current.name == 'show'
+		blueLight.animate('vanish')
+
+pinkLight.animate('vanish')
+blueLight.animate('show')
+
+
+
+	
 
 
 
