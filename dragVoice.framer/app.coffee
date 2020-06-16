@@ -27,10 +27,10 @@ curveEffect.classList.add("svgBox")
 curveEffect.html = """
 	<svg viewBox='0 -72 375 375' version = "1.1">
 		<linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-			<stop offset="0%" style="stop-color:rgb(39, 41, 51);stop-opacity:1" />
-			<stop offset="100%" style="stop-color:rgb(39, 41, 51);stop-opacity:1" />
+			<stop offset="0%" style="stop-color:rgb(64, 66, 82);stop-opacity:1" />
+			<stop offset="100%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
 		</linearGradient>
-		<path id ="curve" d ="M 0 0 q 187.5 0 375 0" fill="url(#grad1)"/>
+		<path id ="curve" d ="M 0 0 q 187.5 0 375 0 l 375 88 l 0 88" fill="url(#grad1)"/>
 	</svg>
 """
 curveEffect.backgroundColor = "transparent"
@@ -60,7 +60,7 @@ light.states.vanish =
 effectHandler = () ->
 	xVal = dragHandler.x - handlerOriginX + 187.5
 	yVal = Math.min(Math.max(dragHandler.y - handlerOriginY, -118), 0)
-	document.querySelector('.svgBox #curve').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0')
+	document.querySelector('.svgBox #curve').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 88 l -375 88')
 # 	print dragHandler.x - handlerOriginX
 	light.x = dragHandler.x + 7
 	light.y = yVal + Utils.modulate(yVal,[0, -118],[130, 200],false)
