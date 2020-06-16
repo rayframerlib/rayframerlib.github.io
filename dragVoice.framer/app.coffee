@@ -51,23 +51,54 @@ dragEffect.states.show =
 
 dragEffect.stateSwitch("vanish")
 
+light.states.show = 
+	opacity: 1
+
+light.states.vanish = 
+	opacity: 0
+
 effectHandler = () ->
 	xVal = dragHandler.x - handlerOriginX + 187.5
 	yVal = Math.min(Math.max(dragHandler.y - handlerOriginY, -118), 0)
 	document.querySelector('.svgBox #curve').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0')
 # 	print dragHandler.x - handlerOriginX
 	light.x = dragHandler.x + 7
-	light.y = yVal + Utils.modulate(yVal,[0, -118],[130, 190],false)
+	light.y = yVal + Utils.modulate(yVal,[0, -118],[130, 200],false)
 	
 dragArea.draggable.enabled = true
 dragArea.draggable.constraints = dragHandler.frame
 dragArea.draggable.overdragScale = 1
 
+eventDelegate = new Layer
+	visible: false
+
+changeHandler = () ->
+	if dragArea.y >= 600
+		eventDelegate.x = 0
+		dragHandler.animate
+			y: dragArea.y
+			x: dragArea.x
+			options: 
+				time: 0.1
+				curve: 'linear'
+	else
+		eventDelegate.x = 1
+
 dragArea.on "change:y", ->
-	dragHandler.y = dragArea.y
+	changeHandler()
+			
 
 dragArea.on "change:x", ->
-	dragHandler.x = dragArea.x
+	changeHandler()
+
+eventDelegate.on "change:x", ->
+	if @x == 1
+		light.animate('vanish')
+		dragHandler.animate
+			x: 52
+			y: 724
+	else if @x == 0
+		light.animate('show')
 
 dragHandler.on "change:y", ->
 	effectHandler()
