@@ -136,6 +136,14 @@ dragArea.on Events.MouseDown, (event)->
 	dragArea.on Events.Pan, (event)->
 # 		curveHandler(event)
 
+dragArea.on Events.MouseUp, (event)->
+	Utils.delay 0.1, ->
+		mask.animate('vanish')
+		dragEffect.animate('vanish')
+		dragArea.off Events.PanEnd
+		dragArea.off Events.Pan
+
+
 dragArea.on Events.LongPressEnd, ->
 	Utils.delay 0.1, ->
 		mask.animate('vanish')
