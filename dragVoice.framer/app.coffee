@@ -30,7 +30,7 @@ curveEffect.html = """
 			<stop offset="0%" style="stop-color:rgb(64, 66, 82);stop-opacity:1" />
 			<stop offset="100%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
 		</linearGradient>
-		<path id ="curve1" d ="M 0 0 q 187.5 0 375 0 l 375 88 l 0 88" fill="url(#grad1)"/>
+		<path id ="curve1" d ="M 0 0 q 187.5 0 375 0 l 0 98 l -375 0" fill="url(#grad1)"/>
 	</svg>
 """
 
@@ -41,7 +41,7 @@ curveEffectCover.html = """
 			<stop offset="0%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
 			<stop offset="100%" style="stop-color:rgb(22, 24, 35);stop-opacity:1" />
 		</linearGradient>
-		<path id ="curve2" d ="M 0 0 q 187.5 0 375 0 l 0 88 l -375 88" fill="url(#grad2)"/>
+		<path id ="curve2" d ="M 0 0 q 187.5 0 375 0 l 0 98 l -375 0" fill="url(#grad2)"/>
 	</svg>
 """
 
@@ -81,8 +81,8 @@ curveEffectCover.stateSwitch('vanish')
 effectHandler = () ->
 	xVal = dragHandler.x - handlerOriginX + 187.5
 	yVal = Math.min(Math.max(dragHandler.y - handlerOriginY, -118), 0)
-	document.querySelector('.svgBox #curve1').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 88 l -375 88')
-	document.querySelector('.svgBox #curve2').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 88 l -375 88')
+	document.querySelector('.svgBox #curve1').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 98 l -375 0')
+	document.querySelector('.svgBox #curve2').setAttribute('d','M 0 0 q '+xVal+' '+yVal+' 375 0 l 0 98 l -375 0')
 # 	print dragHandler.x - handlerOriginX
 	light.x = dragHandler.x + 7
 	light.y = yVal + Utils.modulate(yVal,[0, -118],[130, 200],false)
