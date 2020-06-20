@@ -480,7 +480,6 @@
                 "locked" : false,
                 "name" : "buttons",
                 "opacity" : 1,
-                "originalFilename" : "Group 808.png",
                 "parentid" : "JWdfNiLEd",
                 "radius" : 0,
                 "radiusBottomLeft" : 0,
@@ -642,9 +641,7 @@
                     "top" : null,
                     "visible" : true,
                     "width" : 61,
-                    "widthFactor" : null,
-                    "x" : 136,
-                    "y" : 22
+                    "widthFactor" : null
                   }
                 ],
                 "clip" : false,
