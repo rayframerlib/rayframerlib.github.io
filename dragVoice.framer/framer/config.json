@@ -9,14 +9,23 @@
   "deviceType" : "apple-iphone-x-space-gray",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
-
+    "Filters" : false
   },
   "projectId" : "7C3DCE47-E3A6-449D-AEAE-9A5C0C5084E1",
   "deviceOrientation" : 0,
   "selectedHand" : "",
   "showBezel" : 0,
   "foldedCodeRanges" : [
-
+    "{1849, 228}",
+    "{2078, 494}",
+    "{2742, 197}",
+    "{3284, 509}",
+    "{3794, 1374}",
+    "{5169, 800}",
+    "{5970, 809}",
+    "{6808, 161}",
+    "{6970, 218}",
+    "{7189, 746}"
   ],
   "deviceScale" : "fit"
 }

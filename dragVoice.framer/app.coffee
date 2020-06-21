@@ -20,6 +20,9 @@ maxHeight = 125
 maxX = 350
 minX = 25
 
+imFlow.draggable.enabled = true
+imFlow.draggable.speedX = 0
+
 handlerOriginX = dragHandler.x
 handlerOriginY = dragHandler.y
 
@@ -104,6 +107,8 @@ dragArea.draggable.overdragScale = 1
 eventDelegate = new Layer
 	visible: false
 
+
+
 changeHandler = () ->
 	if dragArea.y >= 600
 		eventDelegate.x = 0
@@ -116,55 +121,6 @@ changeHandler = () ->
 	else
 		eventDelegate.x = 1
 
-dragArea.on "change:y", ->
-	changeHandler()
-	popYHandler()
-			
-
-dragArea.on "change:x", ->
-	changeHandler()
-	popYHandler()
-
-eventDelegate.on "change:x", ->
-	if @x == 1
-		light.animate('vanish')
-		curveEffectCover.animate('show')
-		voicePop.toDeleteState()
-		dragHandler.animate
-			x: 52
-			y: 724
-	else if @x == 0
-		light.animate('show')
-		voicePop.toNormalState()
-		curveEffectCover.animate('vanish')
-
-dragHandler.on "change:y", ->
-	effectHandler()
-
-dragHandler.on "change:x", ->
-	effectHandler()
-
-dragArea.on Events.MouseDown, (event)->
-	voicePop.popOut()
-	mask.animate('show')
-	dragEffect.animate('show')
-		
-		
-dragArea.on Events.MouseUp, (event)->
-	mask.animate('vanish')
-	dragEffect.animate('vanish')
-	voicePop.isSync = false
-	if eventDelegate.x == 1
-		voicePop.deleteState()
-		
-
-
-dragArea.on Events.LongPressEnd, ->
-	mask.animate('vanish')
-	dragEffect.animate('vanish')
-	if eventDelegate.x == 1
-		voicePop.deleteState()
-		
 
 blueLight.states.vanish = 
 	opacity: 0
@@ -189,21 +145,6 @@ pinkLight.states.show =
 		curve: 'linear'
 
 blueLight.stateSwitch('vanish')
-
-pinkLight.on Events.AnimationEnd, ->
-	if pinkLight.states.current.name == 'vanish'
-		pinkLight.animate('show')
-	else if pinkLight.states.current.name == 'show'
-		pinkLight.animate('vanish')
-
-blueLight.on Events.AnimationEnd, ->
-	if blueLight.states.current.name == 'vanish'
-		blueLight.animate('show')
-	else if blueLight.states.current.name == 'show'
-		blueLight.animate('vanish')
-
-pinkLight.animate('vanish')
-blueLight.animate('show')
 
 class VoiceBar extends Layer
 	constructor: (@options={}) ->
@@ -274,10 +215,11 @@ class VoicePop extends Layer
 				time: 0.3
 				
 	popOut: () ->
+		@centerX()
 		@y = 772
 		@opacity = 0
 		@scaleX = 1
-		@.animate
+		@animate
 			y: @y - 300
 			opacity: 1
 			options:
@@ -285,13 +227,175 @@ class VoicePop extends Layer
 				curve: Spring(damping: 1)
 	
 	deleteState: () ->
-		(@.animate
+		
+		(@animate
 			scaleX: 0
 			opacity: 0
 			options:
 				time: 0.4
 				curve: Spring(damping: 1)).on Events.AnimationEnd, -> voicePop.isSync = true
-				
+	
+	sentState: (sent) ->
+		mainLayer = @
+		(@animate
+			x: 224
+			y: 660
+			opacity: 1
+			options: 
+				time: 0.3
+				curve: 'ease-in-out').on Events.AnimationEnd, ->
+					sent.messageShow()
+					mainLayer.animate
+						opacity: 0
+						options: 
+							time: 0.4
+
+class TextHint extends Layer
+	constructor: (@options={}) ->
+		@options.width ?= 120
+		@options.height ?= 22
+		@options.backgroundColor ?= 'transparent'
+		@options.opacity ?= 0
+		
+		super @options
+		
+		@centerX()
+		
+		@releaseToSend = new TextLayer
+			superLayer: @
+			text: '松开发送'
+			fontSize: 15
+			color: 'rgba(255, 255, 255, 0.5)'
+		
+		@releaseToDelete = new TextLayer
+			superLayer: @
+			text: '松开取消发送' 
+			fontSize: 15
+			color: 'rgba(255, 255, 255, 0.5)'
+			opacity: 0
+		
+		@releaseToSend.center()
+		@releaseToDelete.center()
+	
+	show: () ->
+		@animate
+			opacity: 1
+			time: 0.2
+	
+	vanish: () ->
+		@animate
+			opacity: 0
+			time: 0.2
+	
+	deleteHint: () ->
+		@releaseToSend.opacity = 0
+		@releaseToDelete.opacity = 1
+	
+	sendHint: () ->
+		@releaseToSend.opacity = 1
+		@releaseToDelete.opacity = 0
+
+class VoiceMessage extends Layer
+	constructor: (@options={}) ->
+		@options.width ?= 375
+		@options.height ?= 40
+		@options.backgroundColor ?= 'transparent'
+		
+		super @options
+		
+		@centerX()
+		
+		@Head = new Layer
+			superLayer: @
+			size: 36
+			x: @width - 36 - 14
+			image: './assets/sender_avatar.png'
+			
+		@message = new Layer
+			superLayer: @
+			width: 92
+			height: 40
+			x: @width - 92 - 58
+			image: './assets/sent_voice.png'
+		
+		@Head.centerY()
+		
+		@states.vanish = 
+			opacity: 0
+		
+		@states.show = 
+			opacity: 1
+			options: 
+				time: 0.3
+				curve: 'linear'
+		
+		@message.states.vanish = 
+			opacity: 0
+		
+		@message.states.show = 
+			opacity: 1
+		
+		@message.stateSwitch('vanish')
+		@stateSwitch('vanish')
+		
+	show: () ->
+		@animate('show')
+	
+	messageShow: () ->
+		@message.animate('show')
+		
+
+
+a = new VoiceMessage
+
+
+
+flowAnimateToBottom = () ->
+	imFlow.animate
+			y: (mainScreen.height - bottomBar.height) - imFlow.height
+			options:
+				time: 0.5
+				curve: Spring(damping: 1)
+
+setFlowConstrains = () ->
+	imFlow.draggable.constraints = 
+		x: 0
+		y: bottomBar.y - imFlow.height
+		width: mainScreen.width
+		height: 2 * imFlow.height - (mainScreen.height -  bottomBar.height - navigationBar.height)
+
+newTargetMessage = Utils.throttle 0.1, () ->
+	messageAmount = imFlow.children.length
+	if messageAmount
+		messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+		
+	else
+		messagePositionY = 1726
+		
+	sent = new VoiceMessage
+		superLayer: imFlow
+		y: messagePositionY
+	
+	if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >=  bottomBar.y - navigationBar.height
+		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
+		setFlowConstrains()
+		flowAnimateToBottom()
+		imFlow.animate
+			y: bottomBar.y - imFlow.height
+			options: 
+				time: 0.35
+				curve: Spring(damping: 1)
+	
+	sent.show()
+# 	sent.children[1].opacity = 0
+	return sent
+
+
+
+setFlowConstrains()
+
+# flowAnimateToBottom()
+
 voicePopWrap = new Layer
 	superLayer: mainScreen
 	size: mainScreen.size
@@ -300,6 +404,10 @@ voicePopWrap = new Layer
 voicePop = new VoicePop
 	superLayer: voicePopWrap
 	y: 772
+
+textHint = new TextHint
+	superLayer: voicePop
+	y: 54
 
 
 mask.opacity = 0
@@ -315,4 +423,79 @@ mask.states.show =
 		time: 0.3
 
 
+dragArea.on "change:y", ->
+	changeHandler()
+	popYHandler()
+			
+dragArea.on "change:x", ->
+	changeHandler()
+	popYHandler()
 
+eventDelegate.on "change:x", ->
+	if @x == 1
+		light.animate('vanish')
+		curveEffectCover.animate('show')
+		voicePop.toDeleteState()
+		textHint.deleteHint()
+		dragHandler.animate
+			x: 52
+			y: 724
+	else if @x == 0
+		light.animate('show')
+		voicePop.toNormalState()
+		textHint.sendHint()
+		curveEffectCover.animate('vanish')
+
+dragHandler.on "change:y", ->
+	effectHandler()
+
+dragHandler.on "change:x", ->
+	effectHandler()
+
+mouseDownTimeOffset = 0
+
+dragArea.on Events.MouseDown, (event)->
+	voicePop.popOut()
+	mask.animate('show')
+	dragEffect.animate('show')
+	textHint.show()
+		
+dragArea.on Events.MouseUp, (event)->
+	mask.animate('vanish')
+	dragEffect.animate('vanish')
+	voicePop.isSync = false
+	textHint.vanish()
+	if eventDelegate.x == 1
+		voicePop.deleteState()
+	else if eventDelegate.x == 0
+		voicePop.isSync = true
+		sent = newTargetMessage()
+		voicePop.sentState(sent)
+		
+# 		voicePop.sentState()
+
+# dragArea.on Events.LongPressEnd, ->
+# 	mask.animate('vanish')
+# 	dragEffect.animate('vanish')
+# 	textHint.vanish()
+# 	if eventDelegate.x == 1
+# 		voicePop.deleteState()
+# 	else if eventDelegate.x == 0
+# 		voicePop.isSync = true
+# 		sent = newTargetMessage()
+# 		voicePop.sentState(sent)
+
+pinkLight.on Events.AnimationEnd, ->
+	if pinkLight.states.current.name == 'vanish'
+		pinkLight.animate('show')
+	else if pinkLight.states.current.name == 'show'
+		pinkLight.animate('vanish')
+
+blueLight.on Events.AnimationEnd, ->
+	if blueLight.states.current.name == 'vanish'
+		blueLight.animate('show')
+	else if blueLight.states.current.name == 'show'
+		blueLight.animate('vanish')
+
+pinkLight.animate('vanish')
+blueLight.animate('show')
