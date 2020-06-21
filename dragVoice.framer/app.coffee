@@ -239,7 +239,7 @@ class VoicePop extends Layer
 		mainLayer = @
 		(@animate
 			x: 224
-			y: 660
+			y: 654
 			opacity: 1
 			options: 
 				time: 0.3
