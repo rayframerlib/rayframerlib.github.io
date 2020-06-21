@@ -459,6 +459,7 @@ dragArea.on Events.MouseDown, (event)->
 	mask.animate('show')
 	dragEffect.animate('show')
 	textHint.show()
+	voicePop.isSync = true
 		
 dragArea.on Events.MouseUp, (event)->
 	mask.animate('vanish')
