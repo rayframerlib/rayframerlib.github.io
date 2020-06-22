@@ -203,6 +203,7 @@ redPacketHold.show = () ->
 
 redPacket.hold = () ->
 	redPacket.text.vanish()
+	ui.show()
 	redPacket.animate('hold').on Events.AnimationEnd, ->
 		redPacketHold.show()
 		dialog.animate('show').on Events.AnimationEnd, ->
@@ -236,7 +237,7 @@ cancelIcon.on Events.Click, ->
 # 	video.player.play()
 	redPacket.hold()
 	cancelIcon.vanish()
-	ui.show()
+	
 	
 	
 
