@@ -51,8 +51,17 @@ curveEffectCover.html = """
 
 curveEffect.backgroundColor = "transparent"
 
-dragEffect.states.vanish = 
+dragEffect.visible = false
+
+dragEffect.states.move = 
 	y: 740
+	opacity: 0
+	options: 
+		time: 0.3
+		curve: "ease-in-out"
+
+dragEffect.states.vanish = 
+	y: 642
 	opacity: 0
 	options: 
 		time: 0.3
@@ -66,6 +75,16 @@ dragEffect.states.show =
 		curve: "ease-in-out"
 
 dragEffect.stateSwitch("vanish")
+
+buttonExtend.states.normal = buttonExtend.states.default
+buttonExtend.states.extend = 
+	x: -40
+	y: 72
+	width: 455
+	height: 98
+	options: 
+		time: 0.2
+		curve: 'ease-out'
 
 light.states.show = 
 	opacity: 1
@@ -454,18 +473,34 @@ dragHandler.on "change:x", ->
 
 mouseDownTimeOffset = 0
 
+curveEffectCover.opacity = 0
+curveEffect.opacity = 0
+light.stateSwitch('vanish')
+
 dragArea.on Events.MouseDown, (event)->
+	light.stateSwitch('vanish')
 	voicePop.popOut()
 	mask.animate('show')
-	dragEffect.animate('show')
+	dragEffect.visible = true
+	buttonExtend.visible = true
+	dragEffect.stateSwitch('show')
+	buttonExtend.animate('extend').on Events.AnimationEnd, ->
+		curveEffect.opacity = 1
+		light.animate('show')
+		buttonExtend.stateSwitch('normal')
+		buttonExtend.visible = false
 	textHint.show()
 	voicePop.isSync = true
 		
 dragArea.on Events.MouseUp, (event)->
 	mask.animate('vanish')
-	dragEffect.animate('vanish')
+	light.animate('vanish')
+	dragEffect.animate('move').on Events.AnimationEnd, ->
+		dragEffect.stateSwitch('vanish')
+		curveEffect.opacity = 0
 	voicePop.isSync = false
 	textHint.vanish()
+	
 	if eventDelegate.x == 1
 		voicePop.deleteState()
 	else if eventDelegate.x == 0

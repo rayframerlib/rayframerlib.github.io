@@ -62,8 +62,10 @@ mask.stateSwitch('vanish')
 redPacket.states.vanish = 
 	x: 38
 	y: 101
-	opacity: 0
-	scale: .3
+	opacity: .4
+	scale: .1
+	visible: false
+	rotationY: 30
 	options: 
 		time: 0.2
 		curve: 'ease-in'
@@ -72,8 +74,8 @@ redPacket.states.show =
 	opacity: 1
 	scale: 1
 	options: 
-		time: .5
-		curve: Spring(damping: 0.6)
+		time: 0.8
+		curve: Spring(damping: 0.7)
 
 redPacket.states.hold = 
 	scale: .126
@@ -231,6 +233,7 @@ cancelIcon.show = () ->
 Events.wrap(video.player).on "pause", ->
 	mask.show()
 	redPacket.show()
+	redPacket.visible = true
 	cancelIcon.show()
 
 cancelIcon.on Events.Click, ->
