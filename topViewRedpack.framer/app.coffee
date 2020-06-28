@@ -28,7 +28,7 @@ Utils.delay 2, ->
 	
 	video.player.play()
 	
-	Utils.delay 6 , ->
+	Utils.delay 8 , ->
 		video.player.pause()
 	
 ui.states.show = 
@@ -59,31 +59,38 @@ mask.states.vanish =
 
 mask.stateSwitch('vanish')
 
+redPacket.z = 300
+
 redPacket.states.vanish = 
 	x: 38
-	y: 101
+	y: 450
+	rotationY: 180
+	rotationZ: 30
 	opacity: .4
 	scale: .1
 	visible: false
-	rotationY: 30
 	options: 
 		time: 0.2
 		curve: 'ease-in'
 
 redPacket.states.show = 
+	x: 38
+	y: 101
+	rotationY: 0
+	rotationZ: 0
 	opacity: 1
 	scale: 1
 	options: 
-		time: 0.8
-		curve: Spring(damping: 0.7)
-
+		time: 1.0
+		curve:Spring(damping: 0.7) 
+		
 redPacket.states.hold = 
 	scale: .126
 	x: -106
 	y: 220
 	options: 
 		time: 0.25
-		curve: 'ease-in-out'
+		curve: 'ease-in'
 
 redPacket.states.extend = 
 	scale: 1.25
@@ -118,6 +125,7 @@ redPacket.text.states.vanish =
 
 redPacket.text.states.show = 
 	opacity: 1
+	
 	options:
 		time: 0.2
 		curve: 'linear'
@@ -135,6 +143,8 @@ redPacketHold.states.show =
 
 redPacketHold.stateSwitch('vanish') 
 
+newPage.z = 600
+
 newPage.states.vanish = 
 	opacity: 0
 	options:
@@ -143,6 +153,7 @@ newPage.states.vanish =
 
 newPage.states.show = 
 	opacity: 1
+	
 	options: 
 		time: 0.2
 		curve: 'linear'
@@ -206,6 +217,7 @@ redPacketHold.show = () ->
 redPacket.hold = () ->
 	redPacket.text.vanish()
 	ui.show()
+	jumpAD.opacity = 0
 	redPacket.animate('hold').on Events.AnimationEnd, ->
 		redPacketHold.show()
 		dialog.animate('show').on Events.AnimationEnd, ->
@@ -240,6 +252,7 @@ cancelIcon.on Events.Click, ->
 # 	video.player.play()
 	redPacket.hold()
 	cancelIcon.vanish()
+	mask.backgroundBlur = 0
 	
 	
 	
