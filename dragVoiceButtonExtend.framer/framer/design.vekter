@@ -623,7 +623,7 @@
                     "brightness" : 100,
                     "brightnessEnabled" : 0,
                     "centerAnchorX" : 0.5,
-                    "centerAnchorY" : 0.5,
+                    "centerAnchorY" : 0.47727272727272729,
                     "constraintsLocked" : false,
                     "contrast" : 100,
                     "contrastEnabled" : 0,
@@ -975,8 +975,8 @@
               "__class" : "LinearGradient",
               "alpha" : 1,
               "angle" : 0,
-              "end" : "rgba(0,0,0,0)",
-              "start" : "rgb(0, 27, 31)"
+              "end" : "hsla(186, 100%, 4%, 0)",
+              "start" : "hsl(188, 100%, 4%)"
             },
             "fillImage" : null,
             "fillImagePixelHeight" : null,

@@ -221,7 +221,7 @@ class ButtonEffect extends Layer
 				@animate('shrink')
 		
 		_buttonWrap.states.toList =
-			x: 146
+			x: 174
 			y: 30
 			options: 
 				time: 0.3
@@ -260,7 +260,7 @@ class ButtonEffect extends Layer
 		_buttonContent.states.toList = 
 			y: 0
 			height: 40
-			width: 120
+			width: 92
 			borderRadius: 4
 			backgroundColor: '#2B2C36'
 			options: 
@@ -491,7 +491,7 @@ class TextHint extends Layer
 			superLayer: @
 			text: '按住说话'
 			fontSize: 15
-			color: 'rgba(255, 255, 255, .7)'
+			color: 'rgba(255, 255, 255, 1)'
 			opacity: 1
 		
 		@releaseToSend.center()
@@ -634,6 +634,19 @@ mask.states.show =
 	options: 
 		time: 0.3
 
+voiceButton.states.show = 
+	opacity: 1
+	options: 
+		time: 0.2
+		curve: 'linear'
+
+voiceButton.states.vanish =
+	opacity: 0
+	options: 
+		time: 0.2
+		curve: 'linear'
+
+voiceButton.stateSwitch('vanish')
 
 dragArea.on "change:y", ->
 	dragHandler.y = dragArea.y
@@ -669,6 +682,7 @@ dragArea.on Events.MouseDown, (event)->
 	effect.extend()
 	mask.animate('show')
 	holdMessage = newTargetMessage()
+	voiceButton.stateSwitch('vanish')
 	
 
 dragArea.on Events.MouseUp, (event)->
@@ -683,6 +697,7 @@ dragArea.on Events.MouseUp, (event)->
 		effect.animateToShrink()
 		
 	else if eventDelegate.x == 0
+		voiceButton.animate('show')
 		effect.toList(holdMessage)
 		
 		
