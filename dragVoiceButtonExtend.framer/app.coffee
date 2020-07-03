@@ -98,12 +98,12 @@ class ButtonEffect extends Layer
 		
 		blueGradient = new Gradient
 			start: "rgba(148,242,255,1)"
-			end: "rgba(26,143,208,.9)"
+			end: "rgba(26,143,208,.5)"
 			angle: 180
 		
 		redGradient = new Gradient
 			start: "rgba(255, 124, 150, 1)"
-			end: "rgba(254, 44, 85, 1)"
+			end: "rgba(254, 44, 85, .5)"
 			angle: 180
 				
 		
@@ -158,6 +158,7 @@ class ButtonEffect extends Layer
 			borderRadius: 22
 			width: @options.width
 			height: @options.height
+			backgroundBlur: 5
 		
 		@soundWave = new SoundWave
 			name: 'soundWave'
