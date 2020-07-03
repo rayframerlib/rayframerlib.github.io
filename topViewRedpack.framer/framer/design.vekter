@@ -116,7 +116,7 @@
           },
           {
             "__class" : "FrameNode",
-            "aspectRatioLocked" : true,
+            "aspectRatioLocked" : false,
             "blendingEnabled" : 0,
             "blendingMode" : "normal",
             "blur" : 12,
@@ -137,7 +137,7 @@
             ],
             "brightness" : 100,
             "brightnessEnabled" : 0,
-            "centerAnchorX" : 0.86133333333333328,
+            "centerAnchorX" : 0.82666666666666666,
             "centerAnchorY" : 0.077961019490254871,
             "children" : [
 
@@ -160,9 +160,9 @@
               "end" : "rgba(0,0,0,0)",
               "start" : "black"
             },
-            "fillImage" : "Y3aVoYmGQTOiHkk6Fsi1m85xqwkh2Ek8aBJ39BY0SMCLMJFesXVGs4qalpXzF7U1ztN0pigZYHUQkKWnQ.png",
+            "fillImage" : "p2Nu5iEwmJdIqumhTHBtDDHPE9ACogsJvqyP02b8uAc6hlYE0AuS26jkOjwGDBiztXYRburz0UnpkgGp6kw",
             "fillImagePixelHeight" : 72,
-            "fillImagePixelWidth" : 252,
+            "fillImagePixelWidth" : 330,
             "fillImageResize" : "fill",
             "fillType" : "image",
             "grayscale" : 0,
@@ -173,7 +173,7 @@
             "hueRotateEnabled" : 0,
             "id" : "PN7vpCQtr",
             "intrinsicHeight" : 36,
-            "intrinsicWidth" : 126,
+            "intrinsicWidth" : 165,
             "invert" : 0,
             "invertEnabled" : 0,
             "left" : null,
@@ -197,7 +197,7 @@
             "targetName" : "jumpAD",
             "top" : 40,
             "visible" : true,
-            "width" : 84,
+            "width" : 110,
             "widthFactor" : null
           },
           {

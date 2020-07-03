@@ -28,9 +28,24 @@ Utils.delay 2, ->
 	
 	video.player.play()
 	
-	Utils.delay 8 , ->
+	Utils.delay 1, ->
 		video.player.pause()
-	
+		mask.backgroundBlur = 0
+		mask.show()
+		dialog.animate('show').on Events.AnimationEnd, ->
+			dialog.on Events.Click, ->
+				dialog.animate('vanish').on Events.AnimationEnd, ->
+					dialog.visible = false
+				mask.vanish()
+				video.player.play()
+				Utils.delay 7 , ->
+					mask.backgroundBlur = 10
+					video.player.pause()
+					mask.show()
+					redPacket.show()
+					redPacket.visible = true
+					cancelIcon.show()
+
 ui.states.show = 
 	opacity: 1
 	options: 
@@ -220,11 +235,6 @@ redPacket.hold = () ->
 	jumpAD.opacity = 0
 	redPacket.animate('hold').on Events.AnimationEnd, ->
 		redPacketHold.show()
-		dialog.animate('show').on Events.AnimationEnd, ->
-			dialog.on Events.Click, ->
-				dialog.animate('vanish')
-				mask.vanish()
-				video.player.play()
 		(redPacket.animate 
 			opacity: 0
 			options: 
@@ -242,20 +252,16 @@ cancelIcon.show = () ->
 	cancelIcon.visible = true
 	cancelIcon.animate('show')
 	
-Events.wrap(video.player).on "pause", ->
-	mask.show()
-	redPacket.show()
-	redPacket.visible = true
-	cancelIcon.show()
 
 cancelIcon.on Events.Click, ->
 # 	video.player.play()
 	redPacket.hold()
 	cancelIcon.vanish()
 	mask.backgroundBlur = 0
+	mask.vanish()
+	video.player.play()
 	
-	
-	
+
 
 packetHitArea.on Events.Click, ->
 	packetHitArea.visible = false
