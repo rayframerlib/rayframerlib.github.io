@@ -113,6 +113,14 @@ class ButtonEffect extends Layer
 			width: @options.width
 			height: @options.height
 			backgroundColor: 'transparent'
+		
+		@buttonContent = new Layer
+			superLayer: @buttonWrap
+			name: 'buttonContent'
+			borderRadius: 22
+			width: @options.width
+			height: @options.height
+			backgroundBlur: 5
 			
 		@shadowWrap = new Layer
 			superLayer: @buttonWrap
@@ -129,7 +137,7 @@ class ButtonEffect extends Layer
 			width: @options.width
 			height: @options.height
 			backgroundColor: 'transparent'
-						
+		
 		@shadow = new Layer
 			superLayer: @shadowWrap
 			name: 'shadow'
@@ -152,14 +160,6 @@ class ButtonEffect extends Layer
 			shadowColor: 'rgba(255, 56, 95, .6)'
 			gradient: redGradient
 		
-		@buttonContent = new Layer
-			superLayer: @buttonWrap
-			name: 'buttonContent'
-			borderRadius: 22
-			width: @options.width
-			height: @options.height
-			backgroundBlur: 5
-		
 		@soundWave = new SoundWave
 			name: 'soundWave'
 			superLayer: @buttonWrap
@@ -180,14 +180,12 @@ class ButtonEffect extends Layer
 		_shadowRedWrap = @shadowRedWrap
 		
 		_shadow.states.extend = 
-# 			shadowBlur: 20
 			shadowColor: 'rgba(80, 177, 226, .3)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadow.states.shrink = 
-# 			shadowBlur: 10
 			shadowColor: 'rgba(80, 177, 226, .9)'
 			options: 
 				time: 0.8
