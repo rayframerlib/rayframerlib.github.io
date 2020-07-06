@@ -244,6 +244,7 @@ class ButtonEffect extends Layer
 			width: @options.width
 			backgroundColor: 'transparent'
 			borderRadius: 22
+			backgroundBlur: 5
 			options: 
 				time: 0.3
 				curve: 'ease-in-out'
@@ -254,6 +255,7 @@ class ButtonEffect extends Layer
 			width: @options.width
 			borderRadius: 22
 			backgroundColor: '#2B2C36'
+			backgroundBlur: 5
 		
 		_buttonContent.states.toList = 
 			y: 0
@@ -261,13 +263,15 @@ class ButtonEffect extends Layer
 			width: 92
 			borderRadius: 4
 			backgroundColor: '#2B2C36'
+			backgroundBlur: 5
 			options: 
 				time: 0.3
 				curve: 'ease-in-out'
 		
 		_buttonContent.states.delete = 
-			height: 0
+			height: 1
 			y: 71
+			backgroundBlur: 5
 			options: 
 				time: 0.3
 				curve: 'ease-in-out'
