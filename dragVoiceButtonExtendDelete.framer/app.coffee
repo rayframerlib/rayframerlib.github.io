@@ -194,7 +194,7 @@ class ButtonEffect extends Layer
 			name: 'trash'
 			superLayer: @buttonWrap
 			jsonPath:'./assets/trash.json'
-			y: 16
+			y: 14
 			width: 44
 			height: 44
 			autoplay: false
@@ -415,7 +415,7 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_trash.states.normal = 
-			y: 16
+			y: 14
 			opacity: 0.9
 		
 		_trash.states.delete = 
