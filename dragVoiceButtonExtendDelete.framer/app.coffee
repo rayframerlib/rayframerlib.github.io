@@ -1,3 +1,4 @@
+BodymovinLayer = require 'lottieLayer'
 
 Framer.Extras.Hints.disable()
 
@@ -53,14 +54,18 @@ class VoiceBar extends Layer
 		@options.backgroundColor ?= 'white'
 		@options.borderRadius ?= 1
 		
-		
 		super @options
 		
-		@on Events.AnimationEnd, ->
-			@startAnimation()
+		@animationIsPlay = false
+		@min = 2
+		@max = 30
 		
-	startAnimation: () ->
-		targetBarHeight = Utils.randomNumber(2, 36)
+		@on Events.AnimationEnd, ->
+			if @animationIsPlay
+				@randomAnimation(@min, @max)
+		
+	randomAnimation: (min, max) ->
+		targetBarHeight = Utils.randomNumber(min, max)
 		targetBarY = @y - (targetBarHeight - @height)/2
 		@animate
 			y: targetBarY
@@ -68,20 +73,33 @@ class VoiceBar extends Layer
 			options: 
 				time: 0.15
 				curve: 'linear'
+	
+	startAnimation: () ->
+		@animationIsPlay = true
+		@randomAnimation()
+	
+	stopAnimation: () ->
+		@animationIsPlay = false
+		@animate
+			y: @y + @height / 2
+			height: 0
+			options:
+				time: 0.15
+				curve: 'linear'
 
 class SoundWave extends Layer
 	constructor: (@options={}) ->
 		@options.x ?= 0
 		@options.y ?= 0
-		@options.width ?= 166
+		@options.width ?= 162
 		@options.height ?= 36
 		@options.backgroundColor ?= 'transparent'
 		super @options
 		
-		for i in [0...42]
+		for i in [0...33]
 			bar = new VoiceBar
 				superLayer: @
-				x: i * 4
+				x: i * 5
 			bar.centerY()
 			bar.startAnimation()
 
@@ -165,10 +183,23 @@ class ButtonEffect extends Layer
 			superLayer: @buttonWrap
 			y: 20
 		
+		
 		@hint = new TextHint
 			name: 'hint'
 			superLayer: @buttonWrap
 			y: 60
+		
+		@trash = new BodymovinLayer
+			name: 'trash'
+			superLayer: @buttonWrap
+			jsonPath:'./assets/trash.json'
+			y: 16
+			width: 44
+			height: 44
+			autoplay: false
+			looping: false
+		
+		@trash.centerX()
 		
 		_buttonWrap = @buttonWrap
 		_buttonContent = @buttonContent
@@ -178,6 +209,7 @@ class ButtonEffect extends Layer
 		_hint = @hint
 		_shadowWrap = @shadowWrap
 		_shadowRedWrap = @shadowRedWrap
+		_trash = @trash
 		
 		_shadow.states.extend = 
 			shadowColor: 'rgba(80, 177, 226, .3)'
@@ -237,9 +269,15 @@ class ButtonEffect extends Layer
 		_buttonContent.on "change:y", ->
 			_shadow.y = @y
 			_shadowRed.y = @y
+		
+		_buttonContent.on "change:x", ->
+			_shadow.x = @x
+			_shadowRed.x = @x
 
 		_buttonContent.states.extend = 
+			x: 0
 			y: 0
+			opacity: 1
 			height: 142
 			width: @options.width
 			backgroundColor: 'transparent'
@@ -250,7 +288,9 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 				
 		_buttonContent.states.shrink = 
+			x: 0
 			y: 98
+			opacity: 1
 			height: 44
 			width: @options.width
 			borderRadius: 22
@@ -258,7 +298,9 @@ class ButtonEffect extends Layer
 			backgroundBlur: 5
 		
 		_buttonContent.states.toList = 
+			x: 0
 			y: 0
+			opacity: 1
 			height: 40
 			width: 92
 			borderRadius: 4
@@ -269,8 +311,11 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_buttonContent.states.delete = 
-			height: 1
+			height: 64
+			width: 64
+			x: 103
 			y: 71
+			opacity: 0
 			backgroundBlur: 5
 			options: 
 				time: 0.3
@@ -303,7 +348,7 @@ class ButtonEffect extends Layer
 		
 		
 		_soundWave.states.extend = 
-			x: 52
+			x: 54
 			y: 20
 			opacity: 1
 			scaleX: 1
@@ -312,8 +357,8 @@ class ButtonEffect extends Layer
 				curve: Spring(damping: 1)
 		
 		_soundWave.states.shrink = 
-			x: 52
-			y: 116
+			x: 54
+			y: 130
 			scaleY: 1
 			scaleX: 1
 			opacity: 0
@@ -329,7 +374,7 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_soundWave.states.delete = 
-			y: 0
+			y: 64
 			scaleY: 0
 			opacity: 0
 			options: 
@@ -360,10 +405,21 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_hint.states.delete =
-			y: 0
+			y: 72
 			scaleY: 0
 			opacity: 0
 			optiones:
+				time: 0.3
+				curve: 'ease-in-out'
+		
+		_trash.states.normal = 
+			y: 16
+			opacity: 1
+		
+		_trash.states.delete = 
+			y: 80
+			opacity: 0
+			options:
 				time: 0.3
 				curve: 'ease-in-out'
 		
@@ -395,6 +451,23 @@ class ButtonEffect extends Layer
 		@soundWave.animate('extend')
 		@hint.animate('extend')
 		@hint.toSend()
+		@trash.stateSwitch('normal')
+		@trash.anim.goToAndStop(0)
+		for bar in @soundWave.children
+			bar.startAnimation()
+			bar.max = 30
+		
+	
+	deleteToExtend: () ->
+		@shadowWrap.stateSwitch('show')
+		@shadowRedWrap.animate('vanish')
+		@trash.anim.setDirection(-1)
+		@trash.anim.play()
+		@hint.toSend()
+		for bar in @soundWave.children
+			bar.startAnimation()
+			bar.max = 30
+		
 	
 	toList: (message) ->
 		main = this
@@ -423,6 +496,19 @@ class ButtonEffect extends Layer
 		@followUser = false
 		@soundWave.animate('delete')
 		@hint.animate('delete')
+		@trash.animate('delete')
+		@buttonContent.animate('extend')
+		Utils.delay 0.2, ->
+			main.shadowWrap.animate
+				opacity: 0
+				options:
+					time: 0.1
+					curve: 'linear'
+			main.shadowRedWrap.animate
+				opacity: 0
+				options:
+					time: 0.1
+					curve: 'linear'
 		@buttonContent.animate('delete').on Events.AnimationEnd, ->
 			main.shrink()
 			main.followUser = true
@@ -435,6 +521,16 @@ class ButtonEffect extends Layer
 		@shadowRedWrap.animate('show').on Events.AnimationEnd, ->
 			main.shadowWrap.animate('vanish')
 		@hint.toCancel()
+		@trash.anim.setDirection(1)
+		@trash.anim.play()
+		for bar in @soundWave.children
+			index = @soundWave.children.indexOf(bar)
+			if !(index == 15 || index == 16 || index == 17)
+				bar.stopAnimation()
+			else
+				bar.max = 18
+				
+			
 		
 		
 		
@@ -703,7 +799,7 @@ eventDelegate.on "change:x", ->
 		
 	else if @x == 0
 		if dragArea.draggable.isDragging
-			effect.extend()
+			effect.deleteToExtend()
 
 dragHandler.on "change:y", ->
 	dragOffset = @y - 724
