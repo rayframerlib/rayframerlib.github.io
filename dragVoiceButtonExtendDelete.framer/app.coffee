@@ -182,6 +182,7 @@ class ButtonEffect extends Layer
 			name: 'soundWave'
 			superLayer: @buttonWrap
 			y: 20
+			opacity: 0.9
 		
 		
 		@hint = new TextHint
@@ -198,6 +199,7 @@ class ButtonEffect extends Layer
 			height: 44
 			autoplay: false
 			looping: false
+			opacity: 0.9
 		
 		@trash.centerX()
 		
@@ -350,7 +352,7 @@ class ButtonEffect extends Layer
 		_soundWave.states.extend = 
 			x: 54
 			y: 20
-			opacity: 1
+			opacity: 0.9
 			scaleX: 1
 			options: 
 				time: 0.5
@@ -414,7 +416,7 @@ class ButtonEffect extends Layer
 		
 		_trash.states.normal = 
 			y: 16
-			opacity: 1
+			opacity: 0.9
 		
 		_trash.states.delete = 
 			y: 80
