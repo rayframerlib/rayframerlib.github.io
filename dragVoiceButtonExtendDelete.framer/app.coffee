@@ -116,12 +116,12 @@ class ButtonEffect extends Layer
 		
 		blueGradient = new Gradient
 			start: "rgba(0, 242, 254, 1)"
-			end: "rgba(79, 172, 254, 0.6)"
+			end: "rgba(79, 172, 254, 0.8)"
 			angle: 150
 		
 		redGradient = new Gradient
 			start: "rgba(254, 81, 150, 1)"
-			end: "rgba(247, 112, 98, 0.6)"
+			end: "rgba(247, 112, 98, 0.8)"
 			angle: 150
 				
 		
