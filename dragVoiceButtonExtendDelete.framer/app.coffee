@@ -115,14 +115,14 @@ class ButtonEffect extends Layer
 		@followUser = true
 		
 		blueGradient = new Gradient
-			start: "rgba(148,242,255,1)"
-			end: "rgba(26,143,208,.5)"
-			angle: 180
+			start: "rgba(0, 242, 254, 1)"
+			end: "rgba(79, 172, 254, 0.6)"
+			angle: 150
 		
 		redGradient = new Gradient
-			start: "rgba(255, 124, 150, 1)"
-			end: "rgba(254, 44, 85, .5)"
-			angle: 180
+			start: "rgba(254, 81, 150, 1)"
+			end: "rgba(247, 112, 98, 0.6)"
+			angle: 150
 				
 		
 		@buttonWrap = new Layer
@@ -138,7 +138,7 @@ class ButtonEffect extends Layer
 			borderRadius: 22
 			width: @options.width
 			height: @options.height
-			backgroundBlur: 5
+			backgroundBlur: 10
 			
 		@shadowWrap = new Layer
 			superLayer: @buttonWrap
@@ -163,8 +163,8 @@ class ButtonEffect extends Layer
 			width: @options.width
 			height: @options.height
 			shadowY: 4
-			shadowBlur: 20
-			shadowColor: 'rgba(80, 177, 226, .6)'
+			shadowBlur: 24
+			shadowColor: 'rgba(40, 207, 254, 0.8)'
 			gradient: blueGradient
 		
 		@shadowRed = new Layer
@@ -174,8 +174,8 @@ class ButtonEffect extends Layer
 			width: @options.width
 			height: @options.height
 			shadowY: 4
-			shadowBlur: 20
-			shadowColor: 'rgba(255, 56, 95, .6)'
+			shadowBlur: 24
+			shadowColor: 'rgba(250, 97, 123, 0.8)'
 			gradient: redGradient
 		
 		@soundWave = new SoundWave
@@ -214,25 +214,25 @@ class ButtonEffect extends Layer
 		_trash = @trash
 		
 		_shadow.states.extend = 
-			shadowColor: 'rgba(80, 177, 226, .3)'
+			shadowColor: 'rgba(40, 207, 254, 0.8)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadow.states.shrink = 
-			shadowColor: 'rgba(80, 177, 226, .9)'
+			shadowColor: 'rgba(40, 207, 254, 0.3)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadowRed.states.extend = 
-			shadowColor: 'rgba(255, 56, 95, .3)'
+			shadowColor: 'rgba(250, 97, 123, 0.8)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadowRed.states.shrink = 
-			shadowColor: 'rgba(255, 56, 95, .9)'
+			shadowColor: 'rgba(250, 97, 123, 0.3)'
 			options: 
 				time: 0.8
 				curve: 'linear'
