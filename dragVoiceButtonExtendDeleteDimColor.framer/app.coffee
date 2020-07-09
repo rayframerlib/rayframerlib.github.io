@@ -142,15 +142,14 @@ class ButtonEffect extends Layer
 		@followUser = true
 		
 		blueGradient = new Gradient
-			start: "rgba(15, 111, 117, 1)"
-			end: "rgba(4, 58, 108, 0.7)"
+			start: "rgba(0, 210, 220, 1)"
+			end: "rgba(69, 151, 222, 0.75)"
 			angle: 150
 		
 		redGradient = new Gradient
-			start: "rgba(157, 41, 76, 1)"
-			end: "rgba(95, 27, 6, 0.7)"
+			start: "rgba(235, 74, 138, 1)"
+			end: "rgba(229, 95, 95, 0.75)"
 			angle: 150
-				
 		
 		@buttonWrap = new Layer
 			name: 'buttonWrap'
@@ -343,7 +342,7 @@ class ButtonEffect extends Layer
 			height: 64
 			width: 64
 			x: 103
-			y: 71
+			y: 6
 			opacity: 0
 			backgroundBlur: 5
 			options: 
@@ -403,7 +402,7 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_soundWave.states.delete = 
-			y: 64
+			y: 20
 			scaleY: 0
 			opacity: 0
 			options: 
@@ -446,7 +445,7 @@ class ButtonEffect extends Layer
 			opacity: 0.9
 		
 		_trash.states.delete = 
-			y: 80
+			y: 14
 			opacity: 0
 			options:
 				time: 0.3
