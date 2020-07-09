@@ -115,13 +115,13 @@ class ButtonEffect extends Layer
 		@followUser = true
 		
 		blueGradient = new Gradient
-			start: "rgba(0, 242, 254, 1)"
-			end: "rgba(79, 172, 254, 0.75)"
+			start: "rgba(15, 111, 117, 1)"
+			end: "rgba(4, 58, 108, 0.7)"
 			angle: 150
 		
 		redGradient = new Gradient
-			start: "rgba(254, 81, 150, 1)"
-			end: "rgba(247, 112, 98, 0.75)"
+			start: "rgba(157, 41, 76, 1)"
+			end: "rgba(95, 27, 6, 0.7)"
 			angle: 150
 				
 		
@@ -164,7 +164,7 @@ class ButtonEffect extends Layer
 			height: @options.height
 			shadowY: 4
 			shadowBlur: 24
-			shadowColor: 'rgba(40, 207, 254, 0.8)'
+			shadowColor: 'rgba(40, 207, 254, 0.0)'
 			gradient: blueGradient
 		
 		@shadowRed = new Layer
@@ -175,14 +175,14 @@ class ButtonEffect extends Layer
 			height: @options.height
 			shadowY: 4
 			shadowBlur: 24
-			shadowColor: 'rgba(250, 97, 123, 0.8)'
+			shadowColor: 'rgba(250, 97, 123, 0.0)'
 			gradient: redGradient
 		
 		@soundWave = new SoundWave
 			name: 'soundWave'
 			superLayer: @buttonWrap
 			y: 20
-			opacity: 0.9
+			opacity: 0.8
 		
 		
 		@hint = new TextHint
@@ -199,7 +199,7 @@ class ButtonEffect extends Layer
 			height: 44
 			autoplay: false
 			looping: false
-			opacity: 0.9
+			opacity: 0.8
 		
 		@trash.centerX()
 		
@@ -214,25 +214,25 @@ class ButtonEffect extends Layer
 		_trash = @trash
 		
 		_shadow.states.extend = 
-			shadowColor: 'rgba(40, 207, 254, 0.8)'
+			shadowColor: 'rgba(40, 207, 254, 0.0)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadow.states.shrink = 
-			shadowColor: 'rgba(40, 207, 254, 0.3)'
+			shadowColor: 'rgba(40, 207, 254, 0.0)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadowRed.states.extend = 
-			shadowColor: 'rgba(250, 97, 123, 0.8)'
+			shadowColor: 'rgba(250, 97, 123, 0.0)'
 			options: 
 				time: 0.8
 				curve: 'linear'
 		
 		_shadowRed.states.shrink = 
-			shadowColor: 'rgba(250, 97, 123, 0.3)'
+			shadowColor: 'rgba(250, 97, 123, 0.0)'
 			options: 
 				time: 0.8
 				curve: 'linear'
