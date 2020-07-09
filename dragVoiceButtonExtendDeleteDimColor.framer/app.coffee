@@ -37,6 +37,33 @@ dragArea.draggable.bounceOptions =
 
 eventDelegate = new Layer
 	visible: false
+	
+maskChangeDelegate = new Layer
+	visible: false
+	opacity: 0
+
+maskChangeDelegate.states.red = 
+	opacity: 1
+	options: 
+		time: 0.3
+		curve: 'linear'
+
+maskChangeDelegate.states.blue =
+	opacity: 0
+	options: 
+		time: 0.3
+		curve: 'linear'
+
+maskChangeDelegate.on "change:opacity", ->
+	r = Utils.modulate(@opacity, [0, 1], [0, 31])
+	g = Utils.modulate(@opacity, [0, 1], [18, 0])
+	b = Utils.modulate(@opacity, [0, 1], [20, 0])
+	gradient = new Gradient
+		start: "rgba(#{r}, #{g}, #{b}, 1)"
+		end: "rgba(#{r}, #{g}, #{b}, 0)"
+		angle: 0
+	mask.gradient = gradient
+
 
 changeHandler = () ->
 	if dragArea.y >= 550
@@ -772,6 +799,8 @@ mask.states.show =
 	opacity: 1
 	options: 
 		time: 0.3
+		
+
 
 voiceButton.states.show = 
 	opacity: 1
@@ -798,10 +827,12 @@ dragArea.on "change:x", ->
 eventDelegate.on "change:x", ->
 	if @x == 1
 		effect.cancel()
+		maskChangeDelegate.animate('red')
 		
 	else if @x == 0
 		if dragArea.draggable.isDragging
 			effect.deleteToExtend()
+			maskChangeDelegate.animate('blue')
 
 dragHandler.on "change:y", ->
 	dragOffset = @y - 724
@@ -835,9 +866,11 @@ dragArea.on Events.MouseUp, (event)->
 		flowAnimateToBottom()
 		effect.toDelete()
 		voiceButton.animate('show')
+		maskChangeDelegate.stateSwitch('blue')
 		
 	else if eventDelegate.x == 0
 		voiceButton.animate('show')
 		effect.toList(holdMessage)
+		
 		
 		
