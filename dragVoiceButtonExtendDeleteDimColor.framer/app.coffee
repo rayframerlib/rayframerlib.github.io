@@ -124,9 +124,11 @@ class SoundWave extends Layer
 		super @options
 		
 		for i in [0...33]
+			op = Math.sin(Utils.modulate(i,[0, 32],[3.14/5, 3.14 * 4 / 5]))
 			bar = new VoiceBar
 				superLayer: @
 				x: i * 5
+				opacity: op
 			bar.centerY()
 			bar.startAnimation()
 
@@ -433,8 +435,8 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_hint.states.delete =
-			y: 72
-			scaleY: 0
+			y: 50
+			scaleY: 1
 			opacity: 0
 			optiones:
 				time: 0.3
