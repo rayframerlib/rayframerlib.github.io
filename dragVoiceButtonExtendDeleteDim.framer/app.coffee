@@ -66,7 +66,7 @@ maskChangeDelegate.on "change:opacity", ->
 
 
 changeHandler = () ->
-	if dragArea.y >= 550
+	if dragArea.y >= 600
 		eventDelegate.x = 0
 		
 	else
@@ -826,15 +826,37 @@ dragArea.on "change:x", ->
 	dragHandler.x = dragArea.x
 	changeHandler()
 
+deleteHint.states.vanish = 
+	opacity: 0
+	scale: 0
+	x: deleteHint.x
+	y: deleteHint.y
+	
+deleteHint.states.show = 
+	opacity: 1
+	scale: 1
+	x: deleteHint.x
+	y: deleteHint.y
+
+deleteHint.states.delete = 
+	opacity: 1
+	scale: 0
+	x: deleteHint.x
+	y: deleteHint.y + 27
+
+deleteHint.stateSwitch('vanish')
+
 eventDelegate.on "change:x", ->
 	if @x == 1
 		effect.cancel()
 		maskChangeDelegate.animate('red')
+		deleteHint.animate('delete')
 		
 	else if @x == 0
 		if dragArea.draggable.isDragging
 			effect.deleteToExtend()
 			maskChangeDelegate.animate('blue')
+			deleteHint.animate('show')
 
 dragHandler.on "change:y", ->
 	dragOffset = @y - 724
@@ -855,6 +877,7 @@ dragArea.on Events.MouseDown, (event)->
 	mask.animate('show')
 	holdMessage = newTargetMessage()
 	voiceButton.stateSwitch('vanish')
+	deleteHint.animate('show')
 	
 
 dragArea.on Events.MouseUp, (event)->
@@ -869,10 +892,9 @@ dragArea.on Events.MouseUp, (event)->
 		effect.toDelete()
 		voiceButton.animate('show')
 		maskChangeDelegate.stateSwitch('blue')
+		deleteHint.animate('vanish')
 		
 	else if eventDelegate.x == 0
 		voiceButton.animate('show')
 		effect.toList(holdMessage)
-		
-		
-		
+		deleteHint.animate('vanish')
