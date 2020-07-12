@@ -345,8 +345,8 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_buttonContent.states.delete = 
-			height: 0
-			width: 0
+			height: .1
+			width: .1
 			x: 135
 			y: -18
 			opacity: 0
