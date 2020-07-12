@@ -66,7 +66,7 @@ maskChangeDelegate.on "change:opacity", ->
 
 
 changeHandler = () ->
-	if dragArea.y >= 600
+	if dragArea.y >= 575
 		eventDelegate.x = 0
 		
 	else
@@ -359,7 +359,7 @@ class ButtonEffect extends Layer
 			height: 72
 			width: 72
 			x: 99
-			y: -54
+			y: -29
 			borderRadius: 64
 		
 		_shadowWrap.states.show = 
@@ -416,7 +416,7 @@ class ButtonEffect extends Layer
 		
 		_soundWave.states.cancel = 
 			x: 54
-			y: -34
+			y: -9
 			scaleY: 1
 			scaleX: 1
 			opacity: 1
@@ -456,7 +456,7 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'
 		
 		_hint.states.cancel = 
-			y: 24
+			y: 49
 		
 		_hint.states.delete =
 			y: 24
@@ -471,7 +471,7 @@ class ButtonEffect extends Layer
 			opacity: 0.9
 		
 		_trash.states.cancel = 
-			y: -40
+			y: -15
 			opacity: 0.9
 		
 		_trash.states.delete = 
@@ -494,7 +494,7 @@ class ButtonEffect extends Layer
 	buttonWrapToMiddle: () ->
 		@buttonWrap.animate
 			x: 0
-			y: -103
+			y: -128
 			options: 
 				time: 0.25
 				curve: 'ease-in-out'
