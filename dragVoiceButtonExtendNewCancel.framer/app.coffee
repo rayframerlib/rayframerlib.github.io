@@ -533,8 +533,8 @@ class ButtonEffect extends Layer
 		@hint.animate('extend')
 		@trash.animate('normal')
 		@soundWave.animate('extend')
-		@trash.anim.setDirection(-1)
-		@trash.anim.play()
+# 		@trash.anim.setDirection(-1)
+# 		@trash.anim.play()
 		@hint.toSend()
 		for bar in @soundWave.children
 			bar.startAnimation()
@@ -597,8 +597,8 @@ class ButtonEffect extends Layer
 		@hint.animate('cancel')
 		@hint.toCancel()
 		@trash.animate('cancel')
-		@trash.anim.setDirection(1)
-		@trash.anim.play()
+# 		@trash.anim.setDirection(1)
+# 		@trash.anim.play()
 		@soundWave.animate('cancel')
 		for bar in @soundWave.children
 			index = @soundWave.children.indexOf(bar)
