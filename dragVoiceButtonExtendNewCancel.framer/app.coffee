@@ -535,9 +535,6 @@ class ButtonEffect extends Layer
 		@shadowWrap.stateSwitch('show')
 		@shadowRedWrap.animate('vanish')
 		@trash.stateSwitch('normal')
-		for bar in @soundWave.children
-			bar.startAnimation()
-			bar.max = 30
 		if @timeUp
 			@hint.animate('time')
 # 			@soundWave.animate('time')
@@ -546,10 +543,16 @@ class ButtonEffect extends Layer
 				index = @soundWave.children.indexOf(bar)
 				if  index < 29 && index > 3
 					bar.stopAnimation()
+				else
+					bar.startAnimation()
+					bar.max = 10
 		else
 			@hint.animate('extend')
 			@soundWave.animate('extend')
 			@hint.toSend()
+			for bar in @soundWave.children
+				bar.startAnimation()
+				bar.max = 30
 # 			@trash.anim.goToAndStop(0)
 		
 	
@@ -562,9 +565,7 @@ class ButtonEffect extends Layer
 		@soundWave.animate('extend')
 # 		@trash.anim.setDirection(-1)
 # 		@trash.anim.play()
-		for bar in @soundWave.children
-			bar.startAnimation()
-			bar.max = 30
+		
 		if @timeUp
 			@hint.animate('time')
 # 			@soundWave.animate('time')
@@ -573,11 +574,16 @@ class ButtonEffect extends Layer
 				index = @soundWave.children.indexOf(bar)
 				if  index < 29 && index > 3
 					bar.stopAnimation()
-			
+				else
+					bar.startAnimation()
+					bar.max = 10
 		else
 			@hint.animate('extend')
 			@soundWave.animate('extend')
 			@hint.toSend()
+			for bar in @soundWave.children
+				bar.startAnimation()
+				bar.max = 30
 # 			@trash.anim.goToAndStop(0)
 		
 	
