@@ -142,7 +142,7 @@ class ButtonEffect extends Layer
 		super @options
 		
 		@followUser = true
-		@timeUp = true
+		@timeUp = false
 		
 		blueGradient = new Gradient
 			start: "rgba(0, 210, 220, 1)"
@@ -535,16 +535,21 @@ class ButtonEffect extends Layer
 		@shadowWrap.stateSwitch('show')
 		@shadowRedWrap.animate('vanish')
 		@trash.stateSwitch('normal')
-		@hint.toSend()
 		for bar in @soundWave.children
 			bar.startAnimation()
 			bar.max = 30
-			
-		@hint.animate('time')
-		@soundWave.animate('time')
-			
-		@hint.animate('extend')
-		@soundWave.animate('extend')
+		if @timeUp
+			@hint.animate('time')
+# 			@soundWave.animate('time')
+			@hint.toTimeToSend()
+			for bar in @soundWave.children
+				index = @soundWave.children.indexOf(bar)
+				if  index < 29 && index > 3
+					bar.stopAnimation()
+		else
+			@hint.animate('extend')
+			@soundWave.animate('extend')
+			@hint.toSend()
 # 			@trash.anim.goToAndStop(0)
 		
 	
@@ -553,19 +558,26 @@ class ButtonEffect extends Layer
 		@shadowWrap.stateSwitch('show')
 		@shadowRedWrap.animate('vanish')
 		@buttonContent.animate('extend')
-		@hint.animate('extend')
 		@trash.animate('normal')
 		@soundWave.animate('extend')
 # 		@trash.anim.setDirection(-1)
 # 		@trash.anim.play()
-		@hint.toSend()
 		for bar in @soundWave.children
 			bar.startAnimation()
 			bar.max = 30
-		@hint.animate('time')
-		@soundWave.animate('time')
-		@hint.animate('extend')
-		@soundWave.animate('extend')
+		if @timeUp
+			@hint.animate('time')
+# 			@soundWave.animate('time')
+			@hint.toTimeToSend()
+			for bar in @soundWave.children
+				index = @soundWave.children.indexOf(bar)
+				if  index < 29 && index > 3
+					bar.stopAnimation()
+			
+		else
+			@hint.animate('extend')
+			@soundWave.animate('extend')
+			@hint.toSend()
 # 			@trash.anim.goToAndStop(0)
 		
 	
@@ -633,9 +645,14 @@ class ButtonEffect extends Layer
 			if !(index == 15 || index == 16 || index == 17)
 				bar.stopAnimation()
 			else
+				bar.startAnimation()
 				bar.max = 24
 				
-			
+	
+	timeUpHandler: () ->
+		@timeUp = true
+		if @buttonContent.states.current.name == 'extend'
+			@deleteToExtend()
 		
 		
 		
@@ -736,10 +753,17 @@ class TextHint extends Layer
 			color: 'rgba(255, 255, 255, 1)'
 			opacity: 1
 		
+		@timeToSend = new TextLayer
+			superLayer: @
+			text: '10 秒后自动发送'
+			fontSize: 15
+			color: 'rgba(255, 255, 255, .7)'
+			opacity: 0
+		
 		@releaseToSend.center()
 		@releaseToCancel.center()
 		@tapToStart.center()
-		
+		@timeToSend.center()
 		
 	toSend: () ->
 		@releaseToSend.animate
@@ -755,6 +779,12 @@ class TextHint extends Layer
 				curve: 'linear'
 		
 		@tapToStart.animate
+			opacity: 0
+			options:
+				time: 0.1
+				curve: 'linear'
+		
+		@timeToSend.animate
 			opacity: 0
 			options:
 				time: 0.1
@@ -778,6 +808,12 @@ class TextHint extends Layer
 			options:
 				time: 0.1
 				curve: 'linear'
+		
+		@timeToSend.animate
+			opacity: 0
+			options:
+				time: 0.1
+				curve: 'linear'
 
 	toTap: () ->
 		@releaseToSend.animate
@@ -797,8 +833,41 @@ class TextHint extends Layer
 			options:
 				time: 0.1
 				curve: 'linear'
+		
+		@timeToSend.animate
+			opacity: 0
+			options:
+				time: 0.1
+				curve: 'linear'
+		
+	toTimeToSend: () ->
+		@releaseToSend.animate
+			opacity: 0
+			options:
+				time: 0.1
+				curve: 'linear'
+		
+		@releaseToCancel.animate
+			opacity: 0
+			options:
+				time: 0.1
+				curve: 'linear'
+		
+		@tapToStart.animate
+			opacity: 0
+			options:
+				time: 0.1
+				curve: 'linear'
+		
+		@timeToSend.animate
+			opacity: 1
+			options:
+				time: 0.1
+				curve: 'linear'
 
 	jumpToTap: () ->
+		@timeToSend.opacity = 0
+		
 		@releaseToSend.opacity = 0
 		
 		@releaseToCancel.opacity = 0
@@ -948,16 +1017,22 @@ mouseDownTimeOffset = 0
 
 holdMessage = ''
 
+clock = 0
+
 dragArea.on Events.MouseDown, (event)->
 	effect.extend()
 	mask.animate('show')
 	holdMessage = newTargetMessage()
 	voiceButton.stateSwitch('vanish')
 	deleteHint.animate('show')
+	Utils.delay 3, ->
+		if effect.buttonContent.states.current.name != 'shrink'
+			effect.timeUpHandler()
+		
 
 dragArea.on Events.MouseUp, (event)->
 	mask.animate('vanish')
-	
+	effect.timeUp = false
 	if eventDelegate.x == 1
 		holdMessage.destroy()
 		messageAmount = imFlow.children.length
