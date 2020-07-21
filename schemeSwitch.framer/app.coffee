@@ -12,10 +12,12 @@ mainScreen.centerX()
 halfScreenAnimationOption = 
 	time: 0.6
 	curve: Spring(damping: 1)
-	
+ 
 fullScreenAnimationOption = 
 	time: 0.6
 	curve: Spring(damping: 1)
+
+
 
 frameAnimationOption = 
 	time: 0.6
@@ -25,6 +27,8 @@ popUpShowAnimationOption =
 	time: 0.6
 	curve: Spring(damping: .5)
 
+
+
 popUpVanishAnimationOption = 
 	time: 0.1
 	curve: 'linear'
@@ -32,6 +36,7 @@ popUpVanishAnimationOption =
 panelAnimationOption = 
 	time: 0.6
 	curve: Spring(damping: 1)
+
 
 
 if Screen.width > 375
@@ -66,7 +71,18 @@ halfScreenScheme.states.vanish =
 	y: 812
 	options: halfScreenAnimationOption
 
-halfScreenScheme.stateSwitch('vanish')
+
+
+
+
+halfScreenAndroidScheme.states.show = 
+	y: 44
+	options: halfScreenAnimationOption
+
+halfScreenAndroidScheme.states.vanish = 
+	y: 812
+	options: halfScreenAnimationOption
+
 
 
 
@@ -78,7 +94,6 @@ fullScreenScheme.states.vanish =
 	y: 812
 	options: fullScreenAnimationOption
 
-fullScreenScheme.stateSwitch('vanish')
 
 
 
@@ -90,7 +105,6 @@ frameScheme.states.show =
 	x: 0
 	options: frameAnimationOption
 
-frameScheme.stateSwitch('vanish')
 
 
 
@@ -112,7 +126,6 @@ popUp.states.showToVanish =
 	opacity: 0
 	options: popUpVanishAnimationOption
 
-popUp.stateSwitch('vanish')
 
 
 
@@ -124,8 +137,12 @@ panel.states.vanish =
 	y: 812
 	options: panelAnimationOption
 
-panel.stateSwitch('vanish')
-	
+panel.draggable.constraints = 
+	x: 0
+	y: 0
+	width: 375
+	height: 1753
+
 
 mask.states.show = 
 	opacity: 1
@@ -139,7 +156,7 @@ mask.states.vanish =
 		time: 0.25
 		curve: 'linear'
 
-mask.stateSwitch('vanish')
+
 
 mask.on Events.Click, ->
 mask.visible = false
@@ -152,7 +169,6 @@ vanishMask = () ->
 	mask.animate('vanish').on Events.AnimationEnd, ->
 		mask.visible = false
 
-
 toHalfScreen = () ->
 	halfScreenScheme.stateSwitch('vanish')
 	originScheme.animate('halfScreen') 
@@ -162,6 +178,15 @@ toHalfScreen = () ->
 halfScreenBack = () ->
 	halfScreenScheme.animate('vanish')
 	originScheme.animate('halfToNormal') 
+	vanishMask()
+
+toHalfScreenAndroid = () ->
+	halfScreenAndroidScheme.stateSwitch('vanish')
+	halfScreenAndroidScheme.animate('show')
+	showMask()
+	
+halfScreenAndroidBack = () ->
+	halfScreenAndroidScheme.animate('vanish')
 	vanishMask()
 
 toFullScreen = () ->
@@ -182,14 +207,24 @@ frameBack = () ->
 	vanishMask()
 	frameScheme.animate('vanish')
 	originScheme.animate('frameToNormal')
-	
+
+
+panel.clip = true
+
+panel.draggable.speedX = 0
+
 panelShow = () ->
 	panel.animate('show')
 	showMask()
+	panel.draggable.enabled = true
 	
 panelVanish = () ->
+	panel.draggable.enabled = false
 	panel.animate('vanish')
 	vanishMask()
+	
+
+
 
 
 popUp.visible = false
@@ -232,8 +267,36 @@ popUp.on Events.Click, ->
 panelTrigger.on Events.Click, ->
 	panelShow()
 
-panel.on Events.Click, ->
+panelCancel.on Events.Click, ->
 	panelVanish()
+
+panel.on 'change:y', ->
+	panelInactiveArea.y = @y + 44
+
+panel.on Events.DragEnd, ->
+	if @y >= 460
+		panelVanish()
+	else 
+		panelShow()
+
+panelInactiveArea.on Events.Click, ->
+
+halfScreenAndroidTrigger.on Events.Click, ->
+	toHalfScreenAndroid()
 	
+halfScreenAndroidScheme.on Events.Click, ->
+	halfScreenAndroidBack()
+
+halfScreenScheme.stateSwitch('vanish')
+halfScreenAndroidScheme.stateSwitch('vanish')
+fullScreenScheme.stateSwitch('vanish')
+frameScheme.stateSwitch('vanish')
+popUp.stateSwitch('vanish')
+panel.stateSwitch('vanish')
+mask.stateSwitch('vanish')
+
+
+
+
 	
 	
