@@ -66,7 +66,7 @@ maskChangeDelegate.on "change:opacity", ->
 
 
 changeHandler = () ->
-	if dragArea.y >= 575
+	if dragArea.y >= 595
 		eventDelegate.x = 0
 		
 	else
@@ -142,6 +142,7 @@ class ButtonEffect extends Layer
 		super @options
 		
 		@followUser = true
+		@timeUp = true
 		
 		blueGradient = new Gradient
 			start: "rgba(0, 210, 220, 1)"
@@ -416,7 +417,7 @@ class ButtonEffect extends Layer
 		
 		_soundWave.states.cancel = 
 			x: 54
-			y: -9
+			y: -10
 			scaleY: 1
 			scaleX: 1
 			opacity: 1
@@ -425,12 +426,22 @@ class ButtonEffect extends Layer
 				curve: 'ease-in-out'	
 		
 		_soundWave.states.delete = 
-			y: -34
+			y: -44
 			scaleY: 0
 			opacity: 0
 			options: 
 				time: 0.2
 				curve: 'ease-in-out'
+		
+		_soundWave.states.time = 
+			x: 54
+			y: 20
+			opacity: 0
+			scaleX: 1
+			options: 
+				time: 0.2
+				curve: 'linear'
+		
 		
 		_hint.states.extend = 
 			x: 35
@@ -439,7 +450,7 @@ class ButtonEffect extends Layer
 			options: 
 				time: 0.5
 				curve: Spring(damping: 1)
-	
+			
 		_hint.states.shrink = 
 			x: 35
 			y: 103
@@ -466,6 +477,14 @@ class ButtonEffect extends Layer
 				time: 0.1
 				curve: 'ease-in-out'
 		
+		_hint.states.time = 
+			x: 35
+			y: 22
+			opacity: 1
+			options:
+				time: 0.2
+				curve: 'ease-in-out'
+		
 		_trash.states.normal = 
 			y: 14
 			opacity: 0.9
@@ -475,7 +494,7 @@ class ButtonEffect extends Layer
 			opacity: 0.9
 		
 		_trash.states.delete = 
-			y: -40
+			y: -30
 			opacity: 0
 			options:
 				time: 0.1
@@ -515,14 +534,18 @@ class ButtonEffect extends Layer
 		@buttonContent.animate('extend')
 		@shadowWrap.stateSwitch('show')
 		@shadowRedWrap.animate('vanish')
-		@soundWave.animate('extend')
-		@hint.animate('extend')
-		@hint.toSend()
 		@trash.stateSwitch('normal')
-		@trash.anim.goToAndStop(0)
+		@hint.toSend()
 		for bar in @soundWave.children
 			bar.startAnimation()
 			bar.max = 30
+			
+		@hint.animate('time')
+		@soundWave.animate('time')
+			
+		@hint.animate('extend')
+		@soundWave.animate('extend')
+# 			@trash.anim.goToAndStop(0)
 		
 	
 	deleteToExtend: () ->
@@ -539,6 +562,11 @@ class ButtonEffect extends Layer
 		for bar in @soundWave.children
 			bar.startAnimation()
 			bar.max = 30
+		@hint.animate('time')
+		@soundWave.animate('time')
+		@hint.animate('extend')
+		@soundWave.animate('extend')
+# 			@trash.anim.goToAndStop(0)
 		
 	
 	toList: (message) ->
@@ -605,7 +633,7 @@ class ButtonEffect extends Layer
 			if !(index == 15 || index == 16 || index == 17)
 				bar.stopAnimation()
 			else
-				bar.max = 18
+				bar.max = 24
 				
 			
 		
@@ -908,7 +936,7 @@ eventDelegate.on "change:x", ->
 
 dragHandler.on "change:y", ->
 	dragOffset = @y - 724
-	targetOffset = Utils.modulate(dragOffset, [-120, 120], [-100, 100])
+	targetOffset = Utils.modulate(dragOffset, [-120, 120], [-120, 120])
 	effect.setButtonOffsetY(targetOffset)
 
 dragHandler.on "change:x", ->
