@@ -168,7 +168,7 @@ class ButtonEffect extends Layer
 			width: @options.width
 			height: @options.height
 			backgroundBlur: 10
-			
+		
 		@shadowWrap = new Layer
 			superLayer: @buttonWrap
 			name: 'shadowWrap'
@@ -180,6 +180,14 @@ class ButtonEffect extends Layer
 		@shadowRedWrap = new Layer
 			superLayer: @buttonWrap
 			name: 'shadowRedWrap'
+			borderRadius: 22
+			width: @options.width
+			height: @options.height
+			backgroundColor: 'transparent'
+		
+		@shadowDimWrap = new Layer
+			superLayer: @buttonWrap
+			name: 'shadowDimWrap'
 			borderRadius: 22
 			width: @options.width
 			height: @options.height
@@ -206,6 +214,17 @@ class ButtonEffect extends Layer
 			shadowBlur: 24
 			shadowColor: 'rgba(250, 97, 123, 0.0)'
 			gradient: redGradient
+		
+		@shadowDim = new Layer
+			superLayer: @shadowDimWrap
+			name: 'shadowDim'
+			borderRadius: 22
+			width: @options.width
+			height: @options.height
+			shadowY: 4
+			shadowBlur: 24
+			shadowColor: 'rgba(250, 97, 123, 0.0)'
+			gradient: blueGradient
 		
 		@soundWave = new SoundWave
 			name: 'soundWave'
@@ -240,6 +259,8 @@ class ButtonEffect extends Layer
 		_hint = @hint
 		_shadowWrap = @shadowWrap
 		_shadowRedWrap = @shadowRedWrap
+		_shadowDim = @shadowDim
+		_shadowDimWrap = @shadowDimWrap
 		_trash = @trash
 		
 		_shadow.states.extend = 
@@ -292,22 +313,27 @@ class ButtonEffect extends Layer
 		_buttonContent.on "change:height", ->
 			_shadow.height = @height
 			_shadowRed.height = @height
+			_shadowDim.height = @height
 		
 		_buttonContent.on "change:width", ->
 			_shadow.width = @width
 			_shadowRed.width = @width
+			_shadowDim.width = @width
 		
 		_buttonContent.on "change:y", ->
 			_shadow.y = @y
 			_shadowRed.y = @y
+			_shadowDim.y = @y
 		
 		_buttonContent.on "change:x", ->
 			_shadow.x = @x
 			_shadowRed.x = @x
+			_shadowDim.x = @x
 		
 		_buttonContent.on "change:borderRadius", ->
 			_shadow.borderRadius = @borderRadius
 			_shadowRed.borderRadius = @borderRadius
+			_shadowDim.borderRadius = @borderRadius
 
 		_buttonContent.states.extend = 
 			x: 0
@@ -387,6 +413,50 @@ class ButtonEffect extends Layer
 			options: 
 				time: 0.2
 				curve: 'linear'
+		
+		_shadowRedWrap.states.show = 
+			opacity: 1
+			options: 
+				time: 0.2
+				curve: 'linear'
+				
+		_shadowRedWrap.states.vanish = 
+			opacity: 0
+			options: 
+				time: 0.2
+				curve: 'linear'
+		
+		_shadowDimWrap.states.show = 
+			opacity: 1
+			options: 
+				time: 0.2
+				curve: 'linear'
+				
+		_shadowDimWrap.states.vanish = 
+			opacity: 0
+			options: 
+				time: 0.2
+				curve: 'linear'
+		
+		_shadowDim.states.dim = 
+			opacity: 0.85
+			options:
+				time: 0.2
+				curve: 'linear'
+		
+		_shadowDim.states.normal = 
+			opacity: 1
+			options:
+				time: 0.5
+				curve: 'linear'
+		
+		_shadowDim.animate('dim')
+		
+		_shadowDim.on Events.AnimationEnd, ->
+			if _shadowDim.states.current.name == 'dim'
+				_shadowDim.animate('normal')
+			else
+				_shadowDim.animate('dim')
 		
 		
 		_soundWave.states.extend = 
@@ -522,6 +592,7 @@ class ButtonEffect extends Layer
 	shrink: () ->
 		@buttonContent.stateSwitch('shrink')
 		@shadowWrap.stateSwitch('vanish')
+		@shadowDimWrap.stateSwitch('vanish')
 		@shadowRedWrap.stateSwitch('vanish')
 		@soundWave.stateSwitch('shrink')
 		@hint.stateSwitch('shrink')
@@ -532,13 +603,14 @@ class ButtonEffect extends Layer
 	extend: () ->
 		main = this
 		@buttonContent.animate('extend')
-		@shadowWrap.stateSwitch('show')
 		@shadowRedWrap.animate('vanish')
 		@trash.stateSwitch('normal')
 		if @timeUp
 			@hint.animate('time')
 # 			@soundWave.animate('time')
 			@hint.toTimeToSend()
+			@shadowWrap.animate('vanish')
+			@shadowDimWrap.animate('show')
 			for bar in @soundWave.children
 				index = @soundWave.children.indexOf(bar)
 				if  index < 29 && index > 3
@@ -550,6 +622,8 @@ class ButtonEffect extends Layer
 			@hint.animate('extend')
 			@soundWave.animate('extend')
 			@hint.toSend()
+			@shadowWrap.animate('show')
+			@shadowDimWrap.animate('vanish')
 			for bar in @soundWave.children
 				bar.startAnimation()
 				bar.max = 30
@@ -558,7 +632,6 @@ class ButtonEffect extends Layer
 	
 	deleteToExtend: () ->
 		@followUser = true
-		@shadowWrap.stateSwitch('show')
 		@shadowRedWrap.animate('vanish')
 		@buttonContent.animate('extend')
 		@trash.animate('normal')
@@ -570,6 +643,8 @@ class ButtonEffect extends Layer
 			@hint.animate('time')
 # 			@soundWave.animate('time')
 			@hint.toTimeToSend()
+			@shadowWrap.animate('vanish')
+			@shadowDimWrap.animate('show')
 			for bar in @soundWave.children
 				index = @soundWave.children.indexOf(bar)
 				if  index < 29 && index > 3
@@ -581,17 +656,18 @@ class ButtonEffect extends Layer
 			@hint.animate('extend')
 			@soundWave.animate('extend')
 			@hint.toSend()
+			@shadowWrap.animate('show')
+			@shadowDimWrap.animate('vanish')
 			for bar in @soundWave.children
 				bar.startAnimation()
-				bar.max = 30
-# 			@trash.anim.goToAndStop(0)
-		
+				bar.max = 30		
 	
 	toList: (message) ->
 		main = this
 		@followUser = false
 		@shadowWrap.animate('vanish')
 		@shadowRedWrap.animate('vanish')
+		@shadowDimWrap.animate('vanish')
 		@buttonContent.animate('toList')
 		@soundWave.animate('toList')
 		@hint.animate('toList')
@@ -640,6 +716,7 @@ class ButtonEffect extends Layer
 		@buttonContent.animate('cancel')
 		@shadowRedWrap.animate('show').on Events.AnimationEnd, ->
 			main.shadowWrap.animate('vanish')
+			main.shadowDimWrap.animate('vanish')
 		@hint.animate('cancel')
 		@hint.toCancel()
 		@trash.animate('cancel')
@@ -762,8 +839,8 @@ class TextHint extends Layer
 		@timeToSend = new TextLayer
 			superLayer: @
 			text: '10 秒后自动发送'
-			fontSize: 15
-			color: 'rgba(255, 255, 255, .7)'
+			fontSize: 16
+			color: 'rgba(255, 255, 255, .9)'
 			opacity: 0
 		
 		@releaseToSend.center()
@@ -1023,7 +1100,8 @@ mouseDownTimeOffset = 0
 
 holdMessage = ''
 
-clock = 0
+clock = []
+clockControl = null
 
 dragArea.on Events.MouseDown, (event)->
 	effect.extend()
@@ -1031,10 +1109,12 @@ dragArea.on Events.MouseDown, (event)->
 	holdMessage = newTargetMessage()
 	voiceButton.stateSwitch('vanish')
 	deleteHint.animate('show')
-	Utils.delay 3, ->
-		if effect.buttonContent.states.current.name != 'shrink'
-			effect.timeUpHandler()
-		
+	clock.push(
+		Utils.delay 3, ->
+			if clock.length == 1
+				effect.timeUpHandler()
+			clock.pop()
+		)
 
 dragArea.on Events.MouseUp, (event)->
 	mask.animate('vanish')
