@@ -1110,7 +1110,7 @@ dragArea.on Events.MouseDown, (event)->
 	voiceButton.stateSwitch('vanish')
 	deleteHint.animate('show')
 	clock.push(
-		Utils.delay 3, ->
+		Utils.delay 10, ->
 			if clock.length == 1
 				effect.timeUpHandler()
 			clock.pop()
