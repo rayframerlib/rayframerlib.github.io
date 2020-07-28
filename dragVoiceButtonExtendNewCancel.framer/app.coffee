@@ -1111,7 +1111,7 @@ dragArea.on Events.MouseDown, (event)->
 	deleteHint.animate('show')
 	clock.push(
 		Utils.delay 10, ->
-			if clock.length == 1
+			if clock.length == 1 && effect.buttonContent.states.current.name != 'shrink'
 				effect.timeUpHandler()
 			clock.pop()
 		)
