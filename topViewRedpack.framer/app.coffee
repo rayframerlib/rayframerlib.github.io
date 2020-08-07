@@ -38,7 +38,7 @@ Utils.delay 2, ->
 					dialog.visible = false
 				mask.vanish()
 				video.player.play()
-				Utils.delay 7 , ->
+				Utils.delay 1 , ->
 					mask.backgroundBlur = 10
 					video.player.pause()
 					mask.show()
@@ -81,7 +81,7 @@ redPacket.states.vanish =
 	y: 450
 	rotationY: 180
 	rotationZ: 30
-	opacity: .4
+	opacity: 0
 	scale: .1
 	visible: false
 	options: 
@@ -96,8 +96,8 @@ redPacket.states.show =
 	opacity: 1
 	scale: 1
 	options: 
-		time: 1.0
-		curve:Spring(damping: 0.7) 
+		time: 0.7
+		curve:'cubic-bezier(.56,.01,.38,1.24)'
 		
 redPacket.states.hold = 
 	scale: .126
@@ -168,7 +168,6 @@ newPage.states.vanish =
 
 newPage.states.show = 
 	opacity: 1
-	
 	options: 
 		time: 0.2
 		curve: 'linear'
