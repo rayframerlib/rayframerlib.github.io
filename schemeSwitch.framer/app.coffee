@@ -292,7 +292,7 @@ panel.on Events.DragEnd, ->
 	else 
 		panelShow(panelChangeAnimationOption)
 
-panelInactiveArea.on Events.Click, ->
+# panelInactiveArea.on Events.Click, ->
 
 halfScreenAndroidTrigger.on Events.Click, ->
 	toHalfScreenAndroid()
