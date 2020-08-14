@@ -24,7 +24,7 @@ frameAnimationOption =
 	curve: Spring(damping: 1)
 
 popUpShowAnimationOption = 
-	time: 0.6
+	time: 0.3
 	curve: Spring(damping: .5)
 
 
@@ -35,6 +35,10 @@ popUpVanishAnimationOption =
 
 panelAnimationOption = 
 	time: 0.6
+	curve: Spring(damping: 1)
+	
+panelChangeAnimationOption = 
+	time: 0.4
 	curve: Spring(damping: 1)
 
 
@@ -130,8 +134,10 @@ popUp.states.showToVanish =
 
 
 panel.states.show = 
-	y: 312
-	options: panelAnimationOption
+	y: 203
+
+panel.states.showTop = 
+	y: 44
 	
 panel.states.vanish = 
 	y: 812
@@ -213,8 +219,13 @@ panel.clip = true
 
 panel.draggable.speedX = 0
 
-panelShow = () ->
-	panel.animate('show')
+panelShow = (options) ->
+	panel.animate('show', options)
+	showMask()
+	panel.draggable.enabled = true
+
+panelTop = (options) ->
+	panel.animate('showTop', options)
 	showMask()
 	panel.draggable.enabled = true
 	
@@ -265,7 +276,7 @@ popUp.on Events.Click, ->
 	popUpVanish()
 
 panelTrigger.on Events.Click, ->
-	panelShow()
+	panelShow(panelAnimationOption)
 
 panelCancel.on Events.Click, ->
 	panelVanish()
@@ -274,10 +285,12 @@ panel.on 'change:y', ->
 	panelInactiveArea.y = @y + 44
 
 panel.on Events.DragEnd, ->
-	if @y >= 460
+	if @y >= 353
 		panelVanish()
+	else if @y <= 120
+		panelTop(panelChangeAnimationOption)
 	else 
-		panelShow()
+		panelShow(panelChangeAnimationOption)
 
 panelInactiveArea.on Events.Click, ->
 

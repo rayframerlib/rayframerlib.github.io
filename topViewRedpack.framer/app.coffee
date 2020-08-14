@@ -7,6 +7,8 @@ mainScreen.clip = true
 mainScreen.centerY()
 mainScreen.centerX()
 
+redPacket.rotationY = 100
+
 if Screen.width > 375
 	mainScreen.scale = Screen.width / 375
 mainScreen.y = (Screen.height - mainScreen.height) / 2
