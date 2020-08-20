@@ -1,3 +1,16 @@
+Framer.Extras.Hints.disable()
+
+mainScreen.width = 375
+mainScreen.height = 812
+
+mainScreen.clip = true
+mainScreen.centerY()
+mainScreen.centerX()
+
+if Screen.width > 375
+	mainScreen.scale = Screen.width / 375
+mainScreen.y = (Screen.height - mainScreen.height) / 2
+
 page = new PageComponent
 	superLayer: mainScreen
 	width: Screen.width
