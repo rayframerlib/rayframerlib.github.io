@@ -54,7 +54,7 @@ vC.player.loop = true
 vC.player.muted = true
 vC.placeBehind(videoCMask)
 
-blockShadow.placeBefore(page)
+# blockShadow.placeBefore(page)
 
 isShow = false
 
