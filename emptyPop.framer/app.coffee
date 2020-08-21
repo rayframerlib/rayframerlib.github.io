@@ -23,7 +23,70 @@ page.addPage(videoA)
 page.addPage(videoB, 'bottom')
 page.addPage(videoC, 'bottom')
 
+vA = new VideoLayer
+	superLayer: videoA
+	width: 410
+	height: 729
+	video: "images/1596181038946402.mp4"
+
+vA.placeBehind(videoAMask)
+vA.player.play()
+vA.player.loop = true
+vA.player.muted = true
+
+vB = new VideoLayer
+	superLayer: videoB
+	width: 418
+	height: 736
+	video: "images/1594722252398313.mp4"
+
+vB.placeBehind(videoBMask)
+vB.player.loop = true
+vB.player.muted = true
+
+vC = new VideoLayer
+	superLayer: videoC
+	width: 418
+	height: 736
+	video: "images/1594877244367455.mp4"
+
+vC.player.loop = true
+vC.player.muted = true
+vC.placeBehind(videoCMask)
+
+blockShadow.placeBefore(page)
+
 isShow = false
+
+tabText.states.vanish = 
+	scale: 0.5
+	opacity: 0
+	options:
+		curve: 'ease-in-out'
+		time: 0.3
+
+tabText.states.show = 
+	scale: 1
+	opacity: 1
+	options:
+		curve: 'ease-in-out'
+		time: 0.3
+
+refresh.states.vanish = 
+	scale: 0.5
+	opacity: 0
+	options:
+		curve: 'ease-in-out'
+		time: 0.3
+
+refresh.states.show = 
+	scale: 1
+	opacity: 1
+	options:
+		curve: 'ease-in-out'
+		time: 0.3
+
+refresh.stateSwitch('vanish')
 
 block.states.startVanish = 
 	y: block.y + 197
@@ -55,7 +118,7 @@ videoBStruct.states.show =
 		curve: 'linear'
 		time: 0.2
 
-videoBStruct.stateSwitch('vanish')		
+videoBStruct.stateSwitch('vanish')
 
 blockShadow.states.startVanish = 
 	y: blockShadow.y + blockShadow.height
@@ -84,6 +147,8 @@ blockVanish = () ->
 	videoBStruct.animate('show')
 	isShow = false
 	page.content.off Events.MouseDown
+	refresh.animate('vanish')
+	tabText.animate('show')
 
 blockShow = () ->
 	block.animate('show')
@@ -91,6 +156,8 @@ blockShow = () ->
 	isShow = true
 	page.content.on Events.MouseDown, ->
 		blockVanish()
+	refresh.animate('show')
+	tabText.animate('vanish')
 
 block.on Events.Click, ->
 
@@ -99,6 +166,10 @@ cancel.on Events.Click, ->
 	
 
 page.on 'change:currentPage', ->
+	vA.player.pause()
+	vB.player.pause()
+	vC.player.pause()
+	
 	if page.previousPage.name == 'videoA' && page.currentPage.name == 'videoB'
 		blockShow()
 		Utils.delay 5, ->
@@ -106,5 +177,19 @@ page.on 'change:currentPage', ->
 				blockVanish()
 			
 	if page.currentPage.name == 'videoA'
-		videoBStruct.stateSwitch('vanish')	
+		videoBStruct.stateSwitch('vanish')
+		vA.player.play()
+	
+	if page.currentPage.name == 'videoB'
+		vB.player.play()
+		
+	if page.currentPage.name == 'videoC'
+		vC.player.play()
+
+
+
+
+
+
+
 
