@@ -10,17 +10,17 @@ mainScreen.centerX()
 # 所有动画设定都在这里
 
 halfScreenAnimationOption = 
-	time: 0.6
+	time: 0.5
 	curve: Spring(damping: 1)
  
 fullScreenAnimationOption = 
-	time: 0.6
+	time: 0.5
 	curve: Spring(damping: 1)
 
 
 
 frameAnimationOption = 
-	time: 0.6
+	time: 0.5
 	curve: Spring(damping: 1)
 
 popUpShowAnimationOption = 
@@ -34,7 +34,7 @@ popUpVanishAnimationOption =
 	curve: 'linear'
 
 panelAnimationOption = 
-	time: 0.6
+	time: 0.5
 	curve: Spring(damping: 1)
 	
 panelChangeAnimationOption = 
