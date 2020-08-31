@@ -38,7 +38,7 @@ panelAnimationOption =
 	curve: Spring(damping: 1)
 	
 panelChangeAnimationOption = 
-	time: 0.5
+	time: 0.4
 	curve: Spring(damping: 1)
 
 

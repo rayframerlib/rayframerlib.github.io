@@ -10,7 +10,7 @@ mainScreen.centerX()
 # 所有动画设定都在这里
 
 panelAnimationOption = 
-	time: 0.6
+	time: 0.5
 	curve: Spring(damping: 1)
 	
 panelChangeAnimationOption = 
@@ -47,8 +47,6 @@ commentEntrance.states.vanish =
 	y: commentEntrance.y + commentEntrance.height
 	options: panelAnimationOption
 
-commentEntrance.stateSwitch('vanish')
-
 mask.states.show = 
 	opacity: 1
 	options: 
@@ -60,8 +58,6 @@ mask.states.vanish =
 	options: 
 		time: 0.25
 		curve: 'linear'
-
-
 
 mask.on Events.Click, ->
 mask.visible = false
@@ -120,7 +116,7 @@ panel.draggable.speedX = 0
 
 panelShow = (options) ->
 	panel.animate('show', options)
-	commentEntrance.animate('show')
+# 	commentEntrance.animate('show')
 # 	showMask()
 	panel.draggable.enabled = true
 
@@ -131,7 +127,7 @@ panelTop = (options) ->
 	
 panelVanish = () ->
 	panel.draggable.enabled = false
-	commentEntrance.animate('vanish')
+# 	commentEntrance.animate('vanish')
 	panel.animate('vanish')
 # 	vanishMask()
 # halfScreenScheme.on Events.Click, ->
