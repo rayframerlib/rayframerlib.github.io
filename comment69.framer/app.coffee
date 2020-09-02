@@ -42,13 +42,14 @@ panel.draggable.constraints =
 commentEntrance.states.show = 
 	y: commentEntrance.y
 	options: panelAnimationOption
+	
 
 commentEntrance.states.vanish = 
 	y: commentEntrance.y + commentEntrance.height
 	options: panelAnimationOption
 
 mask.states.show = 
-	opacity: 1
+	opacity: 0.01
 	options: 
 		time: 0.25
 		curve: 'linear'
@@ -60,6 +61,7 @@ mask.states.vanish =
 		curve: 'linear'
 
 mask.on Events.Click, ->
+	panelVanish()
 mask.visible = false
 
 showMask = () ->
@@ -117,19 +119,19 @@ panel.draggable.speedX = 0
 panelShow = (options) ->
 	panel.animate('show', options)
 # 	commentEntrance.animate('show')
-# 	showMask()
+	showMask()
 	panel.draggable.enabled = true
 
 panelTop = (options) ->
 	panel.animate('showTop', options)
-# 	showMask()
+	showMask()
 	panel.draggable.enabled = true
 	
 panelVanish = () ->
 	panel.draggable.enabled = false
 # 	commentEntrance.animate('vanish')
 	panel.animate('vanish')
-# 	vanishMask()
+	vanishMask()
 # halfScreenScheme.on Events.Click, ->
 # 	halfScreenBack()
 # 

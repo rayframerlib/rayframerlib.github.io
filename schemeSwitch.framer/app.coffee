@@ -12,6 +12,10 @@ mainScreen.centerX()
 halfScreenAnimationOption = 
 	time: 0.5
 	curve: Spring(damping: 1)
+
+halfScreenAnimationOptionAndroid = 
+	time: 0.5
+	curve: 'cubic-bezier(.28,.59,0,1)'
  
 fullScreenAnimationOption = 
 	time: 0.5
@@ -24,10 +28,8 @@ frameAnimationOption =
 	curve: Spring(damping: 1)
 
 popUpShowAnimationOption = 
-	time: 0.3
+	time: 0.4
 	curve: Spring(damping: .5)
-
-
 
 popUpVanishAnimationOption = 
 	time: 0.1
