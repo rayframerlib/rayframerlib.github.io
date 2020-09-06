@@ -1348,8 +1348,8 @@
                 "blurEnabled" : 0,
                 "blurType" : "layer",
                 "borderBottom" : 1,
-                "borderColor" : "#222",
-                "borderEnabled" : 0,
+                "borderColor" : "hsla(0, 0%, 0%, 0.06)",
+                "borderEnabled" : 1,
                 "borderLeft" : 1,
                 "borderPerSide" : false,
                 "borderRight" : 1,
@@ -1376,7 +1376,7 @@
                 "exportOptions" : [
 
                 ],
-                "fillColor" : "rgba(255, 255, 255, 0.9)",
+                "fillColor" : "rgba(255, 255, 255, 0.5)",
                 "fillEnabled" : true,
                 "fillGradient" : {
                   "__class" : "LinearGradient",
@@ -1422,7 +1422,7 @@
                 "targetName" : "dot1",
                 "top" : 0,
                 "visible" : true,
-                "width" : 8,
+                "width" : 6,
                 "widthFactor" : null
               },
               {
@@ -1434,8 +1434,8 @@
                 "blurEnabled" : 0,
                 "blurType" : "layer",
                 "borderBottom" : 1,
-                "borderColor" : "#222",
-                "borderEnabled" : 0,
+                "borderColor" : "hsla(0, 0%, 0%, 0.06)",
+                "borderEnabled" : 1,
                 "borderLeft" : 1,
                 "borderPerSide" : false,
                 "borderRight" : 1,
@@ -1462,7 +1462,7 @@
                 "exportOptions" : [
 
                 ],
-                "fillColor" : "rgba(255, 255, 255, 0.5)",
+                "fillColor" : "rgba(255, 255, 255, 0.2)",
                 "fillEnabled" : true,
                 "fillGradient" : {
                   "__class" : "LinearGradient",
@@ -1478,7 +1478,7 @@
                 "fillType" : "color",
                 "grayscale" : 0,
                 "grayScaleEnabled" : 0,
-                "height" : 8,
+                "height" : 6,
                 "heightFactor" : null,
                 "hueRotate" : 0,
                 "hueRotateEnabled" : 0,
@@ -1508,7 +1508,7 @@
                 "targetName" : "dot2",
                 "top" : 29,
                 "visible" : true,
-                "width" : 8,
+                "width" : 6,
                 "widthFactor" : null
               },
               {
@@ -1520,8 +1520,8 @@
                 "blurEnabled" : 0,
                 "blurType" : "layer",
                 "borderBottom" : 1,
-                "borderColor" : "#222",
-                "borderEnabled" : 0,
+                "borderColor" : "hsla(0, 0%, 0%, 0.06)",
+                "borderEnabled" : 1,
                 "borderLeft" : 1,
                 "borderPerSide" : false,
                 "borderRight" : 1,
@@ -1548,7 +1548,7 @@
                 "exportOptions" : [
 
                 ],
-                "fillColor" : "rgba(255, 255, 255, 0.5)",
+                "fillColor" : "rgba(255, 255, 255, 0.2)",
                 "fillEnabled" : true,
                 "fillGradient" : {
                   "__class" : "LinearGradient",
@@ -1564,7 +1564,7 @@
                 "fillType" : "color",
                 "grayscale" : 0,
                 "grayScaleEnabled" : 0,
-                "height" : 8,
+                "height" : 6,
                 "heightFactor" : null,
                 "hueRotate" : 0,
                 "hueRotateEnabled" : 0,
@@ -1594,7 +1594,7 @@
                 "targetName" : "dot3",
                 "top" : 43,
                 "visible" : true,
-                "width" : 8,
+                "width" : 6,
                 "widthFactor" : null
               },
               {
@@ -1606,8 +1606,8 @@
                 "blurEnabled" : 0,
                 "blurType" : "layer",
                 "borderBottom" : 1,
-                "borderColor" : "#222",
-                "borderEnabled" : 0,
+                "borderColor" : "hsla(0, 0%, 0%, 0.06)",
+                "borderEnabled" : 1,
                 "borderLeft" : 1,
                 "borderPerSide" : false,
                 "borderRight" : 1,
@@ -1634,7 +1634,7 @@
                 "exportOptions" : [
 
                 ],
-                "fillColor" : "rgba(255, 255, 255, 0.5)",
+                "fillColor" : "rgba(255, 255, 255, 0.2)",
                 "fillEnabled" : true,
                 "fillGradient" : {
                   "__class" : "LinearGradient",
@@ -1650,7 +1650,7 @@
                 "fillType" : "color",
                 "grayscale" : 0,
                 "grayScaleEnabled" : 0,
-                "height" : 8,
+                "height" : 6,
                 "heightFactor" : null,
                 "hueRotate" : 0,
                 "hueRotateEnabled" : 0,
@@ -1680,7 +1680,7 @@
                 "targetName" : "dot4",
                 "top" : 57,
                 "visible" : true,
-                "width" : 8,
+                "width" : 6,
                 "widthFactor" : null
               },
               {
@@ -1692,8 +1692,8 @@
                 "blurEnabled" : 0,
                 "blurType" : "layer",
                 "borderBottom" : 1,
-                "borderColor" : "#222",
-                "borderEnabled" : 0,
+                "borderColor" : "hsla(0, 0%, 0%, 0.06)",
+                "borderEnabled" : 1,
                 "borderLeft" : 1,
                 "borderPerSide" : false,
                 "borderRight" : 1,
@@ -1720,7 +1720,7 @@
                 "exportOptions" : [
 
                 ],
-                "fillColor" : "rgba(255, 255, 255, 0.5)",
+                "fillColor" : "rgba(255, 255, 255, 0.2)",
                 "fillEnabled" : true,
                 "fillGradient" : {
                   "__class" : "LinearGradient",
@@ -1736,7 +1736,7 @@
                 "fillType" : "color",
                 "grayscale" : 0,
                 "grayScaleEnabled" : 0,
-                "height" : 8,
+                "height" : 6,
                 "heightFactor" : null,
                 "hueRotate" : 0,
                 "hueRotateEnabled" : 0,
@@ -1766,7 +1766,7 @@
                 "targetName" : "dot5",
                 "top" : 71,
                 "visible" : true,
-                "width" : 8,
+                "width" : 6,
                 "widthFactor" : null
               }
             ],

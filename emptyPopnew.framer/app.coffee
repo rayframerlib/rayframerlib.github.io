@@ -91,7 +91,7 @@ refresh.stateSwitch('vanish')
 block.placeBefore(page)
 
 block.states.startVanish = 
-	y: block.y + 197
+	y: block.y + 200
 	opacity: 0
 	scale: 1
 	

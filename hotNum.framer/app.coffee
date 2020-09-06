@@ -87,47 +87,47 @@ isShow = false
 dot1.states.s1 = 
 	y: 0
 	height: 24
-	backgroundColor: 'rgba(255, 255, 255, 0.9)'
+	backgroundColor: 'rgba(255, 255, 255, 0.5)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot1.states.s2 = 
 	y: 0
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot1.states.s3 = 
 	y: 0
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot1.states.s4 = 
 	y: 0
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot1.states.s5 = 
 	y: 0
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 		
 dot2.states.s1 = 
 	y: 30
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
@@ -135,47 +135,47 @@ dot2.states.s1 =
 dot2.states.s2 = 
 	y: 14
 	height: 24
-	backgroundColor: 'rgba(255, 255, 255, 0.9)'
+	backgroundColor: 'rgba(255, 255, 255, 0.5)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot2.states.s3 = 
 	y: 14
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot2.states.s4 = 
 	y: 14
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot2.states.s5 = 
 	y: 14
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot3.states.s1 = 
 	y: 44
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot3.states.s2 = 
 	y: 44
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
@@ -183,47 +183,47 @@ dot3.states.s2 =
 dot3.states.s3 = 
 	y: 28
 	height: 24
-	backgroundColor: 'rgba(255, 255, 255, 0.9)'
+	backgroundColor: 'rgba(255, 255, 255, 0.5)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot3.states.s4 = 
 	y: 28
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot3.states.s5 = 
 	y: 28
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot4.states.s1 = 
 	y: 58
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot4.states.s2 = 
 	y: 58
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot4.states.s3 = 
 	y: 58
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
@@ -231,47 +231,47 @@ dot4.states.s3 =
 dot4.states.s4 = 
 	y: 42
 	height: 24
-	backgroundColor: 'rgba(255, 255, 255, 0.9)'
+	backgroundColor: 'rgba(255, 255, 255, 0.5)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot4.states.s5 = 
 	y: 42
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot5.states.s1 = 
 	y: 72
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot5.states.s2 = 
 	y: 72
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot5.states.s3 = 
 	y: 72
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
 
 dot5.states.s4 = 
 	y: 72
-	height: 8
-	backgroundColor: 'rgba(255, 255, 255, 0.5)'
+	height: 6
+	backgroundColor: 'rgba(255, 255, 255, 0.2)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
@@ -279,7 +279,7 @@ dot5.states.s4 =
 dot5.states.s5 = 
 	y: 56
 	height: 24
-	backgroundColor: 'rgba(255, 255, 255, 0.9)'
+	backgroundColor: 'rgba(255, 255, 255, 0.5)'
 	options:
 		time: 0.3
 		curve: 'ease-in-out'
