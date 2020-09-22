@@ -354,6 +354,7 @@ heartButtonSend = () ->
 		(heartButton.animate
 			scale: 0.3
 			y: heartButton.y - 66
+			opacity: 0
 			options:
 				time: 0.3
 				curve: 'ease-out'
@@ -376,11 +377,40 @@ heartButtonSend = () ->
 					time: 0.3
 					curve: Spring(damping: 0.6)
 
+heartButtonFloatSend = () ->
+	(heartButton.animate
+		scale: 1.4
+		x: heartButton.x - 1
+		y: heartButton.y - 20
+		options: 
+			time: 0.125
+			curve: 'ease-in'
+	).on Events.AnimationEnd, ->
+		(heartButton.animate
+			scale: 0.3
+			x: heartButton.x + 1
+			y: heartButton.y - 66
+			opacity: 0
+			options:
+				time: 0.3
+				curve: 'ease-out'
+		).on Events.AnimationEnd, ->
+			heartButton.opacity = 0
+			Utils.delay 0.01, ->
+				heartButton.y = 18
+				heartButton.x = 335
+				heartButton.animate
+					scale: 1
+					opacity: 1
+					options:
+						time: 0.3
+						curve: Spring(damping: 0.6)
+
 
 heartButtonActive = () ->
 	heartButtonCore.animate
 		scale: 4
-		y: -30
+		y: -90
 		options: 
 			time: 0.2
 			curve: 'ease-in-out'
@@ -548,7 +578,7 @@ heartHandler.on Events.LongPress, ->
 	
 heartHandler.on Events.LongPressEnd, ->
 	heartButtonNormal()
-	heartButtonSend()
+	heartButtonFloatSend()
 	heartHandler.draggable.enabled = false
 	heartHandler.x = 335
 	heartHandler.y = 18
