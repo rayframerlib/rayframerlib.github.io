@@ -241,7 +241,7 @@ class SentHeart extends Layer
 			height: 120
 			jsonPath: './assets/lightReply.json'
 			looping: false
-			autoplay: true
+			autoplay: false
 		
 		@player.center()
 		
@@ -323,6 +323,68 @@ newRandomSentMessage = () ->
 	
 	sent.show()
 
+
+heartButtonSend = () ->
+	(heartButton.animate
+		scale: 1.4
+		y: heartButton.y - 20
+		options: 
+			time: 0.125
+			curve: 'ease-in'
+	).on Events.AnimationEnd, ->
+		(heartButton.animate
+			rotation: -30
+			options:
+				time: 0.15
+				curve:'ease-in-out'
+		).on Events.AnimationEnd, ->
+			heartButton.animate
+				rotation: 0
+				options:
+					time: 0.15
+					curve:'ease-in-out'
+		(heartButton.animate
+			scale: 0.3
+			y: heartButton.y - 66
+			options:
+				time: 0.3
+				curve: 'ease-out'
+		).on Events.AnimationEnd, ->
+			heartButton.opacity = 0
+	
+	(heartButton.animate
+		x: heartButton.x - 60
+		options: 
+			time: 0.425
+			curve: 'ease-in-out'
+	).on Events.AnimationEnd, ->
+		Utils.delay 0.01, ->
+			heartButton.y = 18
+			heartButton.x = 335
+			heartButton.animate
+				scale: 1
+				opacity: 1
+				options:
+					time: 0.3
+					curve: Spring(damping: 0.6)
+
+
+heartButtonActive = () ->
+	heartButtonCore.animate
+		scale: 1.7
+		y: -30
+		options: 
+			time: 0.2
+			curve: 'ease-in-out'
+
+heartButtonNormal = () ->
+	heartButtonCore.animate
+		scale: 1
+		y: 0
+		options: 
+			time: 0.125
+			curve: 'ease-in-out'
+
 newHeartMessage = () ->
 	messageAmount = imFlow.children.length
 	if messageAmount
@@ -331,11 +393,16 @@ newHeartMessage = () ->
 			imFlow.children[messageAmount - 1].player.anim.goToAndPlay(0, true)
 			flowAnimateToBottom()
 		else
+			heartButtonSend()
+			
 			heart = new SentHeart 
 				superLayer: imFlow
 				x: 56
 				y: messagePositionY
 				avatar: './assets/sender_avatar_2.png'
+			
+			Utils.delay 0.3, ->
+				heart.player.anim.play()
 			
 			heart.show()
 			
@@ -345,7 +412,7 @@ newHeartMessage = () ->
 				flowAnimateToBottom()
 	else
 		messagePositionY = 20
-		
+		heartButtonFloat()
 		heart = new SentHeart 
 			superLayer: imFlow
 			x: 56
@@ -353,6 +420,11 @@ newHeartMessage = () ->
 			avatar: './assets/sender_avatar_2.png'
 		
 		heart.show()
+
+
+
+	
+
 flowAnimateToBottom = () ->
 	imFlow.animate
 			y: (mainScreen.height - bottomBar.height) - imFlow.height
@@ -448,12 +520,39 @@ bottomBarHitArea.on Events.Click, ->
 imFlow.on Events.DragStart, ->
 	if keyboard.states.current.name == 'show'
 		keyboardDown()
-	
+
+
 keyboardHitArea.on Events.Click, ->
 	newRandomSentMessage()
 
-heartButton.on Events.Click, ->
+heartHandler.on Events.Click, ->
 	newHeartMessage()
+
+heartHandler.draggable.constraints = heartHandler.frame
+heartHandler.draggable.enabled = false
+heartHandler.draggable.overdragScale = 1
+
+heartHandler.on Events.LongPress, ->
+	messageAmount = imFlow.children.length
+	if messageAmount
+		if imFlow.children[messageAmount - 1].type == 'heart'
+		else
+			heartHandler.draggable.enabled = true
+			heartButtonActive()
+	else
+		heartHandler.draggable.enabled = true
+		heartButtonActive()
+
+heartHandler.on Events.LongPressEnd, ->
+	heartButtonNormal()
+	heartHandler.draggable.enabled = false
+	heartHandler.x = 335
+	heartHandler.y = 18
+
+heartHandler.on "change:point", ->
+	if heartHandler.draggable.isDragging
+		heartButton.x = heartHandler.x
+		heartButton.y = heartHandler.y
 	
 	
 newButton.on Events.Click, ->
@@ -462,3 +561,5 @@ newButton.on Events.Click, ->
 resetButton.on Events.Click, ->
 	reset()
 
+for i in [0...5]
+	newRandomReceivedMessage()
