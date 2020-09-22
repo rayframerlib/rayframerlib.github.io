@@ -215,6 +215,7 @@ class SentHeart extends Layer
 		@options.height ?= 50
 		@options.avatar ?= '' 
 		@options.backgroundColor ?= 'transparent'
+		@type = 'heart'
 		
 		super @options
 		
@@ -255,6 +256,9 @@ class SentHeart extends Layer
 # 			options:
 		
 		@init()
+		
+		@.on Events.Click, ->
+			@player.anim.goToAndPlay(0, true)
 	
 	init: () ->
 		@.stateSwitch('initial')
@@ -322,26 +326,33 @@ newRandomSentMessage = () ->
 newHeartMessage = () ->
 	messageAmount = imFlow.children.length
 	if messageAmount
-		print imFlow.children[messageAmount - 1].type
 		messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+		if imFlow.children[messageAmount - 1].type == 'heart'
+			imFlow.children[messageAmount - 1].player.anim.goToAndPlay(0, true)
+			flowAnimateToBottom()
+		else
+			heart = new SentHeart 
+				superLayer: imFlow
+				x: 56
+				y: messagePositionY
+				avatar: './assets/sender_avatar_2.png'
+			
+			heart.show()
+			
+			if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >=  bottomBar.y - navigationBar.height
+				imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
+				setFlowConstrains()
+				flowAnimateToBottom()
 	else
 		messagePositionY = 20
-	
-	randomIndex = randomInt(0, sentContents.length - 1)	
-	
-	heart = new SentHeart 
-		superLayer: imFlow
-		x: 56
-		y: messagePositionY
-		avatar: './assets/sender_avatar_2.png'
-	
-	if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >=  bottomBar.y - navigationBar.height
-		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
-		setFlowConstrains()
-		flowAnimateToBottom()
-	
-	heart.show()
-	
+		
+		heart = new SentHeart 
+			superLayer: imFlow
+			x: 56
+			y: messagePositionY
+			avatar: './assets/sender_avatar_2.png'
+		
+		heart.show()
 flowAnimateToBottom = () ->
 	imFlow.animate
 			y: (mainScreen.height - bottomBar.height) - imFlow.height
