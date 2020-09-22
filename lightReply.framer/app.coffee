@@ -323,6 +323,14 @@ newRandomSentMessage = () ->
 	
 	sent.show()
 
+rotationHeart = new BodymovinLayer
+	superLayer: heartButtonCore
+	width: 28
+	height: 28
+	jsonPath: './assets/rotation.json'
+	looping: true
+	autoplay: false
+
 
 heartButtonSend = () ->
 	(heartButton.animate
@@ -371,11 +379,12 @@ heartButtonSend = () ->
 
 heartButtonActive = () ->
 	heartButtonCore.animate
-		scale: 1.7
+		scale: 4
 		y: -30
 		options: 
 			time: 0.2
 			curve: 'ease-in-out'
+	rotationHeart.anim.play()
 
 heartButtonNormal = () ->
 	heartButtonCore.animate
@@ -384,6 +393,7 @@ heartButtonNormal = () ->
 		options: 
 			time: 0.125
 			curve: 'ease-in-out'
+	rotationHeart.anim.goToAndStop(0, true)
 
 newHeartMessage = () ->
 	messageAmount = imFlow.children.length
@@ -533,18 +543,12 @@ heartHandler.draggable.enabled = false
 heartHandler.draggable.overdragScale = 1
 
 heartHandler.on Events.LongPress, ->
-	messageAmount = imFlow.children.length
-	if messageAmount
-		if imFlow.children[messageAmount - 1].type == 'heart'
-		else
-			heartHandler.draggable.enabled = true
-			heartButtonActive()
-	else
-		heartHandler.draggable.enabled = true
-		heartButtonActive()
-
+	heartHandler.draggable.enabled = true
+	heartButtonActive()
+	
 heartHandler.on Events.LongPressEnd, ->
 	heartButtonNormal()
+	heartButtonSend()
 	heartHandler.draggable.enabled = false
 	heartHandler.x = 335
 	heartHandler.y = 18
