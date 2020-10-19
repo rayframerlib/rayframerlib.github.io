@@ -37,11 +37,11 @@ popUpVanishAnimationOption =
 
 panelAnimationOption = 
 	time: 0.5
-	curve: Spring(damping: 1)
+	curve: 'cubic-bezier(.28,.59,0,1)'
 	
 panelChangeAnimationOption = 
 	time: 0.4
-	curve: Spring(damping: 1)
+	curve: 'cubic-bezier(.28,.59,0,1)'
 
 
 
