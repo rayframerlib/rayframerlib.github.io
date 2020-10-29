@@ -77,9 +77,9 @@ naviHandler.on "change:y", ->
 
 popShow = () ->
 	pop.animate('show')
-# 	Utils.delay 2, ->
-# 		if pop.states.current.name == 'show'
-# 			popShrink()
+	Utils.delay 2, ->
+		if pop.states.current.name == 'show'
+			popShrink()
 
 popShow()
 
