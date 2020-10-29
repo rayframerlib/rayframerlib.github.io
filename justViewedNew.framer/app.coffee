@@ -57,7 +57,7 @@ feed.on "change:y", ->
 	else 
 		naviHandler.x = 1
 		tabSecond.y = 64
-		if feed.y <= -1050
+		if feed.y <= -800
 			naviHandler.y = 1
 # 			if pop.states.current.name == 'show'
 # 				pop.opacity = Utils.modulate(feed.y,[-1250, -1300], [0, 1], true)

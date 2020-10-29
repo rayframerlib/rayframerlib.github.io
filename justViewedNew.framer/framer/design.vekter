@@ -877,10 +877,10 @@
                     "html" : "<span data-offset-key=\"6tca4-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(0, 0%, 100%);font-size:14px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">刚刚播放<\/span><\/span>",
                     "os" : "10_15",
                     "size" : {
-                      "height" : 32,
-                      "width" : 29
+                      "height" : 16,
+                      "width" : 58
                     },
-                    "width" : 28
+                    "width" : 57
                   },
                   "entityMap" : {
 
@@ -958,7 +958,6 @@
                 "locked" : false,
                 "name" : "arrow",
                 "opacity" : 1,
-                "originalFilename" : "Group 10232.png",
                 "parentid" : "D4MDJ5H9M",
                 "radius" : 0,
                 "radiusBottomLeft" : 0,
