@@ -17,6 +17,8 @@ feed.draggable.constraints =
 naviHandler = new Layer
 naviHandler.visible = false
 
+target.clip = true
+
 feed.states.focus = 
 	y: -1050
 	options: 
@@ -48,7 +50,7 @@ pop.on Events.Click, ->
 		
 	pop.animate('vanish').on Events.AnimationEnd, ->
 		listenToPop()
-		popSwitchExtend()
+# 		popSwitchExtend()
 
 feed.on "change:y", ->
 	if feed.y >= -407
@@ -77,9 +79,9 @@ naviHandler.on "change:y", ->
 
 popShow = () ->
 	pop.animate('show')
-	Utils.delay 2, ->
-		if pop.states.current.name == 'show'
-			popShrink()
+# 	Utils.delay 2, ->
+# 		if pop.states.current.name == 'show'
+# 			popShrink()
 
 listenToPop = () ->
 	naviHandler.on "change:x", ->
@@ -190,9 +192,48 @@ stroke.states.normal =
 		time: 0.2
 		curve: 'ease-out'
 
+target.states.float = 
+	scale: 1.1
+	shadow1: 
+		y: 5
+		blur: 20
+		color: 'rgba(0,0,0,0.3)'
+	options: 
+		time: 0.3
+		curve: 'cubic-bezier(.35,0,0.3,1)'
+
+target.states.normal =
+	scale: 1
+	shadow1: 
+		y: 0
+		blur: 0
+		color: 'rgba(0,0,0,0.3)'
+	options: 
+		time: 0.4
+		curve: 'cubic-bezier(0.2,0,.65,1)'
+
+light.states.mid = 
+	y: light.y + 165
+	options: 
+		time: 0.3
+		curve: 'cubic-bezier(.35,.55,0.7,0.89)'
+
+light.states.end = 
+	y: light.y + 330
+	options: 
+		time: 0.4
+		curve: 'cubic-bezier(0.3,0.2,.65,.45)'
+
+
+
 strokeSpark = () ->
-	stroke.animate('dim').on Events.AnimationEnd, ->
-		stroke.animate('normal').on Events.AnimationEnd, ->
-			stroke.animate('dim').on Events.AnimationEnd, ->
-				stroke.animate('normal')
+	target.animate('float').on Events.AnimationEnd, ->
+		target.animate('normal')
+	
+	light.animate('mid').on Events.AnimationEnd, ->
+		light.animate('end')
+# 	stroke.animate('dim').on Events.AnimationEnd, ->
+# 		stroke.animate('normal').on Events.AnimationEnd, ->
+# 			stroke.animate('dim').on Events.AnimationEnd, ->
+# 				stroke.animate('normal')
 

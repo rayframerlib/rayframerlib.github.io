@@ -15,7 +15,7 @@ halfScreenAnimationOption =
 
 halfScreenAnimationOptionAndroid = 
 	time: 0.5
-	curve: 'cubic-bezier(.28,.59,0,1)'
+	curve: 'cubic-bezier(.35,.75,0,1)'
  
 fullScreenAnimationOption = 
 	time: 0.5
@@ -37,11 +37,11 @@ popUpVanishAnimationOption =
 
 panelAnimationOption = 
 	time: 0.5
-	curve: 'cubic-bezier(.28,.59,0,1)'
+	curve: 'cubic-bezier(.35,.75,0,1)'
 	
 panelChangeAnimationOption = 
 	time: 0.4
-	curve: 'cubic-bezier(.28,.59,0,1)'
+	curve: 'cubic-bezier(.35,.75,0,1)'
 
 
 
