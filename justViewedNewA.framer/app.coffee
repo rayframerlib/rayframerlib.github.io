@@ -61,7 +61,7 @@ feed.on "change:y", ->
 	else 
 		naviHandler.x = 1
 		tabSecond.y = 64
-		if feed.y <= -950
+		if feed.y <= -1051
 			naviHandler.width = 1
 		else
 # 			naviHandler.height = 0
@@ -241,7 +241,6 @@ light.states.end =
 	options: 
 		time: 0.4
 		curve: 'cubic-bezier(0.3,0.2,.65,.45)'
-
 
 
 strokeSpark = () ->
