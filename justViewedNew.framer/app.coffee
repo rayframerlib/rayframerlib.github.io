@@ -212,6 +212,12 @@ target.states.normal =
 		time: 0.4
 		curve: 'cubic-bezier(0.2,0,.65,1)'
 
+light.states.start = 
+	y: light.y
+	options: 
+		time: 0.3
+		curve: 'cubic-bezier(.35,.55,0.7,0.89)'
+
 light.states.mid = 
 	y: light.y + 165
 	options: 
@@ -231,7 +237,8 @@ strokeSpark = () ->
 		target.animate('normal')
 	
 	light.animate('mid').on Events.AnimationEnd, ->
-		light.animate('end')
+		light.animate('end').on Events.AnimationEnd, ->
+			light.stateSwitch('start')
 # 	stroke.animate('dim').on Events.AnimationEnd, ->
 # 		stroke.animate('normal').on Events.AnimationEnd, ->
 # 			stroke.animate('dim').on Events.AnimationEnd, ->
