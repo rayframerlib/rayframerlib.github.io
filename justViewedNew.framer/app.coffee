@@ -179,25 +179,25 @@ popSwitchExtend = () ->
 	arrow.stateSwitch('extend')
 	pic.stateSwitch('extend')
 	text.stateSwitch('extend')
-
-stroke.states.dim =
-	opacity: 0.4
-	options: 
-		time: 0.2
-		curve: 'ease-in'
-
-stroke.states.normal =
-	opacity: 1
-	options: 
-		time: 0.2
-		curve: 'ease-out'
+# 
+# stroke.states.dim =
+# 	opacity: 0.4
+# 	options: 
+# 		time: 0.2
+# 		curve: 'ease-in'
+# 
+# stroke.states.normal =
+# 	opacity: 1
+# 	options: 
+# 		time: 0.2
+# 		curve: 'ease-out'
 
 target.states.float = 
-	scale: 1.1
+	scale: 1.08
 	shadow1: 
 		y: 5
 		blur: 20
-		color: 'rgba(0,0,0,0.3)'
+		color: 'rgba(0,0,0,0.5)'
 	options: 
 		time: 0.3
 		curve: 'cubic-bezier(.35,0,0.3,1)'
@@ -207,28 +207,40 @@ target.states.normal =
 	shadow1: 
 		y: 0
 		blur: 0
-		color: 'rgba(0,0,0,0.3)'
+		color: 'rgba(0,0,0,0.5)'
 	options: 
-		time: 0.4
+		time: 0.25
 		curve: 'cubic-bezier(0.2,0,.65,1)'
 
 light.states.start = 
 	y: light.y
 	options: 
-		time: 0.3
+		time: 0.25
 		curve: 'cubic-bezier(.35,.55,0.7,0.89)'
 
 light.states.mid = 
 	y: light.y + 165
 	options: 
-		time: 0.3
-		curve: 'cubic-bezier(.35,.55,0.7,0.89)'
+		time: 0.25
+		curve: 'cubic-bezier(.35,.55,0.7,0.7)'
 
 light.states.end = 
 	y: light.y + 330
 	options: 
-		time: 0.4
+		time: 0.25
 		curve: 'cubic-bezier(0.3,0.2,.65,.45)'
+
+cover.states.float = 
+	scale: 1.05
+	options: 
+		time: 0.3
+		curve: 'cubic-bezier(.35,0,0.3,1)'
+
+cover.states.normal =
+	scale: 1
+	options: 
+		time: 0.25
+		curve: 'cubic-bezier(0.2,0,.65,1)'
 
 
 
@@ -236,9 +248,12 @@ strokeSpark = () ->
 	target.animate('float').on Events.AnimationEnd, ->
 		target.animate('normal')
 	
-	light.animate('mid').on Events.AnimationEnd, ->
-		light.animate('end').on Events.AnimationEnd, ->
-			light.stateSwitch('start')
+	cover.animate('float').on Events.AnimationEnd, ->
+		cover.animate('normal')
+# 	
+# 	light.animate('mid').on Events.AnimationEnd, ->
+# 		light.animate('end').on Events.AnimationEnd, ->
+# 			light.stateSwitch('start')
 # 	stroke.animate('dim').on Events.AnimationEnd, ->
 # 		stroke.animate('normal').on Events.AnimationEnd, ->
 # 			stroke.animate('dim').on Events.AnimationEnd, ->

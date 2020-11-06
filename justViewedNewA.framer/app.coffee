@@ -205,7 +205,7 @@ stroke.states.normal =
 		curve: 'ease-out'
 
 target.states.float = 
-	scale: 1.1
+	scale: 1.08
 	shadow1: 
 		y: 5
 		blur: 20
@@ -247,9 +247,9 @@ strokeSpark = () ->
 	target.animate('float').on Events.AnimationEnd, ->
 		target.animate('normal')
 	
-	light.animate('mid').on Events.AnimationEnd, ->
-		light.animate('end').on Events.AnimationEnd, ->
-			light.stateSwitch('start')
+# 	light.animate('mid').on Events.AnimationEnd, ->
+# 		light.animate('end').on Events.AnimationEnd, ->
+# 			light.stateSwitch('start')
 # 	stroke.animate('dim').on Events.AnimationEnd, ->
 # 		stroke.animate('normal').on Events.AnimationEnd, ->
 # 			stroke.animate('dim').on Events.AnimationEnd, ->
