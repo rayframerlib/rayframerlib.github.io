@@ -66,7 +66,7 @@ feed.on "change:y", ->
 		else
 			naviHandler.y = 0
 			if pop.states.current.name == 'show'
-				pop.opacity = Utils.modulate(feed.y,[-800, -850], [1, 0], true)
+				pop.opacity = Utils.modulate(feed.y,[-750, -800], [1, 0], true)
 	naviSecond.opacity = Utils.modulate(feed.y,[-400, -300],[1, 0])
 	
 	
