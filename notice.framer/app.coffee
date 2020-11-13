@@ -16,8 +16,12 @@ switchOption =
 	curve: Spring(damping: 1)
 
 vanishOption =
-	time: 0.4
-	curve: 'cubic-bezier(.55,0,.80,.3)'
+	time: 0.3
+	curve: 'cubic-bezier(.5,.05,.9,.6)'
+	
+dragVanishOption = 
+	time: 0.15
+	curve: 'ease-out'
 
 class Notice extends Layer
 	constructor: (@options={}) ->
@@ -37,30 +41,73 @@ class Notice extends Layer
 			backgroundColor: 'white'
 			borderRadius: 12
 		
-		@noticePop.states.unShow = 
+		@noticeBar = new Layer
+			superLayer: @noticePop
+			width: 32
+			height: 4
+			y: 70
+			backgroundColor:'#161823'
+			borderRadius: 2
+			opacity: 0.2
+		
+		@noticeBar.centerX()
+		
+		@noticePop.draggable.enabled = true
+		@noticePop.draggable.speedX = 0
+		@noticePop.draggable.constraints = 
+			x: 0
+			y: -80
+			width: 375
+			height: 204
+		@noticePop.draggable.overdragScale = 0.02
+		@noticePop.draggable.bounceOptions =
+			friction: 40,
+			tension: 400,
+			tolerance: 0.0001
+		
+		_main = @
+		_noticePop = @noticePop
+		_noticePop.on Events.DragEnd, ->
+
+			if _noticePop.y <= 24
+				_noticePop.animate('dragVanish').on Events.AnimationEnd, ->
+					_main.toDestroy = true
+					_main.destroy()
+			else 
+				_noticePop.animate('show')
+		
+		_noticePop.states.unShow = 
 			y: -80
 			opacity: 1
 			
-		@noticePop.states.show = 
+		_noticePop.states.show = 
 			y: 44
 			opacity: 1
 			options: showOption
 		
-		@noticePop.states.switchNotice = 
+		_noticePop.states.switchNotice = 
 			y: 44
 			scale: 0.8
 			opacity: 0
 			options: switchOption
 		
-		@noticePop.states.vanish = 
+		_noticePop.states.vanish = 
 			y: -80
 			opacity: 1
 			options: vanishOption
 		
+		_noticePop.states.dragVanish = 
+			y: -80
+			opacity: 1
+			options: dragVanishOption
+		
 		@noticeInit()
+		
+		
 		
 	noticeSwitch: () ->
 		mainLayer = @
+		@noticePop.draggable.enabled = false
 		@noticePop.animate('switchNotice').on Events.AnimationEnd, ->
 			mainLayer.destroy()
 	
@@ -69,7 +116,8 @@ class Notice extends Layer
 		@noticePop.animate('show')
 		temp = @noticePop
 		mainTemp = @
-		Utils.delay 2, ->
+		Utils.delay 5, ->
+			temp.draggable.enabled = false
 			if !mainTemp.toDestroy
 				temp.animate('vanish').on Events.AnimationEnd, ->
 					mainTemp.destroy()
