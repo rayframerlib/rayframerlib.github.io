@@ -87,7 +87,7 @@ class Notice extends Layer
 		
 		_noticePop.states.switchNotice = 
 			y: 44
-			scale: 0.8
+			scale: 0.9
 			opacity: 0
 			options: switchOption
 		
