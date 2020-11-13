@@ -59,7 +59,7 @@ class Notice extends Layer
 			y: -80
 			width: 375
 			height: 204
-		@noticePop.draggable.overdragScale = 0.02
+		@noticePop.draggable.overdragScale = 0.1
 		@noticePop.draggable.bounceOptions =
 			friction: 40,
 			tension: 400,
