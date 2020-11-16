@@ -33,10 +33,10 @@ pop.states.vanish =
 		curve: 'ease-in'
 
 pop.states.fuse = 
-	x: 375/3
+	x: 375/3 + 116
 	y: pop.y - 125
 	height: 165
-	width: 124
+	width: 0
 	options: 
 		time: 0.4
 		curve: Spring(damping: 1)
@@ -98,6 +98,18 @@ naviHandler.on "change:y", ->
 		popContainer.superLayer = covers
 		popContainer.placeBehind(target)
 		popContainer.y = 950
+		
+		text.animate
+			opacity: 0
+			options: 
+				time: 0.2
+				curve: 'linear'
+		
+		arrow.animate
+			opacity: 0
+			options: 
+				time: 0.2
+				curve: 'linear'
 		
 		Utils.delay 0.1, ->
 			pop.animate('fuseOpacity')
