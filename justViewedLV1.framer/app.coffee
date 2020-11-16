@@ -249,13 +249,13 @@ light.states.mid =
 	y: light.y + 165
 	options: 
 		time: 0.25
-		curve: 'cubic-bezier(.35,.55,0.7,0.7)'
+		curve: 'cubic-bezier(.35,.55,0.7,0.6)'
 
 light.states.end = 
 	y: light.y + 330
 	options: 
 		time: 0.25
-		curve: 'cubic-bezier(0.3,0.2,.65,.45)'
+		curve: 'cubic-bezier(0.3,0.3,.65,.45)'
 
 cover.states.float = 
 	scale: 1.05
