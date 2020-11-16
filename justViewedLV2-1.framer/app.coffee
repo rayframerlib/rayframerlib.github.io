@@ -44,7 +44,7 @@ pop.states.fuse =
 pop.states.fuseOpacity = 
 	opacity: 0
 	options:
-		time: 0.3
+		time: 0.4
 		curve:'ease-out'
 
 pop.states.show = 
@@ -98,9 +98,9 @@ naviHandler.on "change:y", ->
 		popContainer.superLayer = covers
 		popContainer.placeBefore(target)
 		popContainer.y = 950
-		
+		pop.animate('fuseOpacity')
 		Utils.delay 0.1, ->
-			pop.animate('fuseOpacity')
+		
 # 		Utils.delay 0.1, ->
 			strokeSpark()
 			
