@@ -410,7 +410,7 @@
                         "exportOptions" : [
 
                         ],
-                        "fillColor" : "rgba(255,255,255,1)",
+                        "fillColor" : "rgba(255, 255, 255, 0.4)",
                         "fillEnabled" : true,
                         "fillGradient" : {
                           "__class" : "LinearGradient",
@@ -423,7 +423,7 @@
                         "fillImagePixelHeight" : 495,
                         "fillImagePixelWidth" : 372,
                         "fillImageResize" : "fill",
-                        "fillType" : "image",
+                        "fillType" : "color",
                         "grayscale" : 0,
                         "grayScaleEnabled" : 0,
                         "height" : 165,

@@ -60,8 +60,8 @@ pop.stateSwitch('vanish')
 
 pop.on Events.Click, ->
 	feed.animate('focus')
-	Utils.delay 0.3, ->
-		strokeSpark()
+# 	Utils.delay 0.3, ->
+# 		strokeSpark()
 		
 # 	pop.animate('vanish').on Events.AnimationEnd, ->
 # 		listenToPop()
@@ -240,25 +240,30 @@ target.states.normal =
 		curve: 'cubic-bezier(0.2,0,.65,1)'
 
 light.states.start = 
-	y: light.y
+	y: light.y + 165
+	opacity: 0
 	options: 
 		time: 0.25
-		curve: 'cubic-bezier(.35,.55,0.7,0.89)'
+		curve: 'linear'
 
 light.states.mid = 
 	y: light.y + 165
+	opacity: 1
 	options: 
 		time: 0.25
-		curve: 'cubic-bezier(.35,.55,0.8,0.4)'
+		curve: 'linear'
 
 light.states.end = 
-	y: light.y + 330
+	y: light.y + 165
+	opacity: 0
 	options: 
 		time: 0.25
-		curve: 'cubic-bezier(0.3,0.5,.65,.45)'
+		curve: 'linear'
+
+light.stateSwitch('start')
 
 cover.states.float = 
-	scale: 1.05
+	scale: 1.1
 	options: 
 		time: 0.3
 		curve: 'cubic-bezier(.35,0,0.3,1)'
