@@ -39,8 +39,8 @@ BlowUp = (mainLayer, subLayer, time, i, j) ->
 		mainLayer.opacity = 0
 		subLayer.animate
 			opacity: 0
-			x: Utils.randomNumber(30, 90) * Math.sin(2 * Math.PI * j / 8)
-			y: Utils.randomNumber(30, 90) * Math.cos(2 * Math.PI * j / 8)
+			x: Utils.randomNumber(10, 90) * Math.sin(2 * Math.PI * j / 10)
+			y: Utils.randomNumber(10, 90) * Math.cos(2 * Math.PI * j / 10)
 			options:
 				time: 1
 				curve: Spring(damping: 1)
@@ -112,7 +112,7 @@ jump = () ->
 		LayerDestroy(emoji, emojiFall)
 
 blow = () ->
-	for i in [0...Math.round(375/15)]
+	for i in [0...Math.round(375/20)]
 		emoji = new Layer
 			superLayer: area
 			width: 36
@@ -152,7 +152,7 @@ blow = () ->
 				curve: 'ease-in'
 				time: time / 2
 		
-		for j in [0...8]
+		for j in [0...10]
 			subEmoji = new Layer
 				superLayer: emoji
 				width: 18
