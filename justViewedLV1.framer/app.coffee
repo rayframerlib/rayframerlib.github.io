@@ -243,7 +243,7 @@ light.states.start =
 	y: light.y + 165
 	opacity: 0
 	options: 
-		time: 0.25
+		time: 0.3
 		curve: 'linear'
 
 light.states.mid = 
@@ -271,7 +271,7 @@ cover.states.float =
 cover.states.normal =
 	scale: 1
 	options: 
-		time: 0.25
+		time: 0.25 
 		curve: 'cubic-bezier(0.2,0,.65,1)'
 
 
