@@ -47,22 +47,23 @@ BlowUp = (mainLayer, subLayer, time, i, j) ->
 		
 
 down = () ->
-	for i in [0...Math.round(375/15)]
+	for i in [0...Math.round(area.width/21)]
+		randomX = Utils.randomNumber(-36, area.width)
 		emoji = new Layer
 			superLayer: area
 			width: 36
 			height: 36
 			scale: Utils.randomNumber(0.7, 1)
 			image: "images/laugh.png"
-			x: Utils.randomNumber(-36, area.width)
+			x: randomX
 			y: -36
 		emojiDown = new Animation emoji,
-			x: Utils.randomNumber(-32,375)
+			x: randomX + Utils.randomNumber(-50,50)
 			y: area.height
 			options:
 				curve: Bezier.linear
 				time: 5
-				delay: i*0.2
+				delay: i*0.25
 		emojiDown.start()
 		LayerRotate(emoji, i)
 		LayerDestroy(emoji, emojiDown)

@@ -36,11 +36,11 @@ popUpVanishAnimationOption =
 	curve: 'linear'
 
 panelAnimationOption = 
-	time: 0.5
+	time: 0.3
 	curve: 'cubic-bezier(.35,.75,0,1)'
 	
 panelChangeAnimationOption = 
-	time: 0.4
+	time: 0.2
 	curve: 'cubic-bezier(.35,.75,0,1)'
 
 
