@@ -112,11 +112,11 @@ fallHitArea.on Events.Click, ->
 	# 粒子飘落终点 x 范围（相对于生成位置）
 	particleFallXRange = [-150, 150]
 	# 粒子飘落重点 y 范围
-	particleFallYRange = [360, 400]
+	particleFallYRange = [300, 360]
 	# 粒子飘落曲线
 	particleFallCurve = 'cubic-bezier(0,0,1,1)'
 	# 粒子飘落平均速度范围
-	particleFallSpeedRange = [140, 160]
+	particleFallSpeedRange = [110, 120]
 	# 粒子透明度变化范围
 	particleOpacityRange = [1, 0]
 	# 粒子变化起始时间（相对飘落动画时长，0 为从头到尾，1 为没有动画）
