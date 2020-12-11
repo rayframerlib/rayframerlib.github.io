@@ -32,6 +32,8 @@ particleOpacityRange = []
 # 粒子变化起始时间（相对飘落动画时长，0 为从头到尾，1 为没有动画）
 particleOpacityAnimationStartTime = 0
 
+imagePic = ""
+
 down = () ->
 	
 	for i in [0...Math.round(area.width * particleNum / 375)]
@@ -39,12 +41,13 @@ down = () ->
 		randomX = Utils.randomNumber(particleProductionXRange[0], particleProductionXRange[1])
 		particleFallHeight = Utils.randomNumber(particleFallYRange[0], particleFallYRange[1])
 		particleFallSpeed = Utils.randomNumber(particleFallSpeedRange[0], particleFallSpeedRange[1])
+		
 		emoji = new Layer
 			superLayer: area
 			width: particleSize
 			height: particleSize
 			opacity: particleOpacityRange[0]
-			image: "images/laugh.png"
+			image: imagePic
 			x: randomX
 			y: -particleSizeRange[1]
 			
@@ -92,6 +95,8 @@ jumpHitArea.on Events.Click, ->
 	# 粒子变化起始时间（相对飘落动画时长，0 为从头到尾，1 为没有动画）
 	particleOpacityAnimationStartTime = 1
 	
+	imagePic = "images/laugh.png"
+	
 	down()
 
 fallHitArea.on Events.Click, ->
@@ -116,6 +121,8 @@ fallHitArea.on Events.Click, ->
 	particleOpacityRange = [1, 0]
 	# 粒子变化起始时间（相对飘落动画时长，0 为从头到尾，1 为没有动画）
 	particleOpacityAnimationStartTime = 0.6
+	
+	imagePic = "images/snow.png"
 	
 	down()
 
