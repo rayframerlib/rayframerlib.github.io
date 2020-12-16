@@ -112,7 +112,7 @@ fallHitArea.on Events.Click, ->
 	# 粒子飘落终点 x 范围（相对于生成位置）
 	particleFallXRange = [-150, 150]
 	# 粒子飘落重点 y 范围
-	particleFallYRange = [300, 360]
+	particleFallYRange = [360, 380]
 	# 粒子飘落曲线
 	particleFallCurve = 'cubic-bezier(0,0,1,1)'
 	# 粒子飘落平均速度范围
