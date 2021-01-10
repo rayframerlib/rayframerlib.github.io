@@ -116,7 +116,7 @@ fallHitArea.on Events.Click, ->
 	# 粒子飘落曲线
 	particleFallCurve = 'cubic-bezier(0,0,1,1)'
 	# 粒子飘落平均速度范围
-	particleFallSpeedRange = [110, 120]
+	particleFallSpeedRange = [120, 120]
 	# 粒子透明度变化范围
 	particleOpacityRange = [1, 0]
 	# 粒子变化起始时间（相对飘落动画时长，0 为从头到尾，1 为没有动画）
