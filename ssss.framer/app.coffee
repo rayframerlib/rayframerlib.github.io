@@ -18,17 +18,73 @@ testQueries = [
 	'2020年度总结',
 	'我的2021',
 ]
+coreTextContent = [
+	'#',
+	'看',
+	'见',
+	'搜',
+	'索',
+	'的',
+	'力',
+	'量',
+]
+
+clip = new VideoLayer
+	superLayer: videoArea
+	width: 403
+	height: 716
+	video: "images/%E7%9C%8B%E8%A7%81%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8A%9B%E9%87%8Fclip.mp4"
+	
+clip.centerX()
+
+clip.player.play()
+
+searchClip = new VideoLayer
+	superLayer: textArea
+	width: 212
+	height: 64
+	opacity: 1
+	video: "images/%E5%9B%B0%E9%9A%BE%E6%9C%89%E4%B8%80%E4%B8%87clop.mp4"
+
+searchClip.placeBehind(textMask)
+searchClip.center()
+searchClip.player.loop = true
+searchClip.player.muted = true
+
+
+
+
+Utils.delay 13, ->
+	texts.animate
+		opacity: 0
+		options: 
+			time: 0.4
+	(clip.animate
+		opacity: 0
+		options: 
+			time: 0.3).on Events.AnimationEnd, ->
+				videoFinished()
 
 searchBar.clip = true
 gradient.opacity = 1
 searchBarGlow.clip = true
 glowGradient.opacity = 1
+textArea.clip = true
+
+addCoreText = (i) ->
+	Utils.delay i * 0.2 + Utils.randomNumber(0,0.2), ->
+		coreText.text = coreText.text + coreTextContent[i]
+
+coreTextType = () ->
+	coreText.text = ''
+	for i in [0...coreTextContent.length]
+		addCoreText(i)
 
 startGradientRotation = () ->
 	(gradient.animate
 		rotation: 360
 		options:
-			time: 5
+			time: 2
 			curve: 'linear').on Events.AnimationEnd, ->
 				gradient.rotation = 0
 				startGradientRotation()
@@ -37,11 +93,10 @@ startGlowGradientRotation = () ->
 	(glowGradient.animate
 		rotation: 360
 		options:
-			time: 5
+			time: 2
 			curve: 'linear').on Events.AnimationEnd, ->
 				glowGradient.rotation = 0
 				startGlowGradientRotation()
-
 
 class FrontLightBall extends Layer
 	constructor: (@options={}) ->
@@ -382,15 +437,15 @@ ovalBreathDown.on Events.AnimationEnd, ->
 	ovalBreathUp.start()
 
 searchBreathUp = new Animation search,
-	scale: 0.98
+	y: search.y + 6
 	options:
-		time: 2
+		time: 1
 		curve: "ease-in-out"
 
 searchBreathDown = new Animation search,
-	scale: 1
+	y: search.y
 	options:
-		time: 2
+		time: 1
 		curve: "ease-in-out"
 
 searchBreathUp.start()
@@ -436,21 +491,22 @@ startGenerateBackLight = () ->
 		superLayer: backBalls
 	Utils.delay 0.1, ->
 		startGenerateBackLight()
-
-for i in [0...5]
-	lightBall = new FrontLightBall
-		superLayer: frontBalls
-		width: 375
-		height: 375
 	
+videoFinished = () ->
+	startGenerateQuery()
+	startGenerateBackLight()
+	startGradientRotation()
+	startGlowGradientRotation()
+	coreTextType()
+	searchClip.player.play()
+	for i in [0...5]
+		lightBall = new FrontLightBall
+			superLayer: frontBalls
+			width: 375
+			height: 375
 
-startGenerateQuery()
-startGenerateBackLight()
-startGradientRotation()
-startGlowGradientRotation()
 # for i in [0...5]
 # 	lightBall = new BackLightBall
 # 		superLayer: frontBalls
 # 		width: 375
 # 		height: 120
-
