@@ -54,7 +54,7 @@ searchClip.player.muted = true
 
 
 
-Utils.delay 13, ->
+Utils.delay 13.5, ->
 	texts.animate
 		opacity: 0
 		options: 
@@ -106,11 +106,11 @@ class FrontLightBall extends Layer
 		
 		super @options
 		
-		@center()
+# 		@center()
 		
 		_width = @options.width
 		_height = @options.height
-		randomSize = Utils.randomNumber(20, 40)
+		randomSize = Utils.randomNumber(100, 200)
 		randomStartX = Utils.randomNumber(0, _width)
 		randomStartY = Utils.randomNumber(0, _height)
 		
@@ -119,15 +119,16 @@ class FrontLightBall extends Layer
 			size: randomSize
 			x: randomStartX
 			y: randomStartY
+			image: 'images/half.png'
 			opacity: 0
 			borderRadius: randomSize / 2
 			blur: 2
 		
-		@randomFlyAnimationX(@lightBall, @randomFlyAnimationX, @, @lightBallVanish)
-		@randomFlyAnimationY(@lightBall, @randomFlyAnimationY, @, @lightBallVanish)
+		@randomFlyAnimationX(@lightBall, @randomFlyAnimationX, @, @lightBallVanish, @options.width, @options.height)
+		@randomFlyAnimationY(@lightBall, @randomFlyAnimationY, @, @lightBallVanish, @options.width, @options.height)
 		@randomFlyAnimationOpacity(@lightBall, @randomFlyAnimationOpacity)
-	
-	randomFlyAnimationX: (lightBall, self, main, vanishMethod) ->
+
+	randomFlyAnimationX: (lightBall, self, main, vanishMethod, width, height) ->
 		targetOffsetX = Utils.randomChoice([Utils.randomNumber(70, 100), Utils.randomNumber(-70, -100)])
 		time = Utils.randomNumber(2.5, 4.5)
 		(lightBall.animate
@@ -141,10 +142,10 @@ class FrontLightBall extends Layer
 						vanishMethod(lightBall, main)
 						lightBall = new FrontLightBall
 							superLayer: frontBalls
-							width: 375
-							height: 375
+							width: width
+							height: height
 	
-	randomFlyAnimationY: (lightBall, self, main, vanishMethod) ->
+	randomFlyAnimationY: (lightBall, self, main, vanishMethod, width, height) ->
 		targetOffsetY = Utils.randomChoice([Utils.randomNumber(70, 100), Utils.randomNumber(-70, -100)])
 		time = Utils.randomNumber(2.5, 4.5)
 		(lightBall.animate
@@ -155,15 +156,15 @@ class FrontLightBall extends Layer
 					if -40 <= lightBall.y <= main.height + 40
 						self(lightBall, self, main, vanishMethod)
 					else
-						vanishMethod(lightBall, main)
+						vanishMethod(lightBall, main)  
 						lightBall = new FrontLightBall
 							superLayer: frontBalls
-							width: 375
-							height: 375
+							width: width
+							height: height
 						
 		
 	randomFlyAnimationOpacity: (lightBall, self) ->
-		targetOpacity = Utils.randomNumber(0.03, 0.08)
+		targetOpacity = Utils.randomNumber(0.3, 0.5)
 		time = Utils.randomNumber(0.2, 0.3)
 		(lightBall.animate
 			opacity: targetOpacity
@@ -181,8 +182,7 @@ class FrontLightBall extends Layer
 			opacity: 0
 			options: 
 				time: 0.3
-				curve: 'ease-in-out').on Events.AnimationEnd, ->
-					
+				curve: 'ease-in-out').on Events.AnimationEnd, ->			
 					main.destroy()
 					
 		
@@ -499,11 +499,34 @@ videoFinished = () ->
 	startGlowGradientRotation()
 	coreTextType()
 	searchClip.player.play()
-	for i in [0...5]
-		lightBall = new FrontLightBall
-			superLayer: frontBalls
-			width: 375
-			height: 375
+	lightBall1 = new FrontLightBall
+		superLayer: frontBalls
+		width: 200
+		height: 200
+	lightBall2 = new FrontLightBall
+		superLayer: frontBalls
+		x: 150
+		y: 0
+		width: 200
+		height: 200
+	lightBall3 = new FrontLightBall
+		superLayer: frontBalls
+		x: 0
+		y: 600
+		width: 200
+		height: 200
+	lightBall4 = new FrontLightBall
+		superLayer: frontBalls
+		x: 150
+		y: 600
+		width: 200
+		height: 200
+	lightBall5 = new FrontLightBall
+		superLayer: frontBalls
+		x: 70
+		y: 300
+		width: 200
+		height: 200
 
 # for i in [0...5]
 # 	lightBall = new BackLightBall
