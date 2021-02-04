@@ -22,7 +22,6 @@ fullScreenAnimationOption =
 	curve: Spring(damping: 1)
 
 
-
 frameAnimationOption = 
 	time: 0.5
 	curve: Spring(damping: 1)
@@ -36,11 +35,11 @@ popUpVanishAnimationOption =
 	curve: 'linear'
 
 panelAnimationOption = 
-	time: 0.3
+	time: 0.5
 	curve: 'cubic-bezier(.35,.75,0,1)'
 	
 panelChangeAnimationOption = 
-	time: 0.2
+	time: 0.4
 	curve: 'cubic-bezier(.35,.75,0,1)'
 
 

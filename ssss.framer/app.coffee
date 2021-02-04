@@ -1,3 +1,5 @@
+BodymovinLayer = require 'lottieLayer'
+
 Framer.Extras.Hints.disable()
 
 mainScreen.width = 375
@@ -19,7 +21,6 @@ testQueries = [
 	'我的2021',
 ]
 coreTextContent = [
-	'#',
 	'看',
 	'见',
 	'搜',
@@ -28,6 +29,18 @@ coreTextContent = [
 	'力',
 	'量',
 ]
+
+coreText.text = ''
+
+ges = new BodymovinLayer
+	superLayer: mainScreen
+	x: 270
+	y: 400
+	width: 100
+	height: 100
+	autoplay: false
+	looping: false
+	jsonPath: 'images/data.json'
 
 clip = new VideoLayer
 	superLayer: videoArea
@@ -38,10 +51,10 @@ clip = new VideoLayer
 clip.centerX()
 
 clip.player.play()
-
+# clip.player.muted = true
 searchClip = new VideoLayer
 	superLayer: textArea
-	width: 212
+	width: 264
 	height: 64
 	opacity: 1
 	video: "images/%E5%9B%B0%E9%9A%BE%E6%9C%89%E4%B8%80%E4%B8%87clop.mp4"
@@ -51,10 +64,9 @@ searchClip.center()
 searchClip.player.loop = true
 searchClip.player.muted = true
 
+button.clip = true
 
-
-
-Utils.delay 13.5, ->
+Utils.delay 13, ->
 	texts.animate
 		opacity: 0
 		options: 
@@ -93,13 +105,15 @@ startGlowGradientRotation = () ->
 	(glowGradient.animate
 		rotation: 360
 		options:
-			time: 2
+			time: 4
 			curve: 'linear').on Events.AnimationEnd, ->
 				glowGradient.rotation = 0
 				startGlowGradientRotation()
 
 class FrontLightBall extends Layer
 	constructor: (@options={}) ->
+		@options.x ?= 0
+		@options.y ?= 0
 		@options.width ?= 1000
 		@options.height ?= 1000
 		@options.backgroundColor ?= 'transparent'
@@ -124,11 +138,11 @@ class FrontLightBall extends Layer
 			borderRadius: randomSize / 2
 			blur: 2
 		
-		@randomFlyAnimationX(@lightBall, @randomFlyAnimationX, @, @lightBallVanish, @options.width, @options.height)
-		@randomFlyAnimationY(@lightBall, @randomFlyAnimationY, @, @lightBallVanish, @options.width, @options.height)
+		@randomFlyAnimationX(@lightBall, @randomFlyAnimationX, @, @lightBallVanish, @options.width, @options.height, @options.x, @options.y)
+		@randomFlyAnimationY(@lightBall, @randomFlyAnimationY, @, @lightBallVanish, @options.width, @options.height, @options.x, @options.y)
 		@randomFlyAnimationOpacity(@lightBall, @randomFlyAnimationOpacity)
 
-	randomFlyAnimationX: (lightBall, self, main, vanishMethod, width, height) ->
+	randomFlyAnimationX: (lightBall, self, main, vanishMethod, width, height, x, y) ->
 		targetOffsetX = Utils.randomChoice([Utils.randomNumber(70, 100), Utils.randomNumber(-70, -100)])
 		time = Utils.randomNumber(2.5, 4.5)
 		(lightBall.animate
@@ -137,15 +151,17 @@ class FrontLightBall extends Layer
 				time: time
 				curve: 'ease-in-out').on Events.AnimationEnd, ->
 					if -40 <= lightBall.x <= main.width + 40
-						self(lightBall, self, main, vanishMethod)
+						self(lightBall, self, main, vanishMethod, width, height, x, y)
 					else
 						vanishMethod(lightBall, main)
 						lightBall = new FrontLightBall
 							superLayer: frontBalls
+							x: x
+							y: y
 							width: width
 							height: height
 	
-	randomFlyAnimationY: (lightBall, self, main, vanishMethod, width, height) ->
+	randomFlyAnimationY: (lightBall, self, main, vanishMethod, width, height, x, y) ->
 		targetOffsetY = Utils.randomChoice([Utils.randomNumber(70, 100), Utils.randomNumber(-70, -100)])
 		time = Utils.randomNumber(2.5, 4.5)
 		(lightBall.animate
@@ -154,17 +170,19 @@ class FrontLightBall extends Layer
 				time: time
 				curve: 'ease-in-out').on Events.AnimationEnd, ->
 					if -40 <= lightBall.y <= main.height + 40
-						self(lightBall, self, main, vanishMethod)
+						self(lightBall, self, main, vanishMethod, width, height, x, y)
 					else
 						vanishMethod(lightBall, main)  
 						lightBall = new FrontLightBall
 							superLayer: frontBalls
+							x: x
+							y: y
 							width: width
 							height: height
 						
 		
 	randomFlyAnimationOpacity: (lightBall, self) ->
-		targetOpacity = Utils.randomNumber(0.3, 0.5)
+		targetOpacity = Utils.randomNumber(0.5, 0. I )
 		time = Utils.randomNumber(0.2, 0.3)
 		(lightBall.animate
 			opacity: targetOpacity
@@ -288,17 +306,19 @@ class FlyingQuery extends Layer
 		@query = new TextLayer
 			superLayer: @
 			text: "#{@options.text}"
-			fontSize: 16
+			fontSize: 13
 			fontWeight: 400
-			color: 'rgba(255,255,255,0.5)'
+			color: 'rgba(229,219,255,0.4)'
 			scale: 0
 			opacity: 0
-			backgroundColor: 'rgba(255,255,255,0.06)'
+			backgroundColor: 'rgba(126,138,229,0.3)'
+			borderColor: 'rgba(207,216,255,0.3)'
+			borderWidth: 1
 			borderRadius: 100
 			padding:
-				horizontal: 12
-				vertical: 6
-			shadowColor: 'rgba(255,255,255,0.2)'
+				horizontal: 8
+				vertical: 4
+			shadowColor: 'rgba(207,216,255,0.4)'
 			shadowBlur: 10
 		
 		@query.center()
@@ -350,8 +370,8 @@ class BackLightBallCentral extends Layer
 		
 		@query = new Layer
 			superLayer: @
-			width: 3
-			height: 3
+			width: 1.5
+			height: 1.5
 			scale: 0
 			opacity: 0
 			backgroundColor: 'rgba(255,255,255,0.6)'
@@ -366,7 +386,7 @@ class BackLightBallCentral extends Layer
 		
 
 	randomFlyAnimation: () ->
-		deg = Utils.randomNumber(0, 360)
+		deg = Utils.randomNumber(0, 2*Math.PI)
 		distance = Utils.randomNumber(150, 400)
 		offsetX = distance * Math.cos(deg)
 		offsetY = distance * Math.sin(deg)
@@ -385,7 +405,7 @@ class BackLightBallCentral extends Layer
 			options:
 				curve: 'ease-in-out'
 				time: 2
-				delay: 3
+				delay: 1
 		
 		Utils.delay 6, ->
 			_query.animate
@@ -416,28 +436,28 @@ lightBreathUp.on Events.AnimationEnd, ->
 lightBreathDown.on Events.AnimationEnd, ->
 	lightBreathUp.start()
 
-ovalBreathUp = new Animation oval,
-	scale: 1.05
+planetBreathUp = new Animation planetMedium,
+	y: planetMedium.y - 10
 	options:
-		time: 1.5
+		time: 2
 		curve: "ease-in-out"
 
-ovalBreathDown = new Animation oval,
-	scale: 1
+planetBreathDown = new Animation planetMedium,
+	y: planetMedium.y
 	options:
-		time: 1.5
+		time: 2
 		curve: "ease-in-out"
 
-ovalBreathUp.start()
+planetBreathUp.start()
 
-ovalBreathUp.on Events.AnimationEnd, ->
-	ovalBreathDown.start()
+planetBreathUp.on Events.AnimationEnd, ->
+	planetBreathDown.start()
 
-ovalBreathDown.on Events.AnimationEnd, ->
-	ovalBreathUp.start()
+planetBreathDown.on Events.AnimationEnd, ->
+	planetBreathUp.start()
 
 searchBreathUp = new Animation search,
-	y: search.y + 6
+	y: search.y - 3
 	options:
 		time: 1
 		curve: "ease-in-out"
@@ -455,6 +475,46 @@ searchBreathUp.on Events.AnimationEnd, ->
 
 searchBreathDown.on Events.AnimationEnd, ->
 	searchBreathUp.start()
+
+musicBreathUp = new Animation music,
+	scale: 1.1
+	options:
+		time: 3
+		curve: "ease-in-out"
+
+musicBreathDown = new Animation music,
+	scale: 1
+	options:
+		time: 3
+		curve: "ease-in-out"
+
+musicBreathUp.start()
+
+musicBreathUp.on Events.AnimationEnd, ->
+	musicBreathDown.start()
+
+musicBreathDown.on Events.AnimationEnd, ->
+	musicBreathUp.start()
+
+# iconBreathUp = new Animation search,
+# 	scale: 0.95
+# 	options:
+# 		time: 0.3
+# 		curve: "ease-in-out"
+# 
+# iconBreathDown = new Animation search,
+# 	scale: 1
+# 	options:
+# 		time: 1
+# 		curve: "ease-in-out"
+# 
+# iconBreathUp.start()
+# 
+# iconBreathUp.on Events.AnimationEnd, ->
+# 	iconBreathDown.start()
+# 
+# iconBreathDown.on Events.AnimationEnd, ->
+# 	iconBreathUp.start()
 
 maskHandler = new Layer
 	visible: false
@@ -483,7 +543,7 @@ startGenerateQuery = () ->
 	query = new FlyingQuery
 		superLayer: queryContainer
 		text: Utils.randomChoice(testQueries)
-	Utils.delay 1.5, ->
+	Utils.delay 1, ->
 		startGenerateQuery()
 
 startGenerateBackLight = () ->
@@ -491,7 +551,112 @@ startGenerateBackLight = () ->
 		superLayer: backBalls
 	Utils.delay 0.1, ->
 		startGenerateBackLight()
+
+planetTinyRotation = new Animation planetTinyContainer,
+	rotation: 110
+	options:
+		time: 20
+		curve: 'linear'
+
+planetTinyShow = new Animation planetTinyContainer,
+	opacity: 1
+	options:
+		time: 3
+		curve: 'linear'
+
+planetTinyVanish = new Animation planetTinyContainer,
+	opacity: 0
+	options:
+		time: 3
+		curve: 'linear'
+
+planetTinyRotationStart = () ->
+	planetTinyContainer.rotation= -45
+	planetTinyContainer.opacity= 0
+	planetTinyRotation.start()
+	planetTinyRotation.on Events.AnimationEnd, ->
+		planetTinyRotationStart()
+	planetTinyShow.start()
+	Utils.delay 17, ->
+		planetTinyVanish.start()
+
+planetTinyRotationStart()
+
+planetMiniRotation = new Animation planetMiniContainer,
+	rotation: -120
+	options:
+		time: 17
+		curve: 'linear'
+
+planetMiniShow = new Animation planetMiniContainer,
+	opacity: 1
+	options:
+		time: 3
+		curve: 'linear'
+
+planetMiniVanish = new Animation planetMiniContainer,
+	opacity: 0
+	options:
+		time: 3
+		curve: 'linear'
+
+planetMiniRotationStart = () ->
+	planetMiniContainer.rotation= 50
+	planetMiniContainer.opacity= 0
+	planetMiniRotation.start()
+	planetMiniRotation.on Events.AnimationEnd, ->
+		planetMiniRotationStart()
+	planetMiniShow.start()
+	Utils.delay 14, ->
+		planetMiniVanish.start()
+
+planetMiniRotationStart()
+
+ges.states.vanish =
+	opacity: 0.3
+	y: ges.y
+	x: ges.x + 5
+	options:
+		curve: 'ease-in-out'
+		time: 0.8
+
+ges.states.show = 
+	opacity: 1
+	x: ges.x
+	y: ges.y - 10
+	options:
+		curve: 'ease-in-out'
+		time: 0.5
+
+
+ges.stateSwitch('vanish')
+ges.opacity = 0
+
+gesBreath = () ->
+	ges.animate('show')
+	Utils.delay 0.35, ->
+		ges.anim.goToAndStop(310) 
+		ges.anim.play()
+		Utils.delay 0.4, ->
+			ges.animate('vanish').on Events.AnimationEnd, ->
+				gesBreath()
+
+button.width = 31
+button.opacity = 0
+
+gotoSearch = () ->
+	icon.animate
+		opacity: 0
+		options: 
+			time: 0.3
 	
+	button.animate
+		opacity: 1
+		width: 71
+		options: 
+			time: 0.4
+			curve: 'ease-in-out'
+
 videoFinished = () ->
 	startGenerateQuery()
 	startGenerateBackLight()
@@ -499,34 +664,37 @@ videoFinished = () ->
 	startGlowGradientRotation()
 	coreTextType()
 	searchClip.player.play()
-	lightBall1 = new FrontLightBall
-		superLayer: frontBalls
-		width: 200
-		height: 200
-	lightBall2 = new FrontLightBall
-		superLayer: frontBalls
-		x: 150
-		y: 0
-		width: 200
-		height: 200
-	lightBall3 = new FrontLightBall
-		superLayer: frontBalls
-		x: 0
-		y: 600
-		width: 200
-		height: 200
-	lightBall4 = new FrontLightBall
-		superLayer: frontBalls
-		x: 150
-		y: 600
-		width: 200
-		height: 200
-	lightBall5 = new FrontLightBall
-		superLayer: frontBalls
-		x: 70
-		y: 300
-		width: 200
-		height: 200
+	gesBreath()
+	Utils.delay 5, ->
+# 		gotoSearch()
+# 	lightBall1 = new FrontLightBall
+# 		superLayer: frontBalls
+# 		width: 200
+# 		height: 200
+# 	lightBall2 = new FrontLightBall
+# 		superLayer: frontBalls
+# 		x: 150
+# 		y: 0
+# 		width: 200
+# 		height: 200
+# 	lightBall3 = new FrontLightBall
+# 		superLayer: frontBalls
+# 		x: 0
+# 		y: 600
+# 		width: 200
+# 		height: 200
+# 	lightBall4 = new FrontLightBall
+# 		superLayer: frontBalls
+# 		x: 150
+# 		y: 600
+# 		width: 200
+# 		height: 200
+# 	lightBall5 = new FrontLightBall
+# 		superLayer: frontBalls
+# 		x: 70
+# 		y: 300
+# 		width: 200
+# 		height: 2 00
 
 # for i in [0...5]
 # 	lightBall = new BackLightBall
