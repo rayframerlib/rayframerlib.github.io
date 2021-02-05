@@ -46,21 +46,13 @@ pageHandler.content.draggable.overdragScale = 1
 # 	width: onLive.width * 2 - onLiveContainer.width + 24
 # 	height: onLiveContainer.height
 
-oftenWatch.draggable.enabled = true
-oftenWatch.draggable.speedY = 0
-oftenWatch.draggable.constraints = 
-	x: oftenWatchContainer.width - oftenWatch.width - 16
-	y: 0
-	width: oftenWatch.width * 2 - oftenWatchContainer.width + 32
-	height: oftenWatchContainer.height
-
 videoTop.states.normal =
 	y: 0
 	options:
 		time: 0.35
 		curve: 'ease-in-out'
 videoTop.states.show = 
-	y: 401
+	y: 346
 	options:
 		time: 0.35
 		curve: 'ease-in-out'
@@ -85,7 +77,7 @@ buble.states.normal =
 		curve: 'ease-in-out'
 
 buble.states.show = 
-	y: 425
+	y: 370
 	backgroundColor: 'rgba(0, 0, 0, 0.34)'
 	options: 
 		time: 0.35
@@ -128,17 +120,17 @@ pageHandler.content.on Events.DragEnd, ->
 pageHandler.content.on "change:y", ->
 	if @y > 0
 		topMask.y = @y - 2
-		buble.y = Utils.modulate(@y, [0, 408], [106, 429])
+		buble.y = Utils.modulate(@y, [0, 407], [106, 431])
 		containerChange()
 
 videoTop.on "change:y", ->
 	containerChange()
 
 containerChange = () ->
-	pageHandlerY = Utils.modulate(pageHandler.content.y,[0, 401],[0, 401],true)
-	container.y = Utils.modulate(videoTop.y + pageHandlerY,[0, 401],[-200, 0])
-	container.opacity = Utils.modulate(videoTop.y + pageHandlerY,[0, 401],[0, 1])
-	container.scale = Utils.modulate(videoTop.y + pageHandlerY,[0, 401],[0.8, 1], true)
+	pageHandlerY = Utils.modulate(pageHandler.content.y,[0, 346],[0, 346],true)
+	container.y = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[-200, 0],true)
+	container.opacity = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[0, 1],true)
+	container.scale = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[0.8, 1],true)
 
 topShow = () ->
 	isShow = true
@@ -152,7 +144,6 @@ topShow = () ->
 	arrow.x = bubleText.x + bubleText.width
 	buble.width = arrow.x + arrow.width + 7
 	buble.centerX()
-	oftenWatch.x = 16
 
 
 topNormal = () ->
@@ -173,5 +164,4 @@ buble.on Events.Click, ->
 		topNormal()
 	else
 		topShow()
-
 
