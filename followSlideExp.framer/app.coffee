@@ -29,7 +29,8 @@ minePage.on Events.DragEnd, ->
 				time: 0.3
 
 minePage.superLayer = mainScreen
-
+minePage.width = 375
+minePage.height = 812
 minePage.x = 375
 
 minePage.states.show =
