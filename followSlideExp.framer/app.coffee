@@ -1,6 +1,7 @@
 mainScreen.clip = true
 mainScreen.width = 375
 mainScreen.height = 812
+mainScreen.center()
 
 page = new PageComponent
 	width: mainScreen.width
@@ -27,6 +28,7 @@ minePage.on Events.DragEnd, ->
 			options: 
 				time: 0.3
 
+minePage.superLayer = mainScreen
 
 minePage.x = 375
 
