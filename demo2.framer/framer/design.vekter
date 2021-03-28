@@ -777,7 +777,7 @@
                     "bottom" : null,
                     "brightness" : 100,
                     "brightnessEnabled" : 0,
-                    "centerAnchorX" : 0.67500000000000004,
+                    "centerAnchorX" : 0.625,
                     "centerAnchorY" : 0.51666666666666672,
                     "constraintsLocked" : true,
                     "contrast" : 100,
