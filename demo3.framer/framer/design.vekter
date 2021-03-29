@@ -822,9 +822,7 @@
                         "top" : null,
                         "visible" : true,
                         "width" : 66,
-                        "widthFactor" : null,
-                        "x" : 183,
-                        "y" : 510
+                        "widthFactor" : null
                       },
                       {
                         "__class" : "FrameNode",

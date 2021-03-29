@@ -78,7 +78,6 @@ tip.states.vanish =
 		time: 0.2
 
 tip.stateSwitch('vanish')
-
 shadowChange.backgroundColor = 'transparent'
 shadowChange.classList.add("svgBox")
 shadowChange.html = """
@@ -176,13 +175,13 @@ lastPoint = [0,0]
 lastDragPositon = [0,0]
 
 hitArea.on Events.DragMove, (event) ->
-	targetX = event.pointX
-	targetY = event.pointY
+	targetX = event.pointX - ((Screen.width - mainScreen.width) / 2)
+	targetY = event.pointY - ((Screen.height - mainScreen.height) / 2)
 	lastPoint = [targetX, targetY]
 	document.querySelector('#curve1').setAttribute('d','M 375 0 c 0 100' + (targetX - 375) + ' ' + (targetY - 100) + ' ' + (targetX - 375) + ' ' + targetY + ' c 0 100 ' + (375 - targetX) + ' ' + (728 - targetY - 100) + ' ' + (375 - targetX) + ' ' + (728 - targetY) + ' l 0 0 l 0 -728')
 	page.content.x = Utils.modulate(hitArea.x,[0, -375],[0, -60], true)
 	
-	if 0 <= event.pointX <= 220 && 416 <= event.pointY <= 480
+	if 0 <= targetX <= 220 && 416 <= targetY <= 480
 		activeHandler.x = 1
 	else
 		activeHandler.x = 0
