@@ -86,14 +86,19 @@ buble.states.show =
 
 enterButton.states.normal = 
 	backgroundColor: 'rgba(41, 41, 41, 0.34)'
+	y: 4
+	opacity: 1
+	scaleX: 1
+	scaleY: 1
 	options: 
 		time: 0.35
 		curve: 'ease-in-out'
-		
+
 enterButton.states.show = 
 	backgroundColor: 'rgba(0, 0, 0, 0.34)'
 	y: 4
 	opacity: 1
+	scaleX: 1
 	scaleY: 1
 	options: 
 		time: 0.35
@@ -101,6 +106,7 @@ enterButton.states.show =
 
 enterButton.states.refreshVanish = 
 	backgroundColor: 'rgba(0, 0, 0, 0.34)'
+	scaleX: 0.9
 	scaleY: 0
 	y: 28
 	opacity: 0
@@ -140,14 +146,16 @@ headMask.states.show =
 
 tip.states.vanish = 
 	opacity: 0
+	scaleX: 0.9
 	scaleY: 0
-	y: -tip.height/2 - 4
+	y: -24
 	options: 
 		time: 0.35
 		curve: 'ease-in-out'
 		
 tip.states.show = 
 	opacity: 1
+	scaleX: 1
 	scaleY: 1
 	y: 0
 	options: 
@@ -210,7 +218,7 @@ topNormal = () ->
 			enterButton.animate('refreshVanish')
 		Utils.delay 4, ->
 			tip.animate('vanish')
-			enterButton.animate('show')
+			enterButton.animate('normal')
 			
 
 refresh = () ->
