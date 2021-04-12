@@ -39,6 +39,18 @@ minePage.height = 812
 minePage.x = 375
 minePage.placeBehind(statusBar)
 
+shadowCurve.backgroundColor = 'transparent'
+shadowCurve.classList.add("svgBox")
+shadowCurve.html = """
+	<svg id='box' viewBox='0 0 80 728' version = "1.1">
+		<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+			<stop offset="0%" style="stop-color:rgba(255, 255, 255, 0.2);stop-opacity:1" />
+			<stop offset="100%" style="stop-color:rgb(255, 255, 255, 0.18);stop-opacity:1" />
+		</linearGradient>
+		<path id ="curve1" d ="M 375 0 q 0 364 0 728 l 0 0 l 0 -728" fill="url(#grad1)"/>
+	</svg>
+"""
+
 minePage.states.show =
 	x: 0
 	options:
@@ -69,6 +81,23 @@ shadowChange.states.vanish =
 
 shadowChange.stateSwitch('vanish')
 
+hint.states.vanish =
+	x: 72
+	opacity: 0
+	options: 
+		time: 0.15
+		curve: 'ease-in' 
+
+hint.states.show =
+	x: 24
+	opacity: 1
+	options: 
+		time: 0.15
+		curve: 'ease-out' 
+	
+
+hint.stateSwitch('vanish')
+
 # hintText.states.show = 
 # 	opacity: 1
 # 	options: 
@@ -81,16 +110,22 @@ shadowChange.stateSwitch('vanish')
 
 # hintText.stateSwitch('vanish')
 
-hitArea.on Events.TouchStart, ->
+hitArea.on Events.TouchStart,(event) ->
 	shadowChange.animate('show')
+	hint.animate('show')
+	targetX = event.point.x - ((Screen.width - mainScreen.width) / 2) + hitArea.x
+	targetY = event.point.y - ((Screen.height - mainScreen.height) / 2) + hitArea.y
+	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -21' + ' ' + (targetY - 72) + ' -21 ' + targetY + ' c 0 72 21' + ' ' + (728 - targetY - 50) + ' 21 ' + (728 - targetY) + ' l 0 0 l 0 -728')
 # 	hintText.animate('show')
 
 hitArea.on Events.TouchEnd, ->
 	shadowChange.animate('vanish')
+	hint.animate('vanish')
 # 	hintText.animate('vanish')
 
 hitArea.on Events.DragEnd, ->
 	shadowChange.animate('vanish')
+	hint.animate('vanish')
 	if hitArea.x <= 200
 		minePage.show()
 
@@ -103,7 +138,7 @@ hitArea.draggable.overdragScale = 1
 hitArea.draggable.constraints = 
 		x: 311
 		y: 0
-		width: 64
+		width: 80
 		height: 812
 
 hitArea.draggable.bounceOptions =
@@ -121,7 +156,19 @@ hitArea.on 'change:point', ->
 	if minePage.states.current.name == 'vanish'
 		minePage.x = Utils.modulate((hitArea.x - 311 + 375),[375, 0],[375, -64])
 
+lastPoint = [0,0]
+lastDragPositon = [0,0]
+
+hitArea.on Events.DragMove, (event) ->
+	targetX = event.pointX - ((Screen.width - mainScreen.width) / 2)
+	targetY = event.pointY - ((Screen.height - mainScreen.height) / 2)
+	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -21' + ' ' + (targetY - 72) + ' -21 ' + targetY + ' c 0 72 21' + ' ' + (728 - targetY - 50) + ' 21 ' + (728 - targetY) + ' l 0 0 l 0 -728')
+	page.content.x = Utils.modulate(hitArea.x,[0, -375],[0, -60], true)
+
+
 guide.on Events.Click, ->
+	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -21' + ' ' + (364 - 72) + ' -21 ' + 364 + ' c 0 72 21' + ' ' + (728 - 364 - 50) + ' 21 ' + (728 - 364) + ' l 0 0 l 0 -728')
+	page.content.x = Utils.modulate(hitArea.x,[0, -375],[0, -60], true)
 	(hitArea.animate
 		x: 260
 		options: 
@@ -132,4 +179,6 @@ guide.on Events.Click, ->
 						time: 0.5).on Events.AnimationEnd, ->
 						Utils.delay 3, ->
 							shadowChange.animate('vanish')
+							hint.animate('vanish')
 	shadowChange.animate('show')
+	hint.animate('show')

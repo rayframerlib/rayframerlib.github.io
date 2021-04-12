@@ -107,8 +107,8 @@ enterButton.states.show =
 enterButton.states.refreshVanish = 
 	backgroundColor: 'rgba(0, 0, 0, 0.34)'
 	scaleX: 0.9
-	scaleY: 0
-	y: 28
+	scaleY: 0.7
+	y: 36
 	opacity: 0
 	options: 
 		time: 0.35
@@ -147,8 +147,8 @@ headMask.states.show =
 tip.states.vanish = 
 	opacity: 0
 	scaleX: 0.9
-	scaleY: 0
-	y: -24
+	scaleY: 0.7
+	y: -30
 	options: 
 		time: 0.35
 		curve: 'ease-in-out'
@@ -179,9 +179,9 @@ videoTop.on "change:y", ->
 
 containerChange = () ->
 	pageHandlerY = Utils.modulate(pageHandler.content.y,[0, 346],[0, 346],true)
-	container.y = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[-200, 0],true)
+	container.y = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[-346, 0],true)
 	container.opacity = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[0, 1],true)
-	container.scale = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[0.8, 1],true)
+	container.scale = Utils.modulate(videoTop.y + pageHandlerY,[0, 346],[1, 1],true)
 
 topShow = () ->
 	isShow = true
