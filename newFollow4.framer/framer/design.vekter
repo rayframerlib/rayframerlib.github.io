@@ -1133,7 +1133,117 @@
                 "centerAnchorX" : 0.50252525252525249,
                 "centerAnchorY" : 0.5,
                 "children" : [
+                  {
+                    "__class" : "TextNode",
+                    "autoSize" : true,
+                    "blendingEnabled" : 0,
+                    "blendingMode" : "normal",
+                    "blur" : 12,
+                    "blurEnabled" : 0,
+                    "blurType" : "layer",
+                    "bottom" : null,
+                    "brightness" : 100,
+                    "brightnessEnabled" : 0,
+                    "centerAnchorX" : 0.5,
+                    "centerAnchorY" : 0.5,
+                    "constraintsLocked" : false,
+                    "contrast" : 100,
+                    "contrastEnabled" : 0,
+                    "editable" : false,
+                    "exportOptions" : [
 
+                    ],
+                    "grayscale" : 0,
+                    "grayScaleEnabled" : 0,
+                    "height" : 16,
+                    "heightFactor" : null,
+                    "hueRotate" : 0,
+                    "hueRotateEnabled" : 0,
+                    "id" : "XCgDE_Vuw",
+                    "invert" : 0,
+                    "invertEnabled" : 0,
+                    "left" : null,
+                    "locked" : false,
+                    "name" : "bubleText",
+                    "opacity" : 1,
+                    "parentid" : "TFSsLUWu2",
+                    "right" : null,
+                    "rotation" : 0,
+                    "saturate" : 100,
+                    "saturateEnabled" : 0,
+                    "sepia" : 0,
+                    "sepiaEnabled" : 0,
+                    "shadows" : [
+
+                    ],
+                    "styledText" : {
+                      "__class" : "StyledTextDraft",
+                      "blocks" : [
+                        {
+                          "data" : {
+                            "emptyStyle" : [
+                              "SIZE:13",
+                              "FONT:SFUIText-Medium",
+                              "LINEHEIGHT:1.3",
+                              "COLOR:hsla(0, 0%, 100%, 0.75)",
+                              "ALIGN:center"
+                            ]
+                          },
+                          "depth" : 0,
+                          "entityRanges" : [
+
+                          ],
+                          "inlineStyleRanges" : [
+                            {
+                              "length" : 13,
+                              "offset" : 0,
+                              "style" : "SIZE:13"
+                            },
+                            {
+                              "length" : 13,
+                              "offset" : 0,
+                              "style" : "FONT:SFUIText-Medium"
+                            },
+                            {
+                              "length" : 13,
+                              "offset" : 0,
+                              "style" : "LINEHEIGHT:1.3"
+                            },
+                            {
+                              "length" : 13,
+                              "offset" : 0,
+                              "style" : "COLOR:hsla(0, 0%, 100%, 0.75)"
+                            },
+                            {
+                              "length" : 13,
+                              "offset" : 0,
+                              "style" : "ALIGN:center"
+                            }
+                          ],
+                          "key" : "bobad",
+                          "text" : "黑桃K等人更新了81条微博",
+                          "type" : "unstyled"
+                        }
+                      ],
+                      "cached" : {
+                        "html" : "<span data-offset-key=\"bobad-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsla(0, 0%, 100%, 0.75);font-size:13px;letter-spacing:0px;line-height:1.3\"><span data-text=\"true\">黑桃K等人更新了81条微博<\/span><\/span>",
+                        "os" : "10_16",
+                        "size" : {
+                          "height" : 16,
+                          "width" : 155
+                        },
+                        "width" : 0
+                      },
+                      "entityMap" : {
+
+                      }
+                    },
+                    "targetName" : null,
+                    "top" : null,
+                    "visible" : true,
+                    "width" : 155,
+                    "widthFactor" : null
+                  }
                 ],
                 "clip" : false,
                 "constraintsLocked" : true,
@@ -1144,7 +1254,7 @@
                 "exportOptions" : [
 
                 ],
-                "fillColor" : "rgba(255,255,255,1)",
+                "fillColor" : "hsla(0, 0%, 16%, 0.34)",
                 "fillEnabled" : true,
                 "fillGradient" : {
                   "__class" : "LinearGradient",
@@ -1153,11 +1263,11 @@
                   "end" : "rgba(0,0,0,0)",
                   "start" : "black"
                 },
-                "fillImage" : "Iigj6dFRUJNtPJIz7psGaMFMHmcchrLAfYSRj5cj8sEYgyyTgLO8Xn4mXVUF8a2cij29a3Zcsba9lDB97pg",
-                "fillImagePixelHeight" : 96,
-                "fillImagePixelWidth" : 516,
+                "fillImage" : null,
+                "fillImagePixelHeight" : null,
+                "fillImagePixelWidth" : null,
                 "fillImageResize" : "fill",
-                "fillType" : "image",
+                "fillType" : "color",
                 "grayscale" : 0,
                 "grayScaleEnabled" : 0,
                 "height" : 32,
@@ -1172,15 +1282,15 @@
                 "left" : null,
                 "locked" : false,
                 "name" : "tip",
-                "opacity" : 0,
+                "opacity" : 1,
                 "parentid" : "Q2DBW2p2U",
-                "radius" : 0,
-                "radiusBottomLeft" : 0,
-                "radiusBottomRight" : 0,
+                "radius" : 4,
+                "radiusBottomLeft" : 4,
+                "radiusBottomRight" : 4,
                 "radiusIsRelative" : false,
                 "radiusPerCorner" : false,
-                "radiusTopLeft" : 0,
-                "radiusTopRight" : 0,
+                "radiusTopLeft" : 4,
+                "radiusTopRight" : 4,
                 "right" : null,
                 "rotation" : 0,
                 "saturate" : 100,
@@ -1190,7 +1300,7 @@
                 "targetName" : "tip",
                 "top" : null,
                 "visible" : true,
-                "width" : 172,
+                "width" : 343,
                 "widthFactor" : null
               }
             ],

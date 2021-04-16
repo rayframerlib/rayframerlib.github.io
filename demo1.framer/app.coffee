@@ -7,6 +7,26 @@ guide.backgroundColor = '#292929'
 guide.borderRadius = 4
 guide.padding = 6
 
+guideHandler = new Layer
+guideHandler.visible = false
+
+guideMoveFirst = new Animation guideHandler,
+	x: 16
+	options:
+		time: 0.3
+		curve: 'ease-out'
+
+guideMoveSecond = new Animation guideHandler,
+	x: 8
+	options:
+		time: 0.8
+		curve: 'ease-in-out'
+
+guideMoveFirst.on Events.AnimationEnd, ->
+	guideMoveSecond.start()
+	guideMoveSecond.on Events.AnimationEnd, ->
+		guideMoveFirst.start()
+
 page = new PageComponent
 	width: mainScreen.width
 	height: mainScreen.height
@@ -85,14 +105,14 @@ hint.states.vanish =
 	x: 72
 	opacity: 0
 	options: 
-		time: 0.15
+		time: 0.2
 		curve: 'ease-in' 
 
 hint.states.show =
 	x: 24
 	opacity: 1
 	options: 
-		time: 0.15
+		time: 0.2
 		curve: 'ease-out' 
 	
 
@@ -115,7 +135,7 @@ hitArea.on Events.TouchStart,(event) ->
 	hint.animate('show')
 	targetX = event.point.x - ((Screen.width - mainScreen.width) / 2) + hitArea.x
 	targetY = event.point.y - ((Screen.height - mainScreen.height) / 2) + hitArea.y
-	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -21' + ' ' + (targetY - 72) + ' -21 ' + targetY + ' c 0 72 21' + ' ' + (728 - targetY - 50) + ' 21 ' + (728 - targetY) + ' l 0 0 l 0 -728')
+	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -16' + ' ' + (targetY - 100) + ' -16 ' + targetY + ' c 0 100 16' + ' ' + (728 - targetY - 50) + ' 16 ' + (728 - targetY) + ' l 0 0 l 0 -728')
 # 	hintText.animate('show')
 
 hitArea.on Events.TouchEnd, ->
@@ -162,23 +182,31 @@ lastDragPositon = [0,0]
 hitArea.on Events.DragMove, (event) ->
 	targetX = event.pointX - ((Screen.width - mainScreen.width) / 2)
 	targetY = event.pointY - ((Screen.height - mainScreen.height) / 2)
-	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -21' + ' ' + (targetY - 72) + ' -21 ' + targetY + ' c 0 72 21' + ' ' + (728 - targetY - 50) + ' 21 ' + (728 - targetY) + ' l 0 0 l 0 -728')
+	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -16' + ' ' + (targetY - 100) + ' -16 ' + targetY + ' c 0 100 16' + ' ' + (728 - targetY - 50) + ' 16 ' + (728 - targetY) + ' l 0 0 l 0 -728')
 	page.content.x = Utils.modulate(hitArea.x,[0, -375],[0, -60], true)
 
 
 guide.on Events.Click, ->
-	document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 -21' + ' ' + (364 - 72) + ' -21 ' + 364 + ' c 0 72 21' + ' ' + (728 - 364 - 50) + ' 21 ' + (728 - 364) + ' l 0 0 l 0 -728')
 	page.content.x = Utils.modulate(hitArea.x,[0, -375],[0, -60], true)
 	(hitArea.animate
 		x: 260
 		options: 
 			time: 0.4).on Events.AnimationEnd, ->
+				shadowChange.animate
+					opacity: 0.8
+					options:
+						time: 0.3
 				(hitArea.animate
 					x: 311
 					options:
 						time: 0.5).on Events.AnimationEnd, ->
+						guideMoveFirst.start()
+						guideHandler.on 'change:x', ->
+							document.querySelector('#curve1').setAttribute('d','M 80 0 c 0 50 ' + -@x + ' ' + ' ' + (364 - 100) + ' ' + -@x + ' ' + 364 + ' c 0 100 ' + @x + ' ' + ' ' + (728 - 364 - 50) + ' ' + @x + ' ' + (728 - 364) + ' l 0 0 l 0 -728')
+							shadowChange.opacity = Utils.modulate(@x,[8,16],[0.8,1],true)
 						Utils.delay 3, ->
 							shadowChange.animate('vanish')
 							hint.animate('vanish')
+							guideHandler.off 'change:x'
 	shadowChange.animate('show')
 	hint.animate('show')
