@@ -850,11 +850,11 @@
                           "data" : {
                             "emptyStyle" : [
                               "BOLD",
-                              "FONT:SFUIText-Regular",
                               "LETTERSPACING:0",
                               "LINEHEIGHT:1.2",
                               "SIZE:15",
-                              "COLOR:hsl(231, 23%, 11%)"
+                              "COLOR:hsl(231, 23%, 11%)",
+                              "FONT:PingFangSC-Regular"
                             ]
                           },
                           "depth" : 0,
@@ -866,11 +866,6 @@
                               "length" : 17,
                               "offset" : 0,
                               "style" : "BOLD"
-                            },
-                            {
-                              "length" : 17,
-                              "offset" : 0,
-                              "style" : "FONT:SFUIText-Regular"
                             },
                             {
                               "length" : 17,
@@ -891,6 +886,11 @@
                               "length" : 17,
                               "offset" : 0,
                               "style" : "COLOR:hsl(231, 23%, 11%)"
+                            },
+                            {
+                              "length" : 17,
+                              "offset" : 0,
+                              "style" : "FONT:PingFangSC-Regular"
                             }
                           ],
                           "key" : "9uv67",
@@ -899,13 +899,13 @@
                         }
                       ],
                       "cached" : {
-                        "html" : "<span data-offset-key=\"9uv67-0-0\" style=\"font-weight:900;tab-size:4;font-family:&quot;SFUIText-Regular&quot;, sans-serif;-webkit-text-fill-color:hsl(231, 23%, 11%);font-size:15px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">祝你生日快快乐乐快快乐乐哦开开心心<\/span><\/span>",
+                        "html" : "<span data-offset-key=\"9uv67-0-0\" style=\"font-weight:400;tab-size:4;font-family:&quot;PingFangSC-Regular&quot;, &quot;PingFang SC&quot;, serif;-webkit-text-fill-color:hsl(231, 23%, 11%);font-size:15px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">祝你生日快快乐乐快快乐乐哦开开心心<\/span><\/span>",
                         "os" : "10_15",
                         "size" : {
                           "height" : 36,
-                          "width" : 171
+                          "width" : 174
                         },
-                        "width" : 170
+                        "width" : 173
                       },
                       "entityMap" : {
 

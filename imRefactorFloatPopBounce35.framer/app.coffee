@@ -7,7 +7,7 @@ mainScreen.clip = true
 mainScreen.centerY()
 mainScreen.centerX()
 
-jumpArea.clip = true
+
 
 if Screen.width > 375
 	mainScreen.scale = Screen.width / 375
@@ -87,6 +87,8 @@ sentContents = [
 		height: 260
 	},
 ]
+
+jumpArea.clip = true
 
 imFlow.draggable.enabled = true
 imFlow.draggable.speedX = 0
@@ -260,9 +262,9 @@ class SentMessage extends Layer
 		_content = @content
 		@.parent.on 'change:y', ->
 			screenY = _self.convertPointToLayer([0,0], mainScreen).y
-			colorR = Utils.modulate(screenY,[0,412],[70,22],true)
-			colorG = Utils.modulate(screenY,[0,412],[101,142],true)
-			colorB = Utils.modulate(screenY,[0,412],[255,249],true)
+			colorR = Utils.modulate(screenY,[0,380],[70,22],true)
+			colorG = Utils.modulate(screenY,[0,380],[101,142],true)
+			colorB = Utils.modulate(screenY,[0,380],[255,249],true)
 			positionColor = 'rgba('+ colorR + ',' + colorG + ',' + colorB + ', 1)' 
 			_content.backgroundColor = positionColor
 		
@@ -410,10 +412,10 @@ newTargetMessage = () ->
 		imFlow.animate
 			y: bottomBar.y - imFlow.height
 			options: 
-				time: 0.35
+				time: 0.3
 				curve: Spring(damping: 1)
 	
-	Utils.delay 0.05, ->
+	Utils.delay 0.1, ->
 		sent.show(showType)
 # 	sent.children[1].opacity = 0
 	return sent
@@ -441,10 +443,10 @@ jumpArea.states.initial =
 		color: 'transparent'
 
 jumpArea.states.float = 
-	x: jumpArea.x + 54
-	y: jumpArea.y - 40
+	x: jumpArea.x + 72
+	y: jumpArea.y - 25
 	scale: 0.95
-	width: 263
+	width: 240
 	height: 64
 	borderRadius: jumpArea.borderRadius
 	backgroundColor: 'rgba(22, 142, 249, 1)'
@@ -457,8 +459,8 @@ jumpArea.states.float =
 		curve: 'Bezier(.3,0,1,.9)'
 
 jumpArea.states.drop = 
-	x: jumpArea.x + 46
-	y: jumpArea.y - 95
+	x: jumpArea.x + 45
+	y: jumpArea.y - 97
 	width: 263
 	borderRadius: 12
 	backgroundColor: 'rgba(22, 142, 249, 1)'
@@ -482,9 +484,14 @@ jumpText.states.initial =
 	x: jumpText.x
 	y: jumpText.y
 	color: jumpText.color
+	
+jumpText.states.float = 
+	x: 12
+	width: 220
+	color: 'rgba(255, 255, 255, 0.9)'
 
 jumpText.states.drop =
-	x: 9
+	x: 11
 	y: 10
 	color: 'rgba(255, 255, 255, 0.9)'
 
@@ -511,15 +518,20 @@ areaJump = () ->
 	bottomBar.animate('normal')
 	area.animate('initial')
 	area.opacity = 1
+	jumpText.animate('float')
+	jumpEmoji.x = 60
 	jumpArea.animate('float').on Events.AnimationEnd, ->
+		
+		jumpText.x = 10
 		jumpText.fontSize = 16
 		jumpText.width = 240
 		jumpText.lineHeight = 1.4
-		jumpEmoji.x= 42
+		jumpEmoji.x= 44
 		jumpEmoji.y= 36
 		sent = newTargetMessage()
 		jumpArea.animate('drop').on Events.AnimationEnd, ->
-			jumpArea.opacity = 0
+			Utils.delay 0.07, ->
+				jumpArea.opacity = 0
 			jumpArea.animate('dropBounce').on Events.AnimationEnd, ->
 # 				sent.children[1].opacity = 1
 			
