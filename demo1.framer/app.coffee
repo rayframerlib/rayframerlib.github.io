@@ -65,7 +65,7 @@ shadowCurve.html = """
 	<svg id='box' viewBox='0 0 80 728' version = "1.1">
 		<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
 			<stop offset="0%" style="stop-color:rgba(255, 255, 255, 0.2);stop-opacity:1" />
-			<stop offset="100%" style="stop-color:rgb(255, 255, 255, 0.18);stop-opacity:1" />
+			<stop offset="100%" style="stop-color:rgba(255, 255, 255, 0.18);stop-opacity:1" />
 		</linearGradient>
 		<path id ="curve1" d ="M 375 0 q 0 364 0 728 l 0 0 l 0 -728" fill="url(#grad1)"/>
 	</svg>

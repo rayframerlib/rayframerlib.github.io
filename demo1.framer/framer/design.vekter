@@ -1004,8 +1004,8 @@
                     }
                   ],
                   "cached" : {
-                    "html" : "<span data-offset-key=\"85u4f-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;SFUIText-Medium&quot;, &quot;SF UI Text&quot;, sans-serif;-webkit-text-fill-color:hsl(0, 0%, 100%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">引导测试<\/span><\/span>",
-                    "os" : "10_16",
+                    "html" : "<span data-offset-key=\"85u4f-0-0\" style=\"tab-size:4;font-weight:400;font-family:&quot;SFUIText-Medium&quot;, sans-serif;-webkit-text-fill-color:hsl(0, 0%, 100%);font-size:13px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">引导测试<\/span><\/span>",
+                    "os" : "10_15",
                     "size" : {
                       "height" : 15,
                       "width" : 53
@@ -1526,7 +1526,7 @@
                   ],
                   "cached" : {
                     "html" : "<span data-offset-key=\"cc3bs-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;HelveticaNeue-Medium&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:hsl(0, 0%, 100%);font-size:18px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">关注<\/span><\/span>",
-                    "os" : "10_16",
+                    "os" : "10_15",
                     "size" : {
                       "height" : 21,
                       "width" : 37
@@ -1644,7 +1644,7 @@
                   ],
                   "cached" : {
                     "html" : "<span data-offset-key=\"cc3bs-0-0\" style=\"tab-size:4;font-weight:500;font-family:&quot;HelveticaNeue-Medium&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:hsl(0, 0%, 100%);font-size:18px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">推荐<\/span><\/span>",
-                    "os" : "10_16",
+                    "os" : "10_15",
                     "size" : {
                       "height" : 21,
                       "width" : 37

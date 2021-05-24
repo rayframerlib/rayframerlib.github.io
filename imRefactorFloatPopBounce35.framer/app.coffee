@@ -7,6 +7,8 @@ mainScreen.clip = true
 mainScreen.centerY()
 mainScreen.centerX()
 
+jumpArea.clip = true
+
 if Screen.width > 375
 	mainScreen.scale = Screen.width / 375
 mainScreen.y = (Screen.height - mainScreen.height) / 2
@@ -18,43 +20,43 @@ Framer.Defaults.Animation =
 receivedContents = [
 	{
 		url: './assets/received_text.png',
-		width: 263,
-		height: 62
+		width: 168,
+		height: 40
 	},
 	{
 		url: './assets/received_text_emoji.png',
-		width: 200,
-		height: 40
+		width: 263,
+		height: 80
 	},
 	{
 		url: './assets/received_long_text.png',
 		width: 263,
-		height: 222
+		height: 64
 	},
 	{
 		url: './assets/received_live.png',
-		width: 174,
-		height: 283
+		width: 160,
+		height: 260
 	},
 	{
 		url: './assets/received_product.png',
 		width: 263,
-		height: 92
+		height: 80
 	},
 	{
 		url: './assets/received_redpacket.png',
-		width: 250,
-		height: 92
+		width: 136,
+		height: 40
 	},
 	{
 		url: './assets/received_user.png',
-		width: 263,
-		height: 179
+		width: 158,
+		height: 64
 	},
 	{
 		url: './assets/received_video.png',
-		width: 174,
-		height: 283
+		width: 263,
+		height: 80
 	}
 ]
 
@@ -71,18 +73,18 @@ sentContents = [
 	},
 	{
 		url: './assets/sent_text_laugh.png',
-		width: 136,
+		width: 151,
 		height: 40
 	},
 	{
 		url: './assets/sent_product.png',
-		width: 263,
-		height: 92
+		width: 160,
+		height: 160
 	},
 	{
 		url: './assets/sent_user.png',
-		width: 263,
-		height: 179
+		width: 160,
+		height: 260
 	},
 ]
 
@@ -109,6 +111,7 @@ class ReceivedMessage extends Layer
 		@options.content ?= ''
 		@options.contentWidth ?= 200
 		@options.contentHeight ?= 200
+		@options.contentBoarderRadius ?= {topLeft:12, topRight:12, bottomRight:12, bottomLeft:12}
 		
 		super @options
 
@@ -125,7 +128,9 @@ class ReceivedMessage extends Layer
 			y: 0
 			width: @options.contentWidth
 			height: @options.contentHeight
+			backgroundColor: "rgba(22, 24, 35, 0.05)"
 			image: @options.content
+			borderRadius: @options.contentBoarderRadius
 		
 		@.states.initial = 
 # 			x: @options.x - 50
@@ -151,17 +156,38 @@ class ReceivedMessage extends Layer
 # 			x: @content.x
 # 			y: @content.y
 		
+		@senderAvatar.states.initial = 
+			opacity: 0
+		
+		@senderAvatar.states.show = 
+			opacity: 1
+			options:
+				time: 0.5
+				curve: Spring(damping: 1)
+		
 		@init()
 	
 	init: () ->
 		@.height = @content.height
 		@.stateSwitch('initial')
 		@content.stateSwitch('initial')
+		@senderAvatar.stateSwitch('initial')
 	
-	show: () ->
-		@.animate('show')
-		@content.animate('show')
-
+	show: (mode) ->
+		if mode == 'fuse'
+			@.animate('show')
+			@content.animate('show')
+		else
+			@.animate('show')
+			@content.animate('show')
+			@senderAvatar.animate('show')
+			
+	setRadius: (radius) ->
+		@content.animate
+			borderRadius: radius
+			options:
+				time: 0.2
+	
 a = new ReceivedMessage
 	x: 200
 	y: 200
@@ -178,6 +204,7 @@ class SentMessage extends Layer
 		@options.content ?= ''
 		@options.contentWidth ?= 200
 		@options.contentHeight ?= 200
+		@options.contentBoarderRadius ?= {topLeft:12, topRight:12, bottomRight:12, bottomLeft:12}
 		
 		super @options
 
@@ -195,6 +222,7 @@ class SentMessage extends Layer
 			width: @options.contentWidth
 			height: @options.contentHeight
 			image: @options.content
+			borderRadius: @options.contentBoarderRadius
 		
 		@content.x = 263 - @content.width
 		
@@ -211,6 +239,7 @@ class SentMessage extends Layer
 # 			x: @content.x + 30
 # 			y: @content.y + 12
 			
+	
 		@content.states.show =
 			rotation: 0
 			x: @content.x
@@ -218,6 +247,24 @@ class SentMessage extends Layer
 # 			options:
 # 				curve: Spring(damping: 0.6)
 # 				time: 0.6
+		@senderAvatar.states.initial = 
+			opacity: 0
+		
+		@senderAvatar.states.show = 
+			opacity: 1
+			options:
+				time: 0.5
+				curve: Spring(damping: 1)
+		
+		_self = @
+		_content = @content
+		@.parent.on 'change:y', ->
+			screenY = _self.convertPointToLayer([0,0], mainScreen).y
+			colorR = Utils.modulate(screenY,[0,412],[70,22],true)
+			colorG = Utils.modulate(screenY,[0,412],[101,142],true)
+			colorB = Utils.modulate(screenY,[0,412],[255,249],true)
+			positionColor = 'rgba('+ colorR + ',' + colorG + ',' + colorB + ', 1)' 
+			_content.backgroundColor = positionColor
 		
 		@init()
 	
@@ -225,18 +272,41 @@ class SentMessage extends Layer
 		@.height = @content.height
 		@.stateSwitch('initial')
 		@content.stateSwitch('initial')
+		@senderAvatar.stateSwitch('initial')
 	
-	show: () ->
-		@.animate('show')
-		@content.animate('show')
+	show: (mode) ->
+		if mode == 'fuse'
+			@.animate('show')
+			@content.animate('show')
+		else
+			@.animate('show')
+			@content.animate('show')
+			@senderAvatar.animate('show')
+	
+	setRadius: (radius) ->
+		@content.animate
+			borderRadius: radius
+			options:
+				time: 0.2
 
 randomInt = (min, max) ->
 	Math.round(Utils.randomNumber(min, max))
 
 newRandomReceivedMessage = () ->
 	messageAmount = imFlow.children.length
+	showType = ''
 	if messageAmount
-		messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+		if imFlow.children[messageAmount-1].constructor.name == 'ReceivedMessage'
+			messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 2
+			showType = 'fuse'
+			lastRadius = imFlow.children[messageAmount-1].content.borderRadius
+			lastRadius.bottomLeft = 2
+			imFlow.children[messageAmount-1].setRadius(lastRadius)
+			newRadius = {topLeft:2, topRight:12, bottomRight:12, bottomLeft:12}
+		else
+			messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+			showType = 'normal'
+			newRadius = {topLeft:12, topRight:12, bottomRight:12, bottomLeft:12}
 		
 	else
 		messagePositionY = 20
@@ -251,23 +321,38 @@ newRandomReceivedMessage = () ->
 		contentWidth: receivedContents[randomIndex].width
 		contentHeight: receivedContents[randomIndex].height
 		content: receivedContents[randomIndex].url
-		
+		contentBoarderRadius: newRadius
 	
 	if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >= bottomBar.y - navigationBar.height
 		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
 		setFlowConstrains()
 		flowAnimateToBottom()
 	
-	received.show()
+	received.show(showType)
+	
+	
+	
+		
 	
 newRandomSentMessage = () ->
 	messageAmount = imFlow.children.length
+	newRadius = []
+	showType = ''
 	if messageAmount
-		messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+		if imFlow.children[messageAmount-1].constructor.name == 'SentMessage'
+			messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 2
+			showType = 'fuse'
+			lastRadius = imFlow.children[messageAmount-1].content.borderRadius
+			lastRadius.bottomRight = 0
+			imFlow.children[messageAmount-1].setRadius(lastRadius)
+			newRadius = {topLeft:12, topRight:0, bottomRight:12, bottomLeft:12}
+		else
+			messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+			newRadius = {topLeft:12, topRight:12, bottomRight:12, bottomLeft:12}
 		
 	else
-		messagePositionY = 20
-	
+		showType = 'normal'
+		messagePositionY = 20	
 	randomIndex = randomInt(0, sentContents.length - 1)
 		
 	sent = new SentMessage
@@ -278,20 +363,33 @@ newRandomSentMessage = () ->
 		contentWidth: sentContents[randomIndex].width
 		contentHeight: sentContents[randomIndex].height
 		content: sentContents[randomIndex].url
+		contentBoarderRadius: newRadius
 	
 	if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >=  bottomBar.y - navigationBar.height
 		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
 		setFlowConstrains()
 		flowAnimateToBottom()
 	
-	sent.show()
+	sent.show(showType)
 
 newTargetMessage = () ->
 	messageAmount = imFlow.children.length
+	newRadius = []
+	showType = ''
 	if messageAmount
-		messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+		if imFlow.children[messageAmount-1].constructor.name == 'SentMessage'
+			messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 2
+			showType = 'fuse'
+			lastRadius = imFlow.children[messageAmount-1].content.borderRadius
+			lastRadius.bottomRight = 2
+			imFlow.children[messageAmount-1].setRadius(lastRadius)
+			newRadius = {topLeft:12, topRight:2, bottomRight:12, bottomLeft:12}
+		else
+			messagePositionY = imFlow.children[messageAmount-1].y + imFlow.children[messageAmount-1].height + 16
+			newRadius = {topLeft:12, topRight:12, bottomRight:12, bottomLeft:12}
 		
 	else
+		showType = 'normal'
 		messagePositionY = 20
 		
 	sent = new SentMessage
@@ -302,6 +400,8 @@ newTargetMessage = () ->
 		contentWidth: sentContents[0].width
 		contentHeight: sentContents[0].height
 		content: sentContents[0].url
+		contentBoarderRadius: newRadius
+		
 	
 	if imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20 >=  bottomBar.y - navigationBar.height
 		imFlow.height = imFlow.children[messageAmount].y + imFlow.children[messageAmount].height + 20
@@ -313,7 +413,8 @@ newTargetMessage = () ->
 				time: 0.35
 				curve: Spring(damping: 1)
 	
-	sent.show()
+	Utils.delay 0.05, ->
+		sent.show(showType)
 # 	sent.children[1].opacity = 0
 	return sent
 
@@ -340,34 +441,34 @@ jumpArea.states.initial =
 		color: 'transparent'
 
 jumpArea.states.float = 
-	x: jumpArea.x + 4
+	x: jumpArea.x + 54
 	y: jumpArea.y - 40
 	scale: 0.95
 	width: 263
 	height: 64
 	borderRadius: jumpArea.borderRadius
-	backgroundColor: '#242630'
+	backgroundColor: 'rgba(22, 142, 249, 1)'
 	shadow1: 
 		y: 4
 		blur: 6
 		color: 'rgba(255, 255, 255, 0.1)'
 	options: 
-		time: 0.125
+		time: 0.1
 		curve: 'Bezier(.3,0,1,.9)'
 
 jumpArea.states.drop = 
-	x: jumpArea.x + 4
-	y: jumpArea.y - 94
+	x: jumpArea.x + 46
+	y: jumpArea.y - 95
 	width: 263
-	borderRadius: 8
-	backgroundColor: '#242630'
+	borderRadius: 12
+	backgroundColor: 'rgba(22, 142, 249, 1)'
 	scale:1
 	shadow1: 
 		y: 0
 		blur: 0
 		color: 'transparent'
 	options: 
-		time: 0.225
+		time: 0.2
 		curve: 'Bezier(0,0.1,0.5,1)'
 
 jumpArea.states.dropBounce = 
@@ -383,7 +484,7 @@ jumpText.states.initial =
 	color: jumpText.color
 
 jumpText.states.drop =
-	x: 11
+	x: 9
 	y: 10
 	color: 'rgba(255, 255, 255, 0.9)'
 
@@ -403,18 +504,18 @@ area.states.initial =
 	borderRadius: 22
 
 area.states.input = 
-	borderRadius: 16
+	borderRadius: 22
 
 areaJump = () ->
-	jumpArea.backgroundColor = '#e0e0e2'
+	jumpArea.backgroundColor = 'rgba(22, 24, 35, 0.05)'
 	bottomBar.animate('normal')
 	area.animate('initial')
 	area.opacity = 1
 	jumpArea.animate('float').on Events.AnimationEnd, ->
 		jumpText.fontSize = 16
-		jumpText.width = 241
+		jumpText.width = 240
 		jumpText.lineHeight = 1.4
-		jumpEmoji.x= 44
+		jumpEmoji.x= 42
 		jumpEmoji.y= 36
 		sent = newTargetMessage()
 		jumpArea.animate('drop').on Events.AnimationEnd, ->
@@ -463,8 +564,6 @@ flowWraper.states.keyboard =
 # 		imFlow.draggable.constraints.height = 626
 # 		imFlow.draggable.constraints.y = 88
 # 		flowAnimateToTop()
-	
-
 
 
 imFlow.on Events.DragStart, ->
@@ -477,9 +576,9 @@ keyboardHitArea.on Events.Click, ->
 		bottomBar.animate('input').on Events.AnimationEnd, ->
 			area.opacity = 0
 			jumpText.fontSize = 15
-			jumpText.width = 213
+			jumpText.width = 173
 			jumpText.lineHeight = 1.2
-			jumpEmoji.x= 63
+			jumpEmoji.x= 140
 			jumpEmoji.y= 32
 			jumpArea.opacity = 1
 			jumpArea.stateSwitch('initial')
@@ -489,7 +588,7 @@ keyboardHitArea.on Events.Click, ->
 	else if bottomBar.states.current.name == 'input' && !bottomBar.isAnimating
 		areaJump()
 
-for i in [0...5]
+for i in [0...10 ]
 	newRandomReceivedMessage()
 	newRandomSentMessage()
 	
