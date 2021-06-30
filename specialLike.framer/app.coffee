@@ -66,3 +66,4 @@ class VideoContent extends Layer
 
 
 a = new VideoContent
+	superLayer: mainScreen
