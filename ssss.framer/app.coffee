@@ -21,13 +21,15 @@ testQueries = [
 	'我的2021',
 ]
 coreTextContent = [
-	'看',
-	'见',
+	'视',
+	'频',
 	'搜',
 	'索',
-	'的',
-	'力',
-	'量',
+	' ',
+	'就',
+	'在',
+	'抖',
+	'音'
 ]
 
 coreText.text = ''
@@ -46,7 +48,7 @@ clip = new VideoLayer
 	superLayer: videoArea
 	width: 403
 	height: 716
-	video: "images/%E7%9C%8B%E8%A7%81%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8A%9B%E9%87%8Fclip.mp4"
+	video: "images/aa.mp4"
 	
 clip.centerX()
 
@@ -66,7 +68,7 @@ searchClip.player.muted = true
 
 button.clip = true
 
-Utils.delay 13, ->
+Utils.delay 8, ->
 	texts.animate
 		opacity: 0
 		options: 

@@ -157,14 +157,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 0,
+                "bottom" : 1,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.5,
-                "centerAnchorY" : 0.5,
+                "centerAnchorY" : 0.49860335195530725,
                 "children" : [
 
                 ],
@@ -221,7 +221,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "bgColor",
-                "top" : 0,
+                "top" : -1,
                 "visible" : true,
                 "width" : 375,
                 "widthFactor" : null
@@ -508,7 +508,7 @@
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.504,
-                "centerAnchorY" : 0.47695530726256985,
+                "centerAnchorY" : 0.43505586592178769,
                 "children" : [
 
                 ],
@@ -565,7 +565,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "music",
-                "top" : 219,
+                "top" : 189,
                 "visible" : true,
                 "width" : 216,
                 "widthFactor" : null
@@ -845,14 +845,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 0,
+                "bottom" : 40,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.5,
-                "centerAnchorY" : 0.5,
+                "centerAnchorY" : 0.44413407821229051,
                 "children" : [
 
                 ],
@@ -909,7 +909,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "frontBalls",
-                "top" : 0,
+                "top" : -40,
                 "visible" : true,
                 "width" : 375,
                 "widthFactor" : null
@@ -931,14 +931,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : -10,
+                "bottom" : 30,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.5,
-                "centerAnchorY" : 0.51396648044692739,
+                "centerAnchorY" : 0.45810055865921789,
                 "children" : [
 
                 ],
@@ -995,7 +995,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "backBalls",
-                "top" : 10,
+                "top" : -30,
                 "visible" : true,
                 "width" : 375,
                 "widthFactor" : null
@@ -1024,7 +1024,7 @@
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.5,
-                "centerAnchorY" : 0.50069832402234637,
+                "centerAnchorY" : 0.44483240223463688,
                 "children" : [
                   {
                     "__class" : "OvalShapeNode",
@@ -1125,7 +1125,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "backBlur",
-                "top" : null,
+                "top" : 228,
                 "visible" : true,
                 "width" : 375,
                 "widthFactor" : null
@@ -1147,14 +1147,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 246,
+                "bottom" : null,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.5013333333333333,
-                "centerAnchorY" : 0.52932960893854752,
+                "centerAnchorY" : 0.47346368715083798,
                 "children" : [
                   {
                     "__class" : "OvalShapeNode",
@@ -1255,7 +1255,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : null,
-                "top" : null,
+                "top" : 248,
                 "visible" : true,
                 "width" : 182,
                 "widthFactor" : null
@@ -1277,14 +1277,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 148,
+                "bottom" : null,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.49866666666666665,
-                "centerAnchorY" : 0.53142458100558654,
+                "centerAnchorY" : 0.4755586592178771,
                 "children" : [
 
                 ],
@@ -1341,7 +1341,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "oval",
-                "top" : null,
+                "top" : 153,
                 "visible" : true,
                 "width" : 376,
                 "widthFactor" : null
@@ -1363,14 +1363,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 216,
+                "bottom" : 256,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.21199999999999999,
-                "centerAnchorY" : 0.6710893854748603,
+                "centerAnchorY" : 0.61522346368715086,
                 "children" : [
 
                 ],
@@ -1449,14 +1449,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 148,
+                "bottom" : null,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.49866666666666665,
-                "centerAnchorY" : 0.53142458100558654,
+                "centerAnchorY" : 0.4755586592178771,
                 "children" : [
                   {
                     "__class" : "FrameNode",
@@ -1598,7 +1598,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "planetMiniContainer",
-                "top" : null,
+                "top" : 153,
                 "visible" : true,
                 "width" : 376,
                 "widthFactor" : null
@@ -1620,14 +1620,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 148,
+                "bottom" : null,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.49866666666666665,
-                "centerAnchorY" : 0.53142458100558654,
+                "centerAnchorY" : 0.4755586592178771,
                 "children" : [
                   {
                     "__class" : "FrameNode",
@@ -1769,7 +1769,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "planetTinyContainer",
-                "top" : null,
+                "top" : 153,
                 "visible" : true,
                 "width" : 376,
                 "widthFactor" : null
@@ -1791,14 +1791,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 193,
+                "bottom" : null,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.49866666666666665,
-                "centerAnchorY" : 0.51396648044692739,
+                "centerAnchorY" : 0.45810055865921789,
                 "children" : [
 
                 ],
@@ -1855,7 +1855,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "light",
-                "top" : null,
+                "top" : 173,
                 "visible" : true,
                 "width" : 310,
                 "widthFactor" : null
@@ -1877,14 +1877,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 0,
+                "bottom" : 30,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.5,
-                "centerAnchorY" : 0.5,
+                "centerAnchorY" : 0.45810055865921789,
                 "children" : [
 
                 ],
@@ -1941,7 +1941,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "queryContainer",
-                "top" : 0,
+                "top" : -30,
                 "visible" : true,
                 "width" : 375,
                 "widthFactor" : null
@@ -2049,14 +2049,14 @@
                 "borderStyle" : "solid",
                 "borderTop" : 1,
                 "borderWidth" : 1,
-                "bottom" : 320,
+                "bottom" : null,
                 "boxShadows" : [
 
                 ],
                 "brightness" : 100,
                 "brightnessEnabled" : 0,
                 "centerAnchorX" : 0.49866666666666665,
-                "centerAnchorY" : 0.51396648044692739,
+                "centerAnchorY" : 0.47206703910614523,
                 "children" : [
                   {
                     "__class" : "FrameNode",
@@ -3435,7 +3435,7 @@
                 "sepia" : 0,
                 "sepiaEnabled" : 0,
                 "targetName" : "search",
-                "top" : null,
+                "top" : 310,
                 "visible" : true,
                 "width" : 270,
                 "widthFactor" : null
