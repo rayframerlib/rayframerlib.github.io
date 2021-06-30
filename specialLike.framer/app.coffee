@@ -48,19 +48,21 @@ class VideoContent extends Layer
 			else
 				_self.isHot = true
 				clearHot()
-		
+	
+	generateEffect: Utils.throttle 0.1, (event)->
+			generateX = event.point.x + Utils.randomNumber(-10, 10) - 150
+			generateY = event.point.y + Utils.randomNumber(-10, 10) - 250
+			generateRotation = Utils.randomNumber(-15, 15)
+			likeEffect = new LikeAnimationPlayer
+				jsonPath: 'likeJson/earth.json'
+				x: generateX
+				y: generateY
+				rotation: generateRotation
+			
 	doubleClickEvent: (event)->
-		generateX = event.point.x + Utils.randomNumber(-10, 10) - 150
-		generateY = event.point.y + Utils.randomNumber(-10, 10) - 250
-		generateRotation = Utils.randomNumber(-15, 15)
-		print generateX
-		print generateY
+		@generateEffect(event)
 		
-		likeEffect = new LikeAnimationPlayer
-			jsonPath: 'likeJson/earth.json'
-			x: generateX
-			y: generateY
-			rotation: generateRotation
+		
 
 
 a = new VideoContent
