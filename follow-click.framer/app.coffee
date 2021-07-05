@@ -17,6 +17,7 @@ clickEffect = new BodymovinLayer
 	height: 30
 	jsonPath: 'likeJson/click.json'
 	autoplay: false
+	looping: false
 
 hotArea = new Layer
 	superLayer: mainScreen
