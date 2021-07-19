@@ -56,7 +56,7 @@ class VideoContent extends Layer
 			generateRotation = Utils.randomNumber(-15, 15)
 			likeEffect = new LikeAnimationPlayer
 				superLayer: superLayer
-				jsonPath: 'likeJson/earth.json'
+				jsonPath: 'likeJson/normal.json'
 				x: generateX
 				y: generateY
 				rotation: generateRotation
